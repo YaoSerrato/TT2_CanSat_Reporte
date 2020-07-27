@@ -1,0 +1,210 @@
+{\parindent0pt
+
+En esta sección se analizan las gráficas obtenidas durante el lanzamiento del CanSat. Estas gráficas son pertenecientes a dos lanzamientos: el primero realizado a una altura cercana a los $90 [m]$, mientras que el segundo fue realizado a una altura aproximada de $160 [m]$.\\
+
+Ambos lanzamientos fueron realizados en el Instituto de Astronomía de la UNAM. Como medidas de seguridad para los peatones e instalaciones, los lanzamientos se realizaron a baja altura. El prototipo CanSat fue elevado mediante un dron de seis hélices.\\
+
+\subsection*{Primer lanzamiento}
+
+Este lanzamiento se realizó a una altura aproximada de $90 [m]$ sobre el nivel de referencia. Durante el lanzamiento el dron elevó el CanSat a dicha altura, después el dron descendió con el prototipo aproximadamente $10 [m]$, punto donde el vehículo científico se liberó del contenedor y comenzó la autorrotación hasta llegar a una altura próxima al nivel de referencia. Durante toda la misión el CanSat transmitió la telemetría a la estación en Tierra.\\
+
+A continuación, se presentan las gráficas obtenidas de este primer lanzamiento. Todas las gráficas contienen una leyenda que específica qué conjunto de datos pertenece a qué estado de la máquina de estados \ref{img:StateMachine}.\\
+
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Presion_Prueba_1.png}
+    \caption{Cambio de la presión atmosférica durante el primer lanzamiento.}
+    \label{img:PresionP1}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Altura_Prueba_1.png}
+    \caption{Cambio en la altura durante el primer lanzamiento.}
+    \label{img:AlturaP1}
+  \end{subfigure}
+\caption{Datos de presión atmosférica y altura obtenidos durante el primer lanzamiento.}
+\end{figure}
+
+En la figura \ref{img:PresionP1} se observa como la presión mantuvo un valor constante durante el estado de espera de despegue. Al siguiente estado, el prototipo se elevó y con ello la presión descendió, en este punto, como se observa en la figura \ref{img:AlturaP1}, el CanSat comenzó a ganar altura hasta llegar a los $84 [m]$ aproximadamente. A partir de esta altura el dron comenzó a descender hasta los $69 [m]$ aproximadamente. En la misma figura se observa cómo la pendiente de descenso se vuelve más pronunciada, esto indica un aumento de la velocidad debido a que para ese punto el vehículo científico ya se encontraba descendiendo con el sistema de autorrotación hasta llegar a los $10 [m]$, punto donde aterrizó sobre un árbol y con esto teminó el primer lanzamiento. El cambio en la velocidad puede apreciarse en la figura \ref{img:VelocidadDescensoP1}.\\
+
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Velocidad_Descenso_Prueba_1.png}
+	\caption{Datos de velocidad de descenso obtenidos durante el primer lanzamiento.}
+	\label{img:VelocidadDescensoP1}
+\end{figure}
+
+
+En la figura \ref{img:VelocidadDescensoP1} se puede apreciar que durante las primeras etapas la velocidad se mantuvo en su mayoría positiva, en concordancia con el aumento en la altura, sin embargo, durante el descenso adquiere una velocidad pico de $- 15 [m/s]$, de tal forma que se puede llegar a la conclusión de que el CanSat mantuvo la velocidad en ese rango durante el descenso con hélices, cumpliendo así el objetivo particular que establece que el CanSat debe descender a una velocidad dentro del rango de $10 [m/s]$ a $15 [m/s]$ con las hélices.\\
+
+
+En la figura \ref{img:VelocidadRotorP1} se muestra cómo varía la velocidad de rotación del rotor con respecto del CanSat.\\
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Velocidad_Rotor_Prueba_1.png}
+	\caption{Datos de velocidad de rotación del rotor durante el primer lanzamiento.}
+	\label{img:VelocidadRotorP1}
+\end{figure}
+
+En la figura \ref{img:VelocidadRotorP1} se aprecia una pendiente muy pronunciada en el momento en que el estado cambia a \textit{Descenso con Hélices}, lo cual indica que el rotor adquirió su velocidad límite casi al momento del despliegue de las hélices. Sin embargo, en los siguientes puntos se presenta una disminución en la velocidad de rotación del rotor lo que correspondería a un incremento en la velocidad de descenso del vehículo científico (si el rotor gira más lentamente, se producirá menos sustentación y el cuerpo descenderá más rápidamente) lo cual no se aprecia en la figura \ref{img:VelocidadDescensoP1} que, de hecho, sugiere lo contrario, pues es en estos puntos donde la velocidad disminuyó (sugiriendo que la velocidad de giro del rotor en realidad aumentó, contrario a lo que muestra la figura \ref{img:VelocidadRotorP1}). Esta discrepancia en el comportamiento entre la velocidad de descenso del CanSat y la velocidad de giro de las hélices sugiere que el sensor no cuenta con la suficiente velocidad de muestreo y ocurre el fenómeno denominado \textit{aliasing}, donde la frecuencia de la señal es mayor a la velocidad de muestreo, haciendo de esta manera imposible de reconstruir la señal original. Este comportamiento coincide con lo encontrado en la sección \ref{impleSRVD}.\\
+
+Como siguiente punto se tiene la gráfica de temperatura cuyo comportamiento es expuesto en la figura \ref{img:TemperaturaP1}.\\
+
+Se observa en la gráfica de temperatura como en un inicio se obtuvo una temperatura elevada, lo cual se cree es debido a la cercanía del CanSat con el pavimento, pues fue sobre este material donde se realizaron todas las calibraciones del CanSat. Sin embargo, conforme avanzan los estado de la misión, en específico durante el estado de \textit{Ascenso}, la temperatura disminuyó. Lo anterior puede suceder por tres motivos: el CanSat ya no se encontraba en cercanía con el pavimento, el cual irradia una gran cantidad de calor, incluso mayor que estando en césped o suelo [X]; pudo ser debido al cambio de altura o debido a las corrientes de aire.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Temperatura_Prueba_1.png}
+	\caption{Datos de temperatura obtenidos durante el primer lanzamiento.}
+	\label{img:TemperaturaP1}
+\end{figure}
+
+
+Se cree que el cambio de temperatura se debió más a un cambio en altitud y punto de aterrizaje, que sobre las corrientes de aire debido a la trayectoria, ya que de ser las corrientes de aire un factor determinante, se habría mostrado un aumento en la temperatura al momento del aterrizaje, y como se aprecia en la figura \ref{img:TemperaturaP1}, esto no sucedió, incluso se mantuvo casi constante aún después de aterrizar. Se cree que esto se debió a que el CanSat aterrizó en un árbol y quedó cubierto por su sombra y lejos del pavimento, lo cual es coincidente con [X].\\
+
+%% [X]  >> https://sci-hub.tw/https://www.sciencedirect.com/science/article/abs/pii/S1618866712000611
+
+Después se tiene la señal de error en la compensación de la posición angular de la cámara. Este error es exhibido en la figura \ref{img:ErrorSAP1}.\\
+
+Se puede ver en la figura \ref{img:ErrorSAP1} que el error se mantuvo en valores bastante cercanos a cero, pero llegado el punto de aterrizaje se elevó a valores cercanos a los $5000$ \textdegree{}. Se piensa que esto ocurrió como consecuencia del choque del CanSat con el árbol al momento del aterrizaje, pues después de este primer impacto el valor del error volvió a cero. Para apreciar mejor el valor de error, en al figura \ref{img:ErrorCAP1} se hace un acercamiento a los datos previos al aterrizaje; en la figura \ref{img:ErrorCAP1} se observa un error pico cercano a los $-20$ \textdegree{}, sin embargo, la mayor parte del tiempo el valor del error se mantuvo oscilando alrededor de cero.\\
+
+
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Error_Prueba_1.png}
+	\caption{Dinámica del error a lo largo del tiempo de la misión, sin acercamiento, durante el primer lanzamiento.}
+    \label{img:ErrorSAP1}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Error(2)_Prueba_1.png}
+	\caption{Dinámica del error a lo largo del tiempo de la misión, con acercamiento, durante el primer lanzamiento.}
+    \label{img:ErrorCAP1}
+  \end{subfigure}
+\caption{Error de la posición angular de la cámara durante el primer lanzamiento.}
+\end{figure}
+
+Finalmente, se expone el comportamiento de la orientación del CanSat; esto se observa en la figura \ref{img:OrientacionP1}\\
+
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Orientacion_Prueba_1.png}
+	\caption{Datos de orientación del CanSat obtenidos durante el primer lanzamiento.}
+    \label{img:OrientacionP1}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba1/Orientacion(Azimuth)CA_Prueba_1.png}
+	\caption{Datos de orientación del CanSat correspondientes al cuarto estado de la misión obtenidos durante el primer lanzamiento.}
+    \label{img:OrientacionP1CA}
+  \end{subfigure}
+\caption{Datos de \textit{pitch}, \textit{roll} y azimut obtenidos durante el primer lanzamiento.}
+\end{figure}
+
+
+La orientación se mantiene bastante estable durante las primeras etapas de la misión, el único eje que presenta bastantes variaciones es el eje de azimut, esto debido a que los ejes de \textit{pitch} y \textit{roll} se mantienen sujetos a la fuerza de gravedad, mientras que el eje de azimut puede moverse libremente. Es durante el estado de \textit{Descenso con Hélices} que todos los ejes presentan cierta perturbación y más el eje de azimut, ya que el CanSat gira alrededor de este durante la autorrotación. Aunque como efecto de la autorrotación se esperaría una rampa en la medida del azimuth, sin embargo, el sistema trunca la medida a los $360$[\textdegree{}] y regresa la medida a los $0$[\textdegree{}], generando así un gráfica mas parecida al diente de sierra, pero la figura \ref{img:OrientacionP1CA}, que presenta la misma gráfica pero con un acercamiento en el tiempo del estado cuatro, no presenta esa forma, de tal forma que se piensa que entra en juego de nuevo el concepto de \textit{aliasing}, tomando muestras de la señal a una frecuencia mucho mas lenta que la frecuencia de la señal original.\\
+
+\newpage
+\subsection*{Segundo lanzamiento}
+
+Este lanzamiento se realizó a una altura aproximada de $160 [m]$ sobre el nivel de referencia. Durante el lanzamiento el dron elevó el CanSat a la altura dicha para después ser soltado, punto donde comenzó la misión. Durante este lanzamiento el CanSat giró y se orientó de cabeza, por lo tanto, no pudo activar ninguno de los sistema de reducción de descenso. La comunicación con la estación en Tierra se perdió en el momento del impacto; todos los datos anteriores fueron recibidos exitosamente.\\
+
+A continuación, se presentan las gráficas obtenidas de este segundo lanzamiento. Todas las gráficas contienen una leyenda que específica qué conjunto de datos pertenece a qué estado de la máquina de estados \ref{img:StateMachine}.\\
+
+
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Presion_Prueba_2.png}
+    \caption{Datos de presión atmosférica obtenidos durante el segundo lanzamiento.}
+    \label{img:PresionP2}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{\textwidth}
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Altura_Prueba_2.png}
+    \caption{Datos de altura obtenidos durante el segundo lanzamiento.}
+    \label{img:AlturaP2}
+  \end{subfigure}
+\caption{Datos de presión atmosférica y altura obtenidos durante el segundo lanzamiento.}
+\end{figure}
+
+
+Como se observa en las figuras \ref{img:PresionP2} y \ref{img:AlturaP2}, en los estados iniciales tanto la presión como la altura se mantuvieron casi estáticos. Es hasta que el CanSat se elevó cuando comienza a existir un cambio significativo en la presión atmosférica medida y la altura. Una vez que el dron llegó a la altua máxima (en el segundo $140$), éste se mantuvo estático un tiempo esperando confirmación para liberar el CanSat, hecho que sucedió cerca del segundo $155$. A partir de este punto, como se observa en la figura \ref{img:AlturaP2}, comezó el descenso, sin embargo, no hay indicios de una reducción en la velocidad, lo cual es acertado tomando en cuenta que el CanSat cayó de cabeza y no logró desplegar ningún sistema de reducción de velocidad. Se puede deducir de la figura \ref{img:AlturaP2} que la transmisión se perdió al momento del impacto.\\
+
+Para ayudar a entender mejor este punto, se muestra la gráfica de velocidad de descenso en la figura \ref{img:VelocidadDescensoP2}.\\
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Velocidad_Descenso_Prueba_2.png}
+	\caption{Datos de velocidad de descenso del CanSat obtenidos durante el segundo lanzamiento.}
+	\label{img:VelocidadDescensoP2}
+\end{figure}
+
+Se puede ver en la figura \ref{img:VelocidadDescensoP2} que la velocidad adquirió una magnitud cercana a los $-50 [m/s]$ después de que el CanSat fue liberado.\\
+
+Ahora bien, en la figura \ref{img:VelocidadRotorP2}, se muestra cómo varió la velocidad de rotación del rotor respecto al CanSat.\\
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Velocidad_Rotor_Prueba_2.png}
+	\caption{Datos de velocidad del rotor obtenidos durante el segundo lanzamiento.}
+	\label{img:VelocidadRotorP2}
+\end{figure}
+
+En la figura \ref{img:VelocidadRotorP2} se muestra un movimiento prácticamente nulo durante toda la misión, lo cual es coincidente con las figuras \ref{img:PresionP2} y \ref{img:AlturaP2}, ya que un nulo movimiento por parte de las hélices no provoca una reducción en la velocidad de descenso. Esto deja como conclusión que en esta segunda prueba las hélices no fueron desplegadas.\\
+
+Como siguiente punto se tiene la gráfica de temperatura, cuyo comportamiento es expuesto en la figura \ref{img:TemperaturaP2}.\\
+
+\begin{figure}
+	\centering
+		\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Temperatura_Prueba_2.png}
+	\caption{Datos de temperatura obtenidos durante el segundo lanzamiento.}
+	\label{img:TemperaturaP2}
+\end{figure}
+
+La figura \ref{img:TemperaturaP2} muestra temperaturas cercanas a las presentadas en la figura \ref{img:TemperaturaP1}, además de tener un comportamiento muy similar hasta antes del impacto. Debido a que esta gráfica no contiene datos después del impacto, no es de mucha ayuda para determinar si el cambio de temperatura se debió a ráfagas de viento o un cambio en la altura y condiciones ambientales.\\
+
+Después se tiene la señal de error en la compensación de la posición angular de la cámara. Estos datos se muestran en la figura \ref{img:Error2}.\\
+
+La figura \ref{img:ErrorP2} presenta una dinámica que ronda cerca del cero, lo que sugiere que a pesar del movimiento del CanSat, aún en el descenso, el sistema buscó eliminar el error, sin embargo, también presenta cierto comportamiento errático poco antes de ser liberado, lo cual podría sugerir un movimiento brusco antes de la liberación y podría explicar el porqué de que el CanSat se haya volteado antes de poder liberar el paracaídas. Para abordar más este punto, hay que observar los datos presentados en la gráfica presentada en la figura \ref{img:OrientacionP2}.\\
+
+\begin{figure}
+	\centering
+    \includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Error_Prueba_2.png}
+	\caption{Datos del error de la posición angualar de la cámara obtenidos durante el segundo lanzamiento.}
+	\label{img:ErrorP2}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+	\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Orientacion_Prueba_2.png}
+	\caption{Datos de la orientación del CanSat obtenidos durante el segundo lanzamiento.}
+    \label{img:OrientacionP2}
+  \end{subfigure}
+  %
+  \begin{subfigure}[b]{\textwidth}
+	\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Orientacion_Prueba_2_CA.png}
+	\caption{Datos de la orientación del CanSat desde antes de que el dron lo liberara durante el segundo lanzamiento.}
+    \label{img:OrientacionP2CA}
+  \end{subfigure}
+\caption{Datos de ángulos \textit{pitch}, \textit{roll} y azimut obtenidos durante el segundo lanzamiento.}
+\end{figure}
+
+
+Es necesario que se tenga en cuenta durante este análisis que los ángulos de \textit{pitch} y \textit{roll} se encuentran acotados entre los $-180$[\textdegree{}] y los $180$[\textdegree{}], esto debido a la función \textit{atan2()} usada para su cálculo, mientras que el ángulo de azimut va de los $0$[\textdegree{}] a los $360$[\textdegree{}].\\
+
+Se puede observar en la figura \ref{img:OrientacionP2} que el sistema tuvo un comportamiento muy estable desde el inicio de la misión hasta momentos antes de la liberación cuando, de acuerdo con la figura \ref{img:OrientacionP2CA}, los ángulos de \textit{pitch} y \textit{roll} incrementaron hasta un valor cercano a los $180$[\textdegree{}]. Lo anterior indica que el prototipo se volteó antes de abrir el paracaídas y descendió en caída libre.\\
+
+A pesar de esto, todos los mecanismos fueron activados, sin embargo, debido a la posición en cómo descendió el CanSat, le fue imposible abrir el paracaídas y desacoplar el vehículo científico del contenedor. Durante el segundo lanamiento la transmisión y recepción de datos no se interrumpió antes del impacto.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Resultados/Graficas/Prueba2/Paquetes_2.png}
+	\caption{Aumento de los paquetes de datos a través del tiempo durante el segundo lanzamiento.}
+	\label{img:PaquetesP2}
+\end{figure}
+
+Se observa en la figura \ref{img:PaquetesP2} que existen ciertas discontinuidades cerca de los segundos $135$ y $150$. Lo anterior significa que hubo una pérdida de paquetes. Realizando un análisis cercano a estos puntos, se encontró que hubo una pérdida de los paquetes número 160, 163, 164, 288, 291, 292, 295 y 296, que da como resultado una pérdida de 8 paquetes de 325, de tal modo que se perdieron sólo $2.46$\% de los paquetes, concluyendo de esta manera que el sistema de comunicación es bastante estable a pesar de los movimientos erráticos que el sistema pudiera tener.\\
+
+}

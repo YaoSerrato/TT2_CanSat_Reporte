@@ -1,0 +1,229 @@
+% !TeX encoding = ISO-8859-1
+
+{\parindent0pt
+
+El SET se encarga de realizar la comunicación entre el CanSat y la estación en Tierra ($sS_{6{.}1}-$SC-ET), así como la comunicación entre la estación en Tierra y el usuario ($sS_{6{.}2}-$SU-ET). El SET está compuesto por la antena y transmisor abordo del CanSat, la antena y el transmisor en Tierra, y la computadora en Tierra ejecutando la interfaz gráfica de usuario.
+
+			\subsubsection{Subsistema de comunicación CanSat - Estación en Tierra}
+El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en Tierra}.\\
+
+\noindent Una vez que el SCMC haya medido los parámetros externos e internos y el SPD los haya procesado, los datos se envían por medio de comunicación serial al XBee abordo del CanSat. El XBee abordo del CanSat está conectado con la antena que se encarga de transmitir la trama de telemetría a la estación en Tierra. La tabla \ref{tab:trama} muestra los datos que son transmitidos por el CanSat.
+
+\begin{table}[H]
+\begin{center}
+\caption{Trama de telemetría.}
+\label{tab:trama}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{1cm}>{\raggedright}p{5cm}>{\centering}p{2cm}>{\raggedright}p{8cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+
+\textbf{No.} & \textbf{Parámetro} & \textbf{Ejemplo} & \textbf{Definición} \tabularnewline
+\midrule
+
+1 & Número de paquete & 22 & Indica el número de paquete que se está transmitiendo $[adim]$.\tabularnewline
+
+2 & Tiempo de misión & 11 & Indica el tiempo en que se envía el paquete $[s]$.\tabularnewline
+
+3 & Ángulo \textit{pitch} & 13.43 & Valor de inclinación alrededor del eje \textit{x} $[grados]$.\tabularnewline
+
+4 & Ángulo \textit{roll} & 23.96 & Valor de inclinación alrededor del eje \textit{y} $[grados]$.\tabularnewline
+
+5 & Ángulo azimut & 108.31 & Valor del GDL de azimut del SRD $[grados]$.\tabularnewline
+
+6 & Presión barométrica & 77823.34 & Valor de presión barométrica de la atmósfera $[Pa]$.\tabularnewline
+
+7 & Temperatura & 27.49 & Temperatura del aire $[Celsius]$. \tabularnewline
+
+8 & Altura & 325.14 & Estimación de altura con respecto al sitio de lanzamiento $[m]$.\tabularnewline
+
+9 & Número de satélites (GPS) & 9 & Número de satélites detectados por el GPS $[adim]$.\tabularnewline
+
+10 & Latitud & 2232.73830 & Valor de latitud otorgado por el GPS $[grados]$.\tabularnewline
+
+11 & Longitud & 11404.58520 & Valor de longitud otorgado por el GPS $[grados]$.\tabularnewline
+
+12 & Altitud & 32908.09 & Valor de altitud otorgado por el GPS con respecto al nivel del mar $[msnm]$.\tabularnewline
+
+13 & Velocidad de rotación del rotor & 325.42 & Velocidad angular de las hélices $[rpm]$.\tabularnewline
+
+14 & Estado & 3 & Estado actual de la misión $[adim]$.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\noindent Los requerimientos especifican que se deben utilizar módulos XBee, por lo tanto, se han seleccionado los módulos XBee S2 que operan en la banda de frecuencias de 2.4 [GHz]. Habrá un módulo tanto abordo del CanSat como en la estación en Tierra.\\
+
+\noindent Los módulos XBee S2 operan en la banda de frecuencia ISM $2.4 [GHz]$, que va de $2.4 [GHz]$ a $2.5 [GHz]$, con una frecuencia central de 2.45 [GHz]. Para la selección de la antena a bordo y para el diseño de la antena en la estación en Tierra se tomó como frecuencia de operación la frecuencia central de $2.45[GHz]$.
+
+\subsubsection*{Antena a bordo del CanSat}
+\noindent La antena que va a bordo del CanSat es una antena Taoglas\textsuperscript{\textregistered} [3261A] con $2[dBi]$ de ganancia máxima con una frecuencia de operación de $2.4[GHz]$ a $2.5[GHz]$. La antena seleccionada posee polarización circular lo que significa que es apta para aplicaciones donde la orientación del dispositivo en que va montada cambia constantemente.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.5]{diseniosist/SET/taoglas}
+	\caption{Antena a bordo del CanSat.}
+	\label{img:taoglas}
+\end{figure}
+
+\noindent La ganancia de una antena hace referencia a qué tan bien la antena convierte la potencia eléctrica en ondas de radio y viceversa [?]. La imagen \ref{img:GainTaoglas} muestra el valor de ganancia de la antena a bordo del CanSat en un rango de frecuencia de $2.3 [GHz]$ a $2.6 [GHz]$. En la imagen \ref{img:GainTaoglas} se puede observar que la ganancia de la antena a una frecuencia de $2.45 [GHz]$ es aproximadamente de $1.55 [dBi]$.\\
+
+\noindent Otro parámetro importante de una antena es la Razón de Onda Estacionaria (\textit{Voltage Standing Wave Ratio}, VSWR). El parámetro VSWR es una medida de la cantidad de potencia que se entrega a la antena en comparación con la cantidad de potencia que se refleja de la antena. Cada antena tiene un valor característico de impedancia, y el cable que la conecta con el transmisor también lo tiene. El caso ideal ocurre cuando ambos elementos (antena y cable) poseen la misma impedancia; cuando esto sucede, el valor del parámetro VSWR es de 1.  En la práctica, se toma un valor del parámetro VSWR de 2 como el máximo permisible.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.5]{diseniosist/SET/gain}
+	\caption{Ganancia de la antena a bordo del CanSat.}
+	\label{img:GainTaoglas}
+\end{figure}
+
+
+\noindent La imagen \ref{img:VSWRTaoglas} muestra el valor del parámetro VSWR de la antena a bordo del CanSat para un rango de frecuencias de $2.0 [GHz]$ a $3.0 [GHz]$. Como se observa en la imagen \ref{img:VSWRTaoglas} el valor del parámetro VSWR para una frecuencia de $2.45 [GHz]$ es menor a 2.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.5]{diseniosist/SET/taoglasVSWR}
+	\caption{Parámetro VSWR de la antena a bordo del CanSat.}
+	\label{img:VSWRTaoglas}
+\end{figure}
+
+\noindent Los patrones de radiación son otro parámetro importante de una antena. El patrón de radiación de una antena es una representación gráfica de la energía irradiada por la antena en función del espacio [?]. El patrón de radiación describe la forma en que la antena irradia energía en el espacio.\\
+
+\noindent La imagen \ref{img:taoglasradpat} muestra los patrones de radiación de la antena a bordo del CanSat en los planos \textit{xy} (arriba izquierda), \textit{xz} (arriba derecha) y \textit{yz} (abajo izquierda). También se muestra el patrón de radiación en un plano 3D (abajo derecha). En la imagen \ref{img:taoglasradpat} se observa que la antena se comporta como una antena omnidireccional, es decir, como una antena en que la radiación de ondas no se concentra en una sola dirección, sino que se distribuye por todo el espacio. Esto es particularmente útil para la antena de abordo puesto que permitirá que haya comunicación continua entre el CanSat y la estación en Tierra independientemente de la orientación que el CanSat adquiera durante el vuelo.
+
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.45]{diseniosist/SET/taoglasradi}
+	\caption{Patrones de radiación de la antena a bordo del CanSat (en los planos \textit{xy}, \textit{xz} y \textit{yz}, y en 3D).}
+	\label{img:taoglasradpat}
+\end{figure}
+
+
+\subsubsection*{Antena en Tierra}
+La antena para la estación en Tierra es una antena BiQuad. La antena BiQuad es portátil (puede ser sostenida con la mano). Como se mostrará más adelante, la antena posee un amplio patrón de radiación lo que elimina la necesidad de apuntarla en una dirección muy específica (la ruta en el aire que seguirá el CanSat es impredecible, por lo que es importante que la antena en Tierra pueda cubrir una zona más amplia para mantener la comunicación).\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.70]{diseniosist/SET/antenaBiQuadcompleta}
+	\caption{Antena BiQuad de la estación en Tierra.}
+	\label{img:BiQuad}
+\end{figure}
+
+\noindent La imagen \ref{img:dimBiQuad} muestra las dimensiones de una antena BiQuad. Para el caso de la antena construida para la estación en Tierra se tiene que $RL = 280[mm]$, $RH = 135[mm]$, $EL = 165[mm]$, $ED = 30[mm]$, $D = 40[mm]$ y $S = 20[mm]$. Para el reflector se utilizó una placa de cobre. Para los rombos se utilizó alambre de cobre de $3 [mm]$ de diámetro. Finalmente, el cable coaxial está conectado a los rombos.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.95]{diseniosist/SET/dimquad}
+	\caption{Dimensiones de la antena BiQuad.}
+	\label{img:dimBiQuad}
+\end{figure}
+
+\noindent La antena BiQuad con estas dimensiones y estos materiales se simuló en el programa ANSYS--HSSF\textregistered para obtener los valores de ganancia, VSWR y los patrones de radiación.\\
+
+\noindent La imagen \ref{img:GainBQ} muestra los valores de ganancia de la antena BiQuad para un rango de frecuencias de $2.02 [GHz]$ a $2.85 [GHz]$. La imagen \ref{img:GainBQ} muestra que la ganancia de la antena BiQuad es de $12.6759 [dBi]$ a una frecuencia de $2.45 [GHz]$, que se ubica en la zona cerca del máximo de la gráfica. Este valor de ganancia es mucho mayor al de la ganancia de la antena a bordo.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.20]{diseniosist/SET/BiQuadGain}
+	\caption{Ganancia de la antena BiQuad.}
+	\label{img:GainBQ}
+\end{figure}
+
+\noindent La imagen \ref{img:VSWRBQ} muestra los valores del parámetro VSWR de la antena BiQuad. Se observa que a una frecuencia de $2.45 [GHz]$ el parámetro VSWR tiene un valor de $1.7001$, que se ubica por debajo del máximo permisible.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.20]{diseniosist/SET/VSWR}
+	\caption{Parámetro VSWR de la antena BiQuad.}
+	\label{img:VSWRBQ}
+\end{figure}
+
+\noindent La imagen \ref{img:patradbi} muestra los patrones de radiación en los planos \textit{xy} (izquierda arriba) y \textit{xz} (derecha arriba), así como el patrón de radiación en 3D (centro abajo) de la antena BiQuad.\\
+
+\noindent La imagen \ref{img:patradbi} muestra que la antena BiQuad tiene un lóbulo preponderante en la parte frontal. La imagen \ref{img:patradbi} muestra que el comportamiento del patrón de radiación de la antena BiQuad es muy similar para valores de frecuencia de $2.42 [GHz]$, $2.44 [GHz]$, $2.45[GHz]$ y $2.46 [GHz]$.\\
+
+\noindent De los patrones de radiación de la antena BiQuad se puede concluir que la antena tendrá una amplia cobertura para recibir señales provenientes del CanSat, a pesar de que éste siga una ruta impredecible durante el vuelo. Lo anterior permitirá sostener la antena con la mano sin la necesidad de apuntarla tanto hacia el CanSat.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.2]{diseniosist/SET/radpatbiquad}
+	\caption{Patrones de radiación de la antena BiQuad.}
+	\label{img:patradbi}
+\end{figure}
+
+
+			\subsubsection{Subsistema de comunicación Usuario - Estación en Tierra}
+El SU-ET lleva a cabo la función $f_{2{.}1{.}2}-$\textit{Almacenar datos} y $f_{2{.}1{.}4}-$\textit{Interactuar con el usuario}.\\
+
+\noindent El SU-ET toma la trama de datos recibida por la antena BiQuad y la despliega en pantalla para que el usuario pueda visualizar los datos. Para lograr dicha visualización se desarrolló una interfaz gráfica de usuario (IGU). La IGU se desarrolló utilizando el languaje de programación Python [3262A] y la paquetería PyQt5 [3262B].\\
+
+\noindent La IGU de la estación en Tierra posee tres ventanas con las que el usuario inetractúa: ventana de configuración, ventana de monitoreo y ventana de visualización.
+
+\subsubsection*{Ventana de configuración}
+La ventana de configuración se muestra en la figura \ref{img:configwin}. La ventana de configuración posee dos secciones: `Archivo .csv' y `Comunicación serial'. En la sección `Archivo .csv' el usuario puede especificar el nombre del archivo \textit{.csv} donde se almacenarán los datos enviados por el CanSat y el directorio donde se guardará este archivo. En la sección `Comunicación serial' el usuario puede seleccionar el puerto serial al que está conectado el XBee de la antena BiQuad.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.70]{diseniosist/SET/configwindow}
+	\caption{Ventana de configuración.}
+	\label{img:configwin}
+\end{figure}
+
+\noindent La ventana de configuración no permite que el usuario pase a la siguiente ventana, la ventana de monitoreo, hasta que se realice la configuración inicial del CanSat. Esta configuración inicial del CanSat se realiza al presionar el botón `Configurar CanSat' ubicado en la esquina inferior izquierda de la ventana.\\
+
+\noindent Cuando el usuario presiona el botón `Configurar CanSat' la interfaz envía al CanSat los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------} para calibrar el giroscopio, el acelerómetro y establecer la altura de referencia, respectivamente. Si la configuración resulta exitosa el botón `Aceptar' se habilita, permitiendo al usuario continuar a la ventana de monitoreo. De resultar una configuración fallida el botón `Aceptar' queda deshabilitado hasta que la configuración sea exitosa. En ambos casos se manda un mensaje informativo al usuario.\\
+
+\noindent Así mismo, la interfaz muestra mensajes de error en caso de que algún campo quede faltante (nombre de archivo, directorio o puerto COM) o el nombre de archivo o directorio tenga un caracter no permitido. El usuario puede cerrar la ventana de configuración en cualquier momento con el botón `Cancelar'.\\
+
+\noindent Al momento de presionar el botón `Aceptar' la interfaz manda el comando \texttt{B,S,------} para indicarle al CanSat que comience con la transmisión de datos.
+
+\subsubsection*{Ventana de monitoreo}
+La ventana de monitoreo se muestra en la figura \ref{img:monitorwin}. La ventana de monitoreo posee cuatro secciones: `Información de la misión', `Datos de GPS', `Datos de telemetría' y área de graficación.\\
+
+\noindent En la sección de `Información de la misión' se muestra la trama de datos completa recibida por la estación en Tierra, el número de paquete recibido, el tiempo actual de la misión en segundos, y el estado actual de la misión (espera, ascenso, paracaídas, autorrotación y aterrizaje). En la sección `Datos de GPS' se muestran los parámetros de latitud, longitud, altitud y número de satélites, mientras que en la sección `Datos de telemetría' se muestran los datos de altura, presión atmosférica, temperatura, velocidad del rotor, ángulo \textit{pitch}, ángulo \textit{roll} y ángulo \textit{azimuth}. Finalmente, en el área de graficación se despliegan los ejes de altura, presión, temperatura, velocidad del rotor, orientación (\textit{pitch}, \textit{roll} y \textit{azimuth}) y GPS (latitud contra longitud).\\
+
+\noindent El usuario debe presionar el botón `Iniciar' para que la ventana de monitoreo comience a desplegar los datos en pantalla (recordar que para este punto el CanSat ya está transmitiendo los datos). Cuando el CanSat ha aterrizado la ventana de monitoreo detiene el despliegue de datos y habilita el botón de `Continuar'. El botón de `Continuar' cierra la ventana de monitoreo y abre la ventana de visualización. En cualquier momento el usuario puede cerrar la ventana de monitoreo al presionar el botón `Terminar'.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[angle = -90, scale=0.55]{diseniosist/SET/monitorwindow}
+	\caption{Ventana de monitoreo.}
+	\label{img:monitorwin}
+\end{figure}
+
+\subsubsection*{Ventana de visualización}
+La ventana de visualización se muestra en la figura \ref{img:visualwin}. En la ventana de visualización el usuario puede ver los datos almacenados en el archivo \textit{.csv} durante la misión. En esta ventana el usuario puede seleccionar el parámetro que desea ver y manipular la gráfica: realizar acercamientos, desplazamientos y guardar la imagen.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.4]{diseniosist/SET/seewindow}
+	\caption{Ventana de visualización.}
+	\label{img:visualwin}
+\end{figure}
+
+\subsubsection*{Multiprocesos}
+El proceso de recepción y graficación de datos en la interfaz en Tierra se puede realizar de varias maneras. En un enfoque la interfaz recibiría la trama de datos enviada por el CanSat, después la segmentaría para extraer los datos individuales, y finalmente canalizaría cada uno a su destino (una gráfica, un recuadro u otro indicador gráfico). El proceso anterior se desarrollaría secuencialmente. En este enfoque surge el problema de que la interfaz no podría recibir más tramas de datos hasta que el proceso de graficación terminara. Lo anterior podría causar que varias tramas de datos se perdieran, especialmente si la frecuencia de transmisión es alta.\\
+
+\noindent Para resolver este problema los procesos de recepción de datos y de graficación deberían ser independientes uno del otro, pero mantener un canal de comunicación entre ellos. Un enfoque de multiprocesos cumple con estas características. La IGU desarrollada para la estación en Tierra se desarrolló bajo este concepto.\\
+
+\noindent La figura \ref{img:multipro} muestra el diseño de la interfaz bajo el enfoque de multiprocesos.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.75]{diseniosist/SET/multiprocess}
+	\caption{Diseño de la IGU bajo el enfoque de multiprocesos.}
+	\label{img:multipro}
+\end{figure}
+
+\noindent En el proceso principal se ejecuta la ventana de configuración. Cuando la participación de la ventana de configuración termina (al momento en que el usuario presiona el botón `Aceptar') se crean los dos procesos hijos: los procesos receptor y graficador. En ese momento ambos procesos corren en paralelo; tienen recursos computacionales independientes. Lo anterior permite distribuir la carga de trabajo entre dos núcleos de la computadora, mejorando el desempeño de la interfaz.\\
+
+\noindent La forma en que se comunican ambos procesos hijos es mediante la utilización de filas (\textit{queues}). Python posee un módulo para desarrollar código utilizando multiprocesos y filas.\\
+
+\noindent Debido a que el proceso Receptor es independiente del proceso Graficador, el CanSat puede enviar tramas de datos a una frecuencia mayor a la que el proceso Graficador utiliza para desplegar los datos en pantalla. Para el proyecto el CanSat envía una trama de datos cada $0.5 [s]$, lo que significa que el proceso Receptor recibirá 2 tramas cada segundo y las pondrá en la fila. El proceso Graficador está programado para actualizar los datos en pantalla cada segundo. De esta manera, cuando se actualicen los datos en pantalla, se tomarán todos los datos que hasta ese momento se hayan acumulado en la fila.\\
+
+}

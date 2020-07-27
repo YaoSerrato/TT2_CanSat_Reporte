@@ -1,0 +1,333 @@
+% !TeX encoding = ISO-8859-1
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\algblockdefx[SwitchCase]{Switch}{EndSwitch}%
+	[1]{\textbf{switch} ( #1 )}%
+	{}
+	
+\algblockdefx[Case]{Case}{Break}%
+	[1]{\textbf{case} \textit{#1}:}%
+	{\textbf{break}}
+	
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	
+	
+	
+{\parindent0pt
+
+\indent El SCMC realiza las funciones de adquirir todas las variables internas y externas del CanSat y las envía al SPD. El SPD entonces procesa dichas variables crudas y las envía de regreso al SCMC para que éste tome decisiones de acuerdo a los requerimientos de la misión.\\
+
+El SCMC está estrechamente relacionado con el SPD; ambos comparten componentes físicos y recursos de procesamiento. Debido al enfoque funcional, el SCMC y el SPD serán abordados de manera independiente; primero se hablará de las funciones y características de ambos sistemas y después de su construcción física.\\
+
+El SCMC se compone de $2$ subistemas: el subsistema de percepción ($sS_{1{.}1}-$SP)  y el subsistema de toma de decisiones ($sS_{1{.}2}-$STD).\\
+
+\subsubsection{Subsistema de Percepción}
+
+El SP realiza la función $f_{2{.}2}-$\textit{Medir parámetros} y todas las subfunciones respectivas (a excepción de que se indique lo contrario). Esta información se utiliza para la toma de decisiones o para el análisis posterior en Tierra.\\
+
+Este sistema está constituido por todos los sensores del CanSat. Para la selección de los sensores se utilizaron matrices de decisión en las que se exponen las características más críticas de éstos que fueron tomadas en cuenta para la selección. Estas matrices se muestran al final de la descripción del SPD.\\
+
+De acuerdo con la Tabla \ref{tab:Funciones} la función $2.2$ y todas sus subfunciones, exceptuando la subfunción $2.2.1.4$, corresponden al SP de tal modo que a continuación se exponen los sensores seleccionados para realizar dichas funciones.\\
+
+\begin{itemize}
+	\item \textbf{GPS:} Usado para adquirir la hora UTC, latitud, longitud y altitud sobre el nivel del mar. Éste elemento atiende a las funciones $2.2.1.1$ y $2.2.2.6$
+	\item \textbf{Barómetro:} Usado para medir la presión atmosférica y de ésta obtener la altura relativa. Éste elemento atiende a las funciones $2.2.2.2$ y $2.2.2.6$
+	\item \textbf{Termómetro}: Usado para medir la temperatura del ambiente. Éste elemento atiende a la función $2.2.2.1$
+	\item \textbf{Giroscopio:} Usado para medir la velocidad angular del CanSat en los tres ejes de un sistema cartesiano. Éste elemento atiende a la función $2.2.2.4$
+	\item \textbf{Acelerómetro:} Usado para medir las aceleraciones del CanSat en los tres ejes de un sistema cartesiano. Éste elemento atiende a la función $2.2.2.3$
+	\item \textbf{Magnetómetro:} Usado para medir las componentes del campo magnético de la Tierra a las que está sometido el CanSat. Éste elemento atiende a la función $2.2.2.5$
+	\item \textbf{Encoder incremental:} Usado para medir la velocidad angular del rotor. Éste elemento atiende a la función $2.2.1.3$
+\end{itemize}
+
+
+\subsubsection{Subsistema de toma de decisiones}
+
+El STD se encarga de conferirle al CanSat el comportamiento deseado con base en las variables adquiridas por el SP y procesadas por el SPD.\\
+
+El diseño de este subsistema fue regido por los eventos de la misión, así como aquellos requeridos por el equipo con el fin de realizar pruebas. Este sistema atiende a las funciones $2.1.4-$\textit{Realizar conteo del número de paquetes enviados} y $2.3-$\textit{Tomar decisiones} con todas sus subfunciones.\\
+
+El comportamiento del CanSat es regido por una máquina de estados. La máquina de estados se muestra en la figura \ref{img:StateMachine}\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.60]{diseniosist/SCMC/StateMachVC}
+	\caption{Máquina de estados del vehículo científico.}
+	\label{img:StateMachine}
+\end{figure}
+
+La Tabla \ref{EstadosMaquinaVehiculo} describe los estados y la Tabla \ref{TransicionMaquinaVehiculo} describe las condiciones de transición entre estados.
+
+\begin{table}[H]
+\begin{center}
+\caption{Estados de la máquina de estados del vehículo científico.}
+\label{EstadosMaquinaVehiculo}
+\resizebox{14cm}{!}{
+\begin{tabular}{p{5cm} p{13cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+\multicolumn{1}{c}{\textbf{Evento}} & \multicolumn{1}{c}{\textbf{Descripción}}\tabularnewline
+\midrule
+\tabularnewline
+
+($\text{A}_{\text{VC}}$) Inicio & En este estado se inicializan todos los periféricos y sensores del vehículo científico.\tabularnewline
+($\text{B}_{\text{VC}}$) Recuperación del estado anterior & En este estado se lee la memoria no volátil del vehículo científico que almacena el estado último en el que se encontraba el sistema antes de ser reiniciado o encendido. \tabularnewline
+($\text{C}_{\text{VC}}$) Diagnóstico del sistema & En este estado se realiza un diagnóstico del sistema, verificando que todos los sensores y periféricos respondan como es debido. \tabularnewline
+($\text{D}_{\text{VC}}$) Espera de despegue & En este estado el sistema sólo se encuentra esperando el despegue, no realiza ninguna otra acción. En este punto el CanSat debe estar dentro del vehículo de ascenso.\tabularnewline
+($\text{E}_{\text{VC}}$) Ascenso & En este estado el CanSat sólo realiza lecturas, cómputo y transmisión de variables.\tabularnewline
+($\text{F}_{\text{VC}}$) Descenso con paracídas & Dentro de este estado el CanSat se encuentra descendiendo con el paracaídas como reductor de velocidad. Se realizan lecturas, cómputo, control y transmisión de variables.\tabularnewline
+($\text{G}_{\text{VC}}$) Descenso con hélices & En este estado el vehículo científico desciende con el sistema de autorrotación. El sistema realiza lecturas, cómputo, control y transmisión de variables.\tabularnewline
+($\text{H}_{\text{VC}}$) Aterrizaje & En este estado el CanSat se encuentra de nuevo en tierra. El sistema sólo activa su dispositivo de localización.\tabularnewline
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\vspace{-2.2em}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\caption{Condiciones de transición de la máquina de estados del vehículo científico.}
+\label{TransicionMaquinaVehiculo}
+\resizebox{14cm}{!}{
+\begin{tabular}{ p{3cm} p{13cm} }
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+
+\multicolumn{1}{c}{\textbf{Transición}} & \multicolumn{1}{c}{\textbf{Descripción}}\tabularnewline
+\midrule
+\tabularnewline
+
+	\centering$\text{1}_{\text{VC}}$ & Todos los sensores se encuentran configurados y operando correctamente.
+\tabularnewline
+	\centering$\text{2}_{\text{VC}}$ &  En este punto el cambio de estado se realiza de acuerdo con la lectura de la memoria no volátil del CanSat. El último estado en el que se haya encontrado el sistema será el que se restaurará. 
+\tabularnewline
+	\centering$\text{3}_{\text{VC}}$ & El sistema no cambia el estado hasta haber hecho un diagnóstico de los sensores sin reporte de errores. \tabularnewline
+	\centering$\text{4}_{\text{VC}}$ & El sistema cambia el estado hasta que se detecte un cambio positivo en la altura de referencia. El cambio debe superar los $10 [m]$ por encima de la altura de referencia.
+\tabularnewline
+	\centering$\text{5}_{\text{VC}}$ & El sistema cambia el estado hasta que se detecte un cambio negativo en la altura máxima. El cambio debe superar los $10 [m]$ por debajo de la altura máxima.
+\tabularnewline
+	\centering$\text{6}_{\text{VC}}$ & El vehículo científico cambia el estado hasta encontrarse a una altura de $250 [m]$ por encima de la referencia con una tolerancia de $\pm 10 [m]$.
+\tabularnewline
+	\centering$\text{7}_{\text{VC}}$ & El estado cambia hasta que el sistema se encuentre de nuevo en la altura de referencia.
+\tabularnewline
+	\centering$\text{8}_{\text{VC}}$ & El estado cambia hasta que se le envíe un comando de reinicio de estados.
+\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+El Algoritmo \ref{PseudocodigoCanSatP1} es el pseudocódigo de la máquina de estados donde se explica el flujo de actividades dentro del programa del microcontrolador del CanSat.
+
+
+\begin{algorithm}[H]
+\caption{Pseudocódigo CanSat}
+\label{PseudocodigoCanSatP1}
+\begin{algorithmic}[1]
+
+\Function{Lectura de sensores}{}
+	\State Lee el GPS, lee el giroscopio, lee el acelerómetro, lee el magnetómetro, lee la presión atmosférica, lee la temperatura, calcula la altura actual, calcula el marco de referencia actual y realiza control orientación de la cámara
+\EndFunction\\
+
+\Function{Transmisión y almacenamiento}{datos de sensores}
+	\State Genera la trama de datos
+	\State Transmite la trama de datos
+	\State Guarda la trama de datos en la memoria SD
+	\State Guarda el número de trama en la memoria no vólatil
+	\State $Conteo Paquetes \gets Conteo Paquetes + 1$
+\EndFunction\\
+
+\Procedure{Máquina de vuelo}{}
+	\State Configura sensores
+	\State Lee memoria no vólatil: estado y número de tramas transmitidas.
+	\State Restaura funcionalidades.
+	\State $Conteo Actual \gets Conteo Almacenado$
+	\State $Estado Actual \gets Estado Almacenado$
+
+	\While{el CanSat está encendido}
+		\Switch{EstadoActual}
+		
+			 \Case{Diagnóstico del sistema}
+			 	\If{ comando de inicio fue recibido }
+ 				 	\State Prueba comunicación con el GPS
+				 	\State Prueba comunicación con la IMU
+				 	\State Prueba comunicación con el barómetro y termómetro
+				 	\If{ no errores }
+				 		\State Activa secuencia sonora aprobatoria
+				 		\State Transmite una señal aprobatoria en las telecomunicaciones
+			 			\State $EstadoActual \gets Espera\enspace del\enspace despegue$
+				 	\Else
+				 		\State Activa secuencia sonora reprobatoria
+				 		\State Transmite una señal reprobatoria en las telecomunicaciones
+				 	\EndIf
+			 		\State Almacena \textit{EstadoActual} en memoria no vólatil
+			 	\Else
+			 		\State Transmite una señal reprobatoria en las telecomunicaciones
+			 	\EndIf
+			 \Break	
+
+\algstore{bkbreak}			  
+\end{algorithmic}
+\end{algorithm}	
+
+
+\setcounter{algorithm}{0}
+\begin{algorithm}[H]
+\caption{Pseudocódigo CanSat (continuación)}
+\label{PseudocodigoCanSatP2}
+\begin{algorithmic}[1]
+\algrestore{bkbreak}
+
+			\Case{Espera del despegue}
+			 	\State Ejecuta \textit{\textbf{Lectura de sensores}}
+			 	\State Ejecuta \textit{\textbf{Transmisión y almacenamiento}}
+			 	\If{ $AlturaActual > AlturaReferencia + 10$  }
+			 		\State $EstadoActual \gets Ascenso$
+			 		\State Almacena \textit{EstadoActual} en memoria no vólatil
+			 	\EndIf
+			 \Break
+			 
+			 \Case{Ascenso}
+			 	\State Ejecuta \textit{\textbf{Lectura de sensores}}
+			 	\State Ejecuta \textit{\textbf{Transmisión y almacenamiento}}
+			 	\If{ $AlturaActual > AlturaAnterior$ }
+				 	\State $AlturaAnterior \gets AlturaActual$
+			 	\ElsIf{ $AlturaActual < AlturaAnterior - 10m$ }
+					\State Abre paracaídas
+			 		\State $EstadoActual \gets Descenso\enspace con\enspace paracaidas$
+			 		\State Almacena \textit{EstadoActual} en memoria no vólatil
+			 	\EndIf
+			 \Break
+			 
+			 \Case{ Descenso con paracaídas }
+			 	\State Ejecuta \textit{\textbf{Lectura de sensores}}
+			 	\State Ejecuta \textit{\textbf{Transmisión y almacenamiento}}
+			 	\If{ $AlturaActual \leq AlturaReferencia+250m$ }
+					\State Libera vehículo científico
+			 		\State $EstadoActual \gets Descenso\enspace con\enspace helices$
+			 		\State Almacena \textit{EstadoActual} en memoria no vólatil
+			 	\EndIf
+			 \Break
+			 
+ 			 \Case{ Descenso con hélices }
+			 	\State Ejecuta \textit{\textbf{Lectura de sensores}}
+			 	\State Ejecuta \textit{\textbf{Transmisión y almacenamiento}}
+			 	\If{ $AlturaActual \leq AlturaReferencia+10m$ }
+					\State Activa dispositivo de localización
+			 		\State $EstadoActual \gets Aterrizaje$
+			 		\State Almacena \textit{EstadoActual} en memoria no vólatil
+			 	\EndIf
+			 \Break
+
+			\Case{ Aterrizaje }
+			 	\State Ejecuta \textit{\textbf{Lectura de sensores}}
+			 	\State Ejecuta \textit{\textbf{Transmisión y almacenamiento}}
+			 	\State Ejecuta secuencia sonora \textit{\textbf{S.O.S.}}
+			 	\If{ Comando de reinicio es recibido }
+			 		\State $EstadoActual \gets Diagnostico\enspace del\enspace sistema$
+			 		\State Almacena \textit{EstadoActual} en memoria no vólatil
+				\EndIf
+			\Break
+
+		\EndSwitch
+	\EndWhile	
+\EndProcedure			 
+\end{algorithmic}
+\end{algorithm}	
+
+Como parte del SCMC se planteó la existencia de varios comandos que permitieran la ejecución de tareas muy específicas dentro del CanSat, otorgándole al usuario un control manual sobre el comportamiento del mismo. Cada comando se compone de 10 \textit{bytes} fijos: campo de  `dispositivo' y  `tarea' ocupan 1 \textit{byte}, y campo de  `valor' ocupa 6 \textit{bytes}. Los dos \textit{bytes} faltantes son usados por el caracteres de coma simple que divide los campos.\\
+
+En la Tabla \ref{tab:Commands} son mostrados las diferentes combinaciones posibles con su respectiva explicación.
+
+\begin{table}[H]
+\begin{center}
+\caption{Lista de comandos.}
+\label{tab:Commands}
+\resizebox{14cm}{!}{
+\begin{tabular}{ p{2cm} p{1cm} p{1.5cm} p{11cm} }
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\textbf{Dispositivo} & \textbf{Tarea} & \textbf{Valor} & \textbf{Descripción} \tabularnewline
+\hline
+\multicolumn{4}{c}{}\tabularnewline
+\multirow{4}{*}{'M'}
+	& 'A' & XXXXXX & Configuración y calibración del acelerómetro.\tabularnewline
+	& 'G' & XXXXXX & Configuración y calibración del giroscopio.\tabularnewline
+	& 'M' & XXXXXX & Configuración y calibración del magnetómetro\tabularnewline
+	& 'S' & XXXXXX & Establecimiento de las referencias de altura y posición inicial de la cámara.\tabularnewline
+	\multicolumn{4}{c}{}\tabularnewline
+\hline
+\multicolumn{4}{c}{}\tabularnewline
+\multirow{5}{*}{'B'}
+	& 'S' & ------ & Se realiza el dignóstico de los sensores. Si todo es correcto se inicia la misión, de lo contrario, el sistema manda la secuencia reprobatoria y se continua en estado de \textit{Diagnóstico}.\tabularnewline
+	& 'A' & ------ & Se reinicia todo el sistema. Todas las banderas son limpiadas, las tramas y contadores puestos en cero y el estado es forzado a \textit{Diagnóstico}.\tabularnewline
+	& 'R' & ------ & El sistema adquiere una única trama de datos y la envía.\tabularnewline
+	& '1' & ------ & El sistema abre las correderas del SLVC.\tabularnewline
+	& '2' & ------ & El sistema cierra las correderas del SLVC.\tabularnewline
+
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+Los comandos con un valor de `M' en el campo de  `dispositivo' son comandos para el SP. Los comandos con un valor de  `B' en el campo de `dispositivo' son comandos para placa principal. Estos comandos pueden ser expandidos ya que cuentan con el campo adicional de `valor' permitiendo así incrementar la cantidad de los comandos incluyendo valores numéricos.\\
+
+Finalmente, atendiendo a la función $2.1.4-$\textit{Interactuar con el usuario}, el STD tiene la tarea de informar al usuario si se encuentra o no preparado para la realización de la misión. El sistema informa de cualquier inconveniente utilizando el canal de comunicación con la estación en Tierra y utilizando señales auditivas.\\
+
+Para el caso de la comunicación con la estación en Tierra el CanSat responde con un \textit{byte} cuya representación en ASCII es `O' si todo a sido configurado correctamente y se encuentra listo para realizar la misión, o con `F' si el sistema encontró algún error durante la inicialización.\\
+
+En el caso de la señal auditiva el sistema cuenta con una lista de secuencias sonoras que se producen en caso de que suceda algún evento específico. Esta lista de secuencias sonoras se muestra en la Tabla \ref{tab:SoundSequence}. Las secuencias se representan por \textit{beeps} cortos y largos, siendo el corto un punto y el largo una línea. 
+
+
+\begin{table}[H]
+\begin{center}
+\caption{Lista de secuencias sonoras}
+\label{tab:SoundSequence}
+\resizebox{14cm}{!}{
+\begin{tabular}{ p{11cm} >{\centering}p{3cm} }
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+\textbf{Evento} & \textbf{Secuencia} \tabularnewline
+\hline
+\multicolumn{2}{c}{}\tabularnewline
+
+Configuración exitosa. Listo para la misión. & $\bullet \: \bullet$ \tabularnewline
+
+Error en GPS. & $\bullet \: \bullet \: \bullet \: \bullet$ \tabularnewline
+
+Error en acelerómetro, giroscopio o magnetómetro. & $- \: \bullet \: \bullet \: \bullet$ \tabularnewline
+
+Error en sensor barométrico y de temperatura. & $\bullet \: - \: \bullet \: \bullet$ \tabularnewline
+
+Altura de referencia no establecida. & $- \: - \: \bullet \: \bullet$ \tabularnewline
+
+El SLVC aún no tiene la configuración mecánica correcta, sigue retraído. & $\bullet \: \bullet \: - \: \bullet$ \tabularnewline
+
+EL control de orientación de la cámara no se encuentra listo. & $- \: \bullet \: - \: \bullet$ \tabularnewline
+
+No ha sido insertada la memoria SD. & $\bullet \: - \: - \: \bullet$ \tabularnewline
+
+El CanSat ha aterrizado. & $\bullet \: \bullet \: \bullet \: - \: - \: - \: \bullet \: \bullet \: \bullet$ \tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+Las secuencias son únicas y se generan únicamente al momento de realizar un diagnóstico del sistema previo al inicio de la misión. La secuencia de rescate o aterrizaje es la única que suena fuera de la etapa de diagnóstico (cuando el CanSat aterriza).
+
+
+}

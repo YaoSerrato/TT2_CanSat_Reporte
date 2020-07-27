@@ -1,0 +1,931 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{array}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multirow}
+\usepackage[left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+\author{Sa�l Becerril Ortega}
+
+\begin{document}
+\section*{Fen�meno de autorrotaci�n}
+Las aereonaves de ala rotativa son aquellas en la que la fuerza de sustentaci�n se logra mediante el giro de alas o palas, que forman parte del rotor, alrededor de un eje fijo.\\
+Las tres fuerzas principales que act�an sobre una pala del rotor son la fuerza de sustentaci�n, $\overrightarrow{\text{dL}}$, la fuerza de arrastre, $\overrightarrow{\text{dD}}$, y la fuerza centr�fuga $\overrightarrow{\text{F}_\text{c}}$. La fuerza de sustentaci�n es la fuerza hacia arriba causada por la interacci�n entre el flujo de aire y el perfil aereodin�mico. La fuerza de arrastre es quella que se opone al movimiento de la superficie de sustentaci�n. La fuerza centr�fuga representa la tendencia de la pala del rotor a volar  lejos del centro. Debido al movimiento circular, la velocidad del aire es mucho m�s alta en la punta de la pala que en la base.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.35]{Imagenes/Helicoptero.png}
+	\caption{Fuerzas que act�an en el vuelo de una aereonave de ala rotativa.}
+	\label{img:Helicoptero}
+\end{figure}
+
+La autorrotaci�n  es un estado de vuelo que se presenta cuando el rotor principal de una aereonave de ala rotativa es movido por acci�n del aire que va de abajo hacia arriba, y no precisamente por el motor o motores del aereonave. En la autorrotaci�n la corriente del aire entra desde la zona inferior del rotor y genera fuerzas aereodin�micas que lo mantienen en movimiento. Es el comportamiento habitual de los generadores e�licos, en los que el rotor extrae energ�a de la corriente de aire.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.27]{Imagenes/Autorrotacion.png}
+	\caption{Autorrotaci�n. En rojo, l�neas de corriente con la direcci�n de la velocidad de la corriente de aire.}
+	\label{img:Autorrotacion}
+\end{figure}
+
+En este fen�meno la corriente de aire mantiene en movimiento al aereonave de ala rotativa, ya que la sustentaci�n es perpendicular a la corriente incidente, se genera una fuerza que pone en movimiento las palas. Conforme vaya girando el rotor, el vector de fuerzas aereodin�micas de cada pala ir� girando hacia arriba, frenando la ca�da del aereonave de ala rotativa.\\
+
+En relaci�n a la geometr�a de las palas \ref{}, los �gulos de entrada de corriente son mayores en la zona de la ra�z de la pala, mientras que en  la punta son menores. Por tanto 
+\begin{itemize}
+\item Las zonas interiores de la pala presentan �ngulos de ataque grandes y la sustentaci�n se orienta en la misma direcci�n que la velocidad de rotaci�n por lo que esta produce la potencia.
+\item La zona de la punta de la pala presenta �ngulos de ataque peque�os y la sustentaci�n se orienta en direcci�n opuesta a la velocidad de rotaci�n por lo que esta zona consume potencia.
+\item En la condicci�n de autorrotaci�n el par neto comunicado por esta confguraci�n es nulo. La velocidad de rotor se ajustara hasta alacanzar el equilibrio entre las fuerzas de inercia de rotaci�n y las fuerzas aereodin�micas.
+\end{itemize}
+ 
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.35]{Imagenes/Potencia.png}
+	\caption{Zonas cosumidoras y productoras de potencia en el rotor.}
+	\label{img:Potencia}
+\end{figure}
+
+Existe una zona en el rotor que ni consume ni genera potencia, esta es ola secci�n carcater�stica en autorrotaci�n. En esta secci�n las fuerzas tangenciales es nula, y solo se produce el empuje. En la \ref{img:Secciones}, la seccci�n A corresponde con la caracter�stica en autorrotaci�n, la B como una secci�n generadora de potencia y la C como una consumidora. \ref{}
+   
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.35]{Imagenes/Secciones.png}
+	\caption{Secciones de palas en autorrotaci�n.}
+	\label{img:Secciones}
+\end{figure}
+
+en donde $\text{dF}_{\text{T}}$ corresponde a la fuerza resultante entre la fuerza de arrastre y la fuerza de sustentaci�n, $\text{U}_{p}$, y $\text{U}_{T}$ corresponden a los componenetes de la velocidad de viento perpendicular y tangencial, respectivamente, $\phi$ representa el �ngulo de entrada de corriente, $\theta$ es el �ngulo de paso y  $\alpha$ es el �ngulo de ataque.
+
+
+
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- %
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- %
+% --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- %
+
+
+
+\chapter{Dise�o detallado}
+El Cansat est� contituido de dos elementos, el contenedor que tiene la finalidad de envolver parcialmente al veh�culo cient�fico, as� como encerrar el parac�das, y el veh�culo cient�fico, el cual realiza las tareas pricipales de la misi�n como obtener, procesar y enviar las variables f�sicas del entorno.\\
+
+Como se muestra en la Figura \ref{img:DisenosCansat} se realizaron tres dise�os del veh�culo cient�fico, y el contenedor. La principal raz�n del cambio de geometr�a fue masa de resultante. La masa del Cansat asociado al primer dise�o era de 570 [g], posteriormente, en el segundo dise�o la masa se redujo a 530 [g], y finalemnte, en el tercer dise�o la masa llego a ser de 510 [g].
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.45]{Imagenes/DisenosCansat.png}
+	\caption{Dise�os realizados del Cansat siendo el �ltimo (de izquierda a derecha) el seleccionado para construir.}
+	\label{img:DisenosCansat}
+\end{figure}
+
+En la Figura \ref{img:DimensionesCansat} se presentan las dimensiones del Cansat la cuales estan por debajo de las establecidas en los requerimientos, 125 [mm] y 310 [mm] de di�metro y de altura, respectivamente.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.40]{Imagenes/DimensionesCansat.png}
+	\caption{Dimensiones, en milimetros, del Cansat.	\label{img:DimensionesCansat}}
+\end{figure}
+
+
+
+\section*{Sistema de reducci�n de velocidad}
+Una de las principales funciones dentro del desarrollo de la misi�n suecede en el momento en el que el Cansat es liberado a una altura mayor o igual a 400 [m], en ese momento el descenso del Cansat se realiza por medio de un paraca�das. Posteriormente, una vez que el contenedor ha liberado al veh�culo cient�fico, el descenso es realizado por medio de un sistema de autorrotaci�n. En las siguientes secciones se pretende describir las variables f�sicas y ambientales que est�n involucradas con el descenso del CanSat en cada etapa de vuelo. 
+\subsection*{Subsistema de reducci�n de velocidad por paraca�das}
+Los paraca�das son dispositivos utilizados para desacelerar o estabilizar objetos, personas o veh�culos en su viaje a trav�s de una atm�sfera. Se construyen m�s com�nmente de tela de alta resistencia. Estos instrumentos livianos y de bajo volumen desarrollan una gran �rea de superficie y un arrastre significativo durante el despliegue. En la Figura \ref{img:PartesParacaidas} se puede observar algunas de las partes principales de un paraca�das cuyo docel tiene una forma semiesf�rica. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.30]{Imagenes/PartesParacaidas.eps}  
+\caption{Principales partes de un parac�das\label{img:PartesParacaidas}}
+\end{center}
+\end{figure}
+
+La velocidad de descenso de cualquier cuerpo equipado con un paraca�das depende de la fuerza de arrastre que desarrolla el paraca�das, para contrarrestar la fuerza gravitacional que resulta de la masa del veh�culo cient�fico. La magnitud de la fuerza de arrastre depende de la presi�n din�mica, la cual es una funci�n de la velocidad y la densidad del aire, que a su vez depende de la altitud y de la temperatura, el di�metro del docel del parac�das y el coeficiente de arrastre, $\text{C}_{\text{d}}$.
+
+Ahora bien, considerando la segunda ley de Newton, se puede establecer un modelo matem�tico que relaciona las fuerzas que actuan en el paraca�das \cite{ModelParachuteGrande}. Con el fin de reducir este modelo matem�tico a un tama�o apropiado se hacen las siguientes consideraciones
+\begin{itemize}
+\item El sistema consiste en un paraca�das sim�trico conectado r�gidamente por un conector de longitud fija, o un elevador, conectado a lo largo de los ejes de simetr�a a una carga �til.
+\item Se considera solo un grado de libertad, que es el relacionado con la ca�da libre..
+\item El centro de la masa aparente del paraca�das coincide con el centro de masa del paraca�das.
+\item Los efectos de estela, \textit{fore body\footnote{Es el efecto de el flujo de aire que se presenta por el cambio considerable en el valor de las dimensiones propias de la geometr�a de la aereonave.}},  son ignorados.
+\item Los efectos del fluido inestable para el paraca�das est�n representados por valores escalares de masa aparente y momento de inercia.
+\end{itemize} 
+
+Al realizar estas asumpsiones el paraca�das se modela como un cuerpo separado (dosel r�gido). En la Figura \ref{fig:fuerzasparacaidas} se puede apreciar las fuerzas que est�s relacionadas con el movimiento del paraca�das.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.50]{Imagenes/Fuerzasparacaidas.png}
+	\caption{Fuerzas consideradas para el an�lisis del paraca�das.\label{fig:ForcesCanSat}}
+	\label{img:DisenosCansat}
+\end{figure}
+
+
+ La desaceleraci�n del paraca�das, $\dot{v_{p}}$, incluyendo la fuerza de la tensi�n del elevador, $\overrightarrow{\text{F}_{\text{R}}}$, se puede calcular por medio de la segunda Ley de Newton para un objeto o cuerpo que se encuentran en ca�da libre.
+ \begin{align}
+ \label{eq:SegundaLey}
++ \downarrow \sum_{i = 1}^{n} \overrightarrow{F_{\text{i}}} = \text{m}\overrightarrow{\text{g}} 
+\end{align}  
+
+Tomando en cuenta \eqref{eq:SegundaLey} y por medio de \cite{ModelParachute} se puede obtener un modelo matem�tico que permita predecir el comortamiento del paraca�das durante su descenso.    
+ 
+\begin{align}
+\label{eq:Parachute}
+( \text{m}_{\text{p}} + \text{m}_{\text{a}}) \frac{dv_{p}}{dt} = \overrightarrow{\text{F}}_{\text{R}}- \overrightarrow{\text{D}}_{\text{p}} - v\frac{d\text{m}_{\text{a}}(t)}{dt} + \text{m}_{\text{p}}\overrightarrow{\text{g}}=\overrightarrow{\text{F}}_{\text{R}}- \frac{1}{2}\rho v^{2} \text{C}_{\text{Dp}}\text{S}_{\text{p}} - v\frac{d\text{m}_{\text{a}}(t)}{dt} + \text{m}_{\text{p}}\overrightarrow{\text{g}}
+\end{align}
+
+Donde $\text{m}_{\text{p}}$ es la masa del paraca�das, $\text{m}_{\text{a}}$ es la masa agregada, $v_{p}$ es la velocidad de descenso del paraca�das, $\text{S}_{\text{p}}$ es la superficie del paraca�das, $\rho$ es la densidad del medio, $\text{C}_{\text{Dp}}$ es el coeficiente de arrastre relaciondo con las caracter�sticas f�sicas del paraca�das, $\overrightarrow{\text{g}}$ representa el valor de la gravedad en la Tierra.
+Por simplicidad de c�lculos, se considera que la masa agregada, $\text{m}_{\text{a}}(t)$, es un valor constante \cite{ModelParachute}.
+\begin{align}
+\notag
+\text{m}_{\text{a}} = \text{k}_{\text{a}}\rho \frac{4}{3}\pi \text{r}_{p}^{3}
+\end{align}
+Donde $\text{k}_{\text{a}}$ es un valor constante para paraca�das porosos de forma hemisf�rica \cite{ValorKa}
+\begin{align}
+\notag
+\text{k}_{\text{a}} = 1{.}068\left( 1 - 1{.}465\text{p} - 0{.}2597\text{p}^{2} + 0{.}2626\text{p}^{3}\right)
+\end{align}
+donde $\text{p}$ representa la porosidad  del material con el cual esta elaborado el paraca�da, y $\text{r}_{\text{p}}$ es el radio del paraca�das.\\
+
+Para simplificar \eqref{eq:Parachute} , se establece que la velocidad del paraca�das se mantiene constante durante todo el descenso, $v_{p}$, y es la misma que existe en la carga �til, $v$, es decir, la tasa de deformaci�n en las l�neas de suspensi�n del paraca�das es cero. Adem�s,  hasta este momento se desconoce el valor de la porosidad y la superficie del paraca�das, por consiguiente, para esta primera aproximaci�n de las dimensiones se descarta el uso de la masa agregada, $\text{m}_{\text{a}}$. El modelo matem�tico simplificado del movimiento del paraca�as se presenta en \eqref{eq:Parachute2}.
+
+\begin{align}
+\label{eq:Parachute2}
+\overrightarrow{\text{F}}_{\text{R}}- \frac{1}{2}\rho v^{2} \text{C}_{\text{Dp}}\text{S}_{\text{p}} + \text{m}_{\text{p}}\overrightarrow{\text{g}} = 0
+\end{align}
+
+
+Con las consideraciones realizadas es posible determinar el modelo matem�tico que relaciona el movimiento del CanSat y del paraca�das. En la Figura \ref{fig:ForcesCanSat} se pueden observar las fuerzas que actu�n directamente en el descenso del CanSat. Se consideran tres fuerzas, la fuerza tensi�n en las las l�neas de suspenci�n del paraca�das, $\overrightarrow{\text{F}}_{\text{R}}$, la fuerza de arrastre producida por la geometr�a del CanSat, $\overrightarrow{\text{F}}_{\text{D}}$, y el peso del CanSat, $\overrightarrow{\text{W}}_{\text{c}}$. En \eqref{eq:CanSatParacaidas} se presenta la relaci�n que existe entre las fuerzas previamente mencionadas.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.40]{Imagenes/Simplificadoparacaidas.png}  
+\caption{Fuerzas relacionadas con el  movimiento del sistema CanSat - paraca�das.\label{fig:FuerzasCanSat}}
+\end{center}
+\end{figure}
+
+Para poder aproximar la tasa de descenso del sistema, CanSat - paraca�das, es necesario seleccionar el paraca�das adecuado a nuestros requerimientos, y por consiguiente la magnitud de algunas variables importantes, tal es el caso del coeficiente de arrastre del parac�das, $\text{C}_{\text{Dp}}$,  el cu�l depende de muchos factores \cite{Parachute}. En la Tabla \ref{FactParacaidas} se describen algunos factores generales que influyen en el rendimiento de un paraca�das. 
+
+\begin{table}[H]
+\begin{center}
+\caption{Factores que influyen en el comportamiento de un paraca�das}
+\label{FactParacaidas}
+\resizebox{14cm}{!} {
+\begin{tabular}{m{4cm}p{14cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+�rea de superficie & El �rea de referencia utilizada para calcular el coeficiente de arrastre de un paraca�das es el �rea de la superficie del dosel. Por tanto para un cuerpo simple, el �rea de refrencia puede ser determinado por el m�delo matematico para calcular el �rea de un c�rculo, rect�ngulo o cuadrado, seg�n sea el caso. \tabularnewline
+Patr�n de flujo de aire & Se puede considerar que un paraca�das es capaz de descender en modo deslizante, modo oscilante o una combinaci�n de ambos. El deslizamiento (sinoscilaciones) tiende a prevalecer a velocidades de descenso m�s bajas, y oscila a velocidades de descenso intermedias.\tabularnewline
+Forma de dosel & La forma de un dosel, ya sea semiesf�rica, semielipsoidal o en hoja, no tiene un efecto significativo sobre el coeficiente de arrastre. M�s bien, la diferencia significativa en estas formas se relaciona con la eficiencia aerodin�mica, es decir, el coeficiente de arrastre basado en el �rea del dosel desarrollada. Un dosel semielipsoidal puede emplear significativamente menos tejido que el tipo hemisf�rico o de hoja plana. Esta es una consideraci�n importante para los CanSat, donde se debe minimizar la masa y el volumen.\tabularnewline
+Permeabilidad de la tela & La permeabilidad, cuantifica la velocidad del aire que fluye a trav�s del material de la cubierta, depende de la porosidad del tejido. La porosidad est� determinada en gran medida por la estrechez del tejido. Sin embargo, el coeficiente de arrastre no est� muy influenciado por la permeabilidad, siempre que la porosidad no sea excesiva. \tabularnewline
+Velocidad de descenso & El $\text{C}_{\text{D}}$ de un paraca�das depende de su velocidad (de descenso) en un grado d�bil. A velocidades m�s altas, el Cd decae. Esto puede ser el resultado de una mayor porosidad de la tela debido a una mayor carga de tensi�n en la cubierta. Adem�s, a velocidades m�s altas, la tensi�n en las l�neas de la cubierta aumenta, afectando la forma y, por lo tanto, el �rea efectiva de la cubierta.\tabularnewline
+Longitud de las l�neas de suspenci�n & El di�metro inflado y la forma de la cubierta est�n influenciados por la longitud de las l�neas de suspenci�n (L) en relaci�n con el di�metro de la cubierta (d). A medida que aumenta la longitud de las l�neas, aumenta el $\text{C}_{\text{D}}$. Este efecto es m�s pronunciado, como es l�gico, cuando las l�neas son particularmente cortas (es decir, $\text{L} /\text{d} < 0.5$), pero se vuelve menos significativo cuando $\text{L} / \text{D} > 1$. \tabularnewline
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+La geometr�a que se va a utilizar es la forma hemisf�rica, y en \cite{Parachute} se proporciona el coefiente de arrastre adjudicado a esa geometr�a, que aunque su coeficiente de arrastre es inferior a otros, es uno de los m�s utilizados para el descenso de un objeto en ca�da libre, adem�s de que trabaja muy bien en regimen subs�nico. En la Tabla \ref{PerfilesParacidas} se presentan los tipos de paraca�das que fueron comparados. En \cite{Dimensiones} se proporcionan la relaci�n de las dimensiones para el dise�o del paraca�das, mismas que se pretenden utulizar para realizar las estimaciones de la velocidad de descenso del CanSat, a una altura superior a los 450 [m].\\
+
+\begin{table}[H]
+\begin{center}
+\caption{Paraca�das de tejido s�lido.}
+\label{PerfilesParacidas}
+\resizebox{9cm}{!} {
+\begin{tabular}{m{3.5cm}m{2cm}m{4cm}m{3.5cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{1}{c}{Tipo} &\multicolumn{1}{c}{ Inflado $\left( \frac{D_{p}}{D_{o}} \right)$ }& \multicolumn{1}{c}{Coeficiente de arrastre $\left( C_{d} \right)$ }&  \multicolumn{1}{c}{ Aplicaci�n}\tabularnewline
+\multicolumn{4}{c}{}\tabularnewline
+\multicolumn{1}{c}{Circular plana} & \multicolumn{1}{c}{0.67 a 0.70} & \multicolumn{1}{c}{0.75 a 0.80} &\multicolumn{1}{c}{Descenso}\tabularnewline
+\multicolumn{1}{c}{C�nico} & \multicolumn{1}{c}{0.70} & \multicolumn{1}{c}{0.75 a 0.90} & \multicolumn{1}{c}{Descenso}\tabularnewline
+\multicolumn{1}{c}{Tri - c�nico} & \multicolumn{1}{c}{0.70} & \multicolumn{1}{c}{0.80 a 0.96} & \multicolumn{1}{c}{Descneso} \tabularnewline
+\multicolumn{1}{c}{Hemisf�rico} & \multicolumn{1}{c}{0.66} & \multicolumn{1}{c}{0.62 a 0.77} & \multicolumn{1}{c}{Descenso}\tabularnewline
+\multicolumn{1}{c}{Cruzado} & \multicolumn{1}{c}{0.66 a 0.72} & \multicolumn{1}{c}{0.60 a 0.78} & \multicolumn{1}{c}{Descenso}\tabularnewline  
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+Una vez que se han considerado las variables fisicas y ambientales que influyen en el descenso del CanSat por medio de un paraca�das el siguiente paso es determinar dimensiones del mismo. De \eqref{eq:Parachute2} se resuelve para $\overrightarrow{\text{F}}_{\text{R}}$ y se sustituye en \eqref{eq:CanSatParacaidas}. Se considera que la aportaci�n de las fuerza de rozamiento del CanSat, $\overrightarrow{\text{F}_{\text{D}}}$, es una fuerza mucho menor a la fuerza de arrastre producida por el paraca�das, $\overrightarrow{\text{D}_{\text{p}}}$, y por lo tanto se puede omitir para una primera aproximaci�n de las dimensiones del paraca�das.
+
+\begin{align}
+\label{eq:Valornumerico}
+\text{S}_{\text{p}} = \frac{2 \cdot \left( \text{m}_{c} + \text{m}_{p} \right) \cdot \text{g}}{\text{v}^{2} \cdot \rho  \cdot \text{C}_{\text{Dp}}} 
+\end{align}
+
+Cabe se�alar que para los calculos se va a considerar un velocidad constante de descenso igual a 17[m/s] esto con la finalidad de dar un margen de tolerancia en los resultados. Al realizar las sustituciones en \eqref{eq:Valornumerico} de los dato conocidos por parte de los requerimientos, y el valor de la densidad \cite{Densidad}.
+
+\begin{align}
+\notag
+\text{S}_{\text{p}} = \frac{2 \cdot 0{.}510 \text{[kg]} \cdot 9{.}81 \left[ \text{m} \cdot \text{s}^{\text{-2}} \right]} {17^{2} \left[ \text{m} \cdot \text{s}^{\text{-1}}\right] \cdot 1{.}225 \left[ \text{kg} \cdot \text{m}^{\text{-3}} \right] \cdot 0{.}66 }
+\end{align} 
+
+Finalmente, se obtiene que la superficie del docel del  paraca�das debe ser de $0{.}04282 \left[ \text{m}^{\text{2}} \right]$. Resolviendo para el radio, $\text{r}_{\text{p}}$, se obtiene que $\text{r}_{\text{p}} = 0{.}1167 \left[\text{m}\right]$. \\
+
+Ahora bien, para realizar un segunda aproximaci�n, se considera la fuerza de arrastre producida por la geometr�a del CanSat, y que la velocidad de descenso no es constante. Al resolver para la aceleraci�n.
+
+\begin{align}
+\label{eq:EcuPara}
+\frac{dv}{dt} = - \frac{0{.}5 \cdot  v^{2} \cdot \rho}{(\text{m}_{\text{c}} + \text{m}_{\text{p}})}\left(( \text{C}_{\text{Dp}} \cdot \text{S}_{\text{p}})  + (\text{C}_{\text{Dc}} \cdot \text{S}_{\text{c}}) \right) + \text{g} 
+\end{align}
+
+Donde $\text{C}_{\text{Dc}}$ representa el coeficiente de arrastre asociado a la geometr�a del CanSat y $\text{S}_{\text{c}}$ representa la superficie efectiva, perpendicular al flujo del viento, del CanSat la cual tiene un valor 0.008767 [$\text{m}^{\text{2}}$].
+
+Para poder obtener el coeficiente de arrastre del CanSat, $\text{C}_{\text{Dc}}$, \cite{Cilindro} proporciona una gr�fica en la que se tiene que interpolar los datos de la relaci�n entre la longitud del CanSat y el di�metro que posee, $[\text{L}_{\text{c}}/\text{d}_\text{c}]$, y el n�mero de Reynolds que se produce durante la velocidad de descenso por medio del parac�das. Finalmente el $\text{C}_{\text{Dc}} = \text{0.80}$.\\
+
+Para poder estimar la velocidad de descenso con los datos conocidos, primero se tiene que resolver la ecuaci�n diferencial no lineal de segundo orden \eqref{eq:EcuPara}. En \eqref{EDO} se observa la soluci�n. 
+
+\begin{align}
+\label{EDO}
+v(t) = \frac{\text{s} \left( 1+ \text{c} e^{\frac{-2\text{s}\text{k}t}{(\text{m}_{\text{p}} + \text{m}_{\text{c}})}} \right) }{1-\text{c} e^{\frac{-2\text{sk}t}{( \text{m}_{\text{p}} + \text{m}_{\text{c}} )}} }
+\end{align}
+
+en donde $\text{k} = 0{.}5 \cdot \rho ((\text{C}_{\text{Dp}}\cdot \text{S}_{\text{p}}) + (\text{C}_{\text{Dc}} \cdot \text{S}_{\text{c}}))$ y $\text{s} = \left( \text{g} \cdot (\text{m}_{\text{p}} + \text{m}_{\text{c}})\text{k}^{\text{-1}} \right)^{\frac{\text{1}}{\text{2}}}$\\
+
+Tomando en cuneta condiciones iniciales son las siguientes: en $t_{0}$ la altura es de 400 [m], aproximadamente, y que $v(t_{0}) = 0  [\text{m} \cdot \text{s}^{\text{-1}}]$, se puede determinar que $\text{c} = -1$.\\
+ 
+En la Figura \ref{img:Paracaidasvelocidad} se muestra la estimaci�n de la velocdad de descenso del paraca�da obtenida en el ambiente de Mathematica\textregistered , mostrada a continuaci�n se puede observar que al sistema CanSat - paraca�das le toma 3.80 [s] llegar a una velocidad de 15.2694 [$\text{m} \cdot \text{s}^{\text{-1}}$] la cual se encuentra entre los limites permitidos. 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.70]{Imagenes/Paracaidasvelocidad.eps}
+\caption{Estimaci�n de la velocidad de descenso de la configuraci�n paraca�das - Cansat.  \label{img:Paracaidasvelocidad}}
+\end{center}
+\end{figure}
+
+En la siguiente gr�fica se muestra la estimaci�n de la tasa de descenso de la configuraci�n de paraca�das - Cansat en la que se puede observar que le toma 25 [s] en aterrizar.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.70]{Imagenes/Paracaidasdistancia.eps}
+\caption{Estimaci�n de la tasa de descenso de la configuraci�n paraca�das - Cansat.  \label{img:Paracaidasdistancia}}
+\end{center}
+\end{figure}
+  
+Uaa vez que se han determinando las dimensiones y las caracteristicas del docel del paraca�das, se procede a calcular las longitudes de las lineas de suspenci�n, de acuerdo a \ref{} la longitud de las dineas de suspenci�n esta en relaci�n al di�metro del docel del paraca�das. La longitud de las l�eneas de suspenci�n esta dada por \eqref{eq:longitudparacaidas}
+
+\begin{align}
+\label{eq:longitudparacaidas}
+\text{L} = 1{.}713 \cdot \text{d}_{\text{c}} 
+\end{align}
+donde $\text{d}_{\text{c}}$ representa el di�metro del docel del paraca�das. Conociendo el radio del docel,  $\text{r}_{\text{p}}$, la longitud de las lineas de suspenci�n es de 0.3998 [m].\\
+El n�mero de lineas de suspenci�n depende de las dimensiones del docel. Para nuestra apliaci�n se proponen ocho lineas de suspenci�n, las cuales son suficientes para generar la geometr�a que se propone.\\
+
+Por medio de estos datos obtenidos se propone el dise�o de un compartimiento, que corresponde a la parte superior del contenedor, el cual tiene la capacidad de alojar el paraca�das, y as� mismo un mecanismo que permitira que se libere. Los elementos que conforman este compartimiento se muestran en la Figura \ref{img:Compartimientoparacaidas}. Como elementos de sujeci�n se utilizan tornillos M3 y M2 de diferentes longitudes, adem�s tuercas de bloqueo con inserto de nylon.
+
+ \begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.40]{Imagenes/SistemaParacaidas.png}
+\caption{Componentes que conforman la parte superior del contenedor. \label{img:Compartimientoparacaidas}}
+\end{center}
+\end{figure} 
+
+El paraca�das se encontrar� alojado adentro de la parte superior del contenedor, va a estar sujeto de tres puntos anclaje, los cuales se encuentra a 120 grados, y a 60 [mm] del centro. La ubicaci�n de los puntos de anclase se hizo de modo que no se enreden con los dem�s elementos mec�nicos, el�ctricos y electr�nicos dentro del contenedor.\\
+En la Figura \ref{img:Paracaidasanclaje} se muestra la parte superior del contenedor con la ubicaci�n, en rojo, del sitio en donde estaran sujetos los puntos de atadura. La geometr�a de esta pieza esta hecha con la finlidad de que las aperturas en los costados, as� como las que se encuentran en la parte inferior ayuden a la expulsi�n e inflado del paraca�das.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.45]{Imagenes/Paracaidasanclaje.png}
+\caption{ Ubicaci�n de los puntos de atadura del paraca�das. \label{img:Paracaidasanclaje}}
+\end{center}
+\end{figure}   
+
+La secuencia en la que ser� liberado el paraca�das esta determinada por tres momentos, un estado de reposo, uno de transici�n y uno final. En la Figura \ref{img:cortetransversal} se presenta la ubicaci�n del corte de secci�n tranversal que permite observar las transiciones del mecanismo de liberaci�n del paraca�das.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.40]{Imagenes/Cortetransversal.png}
+\caption{Corte de secci�n transversal A-A. \label{img:cortetransversal}}
+\end{center}
+\end{figure}
+
+En la Figura \ref{img:paracaidasinicio} se muestra el estado de reposo, donde O representa el centro de la geometria, y $\text{X}_{\text{O}}$ es la posci�n inicial de la basa de la corredera. En este estado el mecanismo de liberaci�n permanece sin movimiento durante el ascenso del Cansat.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.25]{Imagenes/Paracaidasinicio.png}
+\caption{Yugo escoc�s. Mecanismo que permite la apertura del paraca�das. \label{img:Paracaidasinicio}}
+\end{center}
+\end{figure} 
+
+ Permanece en el estado de reposo hasta que el Cansat a caido cuatro metros con respecto al apogeo, en ese momento pasa al estado de transici�n en el cual la manivela realiza un giro, a consecuencia del par proporcionado por el motor, en sentido antihorario lo que permite que la corredera comience un desplazamiento de la posici�n inicial $\text{X}_{\text{O}}$ a una posici�n $\text{x}_{\text{i}}$. Cuando la corredera ha abandonado la pared de la tapa del contenedor, esta misma, por acci�n de viento gira permitiendo la expulsi�n del paraca�das. En la Figura \ref{img:paracaidasmitad} se puede observar el estado de transici�n.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.30]{Imagenes/Paracaidasmitad.png}
+\caption{Segunda fase de la secuencia de liberaci�n del paraca�das. \label{img:Paracaidasinicio}}
+\end{center}
+\end{figure} 
+
+En el estado final, cuando la base de la corredera se encuentra en $\text{X}_{\text{i}}$ la tapa del paraca�das ha girado totalmente. El motor deja de suministrar el torque en la rueda gu�a, y autom�ticamente, por acci�n del \textit{limit switch} se le deja de suministrar voltage al motor.\\
+
+Ahora bien, en relaci�n al paraca�das, para ser m�s exactos el docel, se realiz� una Din�mica de Fluidos Computacional (CFD, por sus siglas en el idioma ingl�s) con el software Autodesk CFD 2018 \textregistered con la finalidad de corroborar que la geometr�a del dise�o realizado, por medio de los calculos previamente realizados, generar� una fuerza de arrastre con la finalidad de reducir la velocidad de descenso del Cansat.\\
+La simulaci�n se realiz� en un volumen de $1 \left[ \text{m}^{3} \right]$, se asumi� que la velocidad del aire es constante con un valor de $20 \left[ \text{m} \cdot \text{s}^{-1}\right]$ y que act�a en la misma direcci�n al movimiento del paraca�das. El material del docel del paraca�das para la simulaci�n se propuso de nylon. En \ref{img:Simulacioncfdcero} se presenta el escenario utilizado, junto con las propiedades f�sicas del aire utilizadas por el sotware para realizar la simulaci�n. 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.40]{Imagenes/Simulacioncfd0.png}
+\caption{Condiciones de simulaci�n del docel del paraca�das. \label{img:Simulacioncfdcero}}
+\end{center}
+\end{figure} 
+ 
+ Como se puede observar en \ref{img:Simulacioncfd1} los resultados de ineter�s, la velocidad en el  eje Y, y al presi�n convergen, es decir, la soluci�n n�merica de la ecuaci�n diferencia que asocia el software a esas variables tienen una soluci�n exacta, por consiguiente los datos obtenidos son correctos.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.40]{Imagenes/Simulacioncfd1.png}
+\caption{Resultados de la Din�mica de Fluidos Computacional aplicada al paraca�das. \label{img:Simulacioncfd1}}
+\end{center}
+\end{figure} 
+
+En \ref{img:Simulacioncfddos} se  muestra la relaci�n que existen entre la velocidad y la presi�n en el docel del paraca�das.En las zonas en donde la magnitud de la velocidad del viento es mayor la presi�n se reduce, en cambio, en la zona en donde la magnitid de la velocidad es menor, la presi�n incrementa.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.40]{Imagenes/Simulacioncfd2.png}
+\caption{Relaci�n entre la velocidad y la presi�n en el docel del paraca�das dise�ado. \label{img:Simulacioncfddos}}
+\end{center}
+\end{figure} 
+
+Conocido el vaor de la presi�n est�tica presente en el docel del paraca�das se puede calcular la fuerza presentes en en cada una de las superficies que se encuentran en contacto con el flujo de viento. En \ref{img:resultadospara} se exponen los resultados obtenidos con el dise�o sometido al an�lisis. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.15]{Imagenes/resultadosparacaidas.png}
+\caption{Fuerzas presentes en el docel del paraca�das. \label{img:resultadospara}}
+\end{center}
+\end{figure} 
+La fuerza total, $\text{F}_{\text{Y}}$, producida por el docel del paraca�das es de $11{.}4234 \left[ \text{N} \right]$, la cual es mayor al peso del Cansat, as� que existe un reducci�n de velocidad. Es importante se�alar que en el an�lisis se considera que el docel del paraca�das es un objeto s�lido, sin embargo, en la pr�ctica el docel del paraca�das esta fabricado de tela, y tiene poros que permiten el paso del flujo del aire, as� que el resultado obtenido es una aproximaci�n del comportamiento del paraca�das durante el descenso del Cansat. 
+\section{Selecci�n de materiales}
+Tomando como base el proceso de selecci�n de materiales propuesto por Ashby en \cite{}?, la Tabla \ref{Alex3} muestra la traducci�n de los requerimientos a especificaciones de material.
+
+\begin{table}[H]
+\begin{center}
+\caption{Traducci�n de requerimientos a prescripciones de materiales del SLVC.}
+\label{Alex3}
+\resizebox{12cm}{!}{
+\begin{tabular}{m{4cm}p{10cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+Funciones & Liberar al veh�culo cient�fico del contenedor.\tabularnewline
+Restricciones &
+- Temperatura de trabajo: debe soportar temperaturas de hasta 60 [� C].\newline
+- Resistencia: debe soportar el peso del veh�culo cient�fico al momento del despegue y durante la primera etapa de descenso.\newline
+- Rigidez: no debe sufrir grandes deformaciones al momento del despegue.\newline
+- Bajo coeficiente de fricci�n.
+\tabularnewline
+Objetivos & Minimizar masa.\tabularnewline
+Variables libres &
+- Forma de los componentes del mecanismo.\newline
+- Selecci�n del material.
+\tabularnewline
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+La manivela y la corredera  representan uno de los puntos m�s cr�ticos del mecanismo presentado en la Figura \ref{img:PartesParacaidas}, ya que son los que estar�n sometidos a esfuerzos durante el ascenso del CanSat. Por ese motivo, el fabricar esas piezas de aluminio es la mejor opci�n.\\
+
+Para la selecci�n de la aleaci�n de aluminio a utilizar se seleccionaron varios criterios, entre ellos los relacionados a las propiedades mec�nicas, la disponibilidad, el precio y la factibilidad de ser maquinado.\\ 
+Las aleaciones m�s utilizadas en el sector aeron�utico son las de la serie 2xxx, en las que elemento aleante principal es el cobre (Cu) y el litio (Li) aparece en una menor proporci�n. Ejemplos de estas aleaciones son las AA2297 y AA2397, las cuales son utilizadas en aeronaves tipo caza como los Lockheen Martin F-16, as� como las aleaciones AA2198 y AA 2219 utilizadas para los fuselajes de la primera y segunda etapa del cohete Falcon 9, de la empresa SpaceX (Space Exploration Technologies Corporation) y el tanque externo del transbordador espacial (Space Shuttle). 
+Sin embargo las placas de este tipo de aleaciones, por el contenido de litio, resultan muy dif�ciles de conseguir en el mercado nacional, adem�s de que su precio es muy elevado. Por consiguiente se consideran aleaciones que se encuentran en el mercado nacional, de precio accesible y con buenas propiedades mec�nicas. Ejemplo de estas aleaciones son las que  pertenecen a la serie, AA 1xxx, AA 6xxx, AA 7xxx. En la \ref{tab:aleaciones} se muestran algunas de las propiedades mec�nicas de las aleaciones de aluminio mas comerciales.
+\begin{table}[H]
+\begin{center}
+\caption{Propiedades de las aleaciones de aluminio consideradas.\label{tab:aleaciones}}
+\resizebox{14cm}{!}{
+\begin{tabular}{>{\centering}p{2cm}>{\centering}p{3cm}>{\centering}p{3.5cm}>{\centering}p{3cm}>{\centering}p{3cm}>{\centering}p{3cm}}
+\multicolumn{6}{c}{}\tabularnewline
+\toprule
+Aleaci�n & Densidad $\left[ \text{g} \cdot \text{cm}^{-3} \right]$ & M�dulo de elasticidad $\left[ \text{GPa} \right]$ & Maquinibilidad & Dureza Brinell $\left[ \text{HB} \right]$&Disponibilidad \tabularnewline  
+AA 1100 & 2.71 & 68.0 & Pobre & 32 & Nacional\tabularnewline
+AA 6061 & 2.70 & 68.9 & Aceptable & 60 & Nacional \tabularnewline
+AA 7075 & 2.81 & 71.1 & BUena & 150 & Nacional\tabularnewline 
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+A trav�s de la tabla presentada anteriormente, se selecciona la aleaci�n AA 6061, por ser la que posee la densidad m�s baja,  un m�dulo de elasticidad aceptable y una maquinabilida aceptable.\\
+Para realizar el maquinado en aluminio de las piezas mec�nicas utilizadas en el mecanismo de liberaci�n del paraca�das, y en general para  las piezas de aluminio del Cansat, se hizo uso de m�quinas de control num�rico (Computer Numerical Control, por su traducci�n al idioma ingl�s), modelo Haas TM2P. La m�quina  fue programa con ayuda del Software Mastercam X5. 
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{Imagenes/ConfiguracionCNC.png}
+\caption{Ventana principal del software Mastercam X5. \label{img:ConfiguracionCNC}}
+\end{center}
+\end{figure} 
+Dentro de las configuraciones del software se pide determinarlas dimensiones del material base, as� como el punto de origen para el maquinado de la pieza. No obstante, una de las configuraciones principales que se deben realizar son las velocidades de avance, as� como las velocidades del husillo. Estas velocidades est�n determinadas por \ref{eq:maquinadocnc}, \ref{eq:avance}, los cuales relacionan las dimensiones de la herramienta, as� como las propiedades f�sicas del material que va a ser maquinado y la operaci�n que se va a realizar como fresado, torneado o barrenado.\\
+\begin{align}
+\label{eq:maquinadocnc}
+\text{rpm} =  \frac{\text{V}_{\text{c}} \cdot 1000}{ \pi  \cdot \text{D}}
+\end{align}
+en donde D es el di�metro de la herramienta, y $\text{V}_{\text{c}}$ es la velocidad de corte. Por medio de tablas se sabe que para fresar aluminio $\text{V}_{\text{c}}=114 \left[ \text{m} \cdot \text{min}^{-1}\right]$.
+Ahora bien, una vez que se ha calculado la velocidad en el husillo, se puede determinar la velocidad de avance mediante la siguiente expresi�n
+\begin{align}
+\label{eq:avance}
+\text{Avance} = \text{N} \cdot \text{CPT} \text{rpm} \left[ \text{mm} \cdot \text{min}^{-1} \right]
+\end{align}
+En donde N representa el n�mero de filos (gavilanes) del cortador, y CPT es el avance por diente. En el caso del aluminio, por medio de tablas, el CPT tiene un rango de valores que van desde 0.05 hasta 0.12.\\
+Una vez que se han calculado estos valores se ingresan estos datos en Mastercam X5, como se muestra en la \ref{img:herramientas}, en donde los valores depende de las caracter�sticas f�sicas de la herramienta.\\
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{Imagenes/Herramientas.png}
+\caption{Configuraci�n de las operaciones y herramentas de maquinado.\label{img:herramientas}}
+\end{center}
+\end{figure} 
+Una vez que se han ingresado todas las operaciones a realizar con sus respectivas configuraciones, se procede a simular el proceso. Posteriormente, se validan las operaciones, \ref{img:validacion}, y se procede a crear un archivo (.NC) el cual contiene, en c�digo G  y M, las instrucciones que realizar� la m�quina de manera f�sica.\\
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{Imagenes/Validacion.png}
+\caption{Validaci�n de las operaciones de maquinado.\label{img:validacion}}
+\end{center}
+\end{figure} 
+Posteriormente es necesario montar la placa de aluminio sobre la m�quina, con la mayor precauci�n posible, puesto que son m�quinas que suelen tener elementos filosos o rebaba de maquinados previos.
+\subsection{Subsistema de reducci�n de velocidad por autorrotaci�n}
+Una vez que es liberado el CanSat, a una altura de 300 [m] es liberado el veh�culo cient�fico del contenedor, en ese momento comienza el descenso por medio del sistema de autorrotaci�n. Al momento de ser liberado, el veh�culo cientifico se encuentra a velocidada de descenso inicial de 20[$\text{m} \cdot \text{s}^{\text{-1}}$] (velocidad ideal), y es esta velocidad inicial, junto con el viento del medio, la que  va a permitir que el sistema de autorrotaci�n comience  a girar, y por consiguente se producir� un empuje, $\overrightarrow{\text{F}}_{\text{T}}$ debido a la velocidad de viento libre, $\overrightarrow{v}_{\infty}$, que junto con la geometr�a del veh�culo cient�fico dara paso a un descenso suave.\\
+
+Primeramente, y a modo de introducci�n, es pertinenete hablar sobre los conceptos b�sicos que permitiran conocer el comportamiento del veh�culo cinet�fico en ca�da libre dentro de un fluido (aire). Los conceptos que ser�n presentados fueron extra�dos del libro de texto de Anderson \cite{Anderson}.\\
+La geometr�a de cada cuerpo expuesto a un flujo de aire provoca una cierta distribuci�n de presi�n a lo largo de la superficie. La geometr�a propia de una cuchilla, causa una presi�n m�s baja en la parte suerior que en la superficie interior, dando como resultado una fuerza que empuja el ala hacia arriba, $\overrightarrow{\text{F}}_{\text{T}}$. Las fuerzas que act�an sobre un perfil aereodin�mico se muestran en la Figura \ref{FuerzasCuchilla}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.80]{Imagenes/Cuchilla.eps}  
+\caption{Fuerzas aereodin�micas que actuan en un perfil aereodin�mico.}
+\label{FuerzasCuchilla}
+\end{center}
+\end{figure}
+Donde $\overrightarrow{v}_{\infty}$ representa la velocidad y la direcci�n del viento libre. La fuerza, $\overrightarrow{\text{R}}$, que act�a sobre el perfil aereodin�mico esta formada por dos fuerzas, la fuerza de sustentaci�n, $\overrightarrow{\text{L}}$, que act�a perpendicularmete a $\overrightarrow{v}_{\infty}$ y la fuerza de arrastre, $\overrightarrow{\text{D}}$, que act�a en direcci�n paralela a $\overrightarrow{v}_{\infty}$. La linea de cuerda, $c$, se define como la l�nea que conecta el borde superior y el borde inferior del perfil aereodin�mico. La fuerza normal, $\overrightarrow{\text{N}}$, perpendicular a la l�nea de cuerda, y la fuerza axial ,$\overrightarrow{\text{A}}$, paralela a la l�nea de cuerda, se pueden expresar mediante los sisguiente modelos matem�ticos, que representan las relaci�n geom�trica de las variables previamente mencionada: 
+\begin{align}
+\notag
+\overrightarrow{\text{N}} = \overrightarrow{\text{L}}\text{cos}( \alpha) + \overrightarrow{\text{D}}\text{sen}( \alpha ) 
+\end{align} 
+\begin{align}
+\notag
+\overrightarrow{\text{A}} = - \overrightarrow{\text{L}}\text{sen}( \alpha )  + \overrightarrow{\text{D}}\text{cos}( \alpha )
+\end{align} 
+donde $\alpha$ representa el �ngulo de ataque del viento libre.\\
+
+Por otro lado se puede denotar la fuerza de sustentaci�n y la fueza de arrastre por medio de los coefcientes no dimensionales de sustentaci�n, $\text{C}_{\text{L}}$, y de arrastre, $\text{C}_{\text{D}}$. 
+
+\begin{align}
+\notag
+\text{C}_{\text{L}} = \frac{\overrightarrow{\text{L}}}{\frac{1}{2} \rho \overrightarrow{\text{v}}_{\infty}^{2}\text{c}}
+\end{align}
+
+\begin{align}
+\notag
+\text{C}_{\text{D}} = \frac{\overrightarrow{\text{D}}}{\frac{1}{2} \rho \overrightarrow{\text{v}}_{\infty}^{2}\text{c}}
+\end{align}
+
+La variaci�n de $\text{C}_{\text{L}}$ y $\text{C}_{\text{D}}$ con respecto al �ngulo de ataque, $\alpha$, son caracter�sticas propia de cada perfil aereodin�mico, los cuales son obtenidos de manera experimental, principalemnete, por medio de t�neles de viento.\\
+
+Entrando en materia, al igual que se realiz� una selecci�n de la forma del docel del paraca�das, en esta secci�n  tambi�n se har� una selecci�n del perfil aereodin�mico, eligiendo el que posea un mejor rendimiento a velocidades subs�nicas (M $<$ 1), y que posea la geometr�a adecuada para generar el mayor arrastre posible cuando el flujo de viento act�a de manera perpendicular a la superficie de la cuchilla.\\
+
+Existen dos tipo de perfiles aereodin�micos, los sim�tricos y los asim�tricos. Con  las mismas condiciones de vuelo, con el mismo �ngulo de ataque, la misma velocidad a�rea, la misma densidad de aire, tanto las alas sim�tricas como las alas asim�tricas pueden producir sustentaci�n; sin embargo, el ala asim�trica est� dise�ada para crear m�s elevaci�n y menos resistencia. Las alas sim�tricas son las m�s utilizadas para los aviones acrob�ticos y las aereonaves de ala rotatoria. Las aeronaves acrob�ticas deben generar sustentaci�n incluso mientras giran y van invertidas.\\
+
+Las caracter�sticas propias del descenso del veh�culo cient�fico ayudan al momento de  seleccionar el  perfil aereodin�mico, primerramente se tiene que tener en cuenta que debido a las dimensiones del contenedor en donde ser� alojado el veh�culo cient�fico no se pueden desarrollar los mec�nismo necesarios para poseer control, activo o pasivo, del �ngulo de ataque del viento por tal motivo el �ngulo de ataque queda fijo de tal manera que se produzca sustentaci�n a un �ngulo de ataque nulo, o negativo. En segunda instancia, el perfil aereodin�mico tiene que poseeer la mayor curvatura posible en el la l�nea de la cuerda, de modo que esta geometr�a ayude a generar el mayor arrastre durante la ca�da.\\ 
+
+Para realizar una  selecci�n adecuada \cite{PerfilMejor}, \cite{Doenhoff}, \cite{LowSpeed},  proporcionan una serie de perfiles que han sido estudiados de manera experimental a velocidades s�bsonicas. Para elegir el perfil aereodin�mico adecuado, adem�s de las consideraciones mencionadas en el p�rrafo anterior, se enlistan acontinuaci�n una serie de condiciones que surgen a partir de las condiciones de vuelo del veh�culo cient�fico. 
+\begin{itemize}
+\item Poseer un coeficiente de sustentaci�n positivo a valores del n�mero de Reynolds inferiores a los 100,000.
+\item El coeficiente de sustentaci�n debe ser positivo a �ngulos de ataque de $-1^{o}$ a $0^{o}$ con respecto al plano de la h�lice \footnote{Se considera una inclinaci�n para asegurar un movimiento giratorio en el rotor principal.}.
+\item Tiene  que ser un perfil asim�trico.
+\item La anchura m�xima del perfil debe ser de al menos del 30\% con respecto a la longitud de la cuerda \footnote{Una regla para la selecci�n de perfiles a baja velocidad es que tienen que tener mayores espesores, y mas curvatura (curvatura de la l�nea media \cite{Doenhoff}).}. 
+\end{itemize}
+
+En la Tabla \ref{Perfiles} \footnote{Es importante aclarar que los valores mostrados corresponden a un �ngulo de ataque, $\alpha_{\text{b}} = 1^{\text{o}}$,} se presentan los perfiles aereodin�micos considerados para la selecci�n. 
+
+\begin{table}[H]
+\begin{center}
+\caption{Perfiles aereodin�micos considerados para velocidades subs�nicas}
+\label{Perfiles}
+\resizebox{13cm}{!} {
+\begin{tabular}{m{4cm}m{3cm}m{3cm}m{4cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{1}{c}{Perfil aereodin�mico} & \multicolumn{1}{c}{Espesor m�ximo} & \multicolumn{1}{c}{Curvatura m�xima} & \multicolumn{1}{c}{$\text{C}_{\text{L}}$ m�ximo (Re = 50,000)}\tabularnewline
+\multicolumn{1}{c}{NACA2412} & \multicolumn{1}{c}{12.0\% a 30.0 \% } &\multicolumn{1}{c}{2.0\% a 40.0\% }& \multicolumn{1}{c}{-0.1224} \tabularnewline
+\multicolumn{1}{c}{FX 63 - 137} & \multicolumn{1}{c}{13.7\% a 30.9 \% } &\multicolumn{1}{c}{6.00\% a 53.3\% }& \multicolumn{1}{c}{0.1919} \tabularnewline
+\multicolumn{1}{c}{MA 409} & \multicolumn{1}{c}{6.70\% a 23.8 \% } &\multicolumn{1}{c}{3.3\% a 49.3\% }& \multicolumn{1}{c}{0.0996} \tabularnewline
+\multicolumn{1}{c}{SG 6043} & \multicolumn{1}{c}{10.0\% a 32.1 \% } &\multicolumn{1}{c}{5.1\% a 53.3\% }& \multicolumn{1}{c}{-0.0091} \tabularnewline
+\multicolumn{1}{c}{E423} & \multicolumn{1}{c}{12.5\% a 23.7 \% } &\multicolumn{1}{c}{9.5\% a 41.4\% }& \multicolumn{1}{c}{-0.2184} \tabularnewline
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+Ahora bien, como se puede observar en la Tabla \ref{Perfiles} el modelo que aereodin�mico que presenta las mejores caracterpisticas para nuestra aplicaci�n es el WORTMANN FX 63 - 137. No obstante, la informaci�n que se encuentra en esta tabla solo nos permite conocer el coeficiente de sustentaci�n, $\text{C}_{\text{L}}$. Para poder obtener el coeficiente de arrastre, $\text{C}_{\text{D}}$, del mismo perfil aereodi�nmico se recurre a la base de datos de la Universidad de Illinois, el cual arroja un valor adimensional, $\text{C}_{\text{D}} = 0{.}-0470$ ,que adem�s de ofrecer informaci�n complementria del perfil aereodin�mico oferece una serie puntos que puede ser importados a alg�n software de dise�o por compuadora, (CAD, por sus sigl�s en ingl�s), y posteriormente, a trav�s de impresi�n en 3D, obtener un modelo f�sico. En la Figura \ref{fig:Plot} se puede observar una previsualizaci�n, proporcionada por la base de datos de la Universidad de Illinois, del perfil aereodin�mico a utilizar.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.8]{Imagenes/Plot.eps}  
+\caption{Perfil aereodin�mico WORTMANN FX 63 -163. \label{fig:Plot}}
+\end{center}
+\end{figure}
+Antes de continuar con el an�lisis propio del perfil aereodin�mico, es importante recordar las caracter�sticas del descenso del veh�culo cient�fico una vez que el liberado del contenedor. En la Figura \ref{Vehiculo} se puden observar las fuerzas que act�an en el veh�culo cient�fico considerando que el descenso es de manera vertical, y que existe un s�lo grado de libertad, en donde $\overrightarrow{\text{F}}_{\text{DV}}$ representa la fuerza de arrastre generada por la geometr�a del veh�culo cient�fico, $\overrightarrow{\text{F}}_{\text{T}}$ es el empuje generado por el movimiento de las cuchillas, $\omega$ representa la velocidad angular del rotor, y $\overrightarrow{\text{W}}_{\text{v}}$ representa el peso del veh�culo cient�fico.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.50]{Imagenes/Vehiculo.png}  
+\caption{Fuerzas que act�an en el veh�culo cient�fico. \label{Vehiculo}}
+\end{center}
+\end{figure}
+
+Una vez seleccionado el perfil aereodin�mico, es posible realizar una aproximaci�n  de las dimensiones del mismo, tomando en cuenta la velocidad generada por el movimiento de las cuchillas, $\overrightarrow{v}_{\text{p}}$, las cuales estan sujetas a la geometr�a del contenedor y del tipo de flujo en el que se encontrar�. Para ello hacemos uso del n�mero de Reynolds, el cual es un par�metro no dimensional �til en el estudio de la aereodin�mica. Esto se puede ver en la forma no dimensional de las ecuaciones de Navier - Stokes, que son las ecuaciones que gobiernan el movimietno de fluidos. Para un fluido newtoniano incomprensible estas ecuaciones tienen la forma \cite{Reynolds}: 
+\begin{equation}
+\frac{ \partial u }{\partial t}+(u \cdot \nabla)u = \nabla p + \frac{1}{\text{Re}} \nabla^{2}u
+\end{equation}
+Con algunas consideraciones y normalizaciones \cite{Reynolds} proporciona un modelo matem�tico que relaciona la longitud de la cuerda del perfil aereodin�mico, $\text{c}$, la magnitud de la velocidad generada por el movimiento del rotor $v_{\text{p}}$, la densisdad, $\rho$, y la viscocidad del fluido, $\mu$. 
+
+\begin{eqnarray}
+\text{Re} = \frac{ \rho \cdot v_{\text{p} \cdot }  \text{c}}{ \mu }
+\end{eqnarray}
+
+Por lo regular los datos proporcionados por algunas bases de datos relacionadas con los perfiles aereodin�micos presentan valores del coeficiente de sustentaci�n y arrastre a valores de Reynolds mayores a 50,000, de modo que para los calculos realizados se har�n con ese valor, dejando as� un factor de seguridad considerando que deseamos que el flujo se encuentre los m�s cercano a un flujo laminar. Se considera que $\text{Re} = 50\text{x}10^{3}$ , $\rho = \text{1{.}225} [\text{kg} \cdot \text{m}^{\text{-3}}]$,
+ $ \mu = 1{.}8 \text{x} 10^{-5} [\text{N} \cdot \text{s} \cdot \text{m}^{\text{-2}}]$, y que la velociad, $\overrightarrow{v}_{\text{p}} [\text{m} \cdot \text{s}^{\text{-1}}]$, debida al giro del rotor es la misma que la velocidad de descenso  del veh�culo cient�fico, la cual oscilar� entre los 10 [$\text{m}^{\text{-1}}$] y 15 [$\text{m}^{\text{-1}}$] se puede determinar la longitud de la cuerda. Los valores de $\text{c}[\text{m}]$ para diferentes velocidades se muestran en la Tabla \ref{valoresc}.
+\begin{table}[H]
+\begin{center}
+\caption{Longitud de la cuerda a dieferentes valores de velocidad de descenso.}
+\label{valoresc}
+\resizebox{3cm}{!} {
+\begin{tabular}{m{2cm}p{3cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+\multicolumn{1}{c}{$\overrightarrow{v}_{\text{p}}$ [m/s]} & \multicolumn{1}{c}{c [m]}\tabularnewline
+\multicolumn{1}{c}{10} & \multicolumn{1}{c}{0.0735}\tabularnewline
+\multicolumn{1}{c}{11} & \multicolumn{1}{c}{0.0668}\tabularnewline
+\multicolumn{1}{c}{12} & \multicolumn{1}{c}{0.0612}\tabularnewline
+\multicolumn{1}{c}{13} & \multicolumn{1}{c}{0.0565}\tabularnewline
+\multicolumn{1}{c}{14} & \multicolumn{1}{c}{0.0525}\tabularnewline
+\multicolumn{1}{c}{15} & \multicolumn{1}{c}{0.0490}\tabularnewline
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+En vista de que una de las mayores preocupaciones para el desarrollo del CanSat es la masa del mismo, se eligi� la longitud de la cuerda que corresponde a una velocidad de descenso de $13 [\text{m} \cdot \text{s}^{\text{-1}}]$. Se pensar�a que lo ideal ser�a seleccionar la que corresponde a la velocidad de descenso mas alta, por razones de la masa, sin embargo, se desea que la velocidad de descenso no se encuentre entre los l�mites permitidos por los requerimientos, (R10).\\
+
+Una vez que se han determiando los valores del coeficente de arrastre y sustentaci�n, as� como las dimensiones  de la cuerda, $\text{c} [\text{m}]$, del perfil aereodin�mico se procede a seleccionar una manera de demostrar que el movimiento de las cuchillas podr� generar una fuerza de empuje, $\overrightarrow{\text{F}}_{\text{T}}$,  que junto con la fuerza de arrastre producida por la prop�a geometr�a de las cucchillas, ser�n capaz de mantener la velocidad de descenso constante.\\
+
+Existen dos teor�as que permiten relacionar las variables previamente mencionadas con el empuje que se genera. La Teor�a del Elemento de la Cuchilla (BET, por sus siglas en el idioma ingl�s), la cual fue presentada por primera vez por W. Froude \cite{Froude}, es un modelo relativamente simple que permite predecir el comportamiento de un cierto tipo de geometr�a. Por otro lado esta la Teor�a del Impulso, la cual fue desarrollada por Rankine \cite{Rankine}, y se basa en la idea de que cualquier h�lice produce empuje, la cual es causada por el movimiento del aire en oposici�n al empuje.\\
+
+Sin embargo, tratando de responder cu�l de las dos teor�as es mas �til para el desarrollo de la misi�n, se determin� que la Teor�a del Elemento de la Cuchilla es las m�s apropiada para el desarrollo de la misi�n puesto que esta teor�a utiliza, para llevar a cabo sus c�lculos, el n�mero de cuchillas, las caracter�sticas del perfil aereodin�mico, la forma de la cuchilla, la distribuci�n de la torsi�n de la cuchilla y los efectos de compresibilidad. Como se observar en la Figura \ref{BET}, las distancia desde el eje de la h�lice a la l�nea central de cada elemento esta denotada por $\text{R'}$, y el ancho del elemento esta denotado por $\text{dR}$. $\text{R}$ es la distancia desde eleje de la h�lice hasta la punta de la pala, tambi�n llamado radio de punta. Esra representaci�n gr�fica es valida para otras geom�tr�as relacionadas con un perfil aereodin�mico. 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.30]{Imagenes/BET.png}  
+\caption{Aplicaci�n de BET en una cuchilla de la h�lice. }
+\label{BET}
+\end{center}
+\end{figure}
+
+
+Para hacer m�s comprensible la representaci�n de esta teor�a se usar� la adaptaci�n de los libros de texto de Glauert \cite{Glauert} y Weick \cite{Weick}. \\
+
+En \ref{BETFuerzas} se pueden apreciar las diferentes fuerzas a la que es sometido el perfil aereodin�mico, siguiendo el m�todo la Teor�a del Elemento de la Cuchilla, donde $ \theta$ esta compuesto por el �ngulo de ataque de del perfil aereodin�mico, $\alpha_{b}$, y el �ngulo de giro de la cuchilla con respecto al plano de la h�lice, $\varphi$. El flujo al que esta expuesto el perfil aereodin�mico esta representado por $\overrightarrow{v}_{\text{p}}$. 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.1]{Imagenes/BET5.png}  
+\caption{Definici�n de fuerzas y velocidades actuando en un elemento de la cuchilla.}
+\label{BETFuerzas}
+\end{center}
+\end{figure}
+
+
+Finalmente, despu�s de realizar  algunas relaciones geom�tricas, se obtienen las expresiones para la sustentaci�n, $\overrightarrow{\text{dL}}$, y arrastre, $\overrightarrow{\text{dD}}$, del perfil aereodin�mico.
+\begin{align}
+\label{eq:sust}
+\overrightarrow{\text{dL}} = \frac{1}{2} \rho v_{vc}^{2}\text{C}_{\text{L}} (\alpha_{b})\text{c}\text{N}_{\text{b}}\text{dR}
+\end{align}
+\begin{align}
+\label{eq:arra}
+\overrightarrow{\text{dD}} = \frac{1}{2} \rho v_{vc}^{2}\text{C}_{\text{D}} (\alpha_{b})\text{c}\text{N}_{\text{b}}\text{dR}
+\end{align}
+
+ donde $\text{N}_{\text{b}}$ es el n�mero de cuchilas en la h�lice, $\alpha_{b}$ representa el �ngulo de ataque de la cuchilla. \\
+ 
+ El empuje, $\overrightarrow{\text{F}}_{\text{T}}$ y el torque $\text{dQ}$ puede ser obtenido por las siguientre trasnformaciones geom�tricas de \eqref{eq:sust} y \eqref{eq:arra}.
+ \begin{equation}
+ \label{eq:hipotesissustentacion}
+\overrightarrow{\text{F}}_{\text{T}} =\overrightarrow{\text{dL}}\text{cos}(\varphi) - \overrightarrow{\text{dD}}\text{sen}(\varphi)
+\end{equation}
+\begin{equation}
+ \label{eq:hipotesistangencial}
+ \frac{\text{dQ}}{\text{R'}} = \overrightarrow{\text{dL}}\text{sen}(\varphi) + \overrightarrow{\text{dD}}\text{cos}(\varphi)
+\end{equation}
+
+
+Para poder utilizar la Teor�a del Elemento de la Cuchilla en la autorrotaci�n se realizan las siguientes hip�tesis: \ref{}
+\begin{itemize}
+\item Se considera un comportamiento bidimensional en cada elemento de la cuchilla.
+\item La velocidad inducida, que es perpendicular al plano del rotor, se considerar� como una modificaci�n del �ngulo de ataque del rotor.
+\item La componente radial de la velocidad del viento es despeciable.
+\item cos ($\varphi$)  = 1, sen($\varphi$) = $\varphi$.
+\item $\overrightarrow{\text{dL}} >> \overrightarrow{\text{dD}}$  
+\end{itemize}
+
+Por medio de estas hip�tesis  \ref{eq:hipotesissustentacion} y \ref{eq:hipotesistangencial} quedan de la siguiente manera:
+\begin{align}
+\label{eq:sustentacion}
+\overrightarrow{\text{F}}_{\text{T}} \approx \overrightarrow{\text{dL}} - \overrightarrow{\text{dD}} \cdot \varphi \approx \overrightarrow{\text{dL}}
+\end{align}
+\begin{align}
+ \frac{\text{dQ}}{\text{R'}} \approx \overrightarrow{\text{dL}}\cdot \varphi  + \overrightarrow{\text{dD}}
+\end{align}
+En vista de que el empuje depende solo de la fuerza de sustentaci�n, se aplicar el modelo de disco discreto, el cual menciona que debido a que el descenso en autorrotaci�n el rotor se ncuentra en el r�gimen de estela turbulenta \footnote{Para velocidades de descenso medias, la estela se vuelve mas turbulenta, y el flujo es similar al de un cuerpo no aereodin�mico.} se suele realizar la analog�a de considerar el rotor como un disco resistente impermeable. \\
+El coeficiente de arrastre del disco, $\text{C}_{\text{Dd}}$, impermeable suele tomar valores qu van de 1.25 a 1.30, siendo 1.28 un valor muy empleado en las estimaciones de autorrotaci�n \ref{}.\\
+
+Utilizando la Segunda Ley de Newton del movimiento se puede obtener una expresi�n para la estimaci�n de la velocidad del veh�culo cient�fico, de modo que \eqref{Eq:EcuAuto} relaciona la velocidad del viento generada por el movimiento del veh�culo cient�fico, $\overrightarrow{v}_{\text{vc}}$. Donde $\text{m}_{\text{vc}}$ representa la masa del veh�culo cient�fico.\\
+\begin{align}
+\label{eq:EcuAuto}
+- \overrightarrow{\text{F}}_{\text{T}} -  \overrightarrow{\text{F}}_{\text{DV}}   + \overrightarrow{\text{W}}_{\text{v}}  = \text{m}_{\text{vc}}\frac{d\overrightarrow{v}_{\text{vc}}}{dt}
+\end{align} 
+
+Desarrollando \ref{eq:EcuAuto} se obtine la siguiente expresi�n 
+
+\begin{align}
+\label{eq:simplificadovehiculo}
+-\frac{\rho \cdot \text{S}_{\text{d}} \cdot \text{C}_{\text{Dd}} \cdot v_{\text{vc}}^{2}}{2}-\frac{\rho \cdot \text{S}_{\text{v}} \cdot \text{C}_{\text{Dv}} \cdot v_{\text{vc}}^{2}}{2} + \text{m}_{\text{vc}} \text{g}=  \text{m}_{\text{vc}}\frac{d\overrightarrow{v}_{\text{vc}}}{dt}
+\end{align}
+
+en donde $\text{S}_{\text{v}}$ representa la superficie efectiva del veh�culo cient�fico, $\text{C}_{\text{Dv}}$ representa el coeficiente de arrastre propio de la geometr�a del veh�culo cient�fico,  $\text{S}_{\text{d}}$ representa la superficie del disco impermeable.\\
+Sustituyendo en \ref{eq:simplificadovehiculo} los datos conocidos, 
+
+\begin{align}
+\label{eq:simplificadodatos}
+- \frac{1{.}225\left[\text{kg} \cdot \text{m}^{-3} \right] \cdot 0{.}0314 \left[ \text{m}^{2} \right] \cdot 1{.}28 \cdot v_{\text{vc}}^{2} \left[ \text{m} \cdot \text{s}^{-1} \right] }{2} +
+0{.}400 \left[ \text{g} \right] \cdot 9{.}81 \left[ \text{m} \cdot \text{s}^{-2} \right]
+\end{align}
+\begin{align}
+\notag
+- \frac{1{.}225\left[\text{kg} \cdot \text{m}^{-3} \right] \cdot 0{.}0028 \left[ \text{m}^{2} \right] \cdot 0{.}82 \cdot v_{\text{vc}}^{2} \left[ \text{m} \cdot \text{s}^{-1} \right] }{2} = \text{m}_{\text{vc}}\frac{d\overrightarrow{v}_{\text{vc}}}{dt}
+\end{align}
+
+En vista de que la reducci�n de las variables de \eqref{eq:simplificadodatos} da como resultado una ecuaci�n diferencial, similar a la de \eqref{eq:EcuPara}, se pude utilizar la soluci�n \eqref{EDO}. Al realizar la simulaci�n en Mathematica\textregistered  se obtiene la siguiente gr�fica mostrada en la Figura \ref{fig:Grafica2} en la cual se observa que la velocidad de descenso tiene un valor constante de 12.3437 [$\text{m} \cdot \text{s}^{\text{-1}}$] despu�s de que trancurren 2.0469[s].
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.90]{Imagenes/Grafica2.eps}  
+\caption{Estimaci�n de la velocidad del descenso del veh�culo cient�fico. \label{fig:Grafica2}}
+\end{center}
+\end{figure}
+
+Una vez que se obtuvieron las dimensiones de las palas se dise�o el rotor. Los componenete mec�nicos que conforman este mecanismo se muestran en las Figura \ref{img:Partesrotor}. Como elementos de sujeci�n se utilizaron tornillos M3 y M2 de diferentes longitudes con su respectiva tuerca de bloqueo con inserto de nylon.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.42]{Imagenes/Partesrotor.png}  
+\caption{Componenetes mec�nicos del rotor. \label{img:Partesrotor}}
+\end{center}
+\end{figure}
+
+Durante la etapa de dise�o, uno de los cambios m�s significativos fue el denominado como monoblock, este elemento en un principio era un elemento que esta conformado por varias piezas, en la Figura \ref{img:Monoblock}. 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.32]{Imagenes/Monoblock.png}  
+\caption{Dise�o original del monoblock. \label{img:Monoblock}}
+\end{center}
+\end{figure}
+
+Uno de los motivos que orillaron a realizar el monoblock en una sola pieza fue reducir la masa y la cantidad de elemento m�viles. Con la reducci�n de componentes se evitan problemas con la vibraci�n durante el ascenso y descenso del veh�culo cientif�co.\\ 
+
+El rotor contiene un elemento que le permite balancear los cambios de orientaci�n de la velocidad del viento, con la finalidad de manter un descenso vertical. En la Figura se muestran los dos casos en los que el balanc�n trabaja. Este mecanismo tambien permite controlar de manera pasiva la orientaci�n de la c�mara. El control del sistema de registro de descenso se explicara con mas detalle en otra secci�n.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.55]{Imagenes/Balanceo.png}  
+\caption{Funcionamiento del sistema de balanceo. \label{img:Monoblock}}
+\end{center}
+\end{figure}
+
+Para poder validar una del rotor soportar� la carga a la que estarian sometida, se realiz�n una Dinamica de Fluidos Computacional, y un an�lisis de esfuerzo est�tico.\\
+Primeramente, se realizo una simulaci�n en Autodesk CFD 2018 \textregistered con la finalidad de conocer el comportamiento de una cuchilla del rotor sometida una velocidad del viento de 20 [$ \text{m}\cdot \text{s}^{-1}$] la cual es la velocidad m�xima permitidad a la que puede liberado el veh�culo cient�fico.
+En \ref{img:cfdcuchillasuno} se muestran los resultados obtenidos, considerando las configuraciones de simulaci�n similares a las utilizadas en el an�lisis del docel del paraca�das.\\
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.14]{Imagenes/cfdcuchillasuno.png}  
+\caption{Relaci�n entre la velocidad y la presi�n presentes en la cuchilla. \label{img:cfdcuchillasuno}}
+\end{center}
+\end{figure}
+
+En \ref{img:cfdcuchillasdos} se muestra la magnitud de la fuerza que se produce debido al flujo del viento en la que se encuentra. 
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.16]{Imagenes/cfdcuchillasdos.png}  
+\caption{Fuerza presente en la suprficie inferior de la cuchilla. \label{img:cfdcuchillasdos}}
+\end{center}
+\end{figure}
+En donde $\text{F}_{\text{Y}}$ representa la fuerza de arrastre producida por la geometr�a de la cuchilla cuya una magnitud es de 1.9841[$\text{N}$]. Se puede observar que $\text{F}_{\text{Z}}$ $>$ $\text{F}_{\text{X}}$, de modo que la geometr�a de la cuchilla permite que $\text{F}_{\text{Z}}$ gener� la rotaci�n en el rotor.
+
+\section*{Sistema de liberaci�n del veh�culo cient�fico}
+El sistema de liberaci�n del veh�culo cient�fico tiene como funci�n mantener unidos al veh�culo cient�fico y al contenedor durante la etapa de ascenso hasta el apogeo y durante la primera etapa de descenso hasta los 300 [m], La Figura \ref{img:partesliberacion} muestra los componenetes del sistema de liberaci�n.Como elementos de sujeci�n se utilizaron tornllos M3 y M2 con su respectiva tuerca de bloqueo con inserto de nylon.
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{Imagenes/Partesliberacion.png}  
+\caption{Elementos que conforman el sistema de liebraci�n de veh�culo cient�fico.}
+\label{img:partesliberacion}
+\end{center}
+\end{figure}
+El mecanismo propuesto es del tipo biela-manivela-corredera doble. El funcionamiento del mecanismo consta de dos estados, el primero que es el estado original en el que las correderas estan atascadas con el contenedor evitando que el veh�culo cient�fico caiga. Las correderas se mantienen en su posici�n inicial extendida gracias a un par de manivelas conectadas a cada corredera. Cada manivela est� conectada a un �nico disco central (biela) que est� acoplado al eje del motor. Este estado de puede observar en la Figura \ref{img:liberacioninicial}.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{Imagenes/Liberacionorigen.png}  
+\caption{Estado inicial del mecanismo de liberaci�n.}
+\label{img:liberacioninicial}
+\end{center}
+\end{figure}
+Posteriormente, cuando se energiza el motor acoplado al disco centrl gira y, debido a las relaciones cinem�ticas, las correderas se deslizan hacia el eje de rotaci�n, liberando el veh�culo cient�fico. Con base a las dimensiones de los componentes, hace falta s�lo un giro de 90 grados. En la Figura \ref{img:liberacionfinal} se puede observar la transisic�n del estado original al estado final.
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.30]{Imagenes/Liberacionfinal.png}  
+\caption{Estado inicial del mecanismo de liberaci�n.}
+\label{img:liberacioninicial}
+\end{center}
+\end{figure}
+
+
+\subsubsection*{Selecci�n de materiales}
+Tomando como base el proceso de selecci�n de materiales propuesto por Ashby en \cite{}?, la Tabla \ref{Alex3} muestra la traducci�n de los requerimientos a especificaciones de material.
+
+\begin{table}[H]
+\begin{center}
+\caption{Traducci�n de requerimientos a prescripciones de materiales del SLVC.}
+\label{Alex3}
+\resizebox{12cm}{!}{
+\begin{tabular}{m{4cm}p{10cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+Funciones & Liberar al veh�culo cient�fico del contenedor.\tabularnewline
+Restricciones &
+- Temperatura de trabajo: debe soportar temperaturas de hasta 60 [� C].\newline
+- Resistencia: debe soportar el peso del veh�culo cient�fico al momento del despegue y durante la primera etapa de descenso.\newline
+- Rigidez: no debe sufrir grandes deformaciones al momento del despegue.\newline
+- Bajo coeficiente de fricci�n.
+\tabularnewline
+Objetivos & Minimizar masa.\tabularnewline
+Variables libres &
+- Forma de los componentes del mecanismo.\newline
+- Selecci�n del material.
+\tabularnewline
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+Las manivelas y la biela son uno de los puntos m�s cr�ticos del mecanismo presentado en la Figura \ref{fig:MecanismoAlex}, ya que son los que estar�n sometidos a flexi�n durante el despegue del CanSat. Por esta raz�n, la aleaci�n de aluminio 6061 T6 fue seleccionada para su fabricaci�n, adem�s de ser una de las aleaciones m�s comunes. Las manivelas y la biela son piezas muy peque�as por lo que no representan un valor de masa muy elevado.
+Para el caso de la base y las correderas se necesita poca fricci�n entre ambos componentes para un desacople r�pido. Fabricar de aluminio estas piezas representar�a mucha masa para el CanSat por lo que se propone el uso del la impresi�n con ABS (\textit{Acrylonitrile Butadiene Styrene}, por sis siglas en el idioma ingl�s.) junto con un tratamiento con vapor de acetona para eliminar la mayor cantidad de imperfecciones producidas por el proceso de deposici�n de material y as� reducir la fricci�n entre componentes. \\
+
+La Tabla \ref{materialessep} muestra las propiedades de estos materiales.
+
+\begin{table}[H]
+\begin{center}
+\caption{Materiales del SLVC.}
+\label{materialessep}
+\resizebox{12cm}{!}{
+\begin{tabular}{>{\centering}p{3cm}>{\centering}p{2cm}>{\centering}p{2cm}>{\centering}p{2cm}>{\centering}p{4cm}}
+\multicolumn{5}{c}{}\tabularnewline
+\toprule
+Material & Densidad [kg/$\text{m}^{3}$] & M�dulo de elasticidad [GPa] & Esfuerzo de cedencia [MPa] & Temperatura de trabajo m�xima [� C]\tabularnewline
+
+ABS  & 1050 & 1.68 & 39 & 85\tabularnewline
+Aluminio 6061 & 2730 & 66.6 & 240 & 130\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+\section*{Sistema de registro de descenso}
+
+\begin{figure}[H]
+\begin{center}
+\includegraphics[scale=0.35]{Imagenes/Partesregistro.png}  
+\caption{\label{fig:MecAzimut}Elementos que conforman el mecanismo de orientaci�n de la c�mara}
+\end{center}
+\end{figure}
+Este sistema se encuentra encargado de orientar la c�mara y grabar v�deo mientras se realiza el descenso del CanSat. Para realizar dicha tarea, el sistema cuenta con un mecanismo de compensaci�n en azimut para mantener la c�mara orientada, as� mismo cuenta con la c�mara para realizar la grabaci�n del v�deo.
+
+Este sistema debe mantener orientada la c�mara de acuerdo a la posici�n inicial al momento de iniciar la misi�n.
+
+El dise�o de este sistema se encuentra basado bajo la suposici�n de que el sistema de rotor, gracias a su al mecanismo de balanc�n, ayudar� a mantener el CanSat en una posici�n vertical durante el descenso. Es gracias a esta suposici�n que el control se reduce a un problema de regulaci�n en un plano X-Y.
+
+
+El control en el �ngulo de azimut se realiza mediante un motor con sistema de engranes para reducci�n, y una base m�vil rotatoria acoplada al eje del motor. Este mecanismo puede verse en la figura ??.
+
+El motor usado es un motorreductor 380:1 con velocidad nominal de 85 RPMs, este a su vez cuenta con un enconder de cuadratura que proporciona 12 pulsos por revoluci�n en el eje del motor. Cabe resaltar que una revoluci�n en el eje del motor no corresponde con una revoluci�n en el eje del sistema de reducci�n de engranes.
+
+El mecanismo para regulaci�n en azimut puede ser visto en un plano X-Y, dibujando de esta manera un circulo que determina la trayectoria de la c�mara, como se observa en la figura \ref{img:PlanoAzimut}.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.5]{Imagenes/SRD/PlanoAzimut.png}
+	\caption{Plano X-Y para control en Azimut}
+	\label{img:PlanoAzimut}
+\end{figure}
+
+Aunque el sistema cuenta con una velocidad de c�mputo elevada, se propone un controlador de dos tareas. La primera tarea es realizar el c�lculo del error en intervalos de $0.5\text{[s]}$, mientras que la segunda tarea es compensar el error en intervalos de $0.01\text{[s]}$. Esto permite al sistema no verse saturado de tareas impuestas en intervalos cortos de tiempo, y adem�s, permite mantener tiempos fijos para implementar el controlador.
+
+El control del motor esta basado en un control por PWM para la regulaci�n de la velocidad, y un puente H para el control de la direcci�n de giro del motor.
+
+Este sistema fue simulado en el ambiente de Simulink, considerando para ello un incremento de velocidad del motor lineal con respecto al incremento en el ciclo de trabajo.
+
+El sistema simulado puede observarse en la figura \ref{img:Sis_Control}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{Imagenes/SRD/Esquema.png}
+	\caption{Simulaci�n del Sistema de Control}
+	\label{img:Sis_Control}
+\end{figure}
+
+
+De este sistema se realizaron dos simulaciones, la primera simulaci�n tiene como referencia un escal�n con amplitud equivalente a $100$[$^\circ$], mientras que la segunda simulaci�n tiene como entrada una se�al rampa con una pendiente equivalente a $100$[$^\circ/s$].
+
+El control es del tipo PID y cuenta con valores de $50$, $0.01$ y $0.01$, en sus ganancias proporcional, integral y derivativa, respectivamente. Estas ganancias fueron obtenidas de manera emp�rica.
+
+En el primer caso se obtuvo la se�al mostrada en la Figura \ref{img:Sim1_Img1}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{Imagenes/SRD/Sim1_Img1.png}
+	\caption{Primera Simulaci�n. Entrada Escal�n. Sin aumento. Referencia y Posici�n Angular}
+	\label{img:Sim1_Img1}
+\end{figure}
+
+En la Figura \ref{img:Sim1_Img1} se aprecia la respuesta completa dentro de un tiempo de simulaci�n de $100$[s], sin embargo, en la Figura \ref{img:Sim1_Img2} se hace un acercamiento al intervalo comprendido entre los $9.9$[s] y $10.4$[s].
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{Imagenes/SRD/Sim1_Img2.png}
+	\caption{Primera Simulaci�n. Entrada Escal�n. Con aumento. Referencia y Posici�n Angular}
+	\label{img:Sim1_Img2}
+\end{figure}
+
+En la Figura \ref{img:Sim1_Img2} se observa un sobreimpulso de $1.15$[$^\circ/s$] y un tiempo de establecimiento de aproximadamente $0.25$[s] para la referencia de $100$[$^\circ$].
+
+En la Figura \ref{img:Sim1_Img3}, que se encuentra dentro del mismo intervalo de tiempo que la Figura \ref{img:Sim1_Img2}, se observa la din�mica del error a trav�s del tiempo, y aunque este adquiera valores mayores a las $100$ unidades dentro de los c�lculos, f�sicamente le es imposible llegar a ese valor debido a que el PWM se encuentra acotado de 0 a 100 unidades.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{Imagenes/SRD/Sim1_Img3.png}
+	\caption{Primera Simulaci�n. Entrada Escal�n. Con aumento. Error del Sistema}
+	\label{img:Sim1_Img3}
+\end{figure}
+
+Para el segundo caso se muestra la respuesta en la Figura \ref{img:Sim2_Img1}.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{Imagenes/SRD/Sim2_Img1.png}
+	\caption{Segunda Simulaci�n. Entrada Rampa. Sin aumento. Referencia y Posici�n Angular}
+	\label{img:Sim2_Img1}
+\end{figure}
+
+El igual que en el caso anterior, se puede apreciar que el sistema sigue la referencia, aunque no se aprecia con detalle como el sistema se va acercando a dicha referencia, para un mayor detalle se muestra la Figura \ref{img:Sim2_Img2}, que presenta un acercamiento al intervalo comprendido entre los $0$[s] y $2$[s], y los $0$[$^\circ$] y $200$[$^\circ$].
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{Imagenes/SRD/Sim2_Img2.png}
+	\caption{Segunda Simulaci�n. Entrada Rampa. Con aumento. Referencia y Posici�n Angular}
+	\label{img:Sim2_Img2}
+\end{figure}
+
+Como se aprecia en la Figura \ref{img:Sim2_Img2}, el sistema realiza peque�os acercamientos parecidos a escalones, esto debido a la forma de plantear el control, pues es a intervalos de $0.5$[s] que el sistema renueva la referencia, generando as� peque�os escalones en la referencia del sistema, sin embargo, el control es realizado a intervalos de $0.01$[s], dando entonces esa apariencia de peque�as respuestas a escalones con desplazamientos en la amplitud.
+
+A continuaci�n, en la Figura \ref{img:Sim2_Img3}, se expone la din�mica del error a trav�s del tiempo.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.3]{Imagenes/SRD/Sim2_Img3.png}
+	\caption{Segunda Simulaci�n. Entrada Rampa. Con aumento. Error del Sistema}
+	\label{img:Sim2_Img3}
+\end{figure}
+
+Se pueden apreciar similitudes con entre las Figuras \ref{img:Sim1_Img3} y \ref{img:Sim2_Img3}, pues la primera presenta la din�mica del error con respecto a un escal�n, mientras que la segunda presenta la respuesta del sistema con respecto a una rampa tratada como una sucesi�n de escalones, como se explico anteriormente, raz�n por la cual el comportamiento de los errores es parecida.
+
+\section*{Sistema estructural}
+Para las columnas utilizadas en la estructura exterior del veh�culo cient�fico as� como en la estructura de soporte del Cansat, se fabricara una cuerda UNF, ya que, el hilo las rocas UNF tiene un di�metro menor mayor que las roscas UNC, lo que proporciona a los sujetadores con rosca UNF una resistencia de carga ligeramente mayor y mejores capacidades de bloqueo de torque que los sujetadores con rosca UNC del mismo material (aluminio, en nuestro caso), y di�metro exterior. Adem�s, el �ngulo de avance m�s peque�o permite un ajuste m�s fino a la tensi�n. Las rocas UNF son las m�s ampliamente usadas en la industria aeroespacial. \\
+Para que este elemento sea lo ligero y resistente posible, se utiliz� barra redonda con un di�metro exterior de 3/16 [in] y pared de 0.049 [in], dejando un di�metro interno de 2.2733 [mm] lo que permite hacer una roscas UNF 4-48 o bien, una equivalente ligeramente superior en el sistema m�trico, es un tornillo M3.\\
+Puesto que el las piezas que conforman el veh�culo cient�fico y el contenedor estar�n expuestas a condiciones de humedad y calor se utilizaron tornillos de acero inoxidable 304 con la finalidad de evitar que las condiciones ambientales afecten la uni�n entre las piezas.\\
+Se va a utilizar tornillos DIN-7380 puesto que son tornillos que ofrecen un buen apriete en espacios reducidos, y son resistentes a la corrosi�n.
+
+\section{Tapa de paraca�das}
+Uno de los elementos cr�ticos, durante el inicio de la misi�n, es la tapa, ya que de este elemento ser� sujeto el Cansat por medio de un gancho dispuesto en un veh�culo a�reo no tripulado con la finalidad de elevarlo a una altura de 400 [m] con respecto a la superficie de la Tierra. Para poder validar que las dimensiones, y geometr�as de la tapa ser�n capaces de soportar la carga ese proceso se propuso realizar un an�lisis est�tico de elemento finito, por medio de SolidWoks, para esto se hicieron algunas consideraciones. Primeramente se determinan los puntos en donde la tapa se encontrar� fija, los cuales corresponden al punto en donde se encuentra el eje, el mismo que realiza la funci�n de una bisagra, y el punto es donde la pieza estar� sujeta por medio del elemento mec�nico, del yugo escoses, que hace un movimiento lineal.\\
+
+Para la simulaci�n se consider� que la �nica fuerza que act�a sobre la tapa es el peso del Cansat, la cual corresponde a 4.905 [N] que act�a de manera normal al plano de la misma, misma que es distribuida en dos componentes; cada uno tendr� la misma direcci�n y la misma magnitud de 2.4525 [N], siendo estas dos �ltimas fuerzas las consideradas para la simulaci�n est�tica de elemento finito.
+
+
+
+\end{document}

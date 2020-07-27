@@ -1,0 +1,436 @@
+% !TeX encoding = ISO-8859-1
+
+{\parindent0pt
+
+El SPD tiene como objetivo transportar, modificar y almacenar todas las variables del CanSat. Como se dijo anteriormente, el SPD comparte recursos físicos y de procesamiento con el SCMC.\\
+
+El SPD se compone de tres subsistemas: subsistema de acondicionamiento de datos ($sS_{2{.}1}-$SAcD), subsistema de almacenamiento de datos ($sS_{2{.}2}-$SAlD) y el subsistema de comunicación interna ($sS_{2{.}3}-$SCI). Al final de esta sección se presenta el diseño electrónico del SCMC y del SPD de forma detallada.
+
+\subsubsection{Subsistema de Acondicionamiento de Datos}
+
+El SAcD se encarga de adquirir las señales crudas provenientes del SP, normalmente presentes en bits menos significativos (\textit{Less Significant Bit}, LSB), y transformarlas en unidades del Sistema Internacional que son más entendibles para el usuario y más interpretables para la programación. EL SAcD también se encarga de realizar todas las operaciones matemáticas para obtener unidades derivadas como la altura calculada a partir de la presión atmosférica, o la inclinación calculada a partir de valores del acelerómetro y giroscopio. Explicado lo anterior, se procederá a describir cómo el dispositivo realiza dichas transformaciones.
+
+\subsubsection*{Transformaciones genéricas de unidades}
+
+Estas transformaciones son llevadas a cabo dentro de las rutinas de lecturas de sensores. Las transformaciones genéricas dependen únicamente de la medición llevada a cabo en el momento y del factor de conversión establecido como constante.\\
+
+Todos los sensores, a excepción del GPS, tienen una configuración de sensibilidad. Esta configuración se lleva a cabo al inicializar el sistema y es trabajo del programador determinar cuál será el grado de sensibilidad. La sensibilidad del sensor corresponde al cociente de unidades de medida sobre LSBs, lo que es equivalente a un factor de conversión. Los factores de conversión se obtienen de la hoja de datos de cada sensor.\\
+
+La fórmula general para llevar a cabo estas transformaciones es la siguiente:
+
+$$M_T=(M_R)(FC)$$
+
+donde:\\
+\null\qquad\qquad$M_T$ es la medida transformada  [unidades]\\
+\null\qquad\qquad$M_R$ es la medida cruda [LSBs]\\
+\null\qquad\qquad$FC$ es el factor de conversión [unidades/LSBs]\\
+
+
+\subsubsection*{Transformación para la altura}
+La altura es una unidad derivada que depende de la presión atmosférica y de la temperatura adquiridas al momento de la transformación. La siguiente ecuación [?] muestra el cálculo utilizado para realizar esta transformación (por simplicidad, la temperatura se supuso constante de $15^{\text{o}}\text{C}$):
+
+\begin{equation*}
+h = 44330.76923 \left[ 1 - \left( \dfrac{P}{101325} \right)^{0.190263} \right]
+\end{equation*}
+
+donde:\\
+\null\qquad\qquad$h$ es la altura sobre el lugar de referencia $[m]$\\
+\null\qquad\qquad$P$ es la presión atmosférica medida a la altura $h$ $[Pa]$\\
+
+% [x] -> https://pdfs.semanticscholar.org/59d1/b7706dd7954d7115ae9c8fd7eface3980865.pdf
+
+\subsubsection*{Transformación para la inclinación}
+
+Para el cálculo de la inclinación del CanSat se siguió un método que involucra a los datos del giroscopio y acelerómetro en cada eje para realizar un filtro complementario. Dicho cálculo se basa en un Filtro Extendido de Kalman [?]. En el Algoritmo \ref{MetodoInclinacion} se detalla el pseudocódigo  para la implementación de este cálculo.\\
+
+Analizando el Algoritmo \ref{MetodoInclinacion} se observa que el sistema es dependiente del tiempo, de modo que la precisión del cálculo dependerá de la velocidad a la cual se realice este algoritmo y de la sensibilidad que tengan los sensores.\\
+
+Debe aclararse que el Algoritmo \ref{MetodoInclinacion} calcula la inclinación para los ejes $pitch$ y $roll$, pero no atiende al cálculo de $yaw$.\\
+
+Para este último caso, el ángulo sobre el eje $yaw$ puede ser obtenido mediante una integración discreta. La ecuación que describe esta integración se presenta a continuación.
+
+\begin{equation*}
+yaw = \omega_\text{Z}*\Delta t
+\end{equation*}
+
+donde:\\
+\null\qquad\qquad$\omega_\text{Z}$ es la velocidad angular medida sobre el eje Z $[deg/s]$\\
+\null\qquad\qquad$\Delta t$ es el tiempo entre cada integración $[s]$\\
+
+La precisión de estos métodos depende de la velocidad a la cual el sistema integra la señal; mientras más pequeño sea el tiempo de integración, el error en la señal de salida será menor. Debido a lo anterior, para los cálculos se utilizó un tiempo de $10 [ms]$.
+
+\algblockdefx[DoEvery]{DoEvery}{EndDoEvery}%
+	[1]{\textbf{while} #1 \textbf{do}}%
+	[1]{\textbf{every} #1}
+
+\begin{algorithm}[H]
+\caption{Pseudocódigo para estimación de la inclinación}
+\label{MetodoInclinacion}
+\begin{algorithmic}[1]
+
+\Ensure Ejes de los sensores sean paralelos o coincidentes
+\Ensure Ejes +Z de los sensores se encuentre apuntando hacia arriba
+\Require Lecturas del giroscopio y acelerómetro
+	
+\Procedure{Estimación de la Inclinación}{}
+	\State Se normaliza la lectura de gravedad	
+	\State Se genera un marco estimado con base en la gravedad
+	\State Se calculan los ángulos con base en el marco estimado
+	\DoEvery{El sistema está encendido}
+		\State Se normaliza la lectura de la gravedad
+		\If{$Acelerometro_{Z} < 0.1 $} 
+		\Comment{Acelerómetro\textsubscript{Z} es la lectura del acelerómetro en el eje Z}
+			\State $MarcoReferencia_{G} \gets MarcoReferencia_{E}$
+			\Comment{MarcoReferencia\textsubscript{G} es el marco de referencia del giroscopio y MarcoReferencia\textsubscript{E} es el marco de referencia estimado}
+		\Else
+			\State Calcula MarcoReferencia\textsubscript{G} con los datos actuales
+		\EndIf
+		\State $MarcoReferencia_{E} \gets MarcoReferencia_{G} \cup MarcoReferencia_{A}$
+		\Comment{MarcoReferencia\textsubscript{A} es el marco de referencia del Acelerómetro}
+		\State $MarcoReferencia_{E} \gets MarcoReferencia_{E} Normalizado$
+		\State Calcula $pitch$ y $roll$
+	\EndDoEvery{n milisegundos}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+% [Z] -> https://www.instructables.com/id/Accelerometer-Gyro-Tutorial/
+
+\subsubsection{Subsistema de Almacenamiento de Datos}
+
+Este subsistema se encarga de almacenar las tramas de datos ya procesados, así como cualquier otra variable de interés para el correcto funcionamiento del sistema (estado actual, valores de calibración y condiciones iniciales). Es responsabilidad de este subsistema el llevar a cabo el almacenamiento y recuperación de la información antes y después de un reinicio.\\
+
+El CanSat lleva a bordo una tarjeta SD donde se guardan las tramas de datos enviadas a la estación en Tierra. También, el CanSat posee una memoria no volátil en donde se almacenan los valores de configuración y calibración (valores de calibración de los sensores, alturas de referencia, tiempo de misión, número de paquete y estado actual).
+
+
+\subsubsection{Subsistema de Comunicación Interna}
+
+Este subsistema lleva acabo todas las tareas de comunicación entre los diferentes dispositivos. Dentro de este subsistema se definen los diferentes protocolos a usar, así como los medios para realizar la comunicación entre elementos.\\
+
+Debido a la gran cantidad de periféricos que se utilizan, así como a la poca disponibilidad de espacio, se optó por la utilización de protocolos de comunicación de tipo serial ya que no requieren muchos cables. Algunos protocolos con estas características son los protocolos de comunicación I2C, SPI y RS232.\\
+
+El protocolo RS232 a 115200 baudios se utilizó para la comunicación entre la placa principal y el SP. Por otra parte, la mayoría de los sensores en el mercado utilizan los protocolos I2C y SPI. Sin embargo, se utilizó el protocolo I2C pues requiere sólo 2 líneas de comunicación independientemente de la cantidad de sensores usados.\\
+
+\subsubsection{Desarrollo Electrónico}
+
+En esta sección se muestran los componentes electrónicos utilizados por el SCMC y el SPD. Al final de esta sección se muestran los circuitos esquemático.\\
+
+El primer componente seleccionado fue la unidad de almacenamiento. Este elemento debe contar con las características de facilidad de uso y extracción, alta capacidad de almacenamiento, tamaño pequeño y poca masa. Una tarjeta microSD cumple con estas características. Ahora, la Tabla \ref{tab:sensores} enlista los sensores utilizados en el SP para medir los parámetros internos y externos del CanSat.\\
+
+\begin{table}[H]
+\begin{center}
+\caption{Sensores utilizados en el SP.}
+\label{tab:sensores}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{
+	c>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}
+}
+\multicolumn{10}{c}{}\tabularnewline
+\toprule 
+\multirow{3}{*}{\textbf{Modelo}} & \multicolumn{9}{c}{\textbf{Criterios}}\tabularnewline
+\cmidrule{2-10} 
+	& \textbf{Sensor}
+	& \textbf{Voltaje de Operación}
+	& \textbf{Cte. de Operación}
+	& \textbf{Canales}
+	& \textbf{Tasa de Actualización}
+	& \textbf{Cold Start}
+	& \textbf{Warm Start}
+	& \textbf{Hot Start}
+	& \textbf{Soporte Multi Canal}
+	\tabularnewline
+	
+	& 
+	& {[}V{]}
+	& {[}mA{]}
+	& 
+	& {[}Hz{]}
+	& {[}s{]}
+	& {[}s{]}
+	& {[}s{]}
+	& 
+	\tabularnewline
+	
+\multicolumn{10}{c}{}\tabularnewline	
+
+	  BN-180
+	& GPS
+	& 2.8-6
+	& 50
+	& 72
+	& 10
+	& 26
+	& 25
+	& 1
+	& No
+	\tabularnewline
+
+%	  NEO M8N
+%	& 1.6-3.6
+%	& 67
+%	& 72
+%	& 10
+%	& 29
+%	& 26
+%	& 1
+%	& Sí
+%	& 30
+%	\tabularnewline
+	
+%	  NEO M6N
+%	& 1.6-3
+%	& 67
+%	& 56
+%	& 10
+%	& 30
+%	& 28
+%	& 1
+%	& No
+%	& 20
+%	\tabularnewline
+
+		
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+
+\begin{center}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{
+	c>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}>{\centering}
+	p{1.8cm}
+}
+\multicolumn{10}{c}{}\tabularnewline
+\toprule 
+\multirow{3}{*}{\textbf{Modelo}} & \multicolumn{9}{c}{\textbf{Criterios}}\tabularnewline
+\cmidrule{2-10} 
+	& \textbf{Sensor}
+	& \textbf{Voltaje de Operación}
+	& \textbf{Cte. de Operación}
+	& \textbf{Acelerómetro}
+	& \textbf{}
+	& \textbf{Giroscopio}
+	& \textbf{}
+	& \textbf{Magnetómetro}
+	& \textbf{}
+	\tabularnewline
+	
+	&
+	& {[}V{]}
+	& {[}mA{]}
+	& 
+	&
+	&
+	&
+	&
+	& 
+	\tabularnewline
+	
+\multicolumn{10}{c}{}\tabularnewline	
+
+	  ICM20948
+	& IMU
+	& 1.7-3.6
+	& 4
+	& 2,4,8,16 {[}g{]}
+	& 16 bits
+	& 250,500,1000,2000 {[}dps{]} 
+	& 16 bits
+	& 1900 {[}uT{]}
+	& 16 bits
+	\tabularnewline
+		
+\bottomrule
+\end{tabular}
+}
+\end{center}
+
+
+\begin{center}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{
+	c>{\centering}
+	p{2cm}>{\centering}
+	p{2cm}>{\centering}
+	p{2cm}>{\centering}
+	p{2cm}>{\centering}
+	p{2cm}>{\centering}
+	p{2cm}>{\centering}
+	p{2cm}
+}
+\multicolumn{8}{c}{}\tabularnewline
+\toprule 
+\multirow{3}{*}{\textbf{Modelo}} & \multicolumn{7}{c}{\textbf{Criterios}}\tabularnewline
+\cmidrule{2-8}
+	& \textbf{Sensor}
+	& \textbf{Voltaje de Operación}
+	& \textbf{Cte. de Operación}
+	& \textbf{Rango Presión}
+	& \textbf{Resolución Presión}
+	& \textbf{Rango Temperatura}
+	& \textbf{Resolución Temperatura}
+	\tabularnewline
+
+	&
+	& {[}V{]}
+	& {[}uA{]}
+	& {[}hPa{]}
+	& {[}hPa{]}
+	& {[}C{]}
+	& {[}C{]}
+	\tabularnewline
+	
+\multicolumn{8}{c}{}\tabularnewline	
+
+%	  LPS22HBT
+%	& 1.7-3.6
+%	& 15
+%	& 260-1260
+%	& 0.1
+%	& 0-65
+%	& 0.01
+%	& 3.43
+%	\tabularnewline
+	
+	  DPS310
+	& Presión y Temperatura
+	& 1.7-3.6
+	& 75
+	& 300-1200
+	& 0.005
+	& 0-65
+	& 0.01
+	\tabularnewline
+	
+%	  BMP280
+%	& 1.7-3.6
+%	& 1120 
+%	& 300-1100
+%	& 0.12
+%	& 0-65
+%	& 0.01
+%	& 3.99
+%	\tabularnewline
+
+		
+\bottomrule
+\end{tabular}
+}
+\end{center}
+
+
+Finalmente, se hablará de las unidades lógicas de control. El SP debe gestionar todos los componente anteriores de modo que debe contar con una unidad lógica que permita realizar tales tareas, es por ello que se contempla un microcontrolador de bajo consumo y pequeñas dimensiones, pero con buena capacidad de cómputo y múltiples puertos de comunicación. Por otro lado, también se tiene la unidad lógica de la placa principal, el cual debe tener una alta capacidad de control de periféricos y por ende gran capacidad de manejo de información que se traduce en altas velocidades de cómputo. La Tabla \ref{tab:Micro} muestra los dos microcontroladores selccionados así como algunas de sus características principales.\\
+
+\begin{table}[H]
+\begin{center}
+\caption{Microcontroladores del CanSat.}
+\label{tab:Micro}
+\resizebox{\textwidth}{!}{
+\begin{threeparttable}
+\begin{tabular}{c>{\centering}p{2cm}>{\centering}p{2cm}>{\centering}p{1.5cm}>{\centering}p{2cm}>{\centering}p{3cm}>{\centering}p{2cm}>{\centering}p{1.5cm}}
+\multicolumn{8}{c}{}\tabularnewline
+\toprule 
+\multirow{2}{*}{Modelos} & \multicolumn{7}{c}{Criterios}\tabularnewline
+\cmidrule{2-8} 
+ & Voltaje de operación {[}V{]} & Cte. de operación {[}mA{]} & SRAM {[}kB{]} & Velocidad de operción {[}MHz{]} & Interfaces de comunicación & Arquitectura & Precio {[}USD{]}\tabularnewline
+%\multicolumn{1}{c}{PIC18F45K40} & 
+
+%1.8 - 5.5 & 
+
+%9 & 
+
+%2 & 
+
+%64 & SPI(x2) \& USART(x2) \& I2C(x2) & 
+
+%8 - bits & 
+
+%3\tabularnewline
+\multicolumn{1}{c}{STM32L432KC} & 
+
+1.6 - 3.3  & 
+
+\textasciitilde 6\tnote{1} & 
+
+64 & 
+
+80 & SPI(x4) \& USART(x5) \& I2C(x3) & 32 - bits & 
+
+7.22\tabularnewline
+%ATMega328P & 
+
+%1.8 - 5.5  & \textasciitilde 3 & 
+
+%2 & 
+
+%20 & SPI(x1) \& USART(x1) \& I2C(x1) & 
+
+%8 - bits & 
+
+%2.5\tabularnewline
+STM32F446RE & 
+
+1.6 - 3.3 & 
+
+83\tnote{1} & 
+
+128 & 
+
+180 & SPI(x4) \& USART(x6) \& I2C(x4) & 
+
+32 - bits & 
+
+11.2\tabularnewline
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+	\item[1] Haciendo uso de la máxima frecuencia de operación y usando todos los periféricos disponibles.
+\end{tablenotes}
+\end{threeparttable}
+}
+\end{center}
+\end{table}
+
+
+
+De acuerdo a los criterios de selección y a las funciones deseadas, el microcontrolador seleccionado para el SP es el STM32L432KC de STMicroelectronics\textregistered, debido a su bajo consumo de corriente en relación a sus periféricos y velocidad de operación. Además, en el caso de la placa principal, el microcontrolador STM32F446RE fue seleccionado, las razones fueron su alta velocidad de cómputo, cantidad de pines para el manejo de periféricos, alta capacidad de memoria embebida, entre otros.\\
+
+Por último, en las figuras \ref{img:EsquematicoMS} y \ref{img:EsquematicoPP} se muestran los circuitos esquemáticos del SP y del sistema completo, respectivamente.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[angle=-90,scale=0.75]{diseniosist/SPD/Modulo_Sensores}
+	\caption{Circuito esquemático del subsistema de percepción (módulo de sensores)}
+	\label{img:EsquematicoMS}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[angle=90,scale=0.5]{diseniosist/SPD/Placa_Principal}
+	\caption{Circuito esquemático de la placa principal}
+	\label{img:EsquematicoPP}
+\end{figure}
+
+}

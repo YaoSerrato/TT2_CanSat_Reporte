@@ -1,0 +1,141 @@
+\chapter{Introducción}
+
+\begin{flushright}
+\textit{When faced with a challenge, get smarter.}\\
+		\small\textbf{Edwin Catmull}, cofundador de Pixar.
+\end{flushright}
+
+% ***********************************************************************************************************************************%
+\section{Definición del problema}
+% \addcontentsline{toc}{section}{Definición del problema}
+
+Se necesita diseñar un satélite tipo CanSat que esté compuesto de dos partes principales: un contenedor y un vehículo científico. El vehículo científico deberá estar dentro del contenedor durante la etapa de ascenso del CanSat, y durante la primera etapa de descenso. Una vez alcanzada la altura máxima de elevación ($400 [m]$ sobre el sitio de lanzamiento) el CanSat será liberado y, a partir de ese momento, deberá descender a una velocidad no mayor a $25 [m/s]$ y no menor a $15 [m/s]$.\\
+
+\noindent A una altura de $250 [m]$ $\pm$ $10 [m]$ el vehículo científico y el contenedor deberán separarse para que el primero comience con su propia etapa de descenso. El vehículo científico deberá caer entonces utilizando un sistema de descenso por autorrotación que mantenga su velocidad dentro del rango de $10 [m/s]$ a $15 [m/s]$.\\
+
+\noindent El vehículo científico deberá ser capaz de adquirir, procesar y almacenar datos externos e internos, y deberá transmitirlos a una estación en Tierra a una frecuencia mínima de $1 [Hz]$ durante todo el tiempo de vuelo.\\
+
+\noindent La estación en Tierra deberá recibir los datos enviados por el vehículo científico, y desplegarlos en una interfaz de usuario. La interfaz de usuario deberá procesar y almacenar los datos para su posterior análisis.\\
+
+\noindent El vehículo científico tendrá que poseer algún sistema digital multimedia que sea capaz de grabar toda la etapa de vuelo, el cual deberá apuntar en una misma dirección.
+
+% ***********************************************************************************************************************************%
+\section{Justificación}
+% \addcontentsline{toc}{section}{Justificación}
+
+Con el desarrollo de este proyecto su pretenden implementar varias modificaciones al diseño con respecto de trabajos anteriores. Se proponen mejoras en el diseño electrónico con la utilización de componentes más pequeños y de montaje superficial, así como de sensores de desarrollo reciente para la implementación de un módulo de sensores que otorgue datos de parámetros internos y externos al CanSat. Con respecto al diseño mecánico, se diseñará un sistema de descenso por autorrotación y una estructura ligera. En el desarrollo de la interfaz de usuario se pretende mejorar el procesamiento de datos y del ambiente gráfico, así como utilizar un lenguaje de programación \textit{open source} (lenguaje de uso y distribución libres). Con respecto al área de las comunicaciones, se pretende obtener una comunicación continua entre el CanSat y la estación en Tierra sin importar la orientación del CanSat con respecto a la estación en Tierra.\\
+
+\noindent El desarrollo de un CanSat requiere de un equipo interdisciplinario debido a que en el diseño, construcción e implementación del mismo, concurren diferentes ramas de la ingeniería como son la ingeniería electrónica, ingeniería mecánica y el desarrollo de \textit{software}; así como de otras áreas tales como la administración de proyectos y la gestión de equipos de trabajo. Debido a lo anterior, este proyecto será realizado desde un enfoque mecatrónico. Se pretende obtener un prototipo que tenga una mayor sinergia entre los sistemas que lo componen, y que sea resultado de seguir una metodología de diseño diferente a aquellas con enfoques monodisciplinarios.\\
+
+\noindent El desarrollo de este proyecto permitirá seguir sentando las bases para la formación de una sociedad estudiantil en la UPIITA dedicada al desarrollo de proyectos académicos pertenecientes al sector aeroespacial. Por lo tanto, el diseño del presente CanSat se unirá a las referencias en la UPIITA ya disponibles, y será útil para el diseño y construcción de prototipos CanSat para concursos internacionales, como la \textit{Annual CanSat Competition} [?] llevada a cabo anualmente en Estados Unidos de América, y nacionales, como el Concurso Nacional de Satélites Enlatados [?] organizado por el Programa Espacial Universitario de la Universidad Nacional Autónoma de México, y el concurso CanSat CUCEI [?] organizado por la Universidad de Guadalajara.\\
+
+\noindent Finalmente, con la ralización de este proyecto se busca incentivar el desarrollo de este tipo de sistemas en la escuela a través de la colaboración con estudiantes de semestres tempranos y de diferentes carreras, así como con estudiantes de posgrado.
+
+\newpage
+
+% ***********************************************************************************************************************************%
+\section{Objetivos}
+% \addcontentsline{toc}{section}{Objetivos}
+	\subsection*{Objetivo general}
+Diseñar y construir un satélite tipo CanSat (contenedor - vehículo científico) con sistema de descenso por paracaídas (para el contenedor) y por autorrotación (para el vehículo científico) que transmita durante el vuelo datos de telemetría a una estación en Tierra para su posterior análisis, y que tenga una cámara apuntando en una sola dirección para grabar toda la etapa de descenso.\\
+
+	\subsection*{Objetivos particulares}
+
+\begin{itemize}
+
+	\item Diseñar y construir la estructura mecánica del contenedor y del vehículo científico para soportar valores de aceleración de hasta 30 [Gs], con el propósito de que el CanSat sea capaz de mantener su integridad física bajo la acción de cualquier fuerza durante las etapas de despegue, descenso y aterrizaje.
+	
+	\item Diseñar y construir el sistema de descenso por paracaídas del CanSat para alcanzar una velocidad de descenso de $20 [m/s]$ $\pm$ $5 [m/s]$ antes de llegar a los $450 [m]$ de altura.
+	
+	\item Diseñar y construir el sistema de descenso por autorrotación del vehículo científico para alcanzar una velocidad de descenso comprendida dentro del rango de $10 [m/s]$ a $15 [m/s]$, para reducir la fuerza de impacto del vehículo científico con el suelo al aterrizar.
+	
+	\item Diseñar y construir los mecanismos correspondientes para la separación del vehículo científico del contendor, para el despliegue del sistema de descenso por autorrotación, y para la apertura del paracaídas.
+	
+	\item Diseñar y construir un mecanismo de orientación que mantenga una cámara apuntando a $45^{\circ}$ con respecto del nadir, y que esté dirigida en una sola dirección con respecto del campo magnético de la Tierra dentro de una tolerancia de $\pm$ $10^{\circ}$.
+
+	\item Diseñar e implementar el sistema electrónico para la adquisición, procesamiento, almacenamiento, y envío de datos de telemetría a la estación en Tierra, y para la ejecución de las operaciones de control de descenso y de orientación de cámara.
+	
+	\item Diseñar e implementar la estación en Tierra para la recepción, procesamiento, despliegue en pantalla y almacenamiento de los datos de telemetría enviados por el vehículo científico desde el despegue hasta el aterrizaje.
+	
+\end{itemize}
+	
+% ***********************************************************************************************************************************%
+% \section{Enfoque mecatrónico}
+% \addcontentsline{toc}{section}{Enfoque mecatrónico}
+
+% ***********************************************************************************************************************************%
+\newpage
+\section{Antecedentes}
+% \addcontentsline{toc}{section}{Antecedentes}
+En la Tabla \ref{tab:antecedentes} se incluye una breve descripción de algunos trabajos desarrollados previamente sobre CanSats. Se describen proyectos desarrollados a nivel nacional e internacional.
+
+\begin{table}[H]
+\begin{center}
+\caption{Antecedentes del desarrollo de CanSats.}
+\label{tab:antecedentes}
+\resizebox{14cm}{!}
+{
+	\begin{tabular}{p{5cm} p{12cm}}
+	\multicolumn{2}{c}{}\tabularnewline
+	
+	\toprule
+	\multicolumn{1}{c}{\textbf{Proyecto}} & \multicolumn{1}{c}{\textbf{Descripción}}
+	\tabularnewline
+	\midrule
+	
+\tabularnewline
+	Prototipo CanSat [?]. & Su objetivo general fue diseñar y construir un prototipo CanSat que cumpliera con los requerimientos de la competencia internacional \textit{Annual CanSat Competition} en su edición 2015. En este proyecto se presenta el diseño del CanSat por subsistemas, incluyendo la estación en Tierra, la programación de la computadora de vuelo, el subsistema de comunicación y manejo de datos, el control del sistema de descenso activo por hélices del vehículo científico, el subsistema de potencia, el subsistema mecánico, y el subsistema de sensores. El escrito proporciona un método para calcular la fuerza de empuje generada por el giro activo de las hélices acopladas a un motor de CD, y se incluye una sección donde se explica el controlador utilizado.
+\tabularnewline
+
+\tabularnewline
+	Desarrollo de una computadora de vuelo, celdas solares y antenas de un Tubesat, así como control de rotores, antenas, e integración del radio de una estación terrena [?]. & El proyecto abarcaba el diseño, elaboración y pruebas de la computadora de vuelo de un TubeSat; el diseño, elaboración y caracterización de las antenas del mismo, así como la selección e integración de los paneles solares. Además, trata con el control de rotores y de una radio de una estación terrena instalada en la ESIME Zacatenco. El proyecto en cuestión aporta herramientas computacionales para el análisis y simulación del diseño de antenas. De igual manera, otorga una arquitectura de la computadora de vuelo común entre nanosatélites.
+\tabularnewline
+
+\tabularnewline
+	Análisis Dinámico Estructural de Satélite Educativo CanSat [?]. & En este trabajo se hace un análisis del comportamiento de la estructura mecánica de un CanSat bajo las condiciones de carga y vibración que éste sufre durante su lanzamiento. El trabajo presenta un análisis de los estados de concentración de esfuerzos, deformaciones y los valores de frecuencia natural del CanSat. El artículo pretende otorgar información cuantitativa de los esfuerzos y deformaciones mecánicas que sufre un CanSat de geometría convencional.
+\tabularnewline
+
+	\tabularnewline
+	\bottomrule	
+	\end{tabular}
+}
+\end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Antecedentes del desarrollo de CanSats (continuación).}
+\resizebox{14cm}{!}
+{
+	\begin{tabular}{p{5cm} p{12cm}}
+	\multicolumn{2}{c}{}\tabularnewline
+	
+	\toprule
+	\multicolumn{1}{c}{\textbf{Proyecto}} & \multicolumn{1}{c}{\textbf{Descripción}}
+	\tabularnewline
+	\midrule
+
+\tabularnewline
+	\textit{Systematic design of an atmospheric data acquisition flying vehicle telemetry system [?].} & Dentro de este documento es abordado el diseño y construcción de un CanSat, desde el análisis de los requerimientos hasta la construcción y verificación del mismo, siguiendo el esquema propuesto en el método en V. El trabajo busca dar a entender la metodología propuesta pero enfocada al desarrollo de trabajos de índole aeroespacial. Así mismo, exhibe cómo la metodología influye en gran medida en la resolución de problemas complejos. 
+\tabularnewline
+
+\tabularnewline
+	\textit{A Nano-Satellite System for Atmospheric Monitoring and Ground Imaging [?].} & El trabajo presenta el desarrollo de un CanSat bajo los requerimientos de la \textit{Annual CanSat Competition}. El CanSat consiste de dos partes: un contenedor y un vehículo científico. El vehículo científico tiene la finalidad de monitorear la temperatura, la presión atmosférica y la concentración de gas. Los datos obtenidos durante el descenso del vehículo científico son mostrados en una estación en Tierra, cuya interfaz es desarrollada en LabVIEW\textsuperscript{\textregistered}.
+\tabularnewline
+
+	\tabularnewline
+	\bottomrule	
+	\end{tabular}
+}
+\end{center}
+\end{table}
+
+% ***********************************************************************************************************************************%
+\section{Descripción de los capítulos}
+% \addcontentsline{toc}{section}{Descripción de los capítulos}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\\
+
+\noindent Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.\\

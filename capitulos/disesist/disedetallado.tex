@@ -1,0 +1,72 @@
+% !TeX encoding = ISO-8859-1
+El Cansat está constituido de dos elementos: el contenedor, que tiene la finalidad de envolver parcialmente al vehículo científico, así como encerrar el paracídas; y el vehículo científico, el cual realiza las tareas pricipales de la misión como obtener, procesar y enviar las variables físicas del entorno.\\
+
+\noindent Como se muestra en la figura \ref{img:DisenosCansat} se realizaron tres diseños del vehículo científico y del contenedor. La principal razón del cambio de geometría fue la masa resultante. La masa del Cansat asociado al primer diseño era de 570 [g], posteriormente en el segundo diseño la masa se redujo a 530 [g], y finalemnte en el tercer diseño la masa llego a ser de 510 [g].
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.60]{imgmeca/DisenosCansat.png}
+	\caption{Diseños realizados del Cansat siendo el último (de izquierda a derecha) el seleccionado para construir.}
+	\label{img:DisenosCansat}
+\end{figure}
+
+\noindent La figura \ref{img:DisenosCansat} es una muestra de que el proceso de diseño en ingeniería es inevitablemente iterativo, en dónde cada iteración representa un mejor entendimiento de los requerimientos y las restricciones del sistema. Dicho entendimiento se refleja en las modificaciones hechas al diseño en cada iteración.
+
+\newpage
+		\subsection{Sistema Central de Manejo del Comportamiento} \label{sistSCMC}
+\input{./capitulos/disesist/SCMC.tex}
+
+\newpage
+		\subsection{Sistema de Procesamiento de Datos} \label{sistSPD}
+\input{./capitulos/disesist/SPD.tex}
+
+\newpage
+		\subsection{Sistema de Reducción de Velocidad de Descenso} \label{sistSRVD}
+\input{./capitulos/disesist/SRVD.tex}
+
+\newpage
+		\subsection{Sistema de Liberación del Vehiculo Científico} \label{sistSLVC}
+\input{./capitulos/disesist/SLVC.tex}
+		
+\newpage
+		\subsection{Sistema de Registro de Descenso} \label{sistSRD}
+\input{./capitulos/disesist/SRD.tex}
+		
+\newpage		
+		\subsection{Sistema de Estación en Tierra} \label{sistSET}
+\input{./capitulos/disesist/SET.tex}
+
+\newpage
+		\subsection{Sistema de Energía} \label{sistSEn}
+\input{./capitulos/disesist/SEn.tex}
+
+\newpage		
+		\subsection{Sistema Estructural} \label{sistSEs}
+\input{./capitulos/disesist/SEs.tex}
+	
+\newpage
+		\subsection{Integración del Sistema Mecatrónico} \label{sistIntegracion}
+La figura \ref{img:CanSatconstruido} muestra el CanSat completo construido y ensamblado con señalización a las partes de mayor nivel.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.40]{Resultados/integracion.png}
+	\caption{CanSat ensamblado.}
+	\label{img:CanSatconstruido}
+\end{figure}
+
+\noindent Las figuras \ref{img:placatop} y \ref{img:placabottom} muestran la cara superior y la cara inferior de la placa de circuito principal, respectivamente.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.23]{implementacion/SCMCySPD/reservas/PlacaTop.png}
+	\caption{Cara superior de la placa de circuito principal.}
+	\label{img:placatop}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.30]{implementacion/SCMCySPD/reservas/PlacaBottom.png}
+	\caption{Cara inferior de la placa de circuito principal.}
+	\label{img:placabottom}
+\end{figure}
