@@ -1,0 +1,33 @@
+% !TeX encoding = ISO-8859-1
+
+{\parindent0pt
+
+El Sistema de Liberación del Vehículo Científico tiene como función mantener unidos al vehículo científico y al contenedor durante la etapa de ascenso hasta el apogeo y durante la primera etapa de descenso hasta los 100 [m]. El SLVC realiza la función $f_{4{.}5}-$\textit{Liberar vehículo científico}. A los $100[m]$ el SLVC será activado por el STD y el vehículo científico se separará del contenedor. La figura \ref{img:partesliberacion} muestra al mecanismo del SLVC. Como elementos de sujeción se utilizaron tornllos M3 y M2 con su respectiva tuerca de bloqueo con inserto de nylon.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=0.35]{imgmeca/Partesliberacion.png}  
+		\caption{Elementos que conforman el sistema de liberación del vehículo científico.}
+		\label{img:partesliberacion}
+	\end{center}
+\end{figure}
+
+
+El SLVC es un mecanismo de biela-manivela-corredera doble. El motor de CD está acoplado mecánicamente a la biela: cuando el motor gira, la manivela mueve a la corredera. Las correderas están atoradas con la estructura del contenedor, por lo tanto, el vehículo científico se libera cuando las correderas se contraen. En la figura \ref{img:partesliberacion} se pueden ver los interruptores de extremos de carrera (puestos en las bases de sensor). El mecanismo tiene un interruptor de inicio de carrera en un lado y un interruptor de final de carrera en el otro. La figura \ref{img:slvcsecuencia} muestra la secuencia de activación del mecanismo.
+
+\begin{figure}[H]
+	\begin{center}
+		\includegraphics[scale=0.30]{imgmeca/SLVCsecuencia.png}  
+		\caption{Secuencia de activación del mecanismo del SLVC.}
+		\label{img:slvcsecuencia}
+	\end{center}
+\end{figure}
+
+Los interruptores de extremos de carrera son utilizados como señales de retroalimentación del movimiento del mecanismo. Dependiendo de qué interruptor esté activado el microcontrolador puede determinar el estado del mecanismo: correderas extendidas (interruptor de final de carrera presionado) o correderas contraídas (interruptor de inicio de carrera presionado). Estas señales permiten activar el motor de CD por únicamente el tiempo necesario, ahorrando energía de las baterías.\\
+
+\subsubsection*{Selección de materiales}
+Las manivelas y la biela son uno de los puntos más críticos del mecanismo presentado en la figura \ref{img:partesliberacion} ya que son los que estarán sometidos a flexión durante el despegue del CanSat. Por esta razón, la aleación de aluminio AA 6061 fue seleccionada para su fabricación, además de ser una de las aleaciones más comunes. Las manivelas y la biela son piezas muy pequeñas por lo que no representan un valor de masa muy elevado.\\
+
+Para el caso de la base y las correderas se necesita poca fricción entre ambos componentes para un desacople rápido. Fabricar de aluminio estas piezas representaría mucha masa para el CanSat por lo que se propone el uso del la impresión con ABS junto con un tratamiento con vapor de acetona para eliminar la mayor cantidad de imperfecciones producidas por el proceso de deposición de material y así reducir la fricción entre componentes.\\
+
+}

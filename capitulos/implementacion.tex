@@ -1,0 +1,856 @@
+
+\chapter{Implementación del sistema} \label{implementacion}
+En este capítulo se muestran los resultados de realizar pruebas individuales a cada sistema del CanSat. Cada prueba tiene su propio protocolo de ejecución en donde se explica lo que se pretendía verificar, los pasos que se siguieron al realizar la prueba y los resultados esperados. Al final de cada prueba se realiza un análisis entre los resultados esperados y los resultados obtenidos para determinar el nivel de éxito de la prueba y el cumplimiento de los requerimientos.\\
+
+
+	\section{Sistema Central de Manejo del Comportamiento y Sistema de Procesamiento de Datos} \label{impleSCMC_SPD}
+En esta sección se describen las pruebas realizadas al SCMC y al SPD. En total se realizó una prueba para verificar el cumplimiento de los requerimientos asociados al SCMC y al SPD. La Tabla \ref{tab:protSCMC1} describe el protocolo de esta prueba.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 1 del SCMC y SPD.}
+\label{tab:protSCMC1}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R03, R05, R10, R12, R13, R14, R16, R30, R31, R39\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que todos los componentes electrónicos poseen una montura rígida.\tabularnewline
+- Verificar que el CanSat produce las tramas de datos con los 14 campos y con datos correctos.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Protocolo de pruebas 1 del SCMC y SPD (continuación).}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que la cuenta de los paquetes de datos y el tiempo de misión se conserva aún cuando sucede un reinicio del CanSat.\tabularnewline
+- Verificar el correcto funcionamiento de la máquina de estados.\tabularnewline
+- Verificar que el CanSat puede ser encendido a través de un interruptor de fácil acceso.\tabularnewline
+- Verificar el almacenamiento de datos en la tajeta SD abordo del CanSat..\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Con el vehículo científico separado del contenedor, realizar una inspección visual de la placa de circuitos y del módulo de sensores. Después, incorporar el vehículo científico al contenedor.\tabularnewline
+2. Encender el CanSat activando el interruptor principal.\tabularnewline
+3. Insertar la tarjeta SD en la ranura correspondiente en la placa de circuito principal.\tabularnewline
+4. Realizar la configuración inicial al CanSat mandando los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------}.\tabularnewline
+5. Iniciar la transmisión de datos mandando el comando \texttt{B,S,------}.\tabularnewline
+6. Elevar el CanSat a una altura aproximada de $10 [m]$.\tabularnewline
+7. Presionar el botón de reinicio de la placa de circuitos.\tabularnewline
+8. Devolver el CanSat a la altura inicial.\tabularnewline
+
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. La placa de circuito principal está sujetada firmemente.\tabularnewline
+2. El CanSat enciende. Es fácil acceder al interruptor principal.\tabularnewline
+3. La tarjeta SD entra sin inconvenientes.\tabularnewline
+4. El giroscopio y el acelerómetro son calibrados. La altura de referencia incial se establece. El CanSat manda confirmación auditiva de que el proceso de configuración terminó.\tabularnewline
+5. La transmisión de datos comienza. Las tramas comienzan a desplegarse en la terminal del puerto serial. El estado actual es `Espera' (valor de 1).\tabularnewline
+6. El estado actual pasa de `Espera' (valor de 1) a `Ascenso' (valor de 2). Los datos de altura y presión atmosférica revelan el cambio en la altura del CanSat.\tabularnewline
+7. La transmisión de datos se detiene hasta que el proceso de reinicio termine. Al acabar el reinicio, los valores de número de paquete y tiempo de misión continúan a partir de su último valor registrado antes del reinicio.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Protocolo de pruebas 1 del SCMC y SPD (continuación).}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+8. Al comenzar a descender el estado actual pasa de `Ascenso' (valor de 2) a `Paracaídas' (valor de 3). El SRV-P se activa. El CanSat continúa en este estado hasta los $4 [m]$, altura a la que el estado actual pasa de `Paracaídas' (valor de 3) a `Autorrotación' (valor de 4). EL SLVC y el SRV-A se activan. El CanSat continúa en este estado hasta que regresa a la altura inicial, momento en que el estado actual pasa de `Autorrotación' (valor de 4) a `Aterrizaje' (valor de 5). En este instante el CanSat emite una señal auditiva de aterrizaje y la transmisión de datos se detiene.\tabularnewline
+9. Las tramas de datos de esta prueba se almacenan en la tajeta SD a bordo del CanSat. Los datos almacenados revelan el comportamiento del CanSat durante esta prueba.\tabularnewline
+
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection*{Resultados}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.75]{implementacion/SCMCySPD/placas}
+	\caption{Placa principal y módulo de sensores.}
+	\label{img:placas}
+\end{figure}
+
+\noindent La figura \ref{img:placas} muestra la placa principal y el módulo de sensores construidos para el CanSat. En la figura \ref{img:placas} se pueden observar los puntos de acoplamiento (encerrados en círculos azules) para unir la placa principal a la estructura del CanSat con columnas de soporte \textit{stand-offs}, proporcionándole a las placa una montura rígida.\\
+
+\noindent En la vista inferior de la figura \ref{img:placas} se puede ver el interruptor de encendido principal ubicado sobre la circunferencia de la placa. Esta posición es de fácil acceso para el operador del CanSat. También, la ranura para la tarjeta SD se ubica sobre la circunferencia de la placa para acceder fácilmente a ella.\\
+
+\noindent La figura \ref{img:simaltura} muestra la gráfica de altura con datos almacenados en la SD a bordo del CanSat. En rojo se grafican los datos de altura y en azul punteado se grafican los datos de estado.\\
+
+\noindent En la figura \ref{img:simaltura} se observa que la máquina de estados cambia de `Espera' (1) a `Ascenso' (2) cuando la altura sobrepasa los $2 [m]$. El estado continúa así hasta el apogeo (altura máxima). En ese instante el CanSat se reinició deliberadamente. La continuidad de la gráfica demuestra que el CanSat recuperó sus funcionalidades después del reinicio. El estado pasa de `Ascenso' (2) a `Paracaídas' (3) cuando el CanSat detecta una disminución de altura de $1 [m]$ con respecto al apogeo. Finalmente, a una altura de $4 [m]$ el estado pasa a `Autorrotación' (4) y continúa así hasta aterrizar, momento en que la transmisión y almacenamiento de datos se detiene.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.42]{implementacion/SCMCySPD/altura}
+	\caption{Prueba de SCMC - SPD: altura.}
+	\label{img:simaltura}
+\end{figure}
+
+\noindent La figura \ref{img:datostele} muestra los demás datos de telemetría obtenidos durante la realización de esta prueba. Con estos datos se verifica que el módulo de sensores trabaja correctamente y que la tarjeta SD a bordo del CanSat almacena correctamente los datos de telemetría.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.42]{implementacion/SCMCySPD/datostele}
+	\caption{Datos de a) presión atmosférica, b) temperatura, c) ángulo \textit{pitch} y d) ángulo azimut obtenidos durante las pruebas realizadas al SCMC y al SPD.}
+	\label{img:datostele}
+\end{figure}
+
+
+
+\newpage
+	\section{Sistema de Reducción de Velocidad de Descenso} \label{impleSRVD}
+En esta sección se describen las pruebas realizadas al SRVD. En total se realizó una prueba para verificar el cumplimiento de los requerimientos asociados al SRVD. La Tabla \ref{tab:protSRVD1} describe el protocolo de esta prueba.
+
+%\begin{table}[H]
+%\begin{center}
+%\caption{Protocolo de pruebas 1 del SRVD.}
+%\label{tab:protSRVD1}
+%\resizebox{14cm}{!}
+%{
+%\begin{tabular}{>{\raggedright}p{14cm}}
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}%\tabularnewline
+%\toprule
+%R03\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Objetivos}}
+%\tabularnewline
+%\toprule
+%- Verificar que el paracaídas se despliega por la acción del aire.\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+%\toprule
+%1. De una altura de $10 [m]$ dejar caer el CanSat con el %paracaídas. El paracaídas debe estar enrollado dentro %del compartimento superior del contenedor y la tapa de %éste abierta.\tabularnewline
+
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Resultados esperados}%\tabularnewline
+%\toprule
+%1. El paracaídas se despliega inmediatamente después de %que el CanSat es soltado. El CanSat se orienta %verticalmente debido a su distribución de masa, %permitiendo que el paracaídas se abra sin impedimentos.%%\tabularnewline
+%
+%
+%\bottomrule
+%\end{tabular}
+%}
+%\end{center}
+%\end{table}
+
+
+%La Tabla \ref{tab:protSRVD2} describe el protocolo de la segunda prueba del SRVD.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 1 del SRVD.}
+\label{tab:protSRVD1}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R06, R15, R32\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que el rotor del SRV-A gira al momento en que una corriente de aire pasa alrededor de él.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Realizar la configuración inicial al CanSat mandando los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------}.\tabularnewline
+2. Iniciar la transmisión de datos mandando el comando \texttt{B,S,------} al CanSat.\tabularnewline
+3. Colocar el vehículo científico dentro de un tunel de viento. Hacer pasar una corriente de aire a $10 [m/s]$ por un tiempo de $2$ minutos.\tabularnewline
+4. Aumentar la velocidad del aire a un valor de $15 [m/s]$. Esperar $2$ minutos.\tabularnewline
+5. Aumentar la velocidad del aire a un valor de $20 [m/s]$. Esperar $2$ minutos.\tabularnewline
+6. Detener la corriente de aire y esperar a que el movimiento del rotor pare.\tabularnewline
+7. Realizar una inspección visual del vehículo científico para detectar cualquier grieta o deformación en la estructura y/o los mecanismos.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. El rotor del SRV-A gira de manera autónoma por acción del aire cuando éste va a una velocidad de $10 [m/s]$ y cuando va a una velocidad de $15 [m/s]$. El SRV-A y el vehículo científico no sufren deformaciones o ruptura.\tabularnewline
+2. El rotor del SRV-A soporta la velocidad límite superior de $20 [m/s]$ sin sufrir deformaciones o ruptura.\tabularnewline
+3. Las lecturas de la velocidad del rotor son obtenidas por el SPD y son enviadas en la trama de datos de telemetría. La gráfica de velocidad del rotor revela el comportamiento del rotor durante esta prueba.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection*{Resultados}
+
+\noindent La figura \ref{img:rotor} muestra los datos de velocidad del rotor recibidos en la estación en Tierra durante la prueba del SRV-A. A una velocidad del viento de $10 [m/s]$ el rotor alcanza una velocidad constante de $350 [rpm]$ (el ruido en la señal se debe principalmente a las vibraciones en la estructura del CanSat durante la prueba).\\
+
+\noindent Después de aproximadamente $150 [s]$ la velocidad del viento se aumentó a $15 [m/s]$. La gráfica revela que en este punto el encoder magnético dejó de detectar los pulsos correctamente. Lo anterior se debe a  que una velocidad del viento de $15 [m/s]$ o mayor produce una velocidad de giro del rotor superior a la máxima que puede detectar el encoder magnético. De ahí que a partir de ese punto los datos de revoluciones por minuto no fueran verídicos.\\
+
+\noindent A los $225 [s]$ aproximadamente se detuvo el flujo del viento. En ese momento el rotor comenzó a desacelerar hasta detenerse.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.42]{implementacion/SRVD/velocidadrotor}
+	\caption{Prueba de SRV-A: velocidad de giro del rotor.}
+	\label{img:rotor}
+\end{figure}
+
+\noindent La hoja de datos del encoder magnético indica que la máxima velocidad detectable es de $456 [rpm]$, el cual es un valor muy cercano a las $350 [rpm]$ leídas durante esta prueba. Si el rotor alcanza una velocidad mayor a $456 [rpm]$ durante el descenso, el encoder dejará de dar datos confiables.\\
+
+\noindent Una vez con conocimiento de esta limitante, se aumentó la velocidad del viento a $20 [m/s]$ para verificar la resistencia de los componentes mecánicos del SRV-A. Ni la estructura del CanSat ni el SRV-A sufrieron daños durante la prueba.\\
+
+
+\newpage
+	\section{Sistema de Liberación del Vehiculo Científico} \label{impleSLVC}
+En esta sección se describen las pruebas realizadas al SLVC. En total se realizó una prueba para verificar el cumplimiento de los requerimientos y las restricciones asociadas al SLVC. La Tabla \ref{tab:protSLVC1} describe el protocolo de esta prueba.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 1 del SLVC.}
+\label{tab:protSLVC1}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R05\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que el mecanismo del SLVC funcione correctamente.\tabularnewline
+- Verificar que las correderas del SLVC no tengan bordes afilados.\tabularnewline
+- Verificar que el SLVC no utiliza ninguna otra estructura, más que la del CanSat, para realizar sus funciones.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Con el vehículo científico separado del contenedor, enviar el comando \texttt{B,1,------}.\tabularnewline
+2. Con el vehículo científico separado del contenedor, enviar el comando \texttt{B,2,------}.\tabularnewline
+3. Incorporar el vehículo científico al contenedor y realizar una inspección visual de las salientes que el SLVC tiene.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. Las correderas del SLVC se expanden.\tabularnewline
+2. Las correderas del SLVC se contraen.\tabularnewline
+3. Las correderas del SLVC no poseen bordes afilados y utilizan como soporte solamente la estructura del contenedor. También, las correderas del SLVC no sobresalen del diámetro del contenedor.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection*{Resultados}
+
+\noindent La figura \ref{img:slvcprueba} muestra a las correderas del SLVC retraídas (izquierda) y extendidas (derecha).\\
+
+\noindent Por diseño, el SLVC no tiene ningún borde afilado y se sostiene únicamente de la estructura del contenedor del CanSat.
+\newpage
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.38]{implementacion/SLVC/slvcbrazos}
+	\caption{Prueba de SLVC: contracción/extensión de las correderas del SLVC.}
+	\label{img:slvcprueba}
+\end{figure}
+
+\newpage
+	\section{Sistema de Registro de Descenso} \label{impleSRD}
+En esta sección se describen las pruebas realizadas al SRD. En total se realizó una prueba para verificar el cumplimiento de los requerimientos asociados al SRD. La Tabla \ref{tab:protSRD1} describe el protocolo de esta prueba.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 1 del SRD.}
+\label{tab:protSRD1}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R35, R36, R37\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que la cámara se orienta en una sóla dirección arbitraria.\tabularnewline
+%- Verificar que la cámara graba correctamente por un tiempo mínimo de $30$ minutos.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Con el vehículo científico separado del contenedor, realizar la configuración inicial al CanSat mandando los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------}.\tabularnewline
+2. Insertar la tarjeta SD en la ranura de la cámara y encender la cámara.\tabularnewline
+3. Girar el vehículo científico alrededor del eje longitudinal. Cambiar el sentido de giro periódicamente. Hacer esto por un tiempo de $3$ minutos.\tabularnewline
+%4. Mantener el vehículo científico estático por un tiempo de $30$ minutos.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. El SRD compensa el giro del vehículo científico haciendo que la cámara apunte en la dirección de referencia.\tabularnewline
+%2. La cámara continua grabando sin interrupciones por $25$ minutos.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection*{Resultados}
+
+\noindent La figura \ref{img:srdazierror} muestra el ángulo de azimut (sobre el eje longitudinal) del CanSat generado durante la realización de la prueba (línea roja) junto con el error entre dicho ángulo y la posición angular real de la cámara (línea azul). La figura \ref{img:srderror} muestra el error de la posición de la cámara más detalladamente.\\
+
+\noindent La figura \ref{img:srdazierror} muestra que el CanSat se giró aproximadamente 95\degree en sentido horario y posteriormente 95\degree en sentido antihorario. Este ciclo se repitió tres veces durante toda la prueba. Cuando el giro fue en sentido horario, el error de la cámara tuvo valores positivos. Al momento de llevar el CanSat de nuevo a 0\degree (girarlo en sentido antihorario), la cámara tenía que compensar su posición en el sentido contrario y, por lo tanto, los valores de error resultaron negativos.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.45]{implementacion/SRD/azierror}
+	\caption{Prueba de SRD: ángulo de azimut.}
+	\label{img:srdazierror}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.45]{implementacion/SRD/error}
+	\caption{Prueba de SRD: error de orientación de la cámara.}
+	\label{img:srderror}
+\end{figure}
+
+\noindent La figura \ref{img:srderror} muestra que durante la compensasión de la posición angular de la cámara el error no sobrepasó los 10\degree.
+
+\newpage
+	\section{Sistema de Estación en Tierra} \label{impleSET}
+En esta sección se describen las pruebas realizadas al SET. En total se realizaron dos pruebas para verificar el cumplimiento de los requerimientos asociados al SET. La Tabla \ref{tab:protSET1} describe el protocolo de la primera de estas pruebas.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 1 del SET.}
+\label{tab:protSET1}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R17, R18, R19, R23, R24, R27, R28, R29\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar la transmisión de datos entre el CanSat y la estación en Tierra.\tabularnewline
+- Verificar el despliegue de los datos de telemetría en la IGU.\tabularnewline
+- Verificar que la comunicación entre el CanSat y la estación en Tierra no se interrumpe cuando la orientación del CanSat es arbitraria.\tabularnewline
+- Verificar la creación de un archivo \textit{.csv} con el nombre y en el directorio correspondiente especificados por el usuario en la ventana de configuración.\tabularnewline
+- Verificar el correcto almacenamiento en un archivo \textit{.csv} de los datos enviados por el CanSat a la estación en Tierra.\tabularnewline
+- Verificar el funcionamiento de la interfaz en Tierra por un tiempo mínimo de 10 minutos.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Ejecutar la IGU.\tabularnewline
+2. Establecer como nombre de archivo `PruebasSET'. Establecer el directorio según la ruta `C:/Users/Serrato/Desktop/Pruebas Documentadas'. Seleccionar el puerto serial al que esté conectado el XBee.\tabularnewline
+3. Realizar la configuración inicial del CanSat al presionar el botón `Configurar CanSat'. Una vez hecho esto, presionar el botón `Aceptar'.\tabularnewline
+4. Al abrirse la ventana de monitoreo, presionar el botón `Iniciar'.\tabularnewline
+5. Durante $3$ minutos dejar inmóvil al CanSat mientras la comunicación continúa.\tabularnewline
+6. Girar al CanSat alrededor del eje del rotor. Intercambiar el sentido de giro periódicamente. Hacer esto durante $3$ minutos.\tabularnewline
+7. Girar al CanSat de manera arbitraria durante $3$ minutos.\tabularnewline
+8. Durante $1$ minuto dejar inmóvil al CanSat mientras la comunicación continúa.\tabularnewline
+9. Forzar que la máquina de estados del CanSat pase al estado de aterrizaje utilizando el comando \texttt{B,S,------}. Presionar el botón `Continuar'.\tabularnewline
+10. Seleccionar cualquier opción del menú desplegable `Parámetro'. Con la opción seleccionada, utilizar la barra de herramientas ubicada en la parte superior de la gráfica.\tabularnewline
+11. Presionar el botón `Cerrar'.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Protocolo de pruebas 1 del SET (continuación).}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. La ventana de configuración se abre.\tabularnewline
+2. No aparece ningún error de caracter inválido o campo faltante.\tabularnewline
+3. El color de fondo de los tres recuadros a lado del botón `Configurar CanSat' se vuelve verde.\tabularnewline
+4. El despliegue de datos y la graficación de los mismos comienza.\tabularnewline
+5. La graficación y despliegue de datos continúa sin interrupciones.\tabularnewline
+6. La graficación y despliegue de datos continúa sin interrupciones. En el \textit{tab} de orientación se logra ver la variación de la orientación del CanSat al ser girado.\tabularnewline
+7. La graficación y despliegue de datos continúa sin interrupciones. En el \textit{tab} de orientación se logra ver la variación de la orientación del CanSat al ser girado.\tabularnewline
+8. La graficación y despliegue de datos continúa sin interrupciones. Se observa cómo la orientación del CanSat en el \textit{tab} de orientación se estabiliza.\tabularnewline
+9. La graficación y el despliegue de datos termina. La ventana de visualización se abre.\tabularnewline
+10. La gráfica del parámetro seleccionado se muestra. Operaciones como desplazamiento o acercamiento son posibles de realizar en la gráfica.\tabularnewline
+11. La ventana de visualización se cierra.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection*{Resultados}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.48]{implementacion/SET/azimut}
+	\caption{Prueba del SET: ángulo de azimut.}
+	\label{img:setazimut}
+\end{figure}
+
+\noindent La figura \ref{img:setazimut} muestra el ángulo de azimut del CanSat obtenido durante la realización de esta prueba. De acuerdo con las especificaciones de la prueba, la primera sección de la gráfica corresponde al paso 5 que especifica que el CanSat debía dejarse inmóvil por un tiempo de $3$ minutos. La segunda sección de la gráfica revela un movimiento con determinado patrón (paso 6); en esta etapa el CanSat se giró en sentido horario y antihorario al rededor del eje longitudinal (ángulo de azimut). La tercera sección de la prueba revela el comportamiento arbitrario del giro que se le dió al CanSat (paso 7). La comunicación entre el CanSat y la estación en Tierra no se interrumpió en ningún momento. De esta forma, se verifica que la polarización circular de la antena a bordo y el amplio patrón de radiación de la antena de estación en Tierra hacen posible la comunicación entre el CanSat y la estación en Tierra a pesar de la orientación relativa entre ambos.\\
+
+\noindent La figura \ref{img:setpitch} revela el mismo comportamiento pero con respecto del ángulo \textit{pitch}.
+
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.50]{implementacion/SET/pitch}
+	\caption{Prueba del SET: ángulo \textit{pitch}.}
+	\label{img:setpitch}
+\end{figure}
+
+\noindent La figura \ref{img:setvisual} muestra la ventana de visualización que sale después de que la transmisión de datos terminó. En la imagen \ref{img:setvisual} el parámetro mostrado es el de ángulo de azimut. En la imagen se pueden distinguir las herramientas para manipular la imagen dentro de la ventana de visualización.\\
+
+\noindent Las figuras presentadas en esta sección muestran un tiempo total de la prueba de más de $600 [s]$, verificando que la interfaz de usuario puede operar sin interrupciones durante este tiempo el cual es aproximadamente el mismo que dura una misión de CanSat típica.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.40]{implementacion/SET/protocoloSET1}
+	\caption{Prueba del SET: ventana de visualización mostrando los datos de azimut.}
+	\label{img:setvisual}
+\end{figure}
+
+%\newpage
+%La Tabla \ref{tab:protSET2} muestra el protocolo de la segunda prueba realizada al SET. Esta prueba se realizó para verificar que la %comunicación entre el CanSat y la estación en Tierra alcanza hasta $400 [m]$.\\
+
+%\begin{table}[H]
+%\begin{center}
+%\caption{Protocolo de pruebas 2 del SET.}
+%\label{tab:protSET2}
+%\resizebox{14cm}{!}
+%{
+%\begin{tabular}{>{\raggedright}p{14cm}}
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+%\toprule
+%R25, R28\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Objetivos}}
+%\tabularnewline
+%\toprule
+%- Verificar que la comunicación entre el CanSat y la estación en Tierra se mantiene de manera continua hasta una distancia mínima de 400 [m] en línea recta.\tabularnewline
+
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+%\toprule
+%1. Ejecutar la IGU.\tabularnewline
+%2. Establecer como nombre de archivo `PruebasSET400'. Establecer el directorio según la ruta `C:/Users/Serrato/Desktop/Pruebas Documentadas'. Seleccionar el puerto serial al que esté conectado el XBee.\tabularnewline
+%3. Realizar la configuración inicial del CanSat al presionar el botón `Configurar CanSat'. Una vez hecho esto, presionar el botón `Aceptar'.\tabularnewline
+%4. Al abrirse la ventana de monitoreo, presionar el botón `Iniciar'.\tabularnewline
+%5. Alejar el CanSat de la estación en Tierra hasta un máxima de $400 [m]$. Una vez a $400 [m]$ esperar $5$ minutos. Al pasar los $5$ minutos, regresar al punto donde se encuentra la estación en Tierra.\tabularnewline
+%6. Forzar que la máquina de estados del CanSat pase al estado de aterrizaje utilizando el comando \texttt{B,S,------}. Presionar el botón `Continuar'.\tabularnewline
+%7. Seleccionar la opción `Posición GPS' del menú desplegable `Parámetro'. Con la opción seleccionada, identificar los valores de latitud y longitud del punto inicial y del punto a $400 [m]$.\tabularnewline
+%8. Presionar el botón `Cerrar'.\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+%\toprule
+%1. La ventana de configuración se abre.\tabularnewline
+%2. No aparece ningún error de caracter inválido o campo faltante.\tabularnewline
+%3. El color de fondo de los tres recuadros a lado del botón `Configurar CanSat' se vuelve verde.\tabularnewline
+%4. El despliegue de datos y la graficación de los mismos comienza.\tabularnewline
+%5. La graficación y despliegue de datos continúa sin interrupciones.\tabularnewline
+%6. La graficación y el despliegue de datos termina. La ventana de visualización se abre.\tabularnewline
+%7. Al ingresar los coordenadas en un mapa digital se obtiene una distancia entre ambos de $400 [m]$.\tabularnewline
+%8. La ventana de visualización se cierra.\tabularnewline
+
+%\bottomrule
+%\end{tabular}
+%}
+%\end{center}
+%\end{table}
+
+
+\newpage
+	\section{Sistema de Energía} \label{impleSEn}
+En esta sección se describen las pruebas realizadas al SEn. En total se realizó una prueba para verificar el cumplimiento de los requerimientos asociados al SEn. La Tabla \ref{tab:protSEn1} describe el protocolo de esta prueba.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 1 del SEn.}
+\label{tab:protSEn1}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos y restricciones a verificar}}\tabularnewline
+\toprule
+R33, J6\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que la batería otorgue $9 [V]$ antes de iniciar la operaición del CanSat.\tabularnewline
+- Verificar que la etapa de regulación de voltaje ajusta el voltaje de entrada de $9 [V]$ a $3.3 [V]$ y $6 [V]$.\tabularnewline
+- Verificar que la batería del CanSat permite que opere por un mínimo de 2 horas.\tabularnewline
+
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Medir el voltaje en la batería utilizando un multímetro.\tabularnewline
+2. En la placa de circuito principal medir el voltaje en el punto de prueba correspondiente a $3.3 [V]$.\tabularnewline
+3. En la placa de circuito principal medir el voltaje en el punto de prueba correspondiente a $6 [V]$.\tabularnewline
+4. Realizar la configuración inicial del CanSat e iniciar la transmisión de datos. Dejar el CanSat transmitiendo por 2 horas.\tabularnewline
+
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. La lectura de voltaje da un valor estable de $9 [V]$.\tabularnewline
+2. La lectura de voltaje da un valor estable de $3.3 [V]$.\tabularnewline
+3. La lectura de voltaje da un valor estable de $6 [V]$.\tabularnewline
+4. La transmisión se ejecuta de manera ininterrumpida durante las $2$ horas.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+\newpage
+	\section{Sistema Estructural} \label{impleSEs}
+En esta sección se describen las pruebas realizadas al SEs. En total se realizaron 5 pruebas para verificar el cumplimiento de los requerimientos asociados al SEs. La Tabla \ref{tab:protSEs1} describe el protocolo de la primera de estas pruebas.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 1 del SEs.}
+\label{tab:protSEs1}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R01\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que la masa del CanSat no supera $1 [kg]$.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Medir la masa del CanSat totalmente ensamblado utilizando una báscula.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. El valor de masa obtenido no supera $1 [kg]$.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection*{Resultados}
+
+\noindent La figura \ref{img:sesmasa} muestra la masa del CanSat completo siendo medida con una báscula. En la imagen se observa que la masa del CanSat es de $509 [g]$ y se encuentra dentro del valor especificado en los requerimientos.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.30]{implementacion/SEs/masa}
+	\caption{Prueba del SEs: masa del CanSat.}
+	\label{img:sesmasa}
+\end{figure}
+
+\newpage
+La Tabla \ref{tab:protSEs2} describe el protocolo de la segunda prueba realizada al SEs.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 2 del SEs.}
+\label{tab:protSEs2}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R02, R34\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que las dimensiones del CanSat no superan los $310 [mm]$ de largo y un diámetro de $125 [mm]$.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Medir la longitud total del CanSat con un flexómetro.\tabularnewline
+2. Pasar el CanSat a través de un cilindro de referencia con un diámetro interno de $125 [mm]$.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. El valor de longitud obtenido es menor a $310 [mm]$.\tabularnewline
+1. El CanSat pasa sin contratiempos a través del cilindro de referencia.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\noindent La figura \ref{img:dimcansat} muestra las dimensiones del CanSat. De acuerdo con la figura \ref{img:dimcansat} la longitud del CanSat es de $308.32 [mm]$ y tiene un diámetro de $121 [mm]$, dejando una tolerancia de $1.68 [mm]$ y $4 [mm]$ para la longitud y diámetro, respectivamente.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.40]{implementacion/SEs/DimensionesCansatSEs}
+	\caption{Dimensiones de longitud y diámetro del CanSat.}
+	\label{img:dimcansat}
+\end{figure}
+
+\noindent La figura \ref{img:cilindro} muestra al CanSat dentro de un cilindro de $125 [mm]$ de diámetro interior, verificando que las dimensiones del CanSat están dentro de los límites establecidos en los requerimientos.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.41]{implementacion/SEs/cilindro}
+	\caption{CanSat pasando a través de un cilíndro con diámetro interior de $125 [mm]$.}
+	\label{img:cilindro}
+\end{figure}
+
+\newpage
+La Tabla \ref{tab:protSEs3} describe el protocolo de la tercera prueba realizada al SEs.
+
+\begin{table}[H]
+\begin{center}
+\caption{Protocolo de pruebas 3 del SEs.}
+\label{tab:protSEs3}
+\resizebox{14cm}{!}
+{
+\begin{tabular}{>{\raggedright}p{14cm}}
+
+\toprule
+\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+\toprule
+R08, R09, R34\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Objetivos}}
+\tabularnewline
+\toprule
+- Verificar que el paracaídas del contenedor y los puntos de acoplamiento entre éste y la estructura del CanSat soportan la apertura repentina del paracaídas, equivalente a una aceleración de hasta $30 G$.\tabularnewline
+- Verificar que el SLVC puede mantener al vehículo científico acoplado al contenedor durante la apertura repentina del paracaídas.\tabularnewline
+- Verificar que los puntos de unión mecánicos del contenedor y del vehículo científico soportan la apertura repentina del paracaídas.\tabularnewline
+- Verificar que los componentes electrónicos y mecánicos del CanSat se mantienen en sus posiciones y configuraciones iniciales durante la apertura repentina del paracaídas.\tabularnewline
+
+\toprule
+\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+\toprule
+1. Realizar la configuración inicial del CanSat e iniciar la transmisión de datos.\tabularnewline
+2. Atar las cuerdas del paracaídas a un cordón no extendible de $61 [cm]$ de longitud. Atar el otro extremo del cordón a una argolla colocada en el techo del sitio de pruebas.\tabularnewline
+3. Elevar el CanSat hasta la misma altura a la que está el extremo del cordón atado al techo.\tabularnewline
+4. Dejar caer el CanSat.\tabularnewline
+5. Realizar una inspección visual minuciosa al CanSat.\tabularnewline
+
+
+\toprule
+\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+\toprule
+1. El CanSat no sufre daño alguno y ninguna parte se suleta.\tabularnewline
+2. La comunicación entre el CanSat y la estación en Tierra no se interrumpe en ningún momento durante la ejecución de la prueba.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\subsubsection*{Resultados}
+\noindent La figura \ref{img:sesdrop} muestra la secuencia de caída del CanSat durante esta prueba. En el cuadro 1 de la figura \ref{img:sesdrop} el CanSat se encuentra atado al techo con una cuerda de $61 [cm]$ de longitud. En el cuadro 2 se muestra como el CanSat es liberado. Los cuadros 5 y 6 de la imagen \ref{img:sesdrop} muestra el tirón que da el CanSat al momento en que la cuerda se extiende por completo. Como se puede ver en la imagen \ref{img:sesdrop}, el CanSat sobrevivió la prueba.\\
+
+\noindent La figura \ref{img:sesangles} muestra los datos de ángulos \textit{pitch} y \textit{roll} transmitidos por el CanSat durante la prueba. Como se observa en la figura, existe un pico en los datos de ambas gráficas justo en el momento en que el CanSat siente el tirón de aceleración cuando la cuerda se extiende por completo. Como se puede ver en la figura, la transmisión no se detiene y continúa hasta que el CanSat se estabiliza de nuevo.
+
+\noindent 
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.50]{implementacion/SEs/secuencia}
+	\caption{Prueba del SEs: prueba de caída del CanSat.}
+	\label{img:sesdrop}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.30]{implementacion/SEs/angulos}
+	\caption{Prueba del SEs: ángulos \textit{pitch} y \textit{roll}.}
+	\label{img:sesangles}
+\end{figure}
+
+
+%\newpage
+%La Tabla \ref{tab:protSEs4} describe el protocolo de la cuarta prueba realizada al SEs.
+
+%\begin{table}[H]
+%\begin{center}
+%\caption{Protocolo de pruebas 4 del SEs.}
+%\label{tab:protSEs4}
+%\resizebox{14cm}{!}
+%{
+%\begin{tabular}{>{\raggedright}p{14cm}}
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+%\toprule
+%R34\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Objetivos}}
+%\tabularnewline
+%\toprule
+%- Verificar que el CanSat puede operar en un ambiente de hasta $60 [°C]$.\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+%\toprule
+%1. Realizar la configuración inicial del CanSat e iniciar la transmisión de datos.\tabularnewline
+%2. Colocar al CanSat dentro una cámara térmica. Una vez adentro, sellar la cámara y encender la fuente de calor.\tabularnewline
+%3. Monitorear la temperatura: cuando se alcancen $60 [°C]$, apagar la fuente de calor; cuando la temperatura descienda a $55 [°C]$, encender de nuevo la fuente de calor. Mantener este ciclo durante $2$ horas.\tabularnewline
+%4. Realizar una inspección visual del CanSat.\tabularnewline
+%5. Con el CanSat aún caliente, probar todos los mecanismos (SRV-P, SRV-A, SLVC y SRD).\tabularnewline
+
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+%\toprule
+%1. Los materiales de los que está construido el CanSat no se debilitan, ni cambian sus propiedades o fallan/fracturan. Ninguna parte se suleta.\tabularnewline
+%2. La comunicación entre el CanSat y la estación en Tierra no se interrumpe en ningún momento durante la ejecución de la prueba.\tabularnewline
+%3. Ningún elemento electrónico se desolda o deja de funcionar.\tabularnewline
+%4. La gráfica de temperatura revela las variaciones de la temperatura durante toda la prueba.\tabularnewline
+
+%\bottomrule
+%\end{tabular}
+%}
+%\end{center}
+%\end{table}
+
+%\newpage
+%La Tabla \ref{tab:protSEs5} describe el protocolo de la quinta prueba realizada al SEs.
+
+%\begin{table}[H]
+%\begin{center}
+%\caption{Protocolo de pruebas 5 del SEs.}
+%\label{tab:protSEs5}
+%\resizebox{14cm}{!}
+%{
+%\begin{tabular}{>{\raggedright}p{14cm}}
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Requerimientos a verificar}}\tabularnewline
+%\toprule
+%R34\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Objetivos}}
+%\tabularnewline
+%\toprule
+%- Verificar la integridad de las uniones mecánicas del CanSat, así como la montura de todos los componentes.\tabularnewline
+%- Verificar la integridad de la estructura mecánica del contenedor y del vehículo científico.\tabularnewline
+%- Verificar la integridad de las conexiones eléctricas.\tabularnewline
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
+%\toprule
+%1. Realizar la configuración inicial del CanSat e iniciar la transmisión de datos.\tabularnewline
+%2. Sujetar firmemente el CanSat a una lijadora automática.\tabularnewline
+%3. Encender la lijadora. Una vez que la lijadora llega a su máxima velocidad, esperar 5 segundos.\tabularnewline
+%4. Apagar la lijadora completamente.\tabularnewline
+%5. Repetir los pasos 3 y 4 cuatro veces más.\tabularnewline
+%6. Realizar una inspección visual del CanSat.\tabularnewline
+%5. Probar todos los mecanismos (SRV-P, SRV-A, SLVC y SRD).\tabularnewline
+
+
+%\toprule
+%\multicolumn{1}{c}{\textbf{Resultados esperados}}\tabularnewline
+%\toprule
+%1. Los materiales de los que está construido el CanSat no se debilitan, ni cambian sus propiedades o fallan/fracturan. Ninguna parte se suleta.\tabularnewline
+%2. La comunicación entre el CanSat y la estación en Tierra no se interrumpe en ningún momento durante la ejecución de la prueba.\tabularnewline
+%3. Ningún elemento electrónico se desolda o deja de funcionar.\tabularnewline
+%4. La gráfica de los datos del acelerómetro revela el comportamiento del CanSat durante toda la prueba.\tabularnewline
+
+%\bottomrule
+%\end{tabular}
+%}
+%\end{center}
+%\end{table}

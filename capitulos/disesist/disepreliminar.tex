@@ -1,0 +1,1044 @@
+% !TeX encoding = ISO-8859-1
+		\subsection{Necesidades y requerimientos}
+			\subsubsection*{Necesidades}
+La primera etapa en el proceso de diseño es la identificación de las necesidades, los problemas u oportunidades. Esta etapa permite encontrar una mejora o ventaja sobre alguna solución ya existente a un problema, por lo que es posible reconocer el beneficio que traerá el llevar a cabo un proyecto.\\
+
+\noindent Para el desarrollo de un CanSat las necesidades pueden variar dependiendo de la aplicación que se le dará al mismo, del lugar en donde será lanzado, de los recursos materiales, financieros y humanos disponibles, y de los alcances que se busquen.\\
+
+\noindent En la Tabla \ref{tab:necesidades} se presentan las necesidades identificadas para el desarrollo del CanSat presentado en este trabajo. Es importante mencionar que las necesidades expuestas en la Tabla \ref{tab:necesidades} se originan de los requerimientos proporcionados por el concurso \textit{Annual CanSat Competition} para su edición 2019, por lo que no se realizó ninguna investigación previa para identificar dichas necesidades.\\
+
+\begin{table}[H]
+	\begin{center}
+	\caption{Necesidades a satisfacer con el desarrollo del CanSat.}
+	\label{tab:necesidades}
+		\resizebox{14cm}{!}
+		{
+			\begin{tabular}{>{\centering}m{0.6cm} p{7.0cm} c p{0.6cm} p{7.0cm}}
+			
+\multicolumn{5}{c}{}\tabularnewline
+\toprule
+\multicolumn{2}{c}{\textbf{Funcionales}} &  &\multicolumn{2}{c}{\textbf{No funcionales}} 
+\tabularnewline\hline\tabularnewline			
+
+N01 & Medición y monitoreo de parámetros externos e internos. &  & N16 & Interfaz amena para el usuario.\tabularnewline
+
+N02 & Poca masa. &  & N17 & Realizar una baja inversión para el desarrollo del proyecto.\tabularnewline
+
+N03 & Dimensiones pequeñas. &  & N18 & Reducir pérdidas de energía por fricción entre partes móviles. \tabularnewline
+
+N04 & Poseer medios de reducción de velocidad de caída. &  & N19 &Fácil manufactura. \tabularnewline
+
+N05 & Evitar atascamiento entre partes móviles. &  & N20 &Poseer modos de operación controlados por el usuario. \tabularnewline
+
+N06 & Soportar fuerzas de impacto, aceleraciones y vibraciones. &  & N21 &Simplicidad al ensamblar y transportar. \tabularnewline
+
+N07 & Capacidad de trabajo por horas. &  & N22 &Utilizar componentes comerciales y remplazables. \tabularnewline
+
+N08 & Protección contra el entorno. &  & N23 &Fácil acceso a los componenetes. \tabularnewline
+
+N09 & Ser capaz de operar a temperaturas elevadas. &  & N24 &Poseer medios de localización. \tabularnewline
+
+N10 & Asegurar integridad del sitio de lanzamiento. &  &  & \tabularnewline
+
+N11 & La velocidad de descenso debe ser suave y debe estar acotada. &  & & \tabularnewline
+
+N12 & Comunicación continua de gran alcance. &  &  & \tabularnewline
+ 
+N13 & Autonomía completa en todos los componentes. & &  &\tabularnewline
+
+N14 & Grabar etapas de vuelo. & &  &\tabularnewline
+
+N15 & Almacenamiento constante de la información. & &  & \tabularnewline
+
+\bottomrule			
+			\end{tabular}
+		}
+	\end{center}
+\end{table}
+
+			\subsubsection*{Requerimientos}
+La transformación de las necesidades en un lenguaje técnico que permita materializar las posibles soluciones se logra por medio de la definición de los requerimientos.\\
+
+\noindent Un requerimiento es una capacidad o atributo observable y medible de un sistema cuya finalidad es cumplir los objetivos de éste. Un requerimiento debe ser necesario,  debe especificar qué debe hacerse (y no cómo hacerlo), debe abordar una sóla solicitud de manera completa y sin ambigüedades y, finalmente, debe ser realizable y verificable [?].\\
+
+\noindent Los requerimientos se pueden clasificar en requerimientos funcionales y no funcionales. Los requerimientos funcionales son aquellos que van enfocados a los aspectos técnicos  y que están relacionados con el funcionamiento del sistema. Por otro lado, los requerimientos no funcionales van dirigidos a aspectos estéticos, por ejemplo, el color.\\
+  
+\noindent Para el desarrollo del Cansat se definieron los requerimientos funcionales mostrados en la Tabla \ref{tab:RequerimientosFun}. Cabe mencionar que los requerimientos definidos en la Tabla \ref{tab:RequerimientosFun} corresponden a los de la competencia \textit{Annual CanSat Competition}, con algunas modificaciones.
+
+\begin{table}[H]
+\begin{center}
+\caption{Requerimientos funcionales del CanSat.}
+\label{tab:RequerimientosFun}
+\resizebox{13cm}{!}{
+\begin{tabular}{>{\centering}m{1cm} p{13cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+
+\multicolumn{1}{c}{\textbf{No.}} & \multicolumn{1}{c}{\textbf{Descripción}}
+\tabularnewline
+\hline
+\tabularnewline
+
+R01 & La masa total del CanSat deberá ser menor a $1 [kg]$. \tabularnewline
+
+R02 & Las dimensiones máximas del CanSat deberán ser $125 [mm]$ de diámetro por $310 [mm]$ de longitud.\tabularnewline
+
+R03 & El CanSat deberá abrir el paracaídas del contenedor inmediatamente después de ser liberado del vehículo que lo eleve a la altura máxima ($400 [m]$).\tabularnewline
+
+R04 & La velocidad de descenso del CanSat (contenedor y vehículo científico) deberá ser de $20 [m/s]$ $\pm$ $5 [m/s]$ después de ser liberado del vehículo que lo elevó.\tabularnewline
+
+R05 & El contenedor y el vehículo científico deberán separarse a una altura de $300 [m]$ $\pm$ $10 [m]$ con respecto del sitio de lanzamiento.\tabularnewline 
+
+R06 & El vehículo científico, después de separarse del contenedor, deberá caer utilizando un sistema de descenso por autorrotación.\tabularnewline
+
+R07 & La velocidad de descenso del vehículo científico, después de separarse del contenedor, deberá ser de $10$ a $15$ $[m/s]$.\tabularnewline
+
+R08 & Todos los componentes de acoplamiento para el descenso del CanSat deberán soportar fuerzas de hasta $30 [Gs]$.\tabularnewline
+
+R09 & Todas las estructuras deberán soportar hasta $15 [Gs]$ de aceleración.\tabularnewline
+
+R10 & Todos los componentes electrónicos deberán poseer una montura rígida.\tabularnewline
+
+R11 & Todos los mecanismos deberán mantener sus respectivas configuraciones o estados bajo la acción de cualquier fuerza presente durante la etapa de vuelo.\tabularnewline
+
+R12 & El vehículo científico deberá medir la altura con respecto al sitio de lanzamiento y la presión atmosférica.\tabularnewline
+
+R13 & El vehículo científico deberá medir su posición global.\tabularnewline
+
+% R14 & El vehículo científico deberá medir el nivel de tensión en las baterías.\tabularnewline
+
+R14 & El vehículo científico deberá medir la temperatura del ambiente.\tabularnewline
+
+R15 & El vehículo científico deberá medir la velocidad de giro de las hélices del sistema de descenso por autorrotación relativa al vehículo científico.\tabularnewline
+
+R16 & El vehículo científico deberá medir la inclinación en los ejes de \textit{pitch} y \textit{roll}.\tabularnewline
+
+R17 & El vehículo científico deberá transmitir los datos de telemetría a una estación en Tierra.\tabularnewline
+
+R18 & La estación en Tierra deberá estar compuesta de una computadora portátil con un mínimo de dos horas de batería, un módulo XBee y una antena de mano.\tabularnewline
+
+R19 & La estación en Tierra deberá enviar comandos al vehículo científico para la calibración de las referencias de altura e inclinación (ejes de \textit{pitch} y \textit{roll}).\tabularnewline
+
+R20 & Deberá desarrollarse una interfaz de usuario para la estación en Tierra.\tabularnewline
+
+R21 & La interfaz de usuario deberá generar un archivo *\textit{.csv} con todos los datos de telemetría recibidos.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Requerimientos funcionales del CanSat (continuación).}
+\resizebox{13cm}{!}{
+\begin{tabular}{>{\centering}m{1cm} p{13cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+
+\multicolumn{1}{c}{\textbf{No.}} & \multicolumn{1}{c}{\textbf{Descripción}}
+\tabularnewline
+\hline
+\tabularnewline
+R22 & Los datos de telemetría deberán ser mostrados en la interfaz de usuario en unidades del Sistema Internacional.\tabularnewline
+
+R23 & Se deberán usar módulos XBee para la transmisión de datos de telemetría.\tabularnewline
+
+R24 & La antena de la estación en Tierra deberá recibir los datos de telemetría provenientes del CanSat sin importar la orientación de éste.\tabularnewline
+
+R25 & La transmisión de datos de telemetría deberá tener un alcance mínimo de $400 [m]$ en línea recta.\tabularnewline
+
+R26 & Los datos de telemetría deberán ser mostrados en tiempo real en la interfaz de usuario durante todo el tiempo de vuelo.\tabularnewline
+
+R27 & Los datos de telemetría deberán incluir el tiempo de misión con una resolución de un segundo o mejor.\tabularnewline
+
+R28 & La estación en Tierra deberá ser portátil.\tabularnewline
+
+R29 & El vehículo científico deberá mantener la cuenta de los paquetes de datos enviados.\tabularnewline
+
+R30 & El vehículo científico deberá mantener la cuenta de los paquetes de datos enviados y del tiempo de misión aún cuando suceda un reinicio inesperado.\tabularnewline
+
+R31 & El vehículo científico deberá poseer un interruptor principal de fácil acceso.\tabularnewline
+
+R32 & El descenso por autorrotación deberá ser pasivo.\tabularnewline
+
+R33 & El CanSat deberá operar por un mínimo de dos horas.\tabularnewline
+
+R34 & El CanSat deberá operar adecuadamente durante las pruebas ambientales de dimensiones, vibraciones, temperatura y caída.\tabularnewline
+
+R35 & El CanSat deberá registrar todo el vuelo utilizando una cámara.\tabularnewline
+
+R36 & La cámara deberá estar alineada con respecto al campo magnético de la Tierra en una orientación aleatoria.\tabularnewline
+
+R37 & La cámara deberá estar a $45^o$ con respecto del nadir.\tabularnewline
+
+R38 & El CanSat deberá tener un modo de operación automático y un modo de operación manual.\tabularnewline
+
+R39 & El vehículo científico deberá poseer un indicador auditivo con un nivel de presión de sonido de $92 [dB]$.\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\noindent A continuación, se enlistan los requerimientos no funcionales considerados para el desarrollo del CanSat. Estos requerimientos no afectan el desempeño del CanSat durante el desarrollo de la misión.
+
+\begin{itemize}
+	\item El contenedor deberá ser de algún color fluorescente (rosa, rojo o amarillo).
+	\item Los mecanismos que utilicen calor (en caso de haber) no deberán ser expuestos al exterior.
+	\item El vehículo científico deberá poseer un indicador LED de encendido de fácil visualización.
+	\item El paracaídas del contenedor deberá ser de color fluorescente (rosa o naranja).
+\end{itemize}
+
+		\subsection{Definición de la actividad del usuario}
+Un modo de operación se define como una capacidad operativa distinta del sistema: esta capacidad operativa puede usar el conjunto completo de las funciones del sistema o sólo una parte \cite{}. Tener distintos modos de operación permite un mejor aprovechamiento de los recursos energéticos ya que los modos de operación agrupan sólo las funciones necesarias para la situación actual del sistema, o las activan sólo cuando es necesario. A continuación, se enlistan los dos modos de operación del CanSat.
+
+\begin{itemize}
+	\item \textbf{Modo automático: } El CanSat mide parámetros del entorno, los almacena en la memoria de abordo y los transmite a la estación en Tierra. Toma decisiones con base en dichos parámetros para realizar las operaciones de la misión de vuelo. En la estación en Tierra se despliegan los parámetros recibidos y se almacenan en un archivo. El CanSat tendrá este modo de operación al momento de su lanzamiento.
+	\item \textbf{Modo manual: } El CanSat mide parámetros del entorno, los almacena en la memoria de abordo y los transmite a la estación en Tierra. El usuario tiene control sobre el comportamiento del sistema. La estación en Tierra muestra en pantalla los parámetros recibidos y los almacena en un archivo. El CanSat tendrá este modo de operación durante la demostración de su funcionamiento en Tierra.
+\end{itemize}
+
+		\subsection{Desarrollo de las arquitecturas del sistema}
+			\subsubsection{Arquitectura funcional}
+De acuerdo con \cite{}, una función es un proceso que toma entradas y las transforma en salidas. Para el desarrollo del CanSat se siguió una metodología con enfoque funcional, por lo tanto, se definió la lista de funciones que realiza el sistema. Agregado a esta lista, se desarrollaron diagramas que muestran las relaciones que hay entre las funciones y cómo éstas describen el comportamiento del sistema; en concreto, se desarrolló la arquitectura funcional del sistema (\textit{System Functional Architecture}, SFA). \\
+
+\noindent Para la realización de la descomposición de funciones se tomó como referencia el conjunto de funciones genéricas propuesto por Flores Hernández [?] donde especifica que todo sistema mecatrónico debe tener las siguientes funciones:
+
+\begin{itemize}
+	\item Medición de parámetros ambientales y del sistema.
+	\item Detección de errores del sistema.
+	\item Interacción con el usuario.
+	\item Gestión de las decisiones.
+	\item Acondicionamiento de las entradas y salidas del sistema.
+	\item Almacenamiento de información.
+	\item Comunicación interna y externa.
+	\item Recuperación de las funcionalidades del sistema.
+	\item Realizar las funciones particulares del sistema.
+	\item Proteger y soportar.
+	\item Gestionar energía.
+\end{itemize}
+
+\noindent Con base en esta estructura genérica, la Tabla \ref{tab:Funciones} muestra la descomposición de funciones del CanSat. En la definición de las funciones se debe tener en cuenta que cada requerimiento debe estar asociado con al menos una función, puesto que cada función debe estar justificada.\\
+
+\begin{table}[H]
+\begin{center}
+\caption{Descomposición de funciones del CanSat.}
+\label{tab:Funciones}
+\resizebox{13cm}{!}{ 
+\begin{tabular}{lllcc}
+\multicolumn{5}{c}{}\tabularnewline
+\toprule 
+
+\multicolumn{5}{c}{\textbf{CanSat con sistema de descenso por autorrotación}}
+\tabularnewline
+\hline
+\tabularnewline
+
+
+1.0 & \multicolumn{4}{l}{Gestionar energía}\tabularnewline
+ & 1.1 & \multicolumn{3}{l}{Acondicionar energía}\tabularnewline
+ & 1.2 & \multicolumn{3}{l}{Distribuir energía}\tabularnewline
+ & 1.3 & \multicolumn{3}{l}{Almacenar energía}\tabularnewline
+2.0 & \multicolumn{4}{l}{Gestionar información}\tabularnewline
+ & 2.1 & \multicolumn{3}{l}{Administrar datos}\tabularnewline
+ &  & 2.1.1 & \multicolumn{2}{l}{Comunicar internamente}\tabularnewline
+ &  & 2.1.2 & \multicolumn{2}{l}{Almacenar datos}\tabularnewline
+ &  & 2.1.3 & \multicolumn{2}{l}{Procesar datos}\tabularnewline
+ &  & 2.1.4 & \multicolumn{2}{l}{Interactuar con el usuario}\tabularnewline
+ & 2.2 & \multicolumn{3}{l}{Medir parámetros}\tabularnewline
+ &  & 2.2.1 & \multicolumn{2}{l}{Medir parámetros internos}\tabularnewline 
+ &  &  & 2.2.1.1 & \multicolumn{1}{l}{Medir hora y fecha}\tabularnewline
+ &  &  & 2.2.1.2 & \multicolumn{1}{l}{Medir nivel de tensión en baterías}\tabularnewline
+  &  &  & 2.2.1.3 & \multicolumn{1}{l}{Medir velocidad angular}\tabularnewline
+    &  &  & 2.2.1.4 & \multicolumn{1}{l}{Realizar conteo del número de paquetes enviados}\tabularnewline
+ &  &  2.2.2 & \multicolumn{2}{l}{Medir parámetros externos}\tabularnewline  
+ &  &  & 2.2.2.1 & \multicolumn{1}{l}{Medir temperatura}\tabularnewline
+ &  &  & 2.2.2.2 & \multicolumn{1}{l}{Medir presión barométrica}\tabularnewline
+
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Descomposición de funciones del CanSat (continuación).}
+\resizebox{13cm}{!}{ 
+\begin{tabular}{lllcc}
+\multicolumn{5}{c}{}\tabularnewline
+\toprule 
+
+\multicolumn{5}{c}{\textbf{CanSat con sistema de descenso por autorrotación}}
+\tabularnewline
+\hline
+\tabularnewline
+
+
+  &  &  & 2.2.2.3 & \multicolumn{1}{l}{Medir componentes de gravedad en un sistema}\tabularnewline
+  &  &  &  & \multicolumn{1}{l}{ de referencia cartesiano fijo}\tabularnewline  
+  &  &  & 2.2.2.4 & \multicolumn{1}{l}{Medir velocidades angulares alrededor de los ejes de}\tabularnewline  
+  &  &  &  & \multicolumn{1}{l}{un sistema de referencia cartesiano fijo}\tabularnewline     
+  &  &  & 2.2.2.5 & \multicolumn{1}{l}{Medir componentes del campo magnético de la Tierra}\tabularnewline  
+  &  &  & 2.2.2.6 & \multicolumn{1}{l}{Medir latitud, longitud y altitud}\tabularnewline  
+ & 2.3 & \multicolumn{3}{l}{Tomar decisiones}\tabularnewline
+ &  &  2.3.1 & \multicolumn{2}{l}{Recuperar funcionalidades}\tabularnewline
+  &  &  2.3.2 & \multicolumn{2}{l}{Secuenciar comportamiento}\tabularnewline  
+3.0 & \multicolumn{4}{l}{Proteger y soportar el sistema}\tabularnewline
+4.0 & \multicolumn{4}{l}{Simular misión de vuelo}\tabularnewline
+ & 4.1 & \multicolumn{3}{l}{Registrar descenso}\tabularnewline
+ & & 4.1.1 & \multicolumn{2}{l}{Grabar evidencia de descenso}\tabularnewline 
+  & & 4.1.2 & \multicolumn{2}{l}{Orientar cámara}\tabularnewline  
+ & 4.2 & \multicolumn{3}{l}{Comunicar con estación en Tierra}\tabularnewline
+  & 4.3 & \multicolumn{3}{l}{Reducir velocidad de descenso}\tabularnewline
+ & 4.4 & \multicolumn{3}{l}{Orientar CanSat}\tabularnewline
+  & 4.5 & \multicolumn{3}{l}{Liberar vehículo científico}\tabularnewline
+
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\noindent Los diagramas IDEF0 se usaron como una técnica de modelado gráfica para representar las relaciones que hay entre las funciones dentro de cada nivel de la descomposición de funciones. La imagen \ref{img:nodoA0} muestra el diagrama IDEF0 del nivel de mayor jerarquía de la descomposición de funciones del CanSat. La única entrada transformada por el CanSat es el conjunto de parámetros de interés que se miden a lo largo de la misión. Estos parámetros son transformados en datos mostrados en la interfaz de usuario, datos almacenados abordo del CanSat y en la estación en Tierra, en un video grabado por la cámara, y en un contenedor y vehículo científico separados.\\
+
+\noindent El último de los elementos que componen a la arquitectura funcional son los diagramas eFFBD. La imagen \ref{img:eFFBDCanSat} muestra el diagrama eFFBD del CanSat en su modo de operación automático. En la imagen \ref{img:eFFBDCanSat} se puede ver que el CanSat gestiona la energía y le da soporte y protección a todos los componentes durante toda la misión. Las dos funciones anteriores las realiza en paralelo con la gestión de la información y la simulación de la misión de vuelo. Para la función de gestionar información, el CanSat debe medir y procesar los datos antes de tomar decisiones con base en ellos. El CanSat debe primero calcular la altura, tomar la decisión de liberar al vehículo científico con base en el valor de altura obtenido y, finalmente, transmitir este dato, junto con los demás, a la estación en Tierra.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=1.1]{diseniosist/IDEF0A0}
+	\caption{Nodo A0 del diagrama IDEF0. CanSat con sistema de descenso por autorrotación.}
+	\label{img:nodoA0}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.50]{diseniosist/eFFBDCanSat}
+	\caption{Diagrama eFFBD del CanSat en modo automático.}
+	\label{img:eFFBDCanSat}
+\end{figure}
+
+\newpage
+			\subsubsection*{Priorización de funciones}
+\noindent Priorizar funciones tiene que ver con determinar qué función es la más importante de toda la descomposición de funciones. Flores Hernández [?] menciona que realizar este proceso de priorización permite al equipo de diseño saber qué función afecta en mayor medida al comportamiento global del sistema, para después poder aplicar técnicas de optimización a esa función en particular, en lugar de optimizar todas y cada una de ellas.\\
+
+\noindent El problema de priorización de funciones puede verse como un problema de toma de decisiones multicriterio que, como su nombre lo indica, se trata de tomar una decisión con base en varios criterios, donde cada uno tiene una influencia diferente en la toma de la decisión final. Al final de este proceso de toma de decisión multicriterio se puede saber cuál de las opciones es la mejor, o viéndolo desde el punto de vista de priorización, qué función es la más importante. Para la priorización de funciones se utilizó el método AHP descrito en la sección \ref{sec:tools}.\\
+
+\noindent Para la realización de la priorización de funciones se tomaron en cuenta los criterios enlistados a continuación.
+
+\begin{itemize}
+	\item \textbf{Importancia:} Hace referencia a si la función evaluada es necesaria, o si se trata de una función complementaria. Durante el proceso de comparación se puede responder a la siguiente pregunta: ¿es esta función más importante que la otra para el comportamiento general del sistema?
+	\item \textbf{Eficiencia:} Se refiere a qué tanto ayuda una función con respecto de la otra para el cumplimiento de los objetivos de diseño y el comportamiento deseado. Para evaluar las funciones bajo este criterio puede hacerse la siguiente pregunta: ¿esta función ayuda más que la otra para un mejor cumplimiento del comportamiento general del sistema?
+	\item \textbf{Dependencia:} Se refiere a si la una función depende de otra(s) para ejecutarse. Al comparar dos funciones puede responderse a la siguiente pregunta: ¿esta función depende de la otra para ejecutarse?
+\end{itemize}
+
+\noindent En el método AHP primero se determina un vector de priorización de criterios $w_{cr}$ el cual indica el grado de influencia que cada criterio tiene durante el proceso de priorización. Posteriormente, se debe realizar una comparación de cada función contra cada función (una tabla de comparación de 26x26 en este caso) con respecto de cada criterio, respondiendo a la pregunta respectiva. Los resultados de esta comparación por pares constituyen una matriz $MCR_{f}$ de 26x3.\\
+
+\noindent El vector de priorización de funciones $P_{f}$, tomando en cuenta todos los criterios y su respectivo grado de influencia en la decisión final, se obtiene al calcular $P_{f} = MCR_f \cdot w_{cr}$.
+
+\noindent La Tabla \ref{tab:priorizacion de funciones} muestra el número de prioridad de cada función. En la Tabla \ref{tab:priorizacion de funciones} se observa que la función $sf_{4\text{.}3}-$ \textit{Reducir velocidad de descenso} es la más importante, seguido de las funciones $sf_{3\text{.}0}-$ \textit{Proteger y soportar} y $sf_{1\text{.}1}-$\textit{Acondicionar energía}.\\
+
+\begin{table}[H]
+\begin{center}
+\caption{Resultados del proceso de priorización de funciones.}
+\label{tab:priorizacion de funciones}
+\resizebox{13cm}{!}{
+\begin{tabular}{p{8cm}p{2cm}p{2cm}p{2cm}}
+
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\textbf{Función} & \textbf{No.} & \textbf{Posición} & \textbf{Valor}
+\tabularnewline
+\hline
+\tabularnewline
+  
+Gestionar energía & $f_{1\text{.}0}$ & -- & --\tabularnewline
+\rowcolor{lightgray}\;\;\;Acondicionar energía & $sf_{1\text{.}1}$ & \textbf{3} & 0.0679\tabularnewline
+\;\;\;Distribuir energía & $sf_{1\text{.}2}$ & 8 & 0.0443\tabularnewline
+\;\;\;Almacenar energía & $sf_{1\text{.}3}$ & 12 & 0.0408\tabularnewline
+
+Gestionar información & $f_{2\text{.}0}$ & -- & --\tabularnewline
+
+\;\;\;Administrar datos & $sf_{2\text{.}1}$ & -- & --\tabularnewline
+\;\;\;\;\;\;Comunicar internamente & $sf_{2\text{.}1\text{.}1}$ & 5 & 0.0554\tabularnewline
+\;\;\;\;\;\;Almacenar datos & $sf_{2\text{.}1\text{.}2}$ & 25 & 0.0220\tabularnewline
+\;\;\;\;\;\;Procesar datos & $sf_{2\text{.}1\text{.}3}$ & 10 & 0.0413\tabularnewline
+\;\;\;\;\;\;Interactuar con el usuario & $sf_{2\text{.}1\text{.}4}$ & 13 & 0.0398\tabularnewline
+
+\;\;\;Medir parámetros & $sf_{2\text{.}2}$ & -- & --\tabularnewline
+\;\;\;\;\;\;Medir parámetros internos & $sf_{2\text{.}2\text{.}1}$ & -- & --\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir hora y fecha & $sf_{2\text{.}2\text{.}1\text{.}1}$ & 18 & 0.0251\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir nivel de tensión en baterías & $sf_{2\text{.}2\text{.}1\text{.}2}$ & 17 & 0.0251\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir velocidad angular & $sf_{2\text{.}2\text{.}1\text{.}3}$ & 11 &0.0411\tabularnewline
+\;\;\;\;\;\;\;\;\;Realizar conteo del número de paquetes & $sf_{2\text{.}2\text{.}1\text{.}4}$ & 16 & 0.0253\tabularnewline
+
+\;\;\;\;\;\;Medir parámetros externos & $sf_{2\text{.}2\text{.}2}$ & -- & --\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir temperatura & $sf_{2\text{.}2\text{.}2\text{.}1}$ & 23 & 0.0245\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir presión barométrica & $sf_{2\text{.}2\text{.}2\text{.}2}$ & 22 & 0.0245\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir componentes de gravedad en& $sf_{2\text{.}2\text{.}2\text{.}3}$ & 21 & 0.0248\tabularnewline
+\;\;\;\;\;\;\;\;\;un sistema de referencia cartesiano fijo& & &\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir velocidades angulares alrededor de & $sf_{2\text{.}2\text{.}2\text{.}4}$ & 20 & 0.0248\tabularnewline
+\;\;\;\;\;\;\;\;\;los ejes de un sistema de referencia& & &\tabularnewline
+\;\;\;\;\;\;\;\;\;cartesiano fijo& & &\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir componentes del campo magnético & $sf_{2\text{.}2\text{.}2\text{.}5}$ & 19 & 0.0248\tabularnewline
+\;\;\;\;\;\;\;\;\;de la Tierra& & &\tabularnewline
+\;\;\;\;\;\;\;\;\;Medir latitud, longitud y altitud & $sf_{2\text{.}2\text{.}2\text{.}6}$ & 24 & 0.0244\tabularnewline
+
+\;\;\;Tomar decisiones & $sf_{2\text{.}3}$ & -- & --\tabularnewline
+\;\;\;\;\;\;Recuperar funcionalidades & $sf_{2\text{.}3\text{.}1}$ & 7 & 0.0478\tabularnewline
+\;\;\;\;\;\;Secuenciar comportamiento & $sf_{2\text{.}3\text{.}2}$ & 6 & 0.0488\tabularnewline
+
+\rowcolor{lightgray}Proteger y soportar el sistema & $f_{3\text{.}0}$ & \textbf{2} & 0.0703\tabularnewline
+
+Simular misión de vuelo & $f_{4\text{.}0}$ & -- & --\tabularnewline
+\;\;\;Registrar descenso & $sf_{4\text{.}1}$ & -- & --\tabularnewline
+\;\;\;\;\;\;Grabar evidencia de descenso & $sf_{4\text{.}1\text{.}1}$ & 26 & 0.0192\tabularnewline
+\;\;\;\;\;\;Orientar cámara & $sf_{4\text{.}1\text{.}2}$ & 14 & 0.0294\tabularnewline
+\;\;\;Comunicar con estación en Tierra & $sf_{4\text{.}2}$ & 9 & 0.0415\tabularnewline
+\rowcolor{lightgray}\;\;\;Reducir velocidad de descenso & $sf_{4\text{.}3}$ & \textbf{1} & 0.0742\tabularnewline
+\;\;\;Orientar CanSat & $sf_{4\text{.}4}$ & 4 & 0.0638\tabularnewline
+\;\;\;Liberar vehículo científico & $sf_{4\text{.}5}$ & 15 & 0.0291\tabularnewline
+ 
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\newpage
+
+			\subsubsection{Arquitectura física}
+La arquitectura física del sistema (\textit{System Physical Architecture}, SPA) se define como el conjunto de todas las transformaciones de funciones y subfunciones en sistemas, subsistemas, ensambles y componentes físicos [?]. Estos elementos deben cumplir con las funciones definidas previamente y satisfacer las necesidades planteadas al inicio del proceso de diseño con el fin de otorgar el comportamiento deseado.\\
+
+\noindent Al igual que con la arquitectura funcional, Flores Hernández [] propone una arquitectura física genérica para cualquier sistema mecatrónico que se compone de los siguientes sistemas:
+
+\begin{itemize}
+	\item Sistema Central de Manejo del Comportamiento.
+	\item Sistema de Procesamiento de Datos.
+	\item Sistema de Energía.
+	\item Sistema Estructural.
+	\item Sistemas propios del sistema mecatrónico diseñado.
+\end{itemize}
+
+\noindent La arquitectura física del CanSat está basada en la arquitectura genérica presentada anteriormente tal como se muestra en la figura \ref{img:SPACanSat}. La Tabla \ref{tab:sistemas y subsistemas} muestra la descripción de los sistemas y subsistemas del CanSat.
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.85]{diseniosist/DiagramaArquitecturaFisica}
+	\caption{Arquitectura física del CanSat.}
+	\label{img:SPACanSat}
+\end{figure}
+
+
+\begin{table}[H]
+\begin{center}
+\caption{Sistemas y subsistemas del CanSat.}
+\label{tab:sistemas y subsistemas}
+\resizebox{14cm}{!}{
+\begin{tabular}{p{4cm}p{12cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+
+\multicolumn{1}{c}{\textbf{Sistema}} & \multicolumn{1}{c}{\textbf{Descripción}}
+\tabularnewline
+\hline
+\tabularnewline
+
+($S_{1}$) Sistema Central de Manejo del Comportamiento (SCMC) & Este sistema está encargado de determinar el comportamiento del CanSat de acuerdo con la etapa de vuelo en la que se encuentre. este sistema está compuesto por dos subsistemas: El subsistema de percepción ($sS_{1\text{.}1}$ -- SP), encargado de la adquisición de los parámetros del entorno e internos, y el subsistema de toma de decisiones ($sS_{1\text{.}2}$ -- STD), encargado de habilitar o deshabilitar ciertas funciones del CanSat con base en los datos procesados.\tabularnewline\tabularnewline
+
+($S_{2}$) Sistema de Procesamiento de Datos (SPD) & Este sistema está encargado de procesar la información del entorno. El SPD está formado por tres subsistemas: el subsistema de acondicionamiento de datos ($sS_{2\text{.}1}$ -- SAcD), que procesa los datos de los sensores; el subsistema de almacenamiento de datos ($sS_{2\text{.}2}$ -- SAlD), que almacena la información abordo, y el subsistema de comunicación interna ($sS_{2\text{.}3}$ -- SCI), que distribuye la información a los componentes que la requieran.\tabularnewline\tabularnewline
+
+($S_{3}$) Sistema de Reducción de Velocidad de Descenso (SRVD) & Este sistema es encargado de mantener la velocidad de descenso del CanSat dentro de los rangos establecidos en los requerimientos. El SRVD está compuesto por dos subsistemas: el subsistema de reducción de velocidad por paracaídas ($sS_{3\text{.}1}$ -- SRV-P), cuya función es mantener la velocidad de descenso de todo el CanSat dentro del rango de $15 [m/s]$ a $25 [m/s]$ antes de los $300 [m]$, y el 	subsistema de reducción de velocidad por autorrotación ($sS_{3\text{.}2}$ -- SRV-A), cuya función es mantener la velocidad de descenso del vehículo científico dentro del rango de $10 [m/s]$ a $15 [m/s]$.\tabularnewline\tabularnewline
+
+($S_{4}$) Sistema de Liberación del Vehículo Científico (SLVC) & Este sistema está encargado de liberar al vehículo científico del contenedor a una altura de $300 [m]$.\tabularnewline\tabularnewline
+
+($S_{5}$) Sistema de Registro de Descenso (SRD) & Este sistema se encarga de tomar evidencia en video a lo largo de toda la misión, enfocando siempre en la misma dirección con respecto del nadir.\tabularnewline\tabularnewline
+
+($S_{6}$) Sistema de Estación en Tierra (SET) & Este sistema se encarga de comunicar el CanSat con la estación en Tierra, y comunicar la estación en Tierra con el usuario. El SET está compuesto por dos subsistemas: el subsistema de comunicación CanSat -- Estación en Tierra ($sS_{6\text{.}1}$ -- SC-ET), cuya función es transmitir información del CanSat a la estación en Tierra y viceversa, y el subsistema de comunicación Usuario -- Estación en Tierra ($sS_{6\text{.}2}$ -- SU-ET), cuya función es mostrar al usuario de forma amena la información que el CanSat envíe a la estación en Tierra y crear un respaldo de esta información.\tabularnewline\tabularnewline
+
+($S_{7}$) Sistema de Energía (SEn) & Este sistema está encargado de gestionar la energía de consumo del CanSat. Realiza las funciones de almacenamiento, acondicionamiento y distribución de la energía a todo el CanSat.\tabularnewline\tabularnewline
+
+($S_{8}$) Sistema Estructural (SEs) & Este sistema se encarga de mantener al CanSat ensamblado y protegido de las diferentes fuerzas a las que estará sometido a lo largo de la misión.\tabularnewline\tabularnewline
+
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+			\subsubsection*{Priorización de sistemas}
+\noindent Al igual que con la priorización de funciones,  se llevó a cabo un proceso de priorización de sistemas. El propósito es el mismo: identificar los sistemas más importantes con base en ciertos criterios para así poder aplicar técnicas de optimización a éstos. Si se optimizan los sistemas más importantes, el efecto de mejoramiento en el comportamiento del sistema mecatrónico será global.\\
+
+\noindent Para la priorización de los sistemas y subsistemas se utilizaron los criterios que se enlistan a continuación.
+
+\begin{itemize}
+	\item \textbf{Importancia:} este criterio determina la importancia del sistema de acuerdo con la importancia de las funciones que debe ejecutar.
+
+	\item \textbf{Funciones asociadas:} este criterio determina la importancia del sistema de acuerdo con la cantidad de funciones que debe ejecutar.
+
+	\item \textbf{Entradas/salidas:} este criterio determina la importancia de los sistemas a partir de la cantidad de entradas y salidas de los mismos.
+\end{itemize}
+
+\noindent El proceso que se utilizó para la priorización de sistemas fue el método AHP. La Tabla \ref{tab:sistprio} muestra el número de prioridad de cada sistema y subsistema.
+
+\begin{table}[H]
+\begin{center}
+\caption{Resultados del proceso de priorización de sistemas.}
+\label{tab:sistprio}
+\resizebox{14cm}{!}{
+\begin{tabular}{p{8cm}p{3cm}p{3cm}p{3cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+
+\textbf{Sistema} & \textbf{No.} & \textbf{Posición} & \textbf{Valor}
+\tabularnewline
+\hline
+\tabularnewline
+  
+Sistema central de manejo del comportamiento & $S_{1\text{.}0}$ & -- & --\tabularnewline
+\rowcolor{lightgray}\;\;\;Subsistema de percepción & $sS_{1\text{.}1}$ & \textbf{2} & 0.1422\tabularnewline
+\rowcolor{lightgray}\;\;\;Subsistema de toma de decisiones & $sS_{1\text{.}2}$ & \textbf{3} & 0.1371\tabularnewline
+
+Sistema de procesamiento de datos & $S_{2\text{.}0}$ & -- & --\tabularnewline
+\;\;\;Subsistema de acondicionamiento de datos & $sS_{2\text{.}1}$ & 10 & 0.0445\tabularnewline
+\;\;\;Subsistema de almacenamiento de datos & $sS_{2\text{.}2}$ & 6 & 0.0565\tabularnewline
+\rowcolor{lightgray}\;\;\;Subsistema de comunicación interna & $sS_{2\text{.}3}$ & \textbf{1} & 0.2048\tabularnewline
+
+Sistema de reducción de velocidad de descenso & $S_{3\text{.}0}$ & -- & --\tabularnewline
+\;\;\;Subsistema de reducción de velocidad por & $sS_{3\text{.}1}$ & 5 & 0.0667\tabularnewline
+\;\;\;paracaídas &  &  & \tabularnewline
+\;\;\;Subsistema de reducción de velocidad por & $sS_{3\text{.}2}$ & 4 & 0.0744\tabularnewline
+\;\;\;autorrotación &  &  & \tabularnewline
+
+Sistema de liberación del vehículo & $S_{4\text{.}0}$ & 13 & 0.0329\tabularnewline
+científico &  &  & \tabularnewline
+
+Sistema de registro de descenso & $S_{5\text{.}0}$ & 12 & 0.0329\tabularnewline
+
+Sistema de Estación en Tierra & $S_{6\text{.}0}$ & -- & --\tabularnewline
+\;\;\;Subsistema de comunicación CanSat - & $sS_{6\text{.}1}$ & 9 & 0.0445\tabularnewline
+\;\;\;Estación en Tierra &  &  & \tabularnewline
+\;\;\;Subsistema de comunicación Usuario - & $sS_{6\text{.}2}$ & 8 & 0.0445\tabularnewline
+\;\;\;Estación en Tierra &  &  & \tabularnewline
+
+Sistema de energía & $S_{7\text{.}0}$ & 11 & 0.0440\tabularnewline
+Sistema estructural & $S_{8\text{.}0}$ & 7 & 0.0445\tabularnewline
+
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+		\subsection{Análisis morfológico}
+Para obtener el diseño preliminar se deben proponer soluciones a cada función y subfunción del sistema. El análisis morfológico (\textit{General Morphological Analysis}, GMA) es un método adecuado para este propósito. El análisis morfológico es un método general para estructurar e investigar el conjunto total de relaciones posibles en un problema multidimensional, usualmente no cuantificable.\\
+
+\noindent Para comenzar con el análisis morfológico del CanSat se deben primero establecer los parámetros más representativos del problema. Con base en la metodología, se han escogido tres parámetros principales: forma, posición y método. El parámetro de forma hace referencia a la geometría del elemento, el de posición se refiere a la ubicación del elemento dentro del sistema completo, y el de método hace referencia a alguna manera de realizar la función correspondiente. Dependiendo de las funciones evaluadas también se utilizarán los parámetros de configuración y mecanismo (su implementación será más evidente en breve).\\
+
+\noindent Una vez establecidos los parámetros se debe proponerse mínimo una solución para cada uno sin restricción en el número máximo de soluciones.\\
+
+\noindent La Tabla \ref{tab:GMA} muestra el análisis morfológico del CanSat para cada sistema y subsistema tomando en cuenta las funciones y subfunciones asociadas a cada uno.\\
+
+\noindent La Tabla \ref{tab:GMA} otorga un total de $46 656$ posibles combinaciones donde cada combinación está compuesta de una solución de cada parámetro de cada sistema o subsistema. Una extensión del análisis morfológico es la realización de la Matriz de Consistencia (\textit{Cross-Consistency Matrix}, CCA), en la que se evalúa cada solución contra cada solución con el fin de encontrar inconsistencias entre ellas. Con la realización de la matriz de consistencia se pueden descartar muchas combinaciones.
+
+\newpage
+
+\begin{table}[H]
+\begin{center}
+\caption{Análisis morfológico del CanSat.}
+\label{tab:GMA}
+\resizebox{17cm}{!}{
+\begin{tabular}{m{2cm}>{\centering}m{5cm}>{\centering}m{5cm}>{\centering}m{5cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema Central de Manejo del Comportamiento}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+
+%------------------------------------------------------------------------------------------------
+Posición (A) ($sS_{1\text{.}1}$)
+&
+\includegraphics[scale=1.0]{diseniosist/SA/SA1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SA/SA2.png}
+&
+\includegraphics[scale=1.0]{diseniosist/SA/SA3.png}
+\tabularnewline \tabularnewline
+  & A1 & A2 & A3
+\tabularnewline \midrule
+%------------------------------------------------------------------------------------------------
+Posición (A) ($sS_{1\text{.}2}$)
+&
+\includegraphics[scale=1.0]{diseniosist/SA/SA1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SA/SA2.png}
+&
+\includegraphics[scale=1.0]{diseniosist/SA/SA3.png}
+\tabularnewline \tabularnewline
+  & A1 & A2 & A3
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Análisis morfológico del CanSat (continuación).}
+\resizebox{17cm}{!}{
+\begin{tabular}{m{2cm}>{\centering}m{6cm}>{\centering}m{6cm}>{\centering}m{6cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema de Procesamiento de Datos}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+
+%------------------------------------------------------------------------------------------------
+Posición (A) ($sS_{2\text{.}1}$)
+&
+\includegraphics[scale=1.0]{diseniosist/SA/SA1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SA/SA2.png}
+&
+\includegraphics[scale=1.0]{diseniosist/SA/SA3.png}
+\tabularnewline \tabularnewline
+  & A1 & A2 & A3
+\tabularnewline \midrule
+%------------------------------------------------------------------------------------------------
+Posición (B) ($sS_{2\text{.}2}$)
+&
+\includegraphics[scale=1.0]{diseniosist/SB/SB1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SB/SB2.png}
+&
+%\includegraphics[scale=0.7]{diseniosist/SA/SA3.png}
+\tabularnewline \tabularnewline
+  & B1 & B2 & 
+\tabularnewline \midrule
+%------------------------------------------------------------------------------------------------
+Método (C) ($sS_{2\text{.}3}$)
+&
+\includegraphics[scale=1.0]{diseniosist/SC/SC1.png}
+& 
+\includegraphics[scale=0.7]{diseniosist/SC/SC2.png}
+&
+\includegraphics[scale=0.5]{diseniosist/SC/SC3.png}
+\tabularnewline
+  & C1 & C2 & C3
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Análisis morfológico del CanSat (continuación).}
+\resizebox{17cm}{!}{
+\begin{tabular}{m{2cm}>{\centering}m{6cm}>{\centering}m{6cm}>{\centering}m{6cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema de Reducción de Velocidad de Descenso}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+
+%------------------------------------------------------------------------------------------------
+Mecanismo (H) ($sS_{3\text{.}1}$)
+&
+\includegraphics[scale=1.4]{diseniosist/SH/SH1.png}
+& 
+\includegraphics[scale=0.8]{diseniosist/SH/SH2.png}
+&
+\includegraphics[scale=1.2]{diseniosist/SH/SH3.png}
+\tabularnewline
+ & H1 & H2 & H3
+\tabularnewline
+& Atrancamiento con vástago & Apertura utilizando hilo y resorte & Atrancamiento con tope
+\tabularnewline \midrule
+%------------------------------------------------------------------------------------------------
+Mecanismo (I) ($sS_{3\text{.}2}$)
+&
+\includegraphics[scale=2.0]{diseniosist/SI/SI1.png}
+& 
+\includegraphics[scale=2.0]{diseniosist/SI/SI2.png}
+&
+\includegraphics[scale=2.0]{diseniosist/SI/SI3.png}
+\tabularnewline
+  & I1 & I2 & I3
+\tabularnewline
+  & 1 GDL & 2 GDL & 3 GDL
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+\begin{center}
+\resizebox{17cm}{!}{
+\begin{tabular}{>{\centering}m{2cm}>{\centering}m{6cm}>{\centering}m{6cm}>{\centering}m{6cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema de Liberación del Vehículo Científico}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+  
+%------------------------------------------------------------------------------------------------
+Mecanismo (L)
+&
+\includegraphics[scale=2.0]{diseniosist/SM/SM1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SM/SM2.png}
+&
+\includegraphics[scale=1.0]{diseniosist/SM/SM3.png}
+\tabularnewline
+ & L1 & L2 & L3 
+\tabularnewline
+ & Mecanismo biela$-$manivela$-$corredera & Mecanismo de leva$-$seguidor & Corredera con un hilo
+\tabularnewline \midrule
+%------------------------------------------------------------------------------------------------
+Posición (M)
+&
+\includegraphics[scale=1.0]{diseniosist/SL/SL1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SL/SL2.png}
+&
+%\includegraphics[scale=0.7]{Imagenes/GMA/SA/SA3.png}
+\tabularnewline \tabularnewline
+ & M1 & M2 & 
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+\bottomrule
+\end{tabular}
+}
+\end{center}
+
+\newpage
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Análisis morfológico del CanSat (continuación).}
+\resizebox{17cm}{!}{
+\begin{tabular}{m{2cm}>{\centering}m{6cm}>{\centering}m{6cm}>{\centering}m{6cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema de Registro de Descenso}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+
+%------------------------------------------------------------------------------------------------
+Configuración (F)
+&
+\includegraphics[scale=0.6]{diseniosist/SF/SF1.png}
+& 
+\includegraphics[scale=0.6]{diseniosist/SF/SF2.png}
+&
+%\includegraphics[scale=0.7]{Imagenes/GMA/SA/SA3.png}
+\tabularnewline
+ & F1 & F2 & 
+ \tabularnewline
+ & 1 GDL & 2 GDL & 
+\tabularnewline \midrule
+%------------------------------------------------------------------------------------------------
+Posición (G)
+&
+\includegraphics[scale=0.6]{diseniosist/SG/SG1.png}
+& 
+\includegraphics[scale=0.6]{diseniosist/SG/SG2.png}
+&
+%\includegraphics[scale=0.7]{Imagenes/GMA/SA/SA3.png}
+\tabularnewline
+ & G1 & G2 & 
+ \tabularnewline
+ & Sobre la circunferencia, hasta abajo & Al centro, hasta abajo & 
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+\begin{center}
+\resizebox{17cm}{!}{
+\begin{tabular}{m{2cm}>{\centering}m{6cm}>{\centering}m{6cm}>{\centering}m{6cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema de Estación en Tierra}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+
+%------------------------------------------------------------------------------------------------
+Posición (J) ($sS_{6\text{.}1}$)
+&
+\includegraphics[scale=1.0]{diseniosist/SJ/SJ1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SJ/SJ2.png}
+&
+%\includegraphics[scale=0.5]{Imagenes/GMA/SJ/SJ3.png}
+\tabularnewline
+ & J1 & J2 & 
+\tabularnewline \midrule
+%------------------------------------------------------------------------------------------------
+Método (K) ($sS_{6\text{.}2}$)
+&
+IHM \includegraphics[scale=1.0]{diseniosist/SJ/CP.png}
+& 
+%\includegraphics[scale=0.7]{Imagenes/GMA/SA/SA2.png}
+&
+%\includegraphics[scale=0.7]{Imagenes/GMA/SA/SA3.png}
+\tabularnewline
+ & K1 & & 
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+
+\newpage
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Análisis morfológico del CanSat (continuación).}
+\resizebox{17cm}{!}{
+\begin{tabular}{m{2cm}>{\centering}m{6cm}>{\centering}m{6cm}>{\centering}m{6cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema de Energía}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+
+%------------------------------------------------------------------------------------------------
+Método (C)
+&
+\includegraphics[scale=1.0]{diseniosist/SC/SC1.png}
+& 
+\includegraphics[scale=0.7]{diseniosist/SC/SC2.png}
+&
+\includegraphics[scale=0.5]{diseniosist/SC/SC3.png}
+\tabularnewline
+ & C1 & C2 & C3
+\tabularnewline \midrule \tabularnewline
+%------------------------------------------------------------------------------------------------
+Posición (D)
+&
+\includegraphics[scale=1.0]{diseniosist/SD/SD1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SD/SD2.png}
+&
+%\includegraphics[scale=0.7]{Imagenes/GMA/SA/SA3.png}
+\tabularnewline
+ & D1 & D2 & 
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+\begin{center}
+\resizebox{17cm}{!}{
+\begin{tabular}{m{2cm}>{\centering}m{6cm}>{\centering}m{6cm}>{\centering}m{6cm}}
+\multicolumn{4}{c}{}\tabularnewline
+\toprule
+\multicolumn{4}{c}{\textbf{Sistema Estructural}}\tabularnewline
+\midrule
+\textbf{Parámetro} & \centering \textbf{Solución 1} & \centering \textbf{Solución 2} & \centering \textbf{Solución 3}\tabularnewline
+\hline
+\tabularnewline
+
+%------------------------------------------------------------------------------------------------
+Forma (E)
+&
+\includegraphics[scale=1.0]{diseniosist/SE/SE1.png}
+& 
+\includegraphics[scale=1.0]{diseniosist/SE/SE2.png}
+&
+\includegraphics[scale=1.0]{diseniosist/SE/SE3.png}
+\tabularnewline
+ & E1 & E2 & E3 
+\tabularnewline
+%------------------------------------------------------------------------------------------------
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+
+\newpage
+
+		\subsection{Selección del concepto final}			
+\noindent Aún cuando se han descartado las combinaciones que presentan inconsistencias entre sí, el número restante de combinaciones puede todavía ser grande. Debido a lo anterior, sólo se evaluarán $3$ combinaciones para obtener sólo una que corresponderá al diseño preliminar del CanSat. El diseño preliminar seleccionado servirá como punto de partida para el diseño detallado. La Tabla \ref{tab:Combinacion} muestra las combinaciones a ser evaluadas.
+
+\begin{table}[H]
+\begin{center}
+\caption{Combinaciones de soluciones a evaluar para la selección del dieño preliminar.}
+\label{tab:Combinacion}
+\resizebox{14cm}{!}{
+\begin{tabular}{p{4cm}p{12cm}}
+\multicolumn{2}{c}{}\tabularnewline
+\toprule
+
+\multicolumn{1}{c}{\textbf{Combinación}} & \multicolumn{1}{c}{\textbf{Elementos}}
+\tabularnewline
+\hline
+\tabularnewline
+
+\centering 1 & \centering A1, B2, C3, D1, E1, F1, G2, H1, I2, J1, K1, L1, M1\tabularnewline
+\centering 2 & \centering A3, B2, C1, D1, E3, F1, G2, H3, I1, J1, K1, L2, M2\tabularnewline
+\centering 3 & \centering A3, B2, C3, D1, E1, F1, G2, H2, I3, J1, K1, L3, M1\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\noindent El método AHP fue utilizado para seleccionar la mejor combinación de soluciones con base en varios criterios. La Tabla \ref{tab:CriteriosCombinacion} muestra estos criterios. Finalmente, la Tabla \ref{tab:priorizacion de combinaciones} muestra el número de prioridad de cada combinación resultado del método AHP.
+
+\begin{table}[H]
+\begin{center}
+\caption{Criterios para la selección de diseño preliminar.}
+\label{tab:CriteriosCombinacion}
+\resizebox{14cm}{!}{
+\begin{tabular}{p{4cm}p{6cm}p{5cm}}
+\multicolumn{3}{c}{}\tabularnewline
+\toprule
+
+\centering \textbf{Criterio} & \centering \textbf{Descripción} & \centering \textbf{Escala}\tabularnewline
+\hline
+\tabularnewline
+
+Estabilidad & Se hace referencia a cómo es modificado el centro de gravedad del CanSat para mantenerlo alineado con el nadir. & Mientras más abajo se encuentre el centro de gravedad, mejor.\tabularnewline\tabularnewline
+
+Fiabilidad de conexiones eléctricas & Se hace referencia a qué tan confiables son las terminales de conexión eléctricas. & Entre menos susceptibles sean a desoldarse, desconectarse o romperse, mejor.\tabularnewline\tabularnewline
+
+Control & Se hace referencia a la presencia de grados de libertad a controlar en el SRD. & Entre menor cantidad de grados de libertad, mejor.\tabularnewline\tabularnewline
+
+Fiabilidad de conexiones estructurales & Se hace referencia a la presencia de elementos estructurales flexibles y sensibles a vibraciones. & Entre menos resortes o hilos, mejor.\tabularnewline\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\ContinuedFloat
+\begin{center}
+\caption{Criterios para la selección de diseño preliminar (continuación).}
+\resizebox{14cm}{!}{
+\begin{tabular}{p{4cm}p{6cm}p{5cm}}
+\multicolumn{3}{c}{}\tabularnewline
+\toprule
+
+\centering \textbf{Criterio} & \centering \textbf{Descripción} & \centering \textbf{Escala}\tabularnewline
+\hline
+\tabularnewline
+
+Modularidad & Se hace referencia a la compatibilidad que tendrá el SP con CanSats futuros. & Entre más independiente sea el SP del resto de sistemas y subsistemas, mejor.\tabularnewline\tabularnewline
+
+Cantidad de piezas & Se hace referencia a la cantidad de piezas móviles.& Entre menos piezas móviles, mejor.\tabularnewline\tabularnewline
+
+Geometría & Se hace referencia a la geometría de las piezas. & Entre más sencilla sea la geometría, mejor.\tabularnewline\tabularnewline
+
+Ensamble & Se hace referencia al ensamble y reemplazo de partes. & Entre más sencillo y rápido sea el ensamble, mejor.\tabularnewline\tabularnewline
+
+Espacio requerido & Se refiere a la cantidad de espacio necesario para albergar los componentes y efectuar los movimientos de los mecanismos. & A menor espacio requerido, mejor.\tabularnewline\tabularnewline
+
+Rigidez & Se hace referencia a la firmeza del ensamble final. & Entre más firme, mejor.\tabularnewline\tabularnewline
+
+Visibilidad & Se hace referencia al campo visual efectivo de la cámara. & Entre mayor sea el campo visual, mejor.\tabularnewline\tabularnewline
+
+Distribución componentes & Se hace referencia a la densidad de componentes por placa de circuito. & Entre mayor cantidad de componentes estén en una sola placa, mejor.\tabularnewline\tabularnewline
+
+Extracción & Se hace referencia a la extracción del componente de almacenamiento y las baterías del CanSat. & Entre más rápida y sencilla sea la extracción, mejor.
+
+\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+
+\begin{table}[H]
+\begin{center}
+\caption{Resultados del proceso de priorización de combinaciones para el diseño preliminar.}
+\label{tab:priorizacion de combinaciones}
+\resizebox{13cm}{!}{
+\begin{tabular}{p{8cm}p{3cm}p{3cm}}
+\multicolumn{3}{c}{}\tabularnewline
+\toprule
+
+\textbf{Combinación} & \textbf{Posición} & \textbf{Valor}
+\tabularnewline
+\hline
+\tabularnewline
+  
+\rowcolor{lightgray}Combinación 1 & \textbf{1} & 0.4418\tabularnewline
+Combinación 2 & 3 & 0.2514\tabularnewline
+Combinación 3 & 2 & 0.3069\tabularnewline
+
+\bottomrule
+\end{tabular}
+}
+\end{center}
+\end{table}
+
+\noindent La imagen \ref{img:ConceptoFinal} muestra un bosquejo del diseño preliminar del CanSat.
+
+% El módulo de sensores estará sobrepuesto en la misma placa que el resto de la circuitería, lo que le da al SP la cualidad de modular. El dispositivo de almacenamiento de datos estará colocado en el perímetro de la placa de circuito para su fácil extracción. Las conexiones eléctricas utilizarán cables con conectores rígidos en los extremos para evitar desconexiones. Se utilizará un mecanismo de atrancamiento con vástago para la apertura del paracaídas del SRV-P. Para el mecanismo del SRV-A se utilizará un sistema de rotor semirígido con 2 GDL. El transmisor del SC-ET  estará colocado en el centro del CanSat. Para el SU-ET se desarrollará una interfaz de usuario para mostrar los datos enviados por el CanSat, y almacenarlo en Tierra. El SLVC utilizará un mecanismo de biela-manivela-corredera y se ubicará en la parte de arriba del CanSat, justo debajo del SRV-A. El mecanismo del SRD tendrá 1 GDL: movimiento de azimuth, y estará ubicado hasta la parte más baja del CanSat para que la cámara tenga buena visibilidad. La batería estará colocada al centro del CanSat, y la estructura de éste será cilíndrica.\\
+
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[angle = -90, scale=0.50]{diseniosist/ConceptoFinalCanSat}
+	\caption{Diseño preliminar del CanSat.}
+	\label{img:ConceptoFinal}
+\end{figure}

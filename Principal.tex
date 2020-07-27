@@ -1,0 +1,198 @@
+
+% ----------------------------------------------------------------------
+%
+%                          Principal.tex
+%
+%----------------------------------------------------------------------
+%
+% Este archivo contiene el "documento maestro" del documento. Lo único
+% que hace es configurar el entorno LaTeX e incluir los ficheros .tex
+% que contienen cada sección.
+%
+%----------------------------------------------------------------------
+%
+% Los archivos necesarios para este documento son:
+%
+%       TeXiS/* : ficheros de la plantilla TeXiS.
+%       Cascaras/* : ficheros con las partes del documento que no
+%          son capítulos ni apéndices (portada, agradecimientos, etc.)
+%       preliminares/*.tex : documentos preliminares de la tesis como
+%       dedicatoria, Agradecimientos, Resumen, objetivos, introducción,
+%       Simbología, Nomenclatura
+%       capitulos/*.tex : capítulos de la tesis
+%       apendices/*.tex: apéndices y anexos de la tesis
+%       config.tex : configuración de la "compilación" del documento
+%       Principal.tex: Archivo maestro de la tesis desde el cual se realiza
+%       la compilación
+%       upiita.cls : Archivo de la clase de documento, contiene las definiciones
+% Para la bibliografía, además, se necesitan:
+%       XBiblioteca.bib: Archivo de las referencias
+%       *.bib : ficheros con la información de las referencias
+%       mecatexis.prj: permite utilizar los documentos como un proyecto en WinEdt
+%           esto permite compilar desde cualquier archivo sin que se elija el principal.
+% ---------------------------------------------------------------------
+%       Inicio del documento se define la clase y
+%           Mecatexis Tesis: UPIITA-IPN
+%   Copyright (C) 2017 Juan Carlos Guzmán Salgado
+%                      Griselda Sáchez Otero
+%                      Diego Alonso Flores Hernández
+\typeout{Copyright Juan Carlos Guzmán Salgado Griselda Sánchez Otero Diego Alonso Flores Hernández}
+\documentclass[letterpaper,11pt]{upiita}
+\usepackage{configuracion/upiitatesis}
+\usepackage{longtable}
+\usepackage{titletoc}
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+%\usepackage[english]{babel}
+
+% For making the a.a.a.a appear in the TOC
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+
+%% For toprule and bottom rule
+\usepackage{booktabs}
+
+% For images
+\usepackage{graphicx}
+\graphicspath{ {C:/TT2EscritoDevelop/imagenes/} }
+
+% For toprule and bottom rule
+\usepackage{array}
+
+% For two tables with the same number
+\usepackage{caption}
+
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+
+\usepackage{courier}
+
+\usepackage{gensymb}
+\usepackage{wrapfig}
+
+% Paquetes usados por Aldo
+\usepackage{algorithm}[spanish]
+\usepackage[noend]{algpseudocode}
+\usepackage{mathrsfs}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage[flushleft]{threeparttable}
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Paquetes para texto de relleno
+%\usepackage{blindtext}
+
+
+% Lorem ipsum
+% \usepackage{lipsum}
+
+
+%%%%% Inicio de Sección de preliminares
+\frontmatter
+%%%%%%%%%%%%%  Datos de la Portada y acta
+\title{CanSat con sistema de descenso por autorrotaci\'on}
+\unidad{\Upiita}
+\materia{Trabajo Terminal II}
+\academia{Mecatr\'onica}
+\grado{Ingeniero en Mecatr\'onica}     %%%%%%%%%%%%%grado
+\mes{Diciembre}                             %%%%%%%%%%mes
+\anio{2019}                             %%%%%%%%%%año
+%%%%%%%%%%%%  Nombre del Presidente y Secretario del jurado
+\Presidente{Dr. Juan Antonio Jaramillo G\'omez }
+\Titular{M. en E. Elizabeth Rivas Bonilla}
+%%%%%%%%%%%%%%%%%%%%%%% Datos del autor%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  para varios asesores (máximo 4) y autores (alumnos)
+%%  dejar el campo en blanco de los que no deban aparecer
+%%  Cuando el número de asesores=1 sólo se toma en cuenta la variable
+%%% alumnoa,
+%%  Cuando el número de asesores=2 se toman alumnoa y asesorb, etc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nalumnos{3}
+%%%%%%% dependiendo del numero de alumno dejar vacío el campo de alumnoX,
+%%%%%%%  nunca eliminar o comentar la línea
+\alumnoa{Aldo Bonilla Rodr\'iguez}
+\alumnob{Sa\'ul Becerril Ortega}
+\alumnoc{Rodrigo Yaoctzin Serrato Andrade}
+\alumnod{}
+%%%%%%%%%% número de asesores 1= solo se toma en cuenta la variable asesora,
+%%%%%%%%%%  2= se toman asesora y asesorb
+\nasesores{2}
+%%%%%%% en caso de un único asesor dejar vacío el campo de asesorb,
+%%%%%%% nunca eliminar o comentar la línea
+\asesora{Dr. Alberto Luviano Ju\'arez}
+\asesorb{Dr. Diego Alonso Flores Hern\'andez}
+\asesorc{}
+%%%%%%%%%genera sección de índice %%%%%%%%%
+\makeindex
+%%%%%% Inicio de documento %%%%%%
+\begin{document}
+%%creación de carátulas y hoja de actas
+\portada
+\acta
+\cambiamargen
+\dedicatoria              %%%modificar archivo dedica.tex
+%\agradecimientos          %%%modificar archivo agradece.tex
+\tabladecontenido
+\listadefiguras
+\listadetablas
+
+\include{preliminares/Resumen}               %%%modificar archivo Resumen.tex
+%\include{preliminares/Abstract}               %%%modificar archivo Abstract.tex
+\include{preliminares/Nomenclatura2}          %%%modificar archivo Nomenclatura.tex
+\include{preliminares/Simbologia2}            %%%modificar archivo Simbologia.tex
+
+% \include{preliminares/objetivos}             %%%modificar archivo objetivos.tex
+%%%%General
+%%%%Específicos
+
+
+%%%%%ntecedentes
+%%%%%Planteamiento del problema
+%%%%%Descripci�n de los cap�tulos
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%% Inicia Contenido del trabajo%%%
+%\input{configuracion/estilodoc}
+%\formatodoc
+\mainmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%capitulo1111111111%%%%%%%%%%%%%%%%%%%%%%%
+\include{capitulos/introduccion}          %%%modificar archivo introduccion.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{capitulos/marcoreferencia}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{capitulos/disesistema}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{capitulos/implementacion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{capitulos/resultados}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{capitulos/conclusiones2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%  BIBLIOGRAFIA  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{apalike} \nocite{*}
+ \bibliography{xbiblioteca}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%    APENDICES  %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+\part{Ap\'endices}
+\appendix
+\include{apendices/apendice1}
+%\include{apendices/apendice2}
+%\include{apendices/apendice3}
+%\part{Anexos}
+%\anexo
+%\include{apendices/anexo1}
+%\include{apendices/anexo2}
+%\include{apendices/anexo3}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  INDICE ALFAB�TICO%%%%%%%%%%
+\IndiceAlfabetico
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
