@@ -1,7 +1,7 @@
 \chapter{Introducción}
 
 \begin{flushright}
-\textit{When faced with a challenge, get smarter.}\\
+\textit{Cuando te enfrentes a un desafío, vuélvete más inteligente.}\\
 		\small\textbf{Edwin Catmull}, cofundador de Pixar.
 \end{flushright}
 
@@ -9,27 +9,27 @@
 \section{Definición del problema}
 % \addcontentsline{toc}{section}{Definición del problema}
 
-Se necesita diseñar un satélite tipo CanSat que esté compuesto de dos partes principales: un contenedor y un vehículo científico. El vehículo científico deberá estar dentro del contenedor durante la etapa de ascenso del CanSat, y durante la primera etapa de descenso. Una vez alcanzada la altura máxima de elevación ($400 [m]$ sobre el sitio de lanzamiento) el CanSat será liberado y, a partir de ese momento, deberá descender a una velocidad no mayor a $25 [m/s]$ y no menor a $15 [m/s]$.\\
+Se necesita diseñar un satélite tipo CanSat que esté compuesto de dos partes principales: un contenedor y un vehículo científico. El vehículo científico deberá estar dentro del contenedor durante la etapa de ascenso del CanSat y durante la primera etapa de descenso. Una vez alcanzada la altura máxima de elevación ($400 [m]$ sobre el sitio de lanzamiento) el CanSat deberá ser liberado y, a partir de ese momento, deberá descender a una velocidad no mayor a $25 [m/s]$ y no menor a $15 [m/s]$.\\
 
 \noindent A una altura de $250 [m]$ $\pm$ $10 [m]$ el vehículo científico y el contenedor deberán separarse para que el primero comience con su propia etapa de descenso. El vehículo científico deberá caer entonces utilizando un sistema de descenso por autorrotación que mantenga su velocidad dentro del rango de $10 [m/s]$ a $15 [m/s]$.\\
 
 \noindent El vehículo científico deberá ser capaz de adquirir, procesar y almacenar datos externos e internos, y deberá transmitirlos a una estación en Tierra a una frecuencia mínima de $1 [Hz]$ durante todo el tiempo de vuelo.\\
 
-\noindent La estación en Tierra deberá recibir los datos enviados por el vehículo científico, y desplegarlos en una interfaz de usuario. La interfaz de usuario deberá procesar y almacenar los datos para su posterior análisis.\\
+\noindent La estación en Tierra deberá recibir los datos enviados por el vehículo científico y desplegarlos en una interfaz de usuario. La interfaz de usuario deberá procesar y almacenar los datos para su posterior análisis.\\
 
-\noindent El vehículo científico tendrá que poseer algún sistema digital multimedia que sea capaz de grabar toda la etapa de vuelo, el cual deberá apuntar en una misma dirección.
+\noindent El vehículo científico deberá poseer algún sistema digital multimedia que sea capaz de grabar toda la etapa de vuelo, el cual deberá apuntar en una misma dirección.
 
 % ***********************************************************************************************************************************%
 \section{Justificación}
 % \addcontentsline{toc}{section}{Justificación}
 
-Con el desarrollo de este proyecto su pretenden implementar varias modificaciones al diseño con respecto de trabajos anteriores. Se proponen mejoras en el diseño electrónico con la utilización de componentes más pequeños y de montaje superficial, así como de sensores de desarrollo reciente para la implementación de un módulo de sensores que otorgue datos de parámetros internos y externos al CanSat. Con respecto al diseño mecánico, se diseñará un sistema de descenso por autorrotación y una estructura ligera. En el desarrollo de la interfaz de usuario se pretende mejorar el procesamiento de datos y del ambiente gráfico, así como utilizar un lenguaje de programación \textit{open source} (lenguaje de uso y distribución libres). Con respecto al área de las comunicaciones, se pretende obtener una comunicación continua entre el CanSat y la estación en Tierra sin importar la orientación del CanSat con respecto a la estación en Tierra.\\
+Con el desarrollo de este proyecto se pretenden implementar varias modificaciones al diseño con respecto de trabajos anteriores. Se proponen mejoras en el diseño electrónico con la utilización de componentes más pequeños y de montaje superficial, así como de sensores de desarrollo reciente para la implementación de un módulo de sensores que otorgue datos de parámetros internos y externos al CanSat. Con respecto al diseño mecánico, se diseñará un sistema de descenso por autorrotación y una estructura ligera. En el desarrollo de la interfaz de usuario se presentan mejoras al procesamiento de datos y al ambiente gráfico, así como utilizar un lenguaje de programación \textit{open source} (lenguaje de uso y distribución libres). Con respecto al área de las comunicaciones, se busca obtener una comunicación continua entre el CanSat y la estación en Tierra sin importar la orientación del CanSat con respecto a su contraparte en Tierra.\\
 
-\noindent El desarrollo de un CanSat requiere de un equipo interdisciplinario debido a que en el diseño, construcción e implementación del mismo, concurren diferentes ramas de la ingeniería como son la ingeniería electrónica, ingeniería mecánica y el desarrollo de \textit{software}; así como de otras áreas tales como la administración de proyectos y la gestión de equipos de trabajo. Debido a lo anterior, este proyecto será realizado desde un enfoque mecatrónico. Se pretende obtener un prototipo que tenga una mayor sinergia entre los sistemas que lo componen, y que sea resultado de seguir una metodología de diseño diferente a aquellas con enfoques monodisciplinarios.\\
+\noindent El desarrollo de un CanSat requiere de un equipo interdisciplinario debido a que en el diseño, construcción e implementación del mismo concurren diferentes ramas de la ingeniería como la ingeniería electrónica, ingeniería mecánica y el desarrollo de \textit{software}; así como de otras áreas tales como la administración de proyectos y la gestión de equipos de trabajo. Debido a lo anterior, este proyecto será realizado desde un enfoque mecatrónico. Se pretende obtener un prototipo que tenga una mayor sinergia entre los sistemas que lo componen y que sea resultado de seguir una metodología de diseño diferente a aquellas con enfoques monodisciplinarios.\\
 
-\noindent El desarrollo de este proyecto permitirá seguir sentando las bases para la formación de una sociedad estudiantil en la UPIITA dedicada al desarrollo de proyectos académicos pertenecientes al sector aeroespacial. Por lo tanto, el diseño del presente CanSat se unirá a las referencias en la UPIITA ya disponibles, y será útil para el diseño y construcción de prototipos CanSat para concursos internacionales, como la \textit{Annual CanSat Competition} [?] llevada a cabo anualmente en Estados Unidos de América, y nacionales, como el Concurso Nacional de Satélites Enlatados [?] organizado por el Programa Espacial Universitario de la Universidad Nacional Autónoma de México, y el concurso CanSat CUCEI [?] organizado por la Universidad de Guadalajara.\\
+\noindent El desarrollo de este proyecto permitirá seguir sentando las bases para la formación de una sociedad estudiantil en la UPIITA dedicada al desarrollo de proyectos académicos pertenecientes al sector aeroespacial. Por lo tanto, el diseño del presente CanSat se unirá a las referencias en la UPIITA ya disponibles, y será útil para el diseño y construcción de prototipos CanSat para concursos internacionales, como la ya mencionada \textit{Annual CanSat Competition}, y concursos nacionales, como el Concurso Nacional de Satélites Enlatados \cite{UNAM-PEU-website} organizado por el Programa Espacial Universitario de la Universidad Nacional Autónoma de México, y el concurso CanSat CUCEI \cite{UDG-CUCEI-website} organizado por la Universidad de Guadalajara.\\
 
-\noindent Finalmente, con la ralización de este proyecto se busca incentivar el desarrollo de este tipo de sistemas en la escuela a través de la colaboración con estudiantes de semestres tempranos y de diferentes carreras, así como con estudiantes de posgrado.
+\noindent Finalmente, con la realización de este proyecto se busca incentivar el desarrollo de este tipo de sistemas en la escuela a través de la colaboración con estudiantes de semestres tempranos y de diferentes carreras, así como con estudiantes de posgrado.
 
 \newpage
 
