@@ -59,7 +59,7 @@ N15 & Almacenamiento constante de la información. & &  & \tabularnewline
 			\subsubsection*{Requerimientos}
 La transformación de las necesidades en un lenguaje técnico que permita materializar las posibles soluciones se logra por medio de la definición de los requerimientos.\\
 
-\noindent Un requerimiento es una capacidad o atributo observable y medible de un sistema cuya finalidad es cumplir los objetivos de éste. Un requerimiento debe ser necesario,  debe especificar qué debe hacerse (y no cómo hacerlo), debe abordar una sóla solicitud de manera completa y sin ambigüedades y, finalmente, debe ser realizable y verificable [?].\\
+\noindent Un requerimiento es una capacidad o atributo observable y medible de un sistema cuya finalidad es cumplir los objetivos de éste. Un requerimiento debe ser necesario,  debe especificar qué debe hacerse (y no cómo hacerlo), debe abordar una sóla solicitud de manera completa y sin ambigüedades y, finalmente, debe ser realizable y verificable \cite{requirements_2017}.\\
 
 \noindent Los requerimientos se pueden clasificar en requerimientos funcionales y no funcionales. Los requerimientos funcionales son aquellos que van enfocados a los aspectos técnicos  y que están relacionados con el funcionamiento del sistema. Por otro lado, los requerimientos no funcionales van dirigidos a aspectos estéticos, por ejemplo, el color.\\
   
@@ -91,7 +91,7 @@ R05 & El contenedor y el vehículo científico deberán separarse a una altura de $
 
 R06 & El vehículo científico, después de separarse del contenedor, deberá caer utilizando un sistema de descenso por autorrotación.\tabularnewline
 
-R07 & La velocidad de descenso del vehículo científico, después de separarse del contenedor, deberá ser de $10$ a $15$ $[m/s]$.\tabularnewline
+R07 & La velocidad de descenso del vehículo científico, después de separarse del contenedor, deberá ser de $10$ $[m/s]$ a $15$ $[m/s]$.\tabularnewline
 
 R08 & Todos los componentes de acoplamiento para el descenso del CanSat deberán soportar fuerzas de hasta $30 [Gs]$.\tabularnewline
 
@@ -111,13 +111,13 @@ R14 & El vehículo científico deberá medir la temperatura del ambiente.\tabularne
 
 R15 & El vehículo científico deberá medir la velocidad de giro de las hélices del sistema de descenso por autorrotación relativa al vehículo científico.\tabularnewline
 
-R16 & El vehículo científico deberá medir la inclinación en los ejes de \textit{pitch} y \textit{roll}.\tabularnewline
+R16 & El vehículo científico deberá medir la inclinación en los ejes \textit{pitch} y \textit{roll}.\tabularnewline
 
 R17 & El vehículo científico deberá transmitir los datos de telemetría a una estación en Tierra.\tabularnewline
 
-R18 & La estación en Tierra deberá estar compuesta de una computadora portátil con un mínimo de dos horas de batería, un módulo XBee y una antena de mano.\tabularnewline
+R18 & La estación en Tierra deberá estar compuesta de una computadora portátil con un mínimo de dos horas de batería, un módulo xBee y una antena de mano.\tabularnewline
 
-R19 & La estación en Tierra deberá enviar comandos al vehículo científico para la calibración de las referencias de altura e inclinación (ejes de \textit{pitch} y \textit{roll}).\tabularnewline
+R19 & La estación en Tierra deberá enviar comandos al vehículo científico para la calibración de las referencias de altura e inclinación (ejes \textit{pitch} y \textit{roll}).\tabularnewline
 
 R20 & Deberá desarrollarse una interfaz de usuario para la estación en Tierra.\tabularnewline
 
@@ -144,7 +144,7 @@ R21 & La interfaz de usuario deberá generar un archivo *\textit{.csv} con todos 
 \tabularnewline
 R22 & Los datos de telemetría deberán ser mostrados en la interfaz de usuario en unidades del Sistema Internacional.\tabularnewline
 
-R23 & Se deberán usar módulos XBee para la transmisión de datos de telemetría.\tabularnewline
+R23 & Se deberán usar módulos xBee para la transmisión de datos de telemetría.\tabularnewline
 
 R24 & La antena de la estación en Tierra deberá recibir los datos de telemetría provenientes del CanSat sin importar la orientación de éste.\tabularnewline
 
@@ -194,7 +194,7 @@ R39 & El vehículo científico deberá poseer un indicador auditivo con un nivel de
 \end{itemize}
 
 		\subsection{Definición de la actividad del usuario}
-Un modo de operación se define como una capacidad operativa distinta del sistema: esta capacidad operativa puede usar el conjunto completo de las funciones del sistema o sólo una parte \cite{}. Tener distintos modos de operación permite un mejor aprovechamiento de los recursos energéticos ya que los modos de operación agrupan sólo las funciones necesarias para la situación actual del sistema, o las activan sólo cuando es necesario. A continuación, se enlistan los dos modos de operación del CanSat.
+Un modo de operación se define como una capacidad operativa distinta del sistema: esta capacidad operativa puede usar el conjunto completo de las funciones del sistema o sólo una parte \cite{operationmodes_1992}. Tener distintos modos de operación permite un mejor aprovechamiento de los recursos energéticos ya que los modos de operación agrupan sólo las funciones necesarias para la situación actual del sistema, o las activan sólo cuando es necesario. A continuación, se enlistan los dos modos de operación del CanSat.
 
 \begin{itemize}
 	\item \textbf{Modo automático: } El CanSat mide parámetros del entorno, los almacena en la memoria de abordo y los transmite a la estación en Tierra. Toma decisiones con base en dichos parámetros para realizar las operaciones de la misión de vuelo. En la estación en Tierra se despliegan los parámetros recibidos y se almacenan en un archivo. El CanSat tendrá este modo de operación al momento de su lanzamiento.
@@ -203,9 +203,9 @@ Un modo de operación se define como una capacidad operativa distinta del sistema
 
 		\subsection{Desarrollo de las arquitecturas del sistema}
 			\subsubsection{Arquitectura funcional}
-De acuerdo con \cite{}, una función es un proceso que toma entradas y las transforma en salidas. Para el desarrollo del CanSat se siguió una metodología con enfoque funcional, por lo tanto, se definió la lista de funciones que realiza el sistema. Agregado a esta lista, se desarrollaron diagramas que muestran las relaciones que hay entre las funciones y cómo éstas describen el comportamiento del sistema; en concreto, se desarrolló la arquitectura funcional del sistema (\textit{System Functional Architecture}, SFA). \\
+De acuerdo con \cite{engineeringdesign_2007}, una función es un proceso que toma entradas y las transforma en salidas. Para el desarrollo del CanSat se siguió una metodología con enfoque funcional, por lo tanto, se definió la lista de funciones que realiza el sistema (FBS). Agregado a esta lista, se desarrollaron diagramas IDEF0 y eFFBD que muestran las relaciones que hay entre las funciones y cómo éstas describen el comportamiento del sistema; en concreto, se desarrolló la arquitectura funcional del sistema (\textit{System Functional Architecture}, SFA). \\
 
-\noindent Para la realización de la descomposición de funciones se tomó como referencia el conjunto de funciones genéricas propuesto por Flores Hernández [?] donde especifica que todo sistema mecatrónico debe tener las siguientes funciones:
+\noindent Para la realización de la descomposición FBS se tomó como referencia el conjunto de funciones genéricas propuesto por Flores Hernández \cite{diegoflores_2018} donde especifica que todo sistema mecatrónico debe tener las siguientes funciones:
 
 \begin{itemize}
 	\item Medición de parámetros ambientales y del sistema.
@@ -221,7 +221,7 @@ De acuerdo con \cite{}, una función es un proceso que toma entradas y las transf
 	\item Gestionar energía.
 \end{itemize}
 
-\noindent Con base en esta estructura genérica, la Tabla \ref{tab:Funciones} muestra la descomposición de funciones del CanSat. En la definición de las funciones se debe tener en cuenta que cada requerimiento debe estar asociado con al menos una función, puesto que cada función debe estar justificada.\\
+\noindent Con base en esta estructura genérica, la Tabla \ref{tab:Funciones} muestra la descomposición FBS del CanSat. En la definición de las funciones se debe tener en cuenta que cada requerimiento debe estar asociado con al menos una función, puesto que cada función debe estar justificada.\\
 
 \begin{table}[H]
 \begin{center}
@@ -306,7 +306,7 @@ De acuerdo con \cite{}, una función es un proceso que toma entradas y las transf
 \end{center}
 \end{table}
 
-\noindent Los diagramas IDEF0 se usaron como una técnica de modelado gráfica para representar las relaciones que hay entre las funciones dentro de cada nivel de la descomposición de funciones. La imagen \ref{img:nodoA0} muestra el diagrama IDEF0 del nivel de mayor jerarquía de la descomposición de funciones del CanSat. La única entrada transformada por el CanSat es el conjunto de parámetros de interés que se miden a lo largo de la misión. Estos parámetros son transformados en datos mostrados en la interfaz de usuario, datos almacenados abordo del CanSat y en la estación en Tierra, en un video grabado por la cámara, y en un contenedor y vehículo científico separados.\\
+\noindent Los diagramas IDEF0 se usaron como una técnica de modelado gráfica para representar las relaciones que hay entre las funciones dentro de cada nivel de la descomposición FBS. La imagen \ref{img:nodoA0} muestra el diagrama IDEF0 del nivel de mayor jerarquía de la descomposición de funciones del CanSat. La única entrada transformada por el CanSat es el conjunto de parámetros de interés que se miden a lo largo de la misión. Estos parámetros son transformados en datos mostrados en la interfaz de usuario, datos almacenados abordo del CanSat y en la estación en Tierra, en un video grabado por la cámara, y en un contenedor y vehículo científico separados.\\
 
 \noindent El último de los elementos que componen a la arquitectura funcional son los diagramas eFFBD. La imagen \ref{img:eFFBDCanSat} muestra el diagrama eFFBD del CanSat en su modo de operación automático. En la imagen \ref{img:eFFBDCanSat} se puede ver que el CanSat gestiona la energía y le da soporte y protección a todos los componentes durante toda la misión. Las dos funciones anteriores las realiza en paralelo con la gestión de la información y la simulación de la misión de vuelo. Para la función de gestionar información, el CanSat debe medir y procesar los datos antes de tomar decisiones con base en ellos. El CanSat debe primero calcular la altura, tomar la decisión de liberar al vehículo científico con base en el valor de altura obtenido y, finalmente, transmitir este dato, junto con los demás, a la estación en Tierra.\\
 
