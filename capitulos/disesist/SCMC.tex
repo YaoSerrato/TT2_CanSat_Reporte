@@ -34,16 +34,16 @@ El SP realiza la función $f_{2{.}2}-$\textit{Medir parámetros} y todas las subfu
 
 Este sistema está constituido por todos los sensores del CanSat. Para la selección de los sensores se utilizaron matrices de decisión en las que se exponen las características más críticas de éstos que fueron tomadas en cuenta para la selección. Estas matrices se muestran al final de la descripción del SPD.\\
 
-De acuerdo con la Tabla \ref{tab:Funciones} la función $2.2$ y todas sus subfunciones, exceptuando la subfunción $2.2.1.4$, corresponden al SP de tal modo que a continuación se exponen los sensores seleccionados para realizar dichas funciones.\\
+De acuerdo con la Tabla \ref{tab:Funciones}, la función $2.2$ y todas sus subfunciones, exceptuando la subfunción $2.2.1.4$, corresponden al SP de tal modo que a continuación se exponen los sensores seleccionados para realizar dichas funciones.\\
 
 \begin{itemize}
-	\item \textbf{GPS:} Usado para adquirir la hora UTC, latitud, longitud y altitud sobre el nivel del mar. Éste elemento atiende a las funciones $2.2.1.1$ y $2.2.2.6$
-	\item \textbf{Barómetro:} Usado para medir la presión atmosférica y de ésta obtener la altura relativa. Éste elemento atiende a las funciones $2.2.2.2$ y $2.2.2.6$
-	\item \textbf{Termómetro}: Usado para medir la temperatura del ambiente. Éste elemento atiende a la función $2.2.2.1$
-	\item \textbf{Giroscopio:} Usado para medir la velocidad angular del CanSat en los tres ejes de un sistema cartesiano. Éste elemento atiende a la función $2.2.2.4$
-	\item \textbf{Acelerómetro:} Usado para medir las aceleraciones del CanSat en los tres ejes de un sistema cartesiano. Éste elemento atiende a la función $2.2.2.3$
-	\item \textbf{Magnetómetro:} Usado para medir las componentes del campo magnético de la Tierra a las que está sometido el CanSat. Éste elemento atiende a la función $2.2.2.5$
-	\item \textbf{Encoder incremental:} Usado para medir la velocidad angular del rotor. Éste elemento atiende a la función $2.2.1.3$
+	\item \textbf{GPS:} Usado para adquirir datos de hora UTC, latitud, longitud y altitud sobre el nivel del mar. Este elemento atiende a las funciones $2.2.1.1$ y $2.2.2.6$.
+	\item \textbf{Barómetro:} Usado para medir la presión atmosférica y de ésta obtener la altura relativa. Este elemento atiende a las funciones $2.2.2.2$ y $2.2.2.6$.
+	\item \textbf{Termómetro}: Usado para medir la temperatura del ambiente. Este elemento atiende a la función $2.2.2.1$
+	\item \textbf{Giroscopio:} Usado para medir la velocidad angular del CanSat en los tres ejes de un sistema cartesiano. Este elemento atiende a la función $2.2.2.4$.
+	\item \textbf{Acelerómetro:} Usado para medir las aceleraciones del CanSat en los tres ejes de un sistema cartesiano. Este elemento atiende a la función $2.2.2.3$.
+	\item \textbf{Magnetómetro:} Usado para medir las componentes del campo magnético de la Tierra a las que está sometido el CanSat. Este elemento atiende a la función $2.2.2.5$.
+	\item \textbf{Encoder incremental:} Usado para medir la velocidad angular del rotor. Este elemento atiende a la función $2.2.1.3$.
 \end{itemize}
 
 
@@ -77,13 +77,13 @@ La Tabla \ref{EstadosMaquinaVehiculo} describe los estados y la Tabla \ref{Trans
 \tabularnewline
 
 ($\text{A}_{\text{VC}}$) Inicio & En este estado se inicializan todos los periféricos y sensores del vehículo científico.\tabularnewline
-($\text{B}_{\text{VC}}$) Recuperación del estado anterior & En este estado se lee la memoria no volátil del vehículo científico que almacena el estado último en el que se encontraba el sistema antes de ser reiniciado o encendido. \tabularnewline
-($\text{C}_{\text{VC}}$) Diagnóstico del sistema & En este estado se realiza un diagnóstico del sistema, verificando que todos los sensores y periféricos respondan como es debido. \tabularnewline
+($\text{B}_{\text{VC}}$) Recuperación del estado anterior & En este estado se lee la memoria no volátil del vehículo científico que almacena el último estado en el que se encontraba el sistema antes de ser reiniciado o encendido. \tabularnewline
+($\text{C}_{\text{VC}}$) Diagnóstico del sistema & En este estado se realiza el diagnóstico del sistema, verificando que todos los sensores y periféricos respondan como es debido. \tabularnewline
 ($\text{D}_{\text{VC}}$) Espera de despegue & En este estado el sistema sólo se encuentra esperando el despegue, no realiza ninguna otra acción. En este punto el CanSat debe estar dentro del vehículo de ascenso.\tabularnewline
-($\text{E}_{\text{VC}}$) Ascenso & En este estado el CanSat sólo realiza lecturas, cómputo y transmisión de variables.\tabularnewline
-($\text{F}_{\text{VC}}$) Descenso con paracídas & Dentro de este estado el CanSat se encuentra descendiendo con el paracaídas como reductor de velocidad. Se realizan lecturas, cómputo, control y transmisión de variables.\tabularnewline
-($\text{G}_{\text{VC}}$) Descenso con hélices & En este estado el vehículo científico desciende con el sistema de autorrotación. El sistema realiza lecturas, cómputo, control y transmisión de variables.\tabularnewline
-($\text{H}_{\text{VC}}$) Aterrizaje & En este estado el CanSat se encuentra de nuevo en tierra. El sistema sólo activa su dispositivo de localización.\tabularnewline
+($\text{E}_{\text{VC}}$) Ascenso & En este estado el CanSat sólo realiza lectura, cómputo y transmisión de variables.\tabularnewline
+($\text{F}_{\text{VC}}$) Descenso con paracídas & Dentro de este estado el CanSat se encuentra descendiendo con el paracaídas como reductor de velocidad. Se realiza lectura, cómputo, control y transmisión de variables.\tabularnewline
+($\text{G}_{\text{VC}}$) Descenso con hélices & En este estado el vehículo científico desciende con el sistema de autorrotación. El sistema realiza lectura, cómputo, control y transmisión de variables.\tabularnewline
+($\text{H}_{\text{VC}}$) Aterrizaje & En este estado el CanSat se encuentra de nuevo en Tierra. El sistema sólo activa su dispositivo de localización.\tabularnewline
 \bottomrule
 \end{tabular}
 }
@@ -126,7 +126,7 @@ La Tabla \ref{EstadosMaquinaVehiculo} describe los estados y la Tabla \ref{Trans
 \end{center}
 \end{table}
 
-El Algoritmo \ref{PseudocodigoCanSatP1} es el pseudocódigo de la máquina de estados donde se explica el flujo de actividades dentro del programa del microcontrolador del CanSat.
+El Algoritmo \ref{PseudocodigoCanSatP1} corresponde a la máquina de estados del CanSat. Este algoritmo explica el flujo de actividades dentro del programa del microcontrolador correspondiente al STD.
 
 
 \begin{algorithm}[H]
@@ -135,12 +135,12 @@ El Algoritmo \ref{PseudocodigoCanSatP1} es el pseudocódigo de la máquina de esta
 \begin{algorithmic}[1]
 
 \Function{Lectura de sensores}{}
-	\State Lee el GPS, lee el giroscopio, lee el acelerómetro, lee el magnetómetro, lee la presión atmosférica, lee la temperatura, calcula la altura actual, calcula el marco de referencia actual y realiza control orientación de la cámara
+	\State Lee GPS, lee giroscopio, lee acelerómetro, lee magnetómetro, lee presión atmosférica, lee temperatura, calcula altura actual, calcula marco de referencia actual y realiza control de orientación de la cámara.
 \EndFunction\\
 
-\Function{Transmisión y almacenamiento}{datos de sensores}
+\Function{Transmisión y Almacenamiento}{datos de sensores}
 	\State Genera la trama de datos
-	\State Transmite la trama de datos
+	\State Transmite la trama de datos a estación en Tierra
 	\State Guarda la trama de datos en la memoria SD
 	\State Guarda el número de trama en la memoria no vólatil
 	\State $Conteo Paquetes \gets Conteo Paquetes + 1$
@@ -244,9 +244,9 @@ El Algoritmo \ref{PseudocodigoCanSatP1} es el pseudocódigo de la máquina de esta
 \end{algorithmic}
 \end{algorithm}	
 
-Como parte del SCMC se planteó la existencia de varios comandos que permitieran la ejecución de tareas muy específicas dentro del CanSat, otorgándole al usuario un control manual sobre el comportamiento del mismo. Cada comando se compone de 10 \textit{bytes} fijos: campo de  `dispositivo' y  `tarea' ocupan 1 \textit{byte}, y campo de  `valor' ocupa 6 \textit{bytes}. Los dos \textit{bytes} faltantes son usados por el caracteres de coma simple que divide los campos.\\
+Como parte del SCMC se implementaron varios comandos que permiten la ejecución de tareas muy específicas dentro del CanSat, otorgándole al usuario control manual sobre el comportamiento del mismo. Cada comando se compone de 10 \textit{bytes} fijos: los campos de `dispositivo' y `tarea' ocupan 1 \textit{byte} cada uno, y el campo de  `valor' ocupa 6 \textit{bytes}. Los dos \textit{bytes} restantes son usados por el caracteres de coma simple (,) que separa los campos.\\
 
-En la Tabla \ref{tab:Commands} son mostrados las diferentes combinaciones posibles con su respectiva explicación.
+En la Tabla \ref{tab:Commands} se muestran las diferentes combinaciones posibles, con su respectiva explicación.
 
 \begin{table}[H]
 \begin{center}
@@ -281,11 +281,11 @@ En la Tabla \ref{tab:Commands} son mostrados las diferentes combinaciones posibl
 \end{center}
 \end{table}
 
-Los comandos con un valor de `M' en el campo de  `dispositivo' son comandos para el SP. Los comandos con un valor de  `B' en el campo de `dispositivo' son comandos para placa principal. Estos comandos pueden ser expandidos ya que cuentan con el campo adicional de `valor' permitiendo así incrementar la cantidad de los comandos incluyendo valores numéricos.\\
+Los comandos con un valor de `M' en el campo de  `dispositivo' son comandos para el SP. Los comandos con un valor de  `B' en el campo de `dispositivo' son comandos para placa principal. Estos comandos pueden ser expandidos ya que cuentan con el campo adicional de `valor', permitiendo así incrementar la cantidad de los comandos incluyendo valores numéricos.\\
 
 Finalmente, atendiendo a la función $2.1.4-$\textit{Interactuar con el usuario}, el STD tiene la tarea de informar al usuario si se encuentra o no preparado para la realización de la misión. El sistema informa de cualquier inconveniente utilizando el canal de comunicación con la estación en Tierra y utilizando señales auditivas.\\
 
-Para el caso de la comunicación con la estación en Tierra el CanSat responde con un \textit{byte} cuya representación en ASCII es `O' si todo a sido configurado correctamente y se encuentra listo para realizar la misión, o con `F' si el sistema encontró algún error durante la inicialización.\\
+Para el caso de la comunicación con la estación en Tierra el CanSat responde con 0x4F (letra `O' en ASCII) si todo a sido configurado correctamente y se encuentra listo para realizar la misión; o con 0x46 (letra `F' en ASCII) si el sistema encontró algún error durante la inicialización.\\
 
 En el caso de la señal auditiva el sistema cuenta con una lista de secuencias sonoras que se producen en caso de que suceda algún evento específico. Esta lista de secuencias sonoras se muestra en la Tabla \ref{tab:SoundSequence}. Las secuencias se representan por \textit{beeps} cortos y largos, siendo el corto un punto y el largo una línea. 
 
@@ -327,7 +327,7 @@ El CanSat ha aterrizado. & $\bullet \: \bullet \: \bullet \: - \: - \: - \: \bul
 \end{table}
 
 
-Las secuencias son únicas y se generan únicamente al momento de realizar un diagnóstico del sistema previo al inicio de la misión. La secuencia de rescate o aterrizaje es la única que suena fuera de la etapa de diagnóstico (cuando el CanSat aterriza).
+Las secuencias son únicas y se generan solamente al momento de realizar un diagnóstico del sistema previo al inicio de la misión. La última secuencia, la de aterrizaje, es la única que se ejecuta fuera de la etapa de \textit{Diagnóstico} (cuando el CanSat aterriza).
 
 
 }
