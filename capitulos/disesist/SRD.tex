@@ -2,7 +2,7 @@
 
 {\parindent0pt
 
-EL Sistema de Registro de Descenso está encargado de orientar la cámara y grabar video durante el descenso del CanSat; el SRD cumple con la función $f_{4{.}1}-$\textit{Registrar descenso}. Para realizar dicha función, el sistema cuenta con un mecanismo de compensación en azimut para mantener la cámara orientada, y también cuenta con la cámara para realizar la grabación del video. El mecanismo del SRD se muestra en la figura \ref{fig:MecAzimut}.
+EL Sistema de Registro de Descenso se encarga de orientar la cámara y grabar video durante el descenso del CanSat. El SRD cumple con la función $f_{4{.}1}-$\textit{Registrar descenso}. Para realizar dicha función el sistema cuenta con un mecanismo de compensación en azimut para mantener la cámara orientada y, también, cuenta con la cámara para realizar la grabación del video. El mecanismo del SRD se muestra en la figura \ref{fig:MecAzimut}.
 
 \begin{figure}[H]
 	\begin{center}
@@ -12,7 +12,7 @@ EL Sistema de Registro de Descenso está encargado de orientar la cámara y grabar
 \end{figure}
 
 
-Este sistema debe mantener orientada la cámara de acuerdo con la posición inicial al momento de iniciar la misión. El diseño de este sistema se desarrolló bajo la suposición de que el sistema de rotor, gracias a su mecanismo de balancín, ayudará a mantener el CanSat en una posición vertical durante el descenso. Bajo esta suposición se propuso el control por regulación de un sólo grado de libertad (azimut). El control del ángulo de azimut se realiza por medio de un motor de CD con sistema de engranes para reducción y una base móvil rotatoria acoplada al eje del motor. Este mecanismo es el mostrado en la figura \ref{fig:MecAzimut}. El motor usado es un motorreductor 380:1 con velocidad nominal de 85 $[rpm]$. El motor cuenta con un enconder de cuadratura que proporciona 12 pulsos por revolución del eje del motor (sin la etapa de reducción por engranes).\\
+Este sistema debe mantener orientada la cámara de acuerdo con la posición inicial al momento de iniciar la misión. El diseño de este sistema se desarrolló bajo la suposición de que el sistema de rotor, gracias a su mecanismo de balancín, ayudará a mantener el CanSat en una posición vertical durante el descenso. Bajo esta suposición se realizó el control por regulación de un sólo grado de libertad (azimut). El control del ángulo de azimut se realiza por medio de un motor de CD con sistema de engranes para reducción y una base móvil rotatoria acoplada al eje del motor. Este mecanismo es el mostrado en la figura \ref{fig:MecAzimut}. El motor usado es un motorreductor 380:1 con velocidad nominal de 85 $[rpm]$. El motor cuenta con un enconder de cuadratura que proporciona 12 pulsos por revolución del eje del motor (sin la etapa de reducción por engranes).\\
 
 Aunque el sistema cuenta con una velocidad de cómputo elevada, se propone un controlador de dos tareas. La primera tarea es realizar el cálculo del error en intervalos de $0.5\text{[s]}$, mientras que la segunda tarea es compensar el error en intervalos de $0.01\text{[s]}$. Esto evita que el sistema se sature con tareas impuestas en intervalos cortos de tiempo y permite mantener tiempos fijos para implementar el controlador. El control del motor está basado en un control por PWM para la regulación de la velocidad y un puente H para el control de la dirección de giro del motor.\\
 
@@ -26,69 +26,69 @@ Este sistema fue simulado en el ambiente de Simulink considerando para ello un i
 \end{figure}
 
 
-De este sistema se realizaron dos simulaciones: la primera simulación tiene como referencia un escalón con amplitud equivalente a $100$[$^\circ$], mientras que la segunda simulación tiene como entrada una señal rampa con una pendiente equivalente a $100$[$^\circ/s$].\\
+De este sistema se realizaron dos simulaciones: la primera simulación tiene como referencia una señal de escalón con amplitud equivalente a $100$[$^\circ$], mientras que la segunda simulación tiene como entrada una señal de rampa con una pendiente equivalente a $100$[$^\circ/s$].\\
 
-El control es del tipo PID y cuenta con valores de $50$, $0.01$ y $0.01$, en sus ganancias proporcional, integral y derivativa, respectivamente. Estas ganancias fueron obtenidas de manera empírica.\\
+El control es del tipo PID y cuenta con valores de $50$, $0.01$ y $0.01$ en sus ganancias proporcional, integral y derivativa, respectivamente. Estas ganancias fueron obtenidas de manera empírica.\\
 
 En el primer caso se obtuvo la señal mostrada en la figura \ref{img:Sim1_Img1}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{imgmeca/SRD/Sim1_Img1.png}
-	\caption{Primera Simulación. Entrada Escalón. Sin aumento. Referencia y Posición Angular.}
+	\caption{Primera simulación. Entrada: señal de escalón, figura sin acercamiento.}
 	\label{img:Sim1_Img1}
 \end{figure}
 
-En la figura \ref{img:Sim1_Img1} se aprecia la respuesta completa dentro de un tiempo de simulación de $100$[s], sin embargo, en la figura \ref{img:Sim1_Img2} se hace un acercamiento al intervalo comprendido entre los $9.9$[s] y $10.4$[s].
+En la figura \ref{img:Sim1_Img1} se aprecia la respuesta completa dentro de un tiempo de simulación de $100 [s]$. En la figura \ref{img:Sim1_Img2} se hace un acercamiento al intervalo comprendido entre $9.9 [s]$ y $10.4 [s]$.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{imgmeca/SRD/Sim1_Img2.png}
-	\caption{Primera Simulación. Entrada Escalón. Con aumento. Referencia y Posición Angular.}
+	\caption{Primera simulación. Entrada: señal de escalón, figura con acercamiento.}
 	\label{img:Sim1_Img2}
 \end{figure}
 
-En la figura \ref{img:Sim1_Img2} se observa un sobreimpulso de $1.15$[$^\circ/s$] y un tiempo de establecimiento de aproximadamente $0.25$[s] para la referencia de $100$[$^\circ$].\\
+En la figura \ref{img:Sim1_Img2} se observa un sobreimpulso de $1.15$[$^\circ/s$] y un tiempo de establecimiento de aproximadamente $0.25 [s]$ para la referencia de $100$[$^\circ$].\\
 
-En la figura \ref{img:Sim1_Img3}, que se encuentra dentro del mismo intervalo de tiempo que la figura \ref{img:Sim1_Img2}, se observa la dinámica del error a través del tiempo y, aunque este adquiera valores mayores a las $100$ unidades dentro de los cálculos, físicamente le es imposible llegar a ese valor debido a que el PWM se encuentra acotado de 0 a 100 unidades.
+En la figura \ref{img:Sim1_Img3}, que se encuentra dentro del mismo intervalo de tiempo que la figura \ref{img:Sim1_Img2}, se observa la dinámica del error a través del tiempo y, aunque éste adquiere valores mayores a las $100$ unidades (como se muestra en la figura \ref{img:Sim1_Img3}), físicamente es imposible llegar a esos valores debido a que el PWM se encuentra acotado de 0 a 100 unidades.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{imgmeca/SRD/Sim1_Img3.png}
-	\caption{Primera Simulación. Entrada Escalón. Con aumento. Error del Sistema.}
+	\caption{Primera simulación. Señal de error.}
 	\label{img:Sim1_Img3}
 \end{figure}
 
-Para el segundo caso se muestra la respuesta en la figura \ref{img:Sim2_Img1}. El igual que en el caso anterior, se puede apreciar que el sistema sigue la referencia aunque no se aprecia con detalle como el sistema se va acercando a dicha referencia. Para un mayor detalle se muestra la figura \ref{img:Sim2_Img2} que presenta un acercamiento al intervalo comprendido entre los $0$[s] y $2$[s], y los $0$[$^\circ$] y $200$[$^\circ$].
+La respuesta de la segunda simulación se muestra en la figura \ref{img:Sim2_Img1}. Al igual que en el caso anterior, se puede apreciar que el sistema sigue a la señal de referencia. Para un mayor detalle se muestra la figura \ref{img:Sim2_Img2} que presenta un acercamiento al intervalo de tiempo que va de $0 [s]$ a $2 [s]$, y  de $0$[$^\circ$] a $200$[$^\circ$].
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{imgmeca/SRD/Sim2_Img1.png}
-	\caption{Segunda Simulación. Entrada Rampa. Sin aumento. Referencia y Posición Angular.}
+	\caption{Segunda simulación. Entrada: señal de rampa, figura sin acercamiento.}
 	\label{img:Sim2_Img1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{imgmeca/SRD/Sim2_Img2.png}
-	\caption{Segunda Simulación. Entrada Rampa. Con aumento. Referencia y Posición Angular.}
+	\caption{Segunda simulación. Entrada: señal de rampa, figura con acercamiento.}
 	\label{img:Sim2_Img2}
 \end{figure}
 
-Como se aprecia en la figura \ref{img:Sim2_Img2} el sistema realiza pequeños acercamientos parecidos a escalones, esto debido a la forma de plantear el control pues es a intervalos de $0.5$[s] que el sistema renueva la referencia, generando así pequeños escalones en la referencia del sistema, sin embargo, el control es realizado a intervalos de $0.01$[s], dando entonces esa apariencia de pequeñas respuestas a escalones con desplazamientos en la amplitud.\\
+Como se aprecia en la figura \ref{img:Sim2_Img2} el sistema realiza pequeñas compensaciones en forma de escalones debido a la forma de plantear la estrategia de control. Es a intervalos de $0.5 [s]$ que el sistema renueva la referencia generando así grandes saltos, sin embargo, el control es realizado a intervalos de $0.01 [s]$, dando entonces la apariencia de pequeñas respuestas a escalones con desplazamientos en la amplitud.\\
 
-A continuación, en la figura \ref{img:Sim2_Img3}, se expone la dinámica del error a través del tiempo. Se pueden apreciar similitudes con entre las figuras \ref{img:Sim1_Img3} y \ref{img:Sim2_Img3} pues la primera presenta la dinámica del error con respecto a un escalón, y la segunda presenta la respuesta del sistema con respecto a una rampa tratada como una sucesión de escalones, como se explico anteriormente, razón por la cual el comportamiento de los errores es parecida.
+A continuación, en la figura \ref{img:Sim2_Img3}, se expone la dinámica del error a través del tiempo. Se pueden apreciar similitudes entre las figuras \ref{img:Sim1_Img3} y \ref{img:Sim2_Img3} pues la primera presenta la dinámica del error con respecto a un escalón, y la segunda presenta la respuesta del sistema con respecto a una rampa tratada como una sucesión de escalones, como se explicó anteriormente.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{imgmeca/SRD/Sim2_Img3.png}
-	\caption{Segunda Simulación. Entrada Rampa. Con aumento. Error del Sistema.}
+	\caption{Segunda simulación. Señal de error.}
 	\label{img:Sim2_Img3}
 \end{figure}
 
 
 \subsubsection*{Selección de materiales}
-Al igual que con el SRVD y el SLVC, los componentes del mecanismo del SRD están hechos de aluminio aleación AA 6061 y plástico ABS. La base superior, base inferior y el eje están hechos de aluminio. En la base inferior hay u rodamiento colocado con ajuste el cual permite el libre giro del eje; por esta razón estas piezas se fabricaron de aluminio (imprimirlas en 3D no habría permitido un ajuste adecuado entre el rodamiento, la base inferior y el eje).\\
+Al igual que con el SRVD y el SLVC, los componentes del mecanismo del SRD están hechos de aluminio aleación AA 6061 y plástico ABS. La base superior, base inferior y el eje están hechos de aluminio. En la base inferior hay un rodamiento colocado con ajuste el cual permite el libre giro del eje; por esta razón estas piezas se fabricaron de aluminio (imprimirlas en 3D no habría permitido un ajuste adecuado entre el rodamiento, la base inferior y el eje).\\
 
 La base del motor, la base de la cámara y el sujetador de la cámara fueron impresas en 3D por practicidad y para disminuir la masa del SRD.
 
