@@ -1,6 +1,6 @@
 
 \chapter{Implementación del sistema} \label{implementacion}
-En este capítulo se muestran los resultados de realizar pruebas individuales a cada sistema del CanSat. Cada prueba tiene su propio protocolo de ejecución en donde se explica lo que se pretendía verificar, los pasos que se siguieron al realizar la prueba y los resultados esperados. Al final de cada prueba se realiza un análisis entre los resultados esperados y los resultados obtenidos para determinar el nivel de éxito de la prueba y el cumplimiento de los requerimientos.\\
+En este capítulo se muestran los resultados de realizar pruebas individuales a cada sistema del CanSat. Cada prueba tiene su propio protocolo de ejecución en donde se explica lo que se pretendía verificar, los pasos que se siguieron al realizar la prueba y los resultados esperados. Al final de cada prueba se realizó un análisis entre los resultados esperados y los resultados obtenidos para determinar el nivel de éxito de la prueba y el cumplimiento de los requerimientos.\\
 
 
 	\section{Sistema Central de Manejo del Comportamiento y Sistema de Procesamiento de Datos} \label{impleSCMC_SPD}
@@ -47,7 +47,7 @@ R03, R05, R10, R12, R13, R14, R16, R30, R31, R39\tabularnewline
 - Verificar que la cuenta de los paquetes de datos y el tiempo de misión se conserva aún cuando sucede un reinicio del CanSat.\tabularnewline
 - Verificar el correcto funcionamiento de la máquina de estados.\tabularnewline
 - Verificar que el CanSat puede ser encendido a través de un interruptor de fácil acceso.\tabularnewline
-- Verificar el almacenamiento de datos en la tajeta SD abordo del CanSat..\tabularnewline
+- Verificar el almacenamiento de datos en la tajeta SD abordo del CanSat.\tabularnewline
 
 \toprule
 \multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
@@ -203,7 +203,7 @@ R06, R15, R32\tabularnewline
 \toprule
 1. Realizar la configuración inicial al CanSat mandando los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------}.\tabularnewline
 2. Iniciar la transmisión de datos mandando el comando \texttt{B,S,------} al CanSat.\tabularnewline
-3. Colocar el vehículo científico dentro de un tunel de viento. Hacer pasar una corriente de aire a $10 [m/s]$ por un tiempo de $2$ minutos.\tabularnewline
+3. Colocar el vehículo científico dentro de un tunel de viento, posicionando el eje longitudinal paralelo al flujo del viento. Hacer pasar una corriente de aire a $10 [m/s]$ por un tiempo de $2$ minutos.\tabularnewline
 4. Aumentar la velocidad del aire a un valor de $15 [m/s]$. Esperar $2$ minutos.\tabularnewline
 5. Aumentar la velocidad del aire a un valor de $20 [m/s]$. Esperar $2$ minutos.\tabularnewline
 6. Detener la corriente de aire y esperar a que el movimiento del rotor pare.\tabularnewline
@@ -237,7 +237,7 @@ R06, R15, R32\tabularnewline
 	\label{img:rotor}
 \end{figure}
 
-\noindent La hoja de datos del encoder magnético indica que la máxima velocidad detectable es de $456 [rpm]$, el cual es un valor muy cercano a las $350 [rpm]$ leídas durante esta prueba. Si el rotor alcanza una velocidad mayor a $456 [rpm]$ durante el descenso, el encoder dejará de dar datos confiables.\\
+\noindent La hoja de datos del encoder magnético indica que la máxima velocidad detectable es de $456 [rpm]$, el cual es un valor muy cercano a las $350 [rpm]$ leídas durante esta prueba. Si el rotor alcanza una velocidad mayor a $456 [rpm]$ durante el descenso, el encoder dejará de proporcionar datos confiables.\\
 
 \noindent Una vez con conocimiento de esta limitante, se aumentó la velocidad del viento a $20 [m/s]$ para verificar la resistencia de los componentes mecánicos del SRV-A. Ni la estructura del CanSat ni el SRV-A sufrieron daños durante la prueba.\\
 
@@ -322,7 +322,7 @@ R35, R36, R37\tabularnewline
 \multicolumn{1}{c}{\textbf{Objetivos}}
 \tabularnewline
 \toprule
-- Verificar que la cámara se orienta en una sóla dirección arbitraria.\tabularnewline
+- Verificar que la cámara se orienta en una sola dirección arbitraria.\tabularnewline
 %- Verificar que la cámara graba correctamente por un tiempo mínimo de $30$ minutos.\tabularnewline
 
 \toprule
@@ -330,7 +330,7 @@ R35, R36, R37\tabularnewline
 \toprule
 1. Con el vehículo científico separado del contenedor, realizar la configuración inicial al CanSat mandando los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------}.\tabularnewline
 2. Insertar la tarjeta SD en la ranura de la cámara y encender la cámara.\tabularnewline
-3. Girar el vehículo científico alrededor del eje longitudinal. Cambiar el sentido de giro periódicamente. Hacer esto por un tiempo de $3$ minutos.\tabularnewline
+3. Girar el vehículo científico alrededor del eje longitudinal. Cambiar el sentido de giro periódicamente. Hacer esto por un espacio de $3$ minutos.\tabularnewline
 %4. Mantener el vehículo científico estático por un tiempo de $30$ minutos.\tabularnewline
 
 \toprule
@@ -347,7 +347,7 @@ R35, R36, R37\tabularnewline
 
 \subsubsection*{Resultados}
 
-\noindent La figura \ref{img:srdazierror} muestra el ángulo de azimut (sobre el eje longitudinal) del CanSat generado durante la realización de la prueba (línea roja) junto con el error entre dicho ángulo y la posición angular real de la cámara (línea azul). La figura \ref{img:srderror} muestra el error de la posición de la cámara más detalladamente.\\
+\noindent La figura \ref{img:srdazierror} muestra el ángulo de azimut (línea roja) del CanSat generado durante la realización de la prueba junto con el error (línea azul) entre dicho ángulo y la posición angular real de la cámara. La figura \ref{img:srderror} muestra el error de la posición de la cámara más detalladamente.\\
 
 \noindent La figura \ref{img:srdazierror} muestra que el CanSat se giró aproximadamente 95\degree en sentido horario y posteriormente 95\degree en sentido antihorario. Este ciclo se repitió tres veces durante toda la prueba. Cuando el giro fue en sentido horario, el error de la cámara tuvo valores positivos. Al momento de llevar el CanSat de nuevo a 0\degree (girarlo en sentido antihorario), la cámara tenía que compensar su posición en el sentido contrario y, por lo tanto, los valores de error resultaron negativos.\\
 
@@ -433,12 +433,11 @@ R17, R18, R19, R23, R24, R27, R28, R29\tabularnewline
 3. El color de fondo de los tres recuadros a lado del botón `Configurar CanSat' se vuelve verde.\tabularnewline
 4. El despliegue de datos y la graficación de los mismos comienza.\tabularnewline
 5. La graficación y despliegue de datos continúa sin interrupciones.\tabularnewline
-6. La graficación y despliegue de datos continúa sin interrupciones. En el \textit{tab} de orientación se logra ver la variación de la orientación del CanSat al ser girado.\tabularnewline
-7. La graficación y despliegue de datos continúa sin interrupciones. En el \textit{tab} de orientación se logra ver la variación de la orientación del CanSat al ser girado.\tabularnewline
-8. La graficación y despliegue de datos continúa sin interrupciones. Se observa cómo la orientación del CanSat en el \textit{tab} de orientación se estabiliza.\tabularnewline
-9. La graficación y el despliegue de datos termina. La ventana de visualización se abre.\tabularnewline
-10. La gráfica del parámetro seleccionado se muestra. Operaciones como desplazamiento o acercamiento son posibles de realizar en la gráfica.\tabularnewline
-11. La ventana de visualización se cierra.\tabularnewline
+6. En el \textit{tab} de orientación se logra ver la variación de la orientación del CanSat al ser girado.\tabularnewline
+7. Se observa cómo la orientación del CanSat en el \textit{tab} de orientación se estabiliza.\tabularnewline
+8. La graficación y el despliegue de datos termina. La ventana de visualización se abre.\tabularnewline
+9. La gráfica del parámetro seleccionado se muestra. Operaciones como desplazamiento o acercamiento son posibles de realizar en la gráfica.\tabularnewline
+10. La ventana de visualización se cierra.\tabularnewline
 
 \bottomrule
 \end{tabular}
@@ -467,7 +466,7 @@ R17, R18, R19, R23, R24, R27, R28, R29\tabularnewline
 	\label{img:setpitch}
 \end{figure}
 
-\noindent La figura \ref{img:setvisual} muestra la ventana de visualización que sale después de que la transmisión de datos terminó. En la imagen \ref{img:setvisual} el parámetro mostrado es el de ángulo de azimut. En la imagen se pueden distinguir las herramientas para manipular la imagen dentro de la ventana de visualización.\\
+\noindent La figura \ref{img:setvisual} muestra la ventana de visualización que emergió después de que la transmisión de datos terminó, misma que contiene la gráfica del parámetro azimut. En la imagen se pueden distinguir las herramientas para manipular la imagen dentro de la ventana de visualización.\\
 
 \noindent Las figuras presentadas en esta sección muestran un tiempo total de la prueba de más de $600 [s]$, verificando que la interfaz de usuario puede operar sin interrupciones durante este tiempo el cual es aproximadamente el mismo que dura una misión de CanSat típica.
 
@@ -553,18 +552,16 @@ R33, J6\tabularnewline
 \multicolumn{1}{c}{\textbf{Objetivos}}
 \tabularnewline
 \toprule
-- Verificar que la batería otorgue $9 [V]$ antes de iniciar la operaición del CanSat.\tabularnewline
-- Verificar que la etapa de regulación de voltaje ajusta el voltaje de entrada de $9 [V]$ a $3.3 [V]$ y $6 [V]$.\tabularnewline
+- Verificar que la etapa de regulación de voltaje ajusta el voltaje de entrada a $3.3 [V]$ y $6 [V]$.\tabularnewline
 - Verificar que la batería del CanSat permite que opere por un mínimo de 2 horas.\tabularnewline
 
 
 \toprule
 \multicolumn{1}{c}{\textbf{Pasos}}\tabularnewline
 \toprule
-1. Medir el voltaje en la batería utilizando un multímetro.\tabularnewline
-2. En la placa de circuito principal medir el voltaje en el punto de prueba correspondiente a $3.3 [V]$.\tabularnewline
-3. En la placa de circuito principal medir el voltaje en el punto de prueba correspondiente a $6 [V]$.\tabularnewline
-4. Realizar la configuración inicial del CanSat e iniciar la transmisión de datos. Dejar el CanSat transmitiendo por 2 horas.\tabularnewline
+1. En la placa de circuito principal medir la tensión en el punto de prueba correspondiente a $3.3 [V]$.\tabularnewline
+2. En la placa de circuito principal medir la tensión en el punto de prueba correspondiente a $6 [V]$.\tabularnewline
+3. Realizar la configuración inicial del CanSat e iniciar la transmisión de datos. Dejar el CanSat transmitiendo por 2 horas.\tabularnewline
 
 
 \toprule
@@ -581,6 +578,25 @@ R33, J6\tabularnewline
 \end{center}
 \end{table}
 
+\subsubsection*{Resultados}
+
+\noindent La figura \ref{img:reg3.3V} muestra la tensión registrada con un multímetro en el punto de prueba. Se puede observar que la tensión registrada es de $3.10 [V]$, dejando una pequeña desviación de $0.2 [V]$ de acuerdo al valor esperado, sin embargo, esta pequeña desviación no representó ningún inconveniente en la operación del circuito.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.225]{implementacion/SEn/3V}
+	\caption{Prueba del SEn: tensión regulada a $3.3 [V]$.}
+	\label{img:reg3.3V}
+\end{figure}
+
+\noindent De igual forma, en la figura \ref{img:reg6V} se muestra la tensión registrada en el punto de prueba correspondiente para la tension de $6 [V]$. Se puede observar que la tensión registrada corresponde casi exactamente con la tensión esperada, presentando solo un pequeño aumento de $0.05 [V]$ en la tensión final.\\
+
+\begin{figure}[H]
+	\centering
+		\includegraphics[scale=0.225]{implementacion/SEn/6V}
+	\caption{Prueba del SEn: tensión regulada a $6 [V]$.}
+	\label{img:reg6V}
+\end{figure}
 
 \newpage
 	\section{Sistema Estructural} \label{impleSEs}
