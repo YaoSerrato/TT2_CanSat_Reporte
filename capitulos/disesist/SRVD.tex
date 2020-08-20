@@ -5,7 +5,7 @@
 \subsubsection{Subsistema de Reducción de Velocidad por Paracaídas}
 La velocidad de descenso de cualquier cuerpo equipado con un paracaídas depende de la fuerza de arrastre que desarrolla el paracaídas para contrarrestar la fuerza gravitacional que resulta de la masa del cuerpo. La magnitud de la fuerza de arrastre depende de la presión dinámica, la cual está en función de la velocidad y la densidad del aire, que a su vez dependen de la altitud y de la temperatura, el diámetro del docel del paracaídas y el coeficiente de arrastre.\\
 
-Considerando la segunda ley de Newton se puede establecer un modelo matemático simplificado que relaciona las fuerzas que actúan en el CanSat mientras desciende con paracaídas. Para desarrollar este modelo se tomaron varias consideraciones: 1) el sistema consiste en un paracaídas simétrico conectado rígidamente por un conector de longitud fija y 2) se considera sólo un grado de libertad, haciendo referencia a la caída libre del CanSat. El modelo matemático simplificado del movimiento del paracaías se presenta en la ecuación \eqref{eq:Parachute1}:
+Considerando la segunda ley de Newton se puede establecer un modelo matemático simplificado que relaciona las fuerzas que actúan en el CanSat mientras desciende con paracaídas \cite{parachute}. Para desarrollar este modelo se tomaron varias consideraciones: 1) el sistema consiste en un paracaídas simétrico conectado rígidamente por un conector de longitud fija y 2) se considera sólo un grado de libertad, haciendo referencia a la caída libre del CanSat. El modelo matemático simplificado del movimiento del paracaías se presenta en la ecuación \eqref{eq:Parachute1}:
 % y el diagrama de cuerpo libre se muestra en la figura \ref{img:SRVDparachute_dcl}.
 
 \begin{align}
@@ -54,9 +54,9 @@ Con la ecuación \eqref{eq:Parachute2} se pueden determinar las dimensiones del p
 S_p = \frac{2 m_c g}{\rho v^2 C_d}
 \end{align}
 
-De \cite{} se obtiene que el coficiente de arrastre $C_d$ de un paracaídas hemisférico es de $0.66$. Además, cabe señalar que para los cálculos se va a considerar un velocidad constante de descenso $v = 17 [m/s]$ con la finalidad de dar un margen de tolerancia en los resultados. Con estos valores se obtiene un valor $S_p = 0.04282 [m^2]$, que equivalen a un radio de paracaídas $r_p = 0.1167 [m]$.\\
+De \cite{CD_hemisferico} se obtiene que el coficiente de arrastre $C_d$ de un paracaídas hemisférico es de $0.66$. Además, cabe señalar que para los cálculos se va a considerar un velocidad constante de descenso $v = 17 [m/s]$ con la finalidad de dar un margen de tolerancia en los resultados. Con estos valores se obtiene un valor $S_p = 0.04282 [m^2]$, que equivalen a un radio de paracaídas $r_p = 0.1167 [m]$.\\
 
-Para resolver la ecuación \eqref{eq:Parachute2} se tiene que para el coeficiente de arrastre $C_c$ en \cite{} se da una gráfica en la que se tienen que interpolar los datos de la relación entre la longitud del CanSat $l_c$ y el diámetro que posee $d_c$, $l_c/dc$, y el número de Reynolds que se produce durante la velocidad de descenso por medio del paracaídas. Tomando en cuenta todo lo anterior se tiene que $C_c = 0.80$. El área efectiva del CanSat para un diámetro de $0.105 [m]$ es de $S_c = 0.008659 [m^2]$. Tomando una masa límite para el CanSat de $510 [g]$ la figura \ref{img:res_parachute} muestra la gráfica de la velocidad que teóricamente alcanzaría el CanSat en su descenso con paracaídas.\\
+Para resolver la ecuación \eqref{eq:Parachute2} se tiene que para el coeficiente de arrastre $C_c$ en \cite{CC_coeficiente} se da una gráfica en la que se tienen que interpolar los datos de la relación entre la longitud del CanSat $l_c$ y el diámetro que posee $d_c$, $l_c/dc$, y el número de Reynolds que se produce durante la velocidad de descenso por medio del paracaídas. Tomando en cuenta todo lo anterior se tiene que $C_c = 0.80$. El área efectiva del CanSat para un diámetro de $0.105 [m]$ es de $S_c = 0.008659 [m^2]$. Tomando una masa límite para el CanSat de $510 [g]$ la figura \ref{img:res_parachute} muestra la gráfica de la velocidad que teóricamente alcanzaría el CanSat en su descenso con paracaídas.\\
 
 En la figura \ref{img:res_parachute} se muestra que la velocidad de descenso del CanSat con paracaídas tiende a una valor de $15.2358 [m/s]$, que está dentro de los límites establecidos en los requerimientos.\\
 
@@ -90,11 +90,11 @@ En la figura \ref{img:aperturaparachute} se muestra la secuencia de activación p
 \end{figure}
 
 \subsubsection*{Selección de materiales}
-Tomando como base el proceso de selección de materiales propuesto por Ashby en \cite{}, la Tabla \ref{Alex3} muestra la traducción de los requerimientos a especificaciones de material.\\
+Tomando como base el proceso de selección de materiales propuesto por Ashby en \cite{ashby_materials}, la Tabla \ref{Alex3} muestra la traducción de los requerimientos a especificaciones de material.\\
 
 La manivela y la corredera son componentes críticos del mecanismo de apertura del paracaídas ya que son los que estarán sometidos a esfuerzos durante el ascenso del CanSat. Por ese motivo, se optó por fabricar esas piezas de aluminio.\\
 
-Para la selección de la aleación de aluminio a utilizar se consideraron varios criterios, entre ellos las propiedades mecánicas, la disponibilidad en el mercado nacional, el precio y la facilidad de maquinado. Ejemplo de estas aleaciones son las que  pertenecen a la serie AA 1xxx, AA 6xxx y AA 7xxx. En la Tabla \ref{tab:aleaciones} se muestran algunas de las propiedades mecánicas de las aleaciones de aluminio más comerciales.\\
+Para la selección de la aleación de aluminio a utilizar se consideraron varios criterios, entre ellos las propiedades mecánicas, la disponibilidad en el mercado nacional, el precio y la facilidad de maquinado. Ejemplo de estas aleaciones son las que  pertenecen a la serie AA 1xxx, AA 6xxx y AA 7xxx. En la Tabla \ref{tab:aleaciones} se muestran algunas de las propiedades mecánicas de las aleaciones de aluminio más comerciales (\cite{aleacion_1}, \cite{aleacion_2}, \cite{aleacion_3}).\\
 
 De acuerdo con los datos presentados en la Tabla \ref{tab:aleaciones} se seleccionó la aleación AA 6061 por ser la que posee la densidad más baja y un módulo de elasticidad y maquinabilida aceptables.
 
@@ -169,7 +169,7 @@ Para el caso de la base principal y la tapa del contenedor se necesita poca fric
 \subsubsection{Subsistema de Reducción de Velocidad por Autorrotación}
 A una altura de 300 [m] el vehículo científico será liberado del contenedor; en ese momento comienza el descenso por medio del sistema de autorrotación. Al momento de ser liberado, el vehículo científico tendrá una velocidad de descenso inicial de $20 [m/s]$ (velocidad ideal). Esta velocidad inicial, junto con la del viento del medio $\overrightarrow{v}_{\infty}$, permitirán que el sistema de autorrotación comience a girar y, por consiguente, se producirá un empuje $\overrightarrow{\text{F}}_{\text{T}}$.\\
 
-La geometría de cada cuerpo expuesto a un flujo de aire provoca una distribución de presión a lo largo de la superficie. La geometría de una cuchilla causa una presión más baja en la superficie superior que en la superficie inferior, dando como resultado una fuerza $\overrightarrow{\text{F}}_{\text{T}}$ que empuja el ala hacia arriba. Las fuerzas que actúan sobre un perfil aereodinámico se muestran en la figura \ref{FuerzasCuchilla}.
+La geometría de cada cuerpo expuesto a un flujo de aire provoca una distribución de presión a lo largo de la superficie \cite{anderson}. La geometría de una cuchilla causa una presión más baja en la superficie superior que en la superficie inferior, dando como resultado una fuerza $\overrightarrow{\text{F}}_{\text{T}}$ que empuja el ala hacia arriba. Las fuerzas que actúan sobre un perfil aereodinámico se muestran en la figura \ref{FuerzasCuchilla}.
 
 \begin{figure}[H]
 	\begin{center}
@@ -216,7 +216,7 @@ C_d = \frac{D}{\frac{1}{2} \rho v_{\infty}^{2} c}
 
 El perfil aereodinámico debe poseer un buen rendimiento a velocidades subsónicas ($M < 1$) y una geometría adecuada para generar el mayor arrastre posible cuando el flujo del viento actúe de manera perpendicular a la superficie de la hélice.\\
 
-Las características propias del descenso del vehículo científico ayudan al momento de seleccionar el  perfil aereodinámico. Primeramente, se debe tener en cuenta que, debido a las dimensiones del contenedor en donde será alojado el vehículo científico, no hay espacio para ubicar mecanismos de control activo del ángulo de ataque de la hélice. En segunda instancia, el perfil aereodinámico tiene que poseeer la mayor curvatura posible en la línea de la cuerda de modo que esta geometría ayude a generar el mayor arrastre durante la caída (\cite{}, \cite{}, \cite{}). En la Tabla \ref{Perfiles} \footnote{Los valores mostrados corresponden a un ángulo de ataque $\alpha = 1^{\text{o}}$} se presentan los perfiles aereodinámicos considerados para la selección.
+Las características propias del descenso del vehículo científico ayudan al momento de seleccionar el  perfil aereodinámico. Primeramente, se debe tener en cuenta que, debido a las dimensiones del contenedor en donde será alojado el vehículo científico, no hay espacio para ubicar mecanismos de control activo del ángulo de ataque de la hélice. En segunda instancia, el perfil aereodinámico tiene que poseeer la mayor curvatura posible en la línea de la cuerda de modo que esta geometría ayude a generar el mayor arrastre durante la caída (\cite{williamson}, \cite{doenhoff}). En la Tabla \ref{Perfiles} \footnote{Los valores mostrados corresponden a un ángulo de ataque $\alpha = 1^{\text{o}}$} se presentan los perfiles aereodinámicos considerados para la selección.
 
 \begin{table}[H]
 	\begin{center}
@@ -239,7 +239,7 @@ Las características propias del descenso del vehículo científico ayudan al momen
 	\end{center}
 \end{table}
 
-Ahora bien, como se puede observar en la Tabla \ref{Perfiles}, el perfil aereodinámico que presenta las mejores características para la aplicación es el perfil WORTMANN FX 63 - 137. No obstante, la información que se encuentra en la Tabla \ref{Perfiles} sólo permite conocer el coeficiente de sustentación $C_l$. Para poder obtener el coeficiente de arrastre $C_d$ del mismo perfil aereodiánmico se recurre a la base de datos de la Universidad de Illinois \cite{}, la cual otorga un valor adimensional $C_d = 0.0470$.\\
+Ahora bien, como se puede observar en la Tabla \ref{Perfiles}, el perfil aereodinámico que presenta las mejores características para la aplicación es el perfil WORTMANN FX 63 - 137. No obstante, la información que se encuentra en la Tabla \ref{Perfiles} sólo permite conocer el coeficiente de sustentación $C_l$. Para poder obtener el coeficiente de arrastre $C_d$ del mismo perfil aereodiánmico se recurre a la base de datos de la Universidad de Illinois \cite{database_illinois}, la cual otorga un valor adimensional $C_d = 0.0470$.\\
 
 La base de datos anteriormente mencionada también ofrece coordenadas del perfil aereodinámico que pueden ser importadas en algún software de diseño por compuadora para crear un modelo 3D del perfil aerodinámico. En la figura \ref{fig:Plot} se muestra una previsualización del perfil aereodinámico a utilizar.\\
 
