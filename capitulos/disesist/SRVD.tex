@@ -5,7 +5,7 @@
 \subsubsection{Subsistema de Reducción de Velocidad por Paracaídas}
 La velocidad de descenso de cualquier cuerpo equipado con un paracaídas depende de la fuerza de arrastre que desarrolla el paracaídas para contrarrestar la fuerza gravitacional que resulta de la masa del cuerpo. La magnitud de la fuerza de arrastre depende de la presión dinámica, la cual está en función de la velocidad y la densidad del aire, que a su vez dependen de la altitud y de la temperatura, el diámetro del docel del paracaídas y el coeficiente de arrastre.\\
 
-Considerando la segunda ley de Newton se puede establecer un modelo matemático simplificado que relaciona las fuerzas que actúan en el CanSat mientras desciende con paracaídas. Para desarrollar este modelo se tomaron varias consideraciones: 1) el sistema consiste en un paracaídas simétrico conectado rígidamente por un conector de longitud fija, o un elevador conectado a lo largo de los ejes de simetría a una carga útil y 2) se considera sólo un grado de libertad, que es el relacionado con la caída libre. El modelo matemático simplificado del movimiento del paracaías se presenta en \eqref{eq:Parachute1}.
+Considerando la segunda ley de Newton se puede establecer un modelo matemático simplificado que relaciona las fuerzas que actúan en el CanSat mientras desciende con paracaídas \cite{parachute}. Para desarrollar este modelo se tomaron varias consideraciones: 1) el sistema consiste en un paracaídas simétrico conectado rígidamente por un conector de longitud fija y 2) se considera sólo un grado de libertad, haciendo referencia a la caída libre del CanSat. El modelo matemático simplificado del movimiento del paracaías se presenta en la ecuación \eqref{eq:Parachute1}:
 % y el diagrama de cuerpo libre se muestra en la figura \ref{img:SRVDparachute_dcl}.
 
 \begin{align}
@@ -13,14 +13,33 @@ Considerando la segunda ley de Newton se puede establecer un modelo matemático s
 \overrightarrow{\text{W}}_{\text{C}} - \overrightarrow{\text{F}}_{\text{R}} - \overrightarrow{\text{F}}_{\text{D}} = m_c a
 \end{align}
 
-donde $\overrightarrow{\text{W}}_{\text{C}}$ es la fuerza gravitacional que resulta de la masa del CanSat, $\overrightarrow{\text{F}}_{\text{R}}$ es la fuerza de arrastre producida por la geometría del CanSat, $\overrightarrow{\text{F}}_{\text{D}}$ es la fuerza de arrastre producida por el paracaídas, $m_c$ es la masa del CanSat y $a$ es la aceleración del mismo. Si se considera que $\frac{dv}{dt}=a$, $\overrightarrow{\text{W}}_{\text{C}}=m_c g$ (donde $g=9.81 [m/s^2]$ es la aceleración debida a la gravedad de la Tierra), $\overrightarrow{\text{F}}_{\text{R}}=k(v) C_c S_c$ y $\overrightarrow{\text{F}}_{\text{D}}=k(v) C_d S_p$ (con $k(v) = (0.5 v^2 \rho)/(m_c)$, $\rho=1.225 [kg/m^3]$ es la densidad del aire, $C_d$ es el coeficiente de arrastre del paracaídas, $C_c$ es el coeficiente de arrastre de la geometría del CanSat, $S_p$ es la superficie efectiva del paracaídas y $S_c$ es la superficie efectiva del CanSat). Si la ecuación \eqref{eq:Parachute1} se resuelve para $\frac{dv}{dt}$ se obtiene la ecuación \eqref{eq:Parachute2}.
+donde:\\
+\null\qquad\qquad$\overrightarrow{\text{W}}_{\text{C}}$ es la fuerza gravitacional que resulta de la masa del CanSat $[N]$.\\
+\null\qquad\qquad$\overrightarrow{\text{F}}_{\text{R}}$ es la fuerza de arrastre producida por la geometría del CanSat $[N]$.\\
+\null\qquad\qquad$\overrightarrow{\text{F}}_{\text{D}}$ es la fuerza de arrastre producida por el paracaídas $[N]$.\\
+\null\qquad\qquad$m_c$ es la masa del CanSat $[Kg]$.\\
+\null\qquad\qquad$a$ es la aceleración del CanSat $[m/s^2]$.\\
+
+Además:\\
+\null\qquad\qquad$\frac{dv}{dt}=a$\\
+\null\qquad\qquad$\overrightarrow{\text{W}}_{\text{C}}=m_c g$ (donde $g=9.81 [m/s^2]$).\\
+\null\qquad\qquad$\overrightarrow{\text{F}}_{\text{R}}=k(v) C_c S_c$\\
+\null\qquad\qquad$\overrightarrow{\text{F}}_{\text{D}}=k(v) C_d S_p$\\
+\null\qquad\qquad$k(v) = (0.5 v^2 \rho)/(m_c)$\\
+\null\qquad\qquad$\rho=1.225 [kg/m^3]$ es la densidad del aire.\\
+\null\qquad\qquad$C_d$ es el coeficiente de arrastre del paracaídas $[adimensional]$.\\
+\null\qquad\qquad$C_c$ es el coeficiente de arrastre de la geometría del CanSat $[adimensional]$.\\
+\null\qquad\qquad$S_p$ es la superficie efectiva del paracaídas $[m^2]$.\\
+\null\qquad\qquad$S_c$ es la superficie efectiva del CanSat $[m^2]$.\\
+
+Si la ecuación \eqref{eq:Parachute1} se resuelve para $\frac{dv}{dt}$ se obtiene la ecuación \eqref{eq:Parachute2}:
 
 \begin{align}
 \label{eq:Parachute2}
 \frac{dv}{dt} = (0.5 v^2 \rho/m_c)(C_d S_p + C_c S_c) + g
 \end{align}
 
-Con la ecuación \eqref{eq:Parachute2} se pueden determinar las dimensiones del paracaídas. Para esto, se tomaron en cuenta dos consideraciones: 1) la aportación de la fuerza de rozamiento del CanSat, $\overrightarrow{\text{F}_{\text{R}}}$, es mucho menor a la fuerza de arrastre producida por el paracaídas, $\overrightarrow{\text{F}_{\text{D}}}$ y, por lo tanto, se puede omitir para una primera aproximación de las dimensiones del paracaídas; y 2) el cálculo se realiza en el régimen estacionario, una vez que la velocidad de descenso ha alcanzado su valor límite, por lo tanto, $\frac{dv}{dt} = 0$. Así, la ecuación \eqref{eq:Parachute2} se resuelve para $S_p$, quedando la ecuación \eqref{eq:Parachute3}.
+Con la ecuación \eqref{eq:Parachute2} se pueden determinar las dimensiones del paracaídas. Para esto, se tomaron en cuenta dos consideraciones: 1) la aportación de la fuerza de rozamiento del CanSat $\overrightarrow{\text{F}_{\text{R}}}$ es mucho menor a la fuerza de arrastre producida por el paracaídas $\overrightarrow{\text{F}_{\text{D}}}$ y, por lo tanto, se puede omitir para una primera aproximación de las dimensiones del paracaídas; y 2) el cálculo se realiza en el régimen estacionario, una vez que la velocidad de descenso ha alcanzado su valor límite, por lo tanto, $\frac{dv}{dt} = 0$. Así, la ecuación \eqref{eq:Parachute2} se resuelve para $S_p$, quedando la ecuación \eqref{eq:Parachute3}.
 
 %\begin{figure}[H]
 %	\begin{center}
@@ -35,9 +54,13 @@ Con la ecuación \eqref{eq:Parachute2} se pueden determinar las dimensiones del p
 S_p = \frac{2 m_c g}{\rho v^2 C_d}
 \end{align}
 
-De [??] se obtiene que el coficiente de arrastre $C_d$ de un paracaídas hemisférico es de $0.66$. Además, cabe señalar que para los cálculos se va a considerar un velocidad constante de descenso $v = 17 [m/s]$ con la finalidad de dar un margen de tolerancia en los resultados. Con estos valores se obtiene un valor $S_p = 0.04282 [m^2]$, que equivalen a un radio de paracaídas $r_p = 0.1167 [m]$.\\
+De \cite{CD_hemisferico} se obtiene que el coficiente de arrastre $C_d$ de un paracaídas hemisférico es de $0.66$. Además, cabe señalar que para los cálculos se va a considerar un velocidad constante de descenso $v = 17 [m/s]$ con la finalidad de dar un margen de tolerancia en los resultados. Con estos valores se obtiene un valor $S_p = 0.04282 [m^2]$, que equivalen a un radio de paracaídas $r_p = 0.1167 [m]$.\\
 
-Para resolver la ecuación \eqref{eq:Parachute2} se tiene que para el coeficiente de arrastre $C_c$ en [??] se da una gráfica en la que se tienen que interpolar los datos de la relación entre la longitud del CanSat ($l_c$) y el diámetro que posee ($d_c$), $l_c/dc$, y el número de Reynolds que se produce durante la velocidad de descenso por medio del paracaídas. Tomando en cuenta todo lo anterior se tiene que $C_c = 0.80$. El área efectiva del CanSat para un diámetro de $0.105 [m]$ es de $S_c = 0.008659 [m^2]$. Tomando una masa límite el CanSat de $510 [gramos]$ la figura \ref{img:res_parachute} muestra la gráfica de la velocidad que teóricamente alcanzaría el CanSat en su descenso con paracaídas.
+Para resolver la ecuación \eqref{eq:Parachute2} se tiene que para el coeficiente de arrastre $C_c$ en \cite{CC_coeficiente} se da una gráfica en la que se tienen que interpolar los datos de la relación entre la longitud del CanSat $l_c$ y el diámetro que posee $d_c$, $l_c/dc$, y el número de Reynolds que se produce durante la velocidad de descenso por medio del paracaídas. Tomando en cuenta todo lo anterior se tiene que $C_c = 0.80$. El área efectiva del CanSat para un diámetro de $0.105 [m]$ es de $S_c = 0.008659 [m^2]$. Tomando una masa límite para el CanSat de $510 [g]$ la figura \ref{img:res_parachute} muestra la gráfica de la velocidad que teóricamente alcanzaría el CanSat en su descenso con paracaídas.\\
+
+En la figura \ref{img:res_parachute} se muestra que la velocidad de descenso del CanSat con paracaídas tiende a una valor de $15.2358 [m/s]$, que está dentro de los límites establecidos en los requerimientos.\\
+
+Con estos datos se diseñó el compartimento del paracaídas ubicado en la parte superior del contenedor. Este compartimento tiene la capacidad de alojar el paracaídas y tiene un mecanismo que permite que el paracaídas se despliegue. Los elementos que conforman este compartimiento se muestran en la figura \ref{img:Compartimientoparacaidas}. Como elementos de sujeción se utilizaron tornillos M3 y M2 de diferentes longitudes y tuercas de bloqueo con inserto de nylon.
 
 \begin{figure}[H]
 	\begin{center}
@@ -47,9 +70,6 @@ Para resolver la ecuación \eqref{eq:Parachute2} se tiene que para el coeficiente
 	\end{center}
 \end{figure}
 
-En la figura \ref{img:res_parachute} se muestra que la velocidad de descenso del CanSat con paracaídas tiende a una valor de $15.2358 [m/s]$, que está dentro de los límites establecidos en los requerimientos.\\
-
-Con estos datos se diseñó el compartimento del paracaídas ubicado en la parte superior del contenedor. Este compartimento tiene la capacidad de alojar el paracaídas y tiene un mecanismo que permite que el paracaídas se despliegue. Los elementos que conforman este compartimiento se muestran en la figura \ref{img:Compartimientoparacaidas}. Como elementos de sujeción se utilizaron tornillos M3 y M2 de diferentes longitudes y tuercas de bloqueo con inserto de nylon.
 
 \begin{figure}[H]
 	\begin{center}
@@ -58,9 +78,9 @@ Con estos datos se diseñó el compartimento del paracaídas ubicado en la parte su
 	\end{center}
 \end{figure}
 
-El paracaídas se encontrará alojado adentro de la parte superior del contenedor y va a estar sujeto de tres puntos de anclaje, los cuales se encuentra a $120 °$, y a $60 [mm]$ del centro. La geometría de la base principal está hecha con la finlidad de que las aperturas en los costados, así como las que se encuentran en la parte inferior, ayuden a la expulsión e inflado del paracaídas.\\
+El paracaídas se encontrará alojado adentro de la parte superior del contenedor y va a estar sujetado a tres puntos de anclaje, los cuales se encuentra a una inclinación de $120 ^{\circ}$ y a una separación de $60 [mm]$ del centro. La geometría de la base principal se diseñó con la finlidad de que las aperturas en los costados, así como las que se encuentran en la parte inferior, ayuden a la expulsión e inflado del paracaídas.\\
 
-En la figura \ref{img:aperturaparachute} se muestra la secuencia de activación del mecanismo de apertura del paracaídas. En el cuadro de la izquierda de la figura \ref{img:aperturaparachute} se muestra el estado de reposo, donde O representa el centro de la geometria y $x_0$ es la posción inicial de la corredera. En este estado el mecanismo de apertura permanece sin movimiento durante el ascenso del CanSat. Una vez que el CanSat es liberado y ha caído $4 [m]$ con respecto de la altura de apogeo, en ese momento se pasa al estado de transición en el cual la manivela realiza un giro a consecuencia del par proporcionado por el motor. Lo anterior permite que la corredera se desplace de la posición inicial $x_0$ a una posición $x_i$. Cuando la corredera ha abandonado la pared de la tapa del contenedor, ésta misma, por acción del viento, gira y permite la expulsión del paracaídas (cuadro derecho de la figura \ref{img:aperturaparachute}). En el estado final, cuando la corredera se encuentra en $x_i$, la tapa del paracaídas ha girado totalmente. El motor deja de suministrar el torque a la manivela y, automáticamente, por acción de un interruptor de final de carrera, se le deja de suministrar voltage al motor.\\
+En la figura \ref{img:aperturaparachute} se muestra la secuencia de activación para la apertura del paracaídas. En el cuadro de la izquierda de la figura \ref{img:aperturaparachute} se muestra el estado de reposo, donde O representa el centro de la geometria y $x_0$ es la posción inicial de la corredera. En este estado el mecanismo de apertura permanece sin movimiento durante el ascenso del CanSat. Una vez que el CanSat es liberado y ha caído $10 [m]$ con respecto de la altura de apogeo, se pasa al estado de transición en el cual la manivela realiza un giro a consecuencia del par proporcionado por el motor. Lo anterior permite que la corredera se desplace de la posición inicial $x_0$ a una posición $x_i$. Cuando la corredera ha abandonado la pared de la tapa del contenedor, ésta misma, por acción del viento, gira y permite la expulsión del paracaídas (cuadro derecho de la figura \ref{img:aperturaparachute}). En el estado final, cuando la corredera se encuentra en $x_i$, la tapa del paracaídas ha girado totalmente. El motor deja de suministrar el torque a la manivela y, por acción de un interruptor de final de carrera, se le deja de suministrar voltage al motor.\\
 
 \begin{figure}[H]
 	\begin{center}
@@ -70,7 +90,13 @@ En la figura \ref{img:aperturaparachute} se muestra la secuencia de activación d
 \end{figure}
 
 \subsubsection*{Selección de materiales}
-Tomando como base el proceso de selección de materiales propuesto por Ashby en [??], la Tabla \ref{Alex3} muestra la traducción de los requerimientos a especificaciones de material.
+Tomando como base el proceso de selección de materiales propuesto por Ashby en \cite{ashby_materials}, la Tabla \ref{Alex3} muestra la traducción de los requerimientos a especificaciones de material.\\
+
+La manivela y la corredera son componentes críticos del mecanismo de apertura del paracaídas ya que son los que estarán sometidos a esfuerzos durante el ascenso del CanSat. Por ese motivo, se optó por fabricar esas piezas de aluminio.\\
+
+Para la selección de la aleación de aluminio a utilizar se consideraron varios criterios, entre ellos las propiedades mecánicas, la disponibilidad en el mercado nacional, el precio y la facilidad de maquinado. Ejemplo de estas aleaciones son las que  pertenecen a la serie AA 1xxx, AA 6xxx y AA 7xxx. En la Tabla \ref{tab:aleaciones} se muestran algunas de las propiedades mecánicas de las aleaciones de aluminio más comerciales (\cite{aleacion_1}, \cite{aleacion_2}, \cite{aleacion_3}).\\
+
+De acuerdo con los datos presentados en la Tabla \ref{tab:aleaciones} se seleccionó la aleación AA 6061 por ser la que posee la densidad más baja y un módulo de elasticidad y maquinabilida aceptables.
 
 \begin{table}[H]
 	\begin{center}
@@ -98,9 +124,6 @@ Tomando como base el proceso de selección de materiales propuesto por Ashby en [
 	\end{center}
 \end{table}
 
-La manivela y la corredera son componentes críticos del mecanismo de apertura del paracaídas ya que son los que estarán sometidos a esfuerzos durante el ascenso del CanSat. Por ese motivo, se optó por fabricar esas piezas de aluminio.\\
-
-Para la selección de la aleación de aluminio a utilizar se consideraron varios criterios, entre ellos las propiedades mecánicas, la disponibilidad en el mercado nacional, el precio y la facilidad de maquinado. Ejemplo de estas aleaciones son las que  pertenecen a la serie AA 1xxx, AA 6xxx y AA 7xxx. En la Tabla \ref{tab:aleaciones} se muestran algunas de las propiedades mecánicas de las aleaciones de aluminio más comerciales.
 
 \begin{table}[H]
 	\begin{center}
@@ -121,11 +144,6 @@ Para la selección de la aleación de aluminio a utilizar se consideraron varios c
 	\end{center}
 \end{table}
 
-De acuerdo con los datos presentados en la Tabla \ref{tab:aleaciones} se seleccionó la aleación AA 6061 por ser la que posee la densidad más baja y un módulo de elasticidad y maquinabilida aceptables.\\
-
-Para el caso de la base principal y la tapa del contenedor se necesita poca fricción y ligereza. Fabricar de aluminio estas piezas representaría mucha masa para el CanSat por lo que se propone el uso del la impresión con ABS (\textit{Acrylonitrile Butadiene Styrene}, por sus siglas en inglés.) junto con un tratamiento con vapor de acetona para eliminar la mayor cantidad de imperfecciones producidas por el proceso de deposición de material y así reducir la fricción entre componentes.\\
-
-La Tabla \ref{ABS} muestra las propiedades del polímero ABS.
 
 \begin{table}[H]
 	\begin{center}
@@ -146,22 +164,31 @@ La Tabla \ref{ABS} muestra las propiedades del polímero ABS.
 	\end{center}
 \end{table}
 
+Para el caso de la base principal y la tapa del contenedor se necesita poca fricción y ligereza. Fabricar de aluminio estas piezas representaría mucha masa para el CanSat por lo que se propone el uso del la impresión 3D con ABS (\textit{Acrylonitrile Butadiene Styrene}, por sus siglas en inglés.) junto con un tratamiento con vapor de acetona para eliminar la mayor cantidad de imperfecciones producidas por el proceso de deposición de material y así reducir la fricción entre componentes. La Tabla \ref{ABS} muestra las propiedades del polímero ABS.
+
 \subsubsection{Subsistema de Reducción de Velocidad por Autorrotación}
-A una altura de 300 [m] el vehículo científico será liberado del contenedor; en ese momento comienza el descenso por medio del sistema de autorrotación. Al momento de ser liberado, el vehículo científico va a una velocidad de descenso inicial de $20 [m/s]$ (velocidad ideal). Esta velocidad inicial, junto con la del viento del medio $\overrightarrow{v}_{\infty}$, permitirán que el sistema de autorrotación comience a girar y, por consiguente, se producirá un empuje $\overrightarrow{\text{F}}_{\text{T}}$.\\
+A una altura de 300 [m] el vehículo científico será liberado del contenedor; en ese momento comienza el descenso por medio del sistema de autorrotación. Al momento de ser liberado, el vehículo científico tendrá una velocidad de descenso inicial de $20 [m/s]$ (velocidad ideal). Esta velocidad inicial, junto con la del viento del medio $\overrightarrow{v}_{\infty}$, permitirán que el sistema de autorrotación comience a girar y, por consiguente, se producirá un empuje $\overrightarrow{\text{F}}_{\text{T}}$.\\
 
-Primeramente, y a modo de introducción, es pertinenete hablar sobre los conceptos básicos que permitirán conocer el comportamiento del vehículo cinetífico en caída libre dentro de un fluido (aire). Los conceptos que serán presentados fueron extraídos del libro de texto de Anderson \cite{Anderson}.\\
-
-La geometría de cada cuerpo expuesto a un flujo de aire provoca una cierta distribución de presión a lo largo de la superficie. La geometría propia de una cuchilla causa una presión más baja en la superficie superior que en la superficie inferior, dando como resultado una fuerza $\overrightarrow{\text{F}}_{\text{T}}$ que empuja el ala hacia arriba. Las fuerzas que actúan sobre un perfil aereodinámico se muestran en la figura \ref{FuerzasCuchilla}.
+La geometría de cada cuerpo expuesto a un flujo de aire provoca una distribución de presión a lo largo de la superficie \cite{anderson}. La geometría de una cuchilla causa una presión más baja en la superficie superior que en la superficie inferior, dando como resultado una fuerza $\overrightarrow{\text{F}}_{\text{T}}$ que empuja el ala hacia arriba. Las fuerzas que actúan sobre un perfil aereodinámico se muestran en la figura \ref{FuerzasCuchilla}.
 
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[scale=0.80]{imgmeca/Cuchilla.eps}  
+		\includegraphics[scale=0.75]{imgmeca/Cuchilla.eps}  
 		\caption{Fuerzas aereodinámicas que actúan en un perfil aereodinámico.}
 		\label{FuerzasCuchilla}
 	\end{center}
 \end{figure}
 
-donde $\overrightarrow{v}_{\infty}$ representa la velocidad y la dirección del viento libre. La fuerza $\overrightarrow{\text{R}}$ que actúa sobre el perfil aereodinámico esta formada por dos fuerzas: la fuerza de sustentación $\overrightarrow{\text{L}}$ que actúa perpendicularmete a $\overrightarrow{v}_{\infty}$, y la fuerza de arrastre $\overrightarrow{\text{D}}$ que actúa en dirección paralela a $\overrightarrow{v}_{\infty}$. La línea de cuerda $c$ se define como la línea que conecta el borde superior y el borde inferior del perfil aereodinámico. La fuerza normal $\overrightarrow{\text{N}}$, perpendicular a la línea de cuerda, y la fuerza axial $\overrightarrow{\text{A}}$, paralela a la línea de cuerda, se pueden expresar mediante los siguiente modelos matemáticos mostrados en \ref{eq:Rotor1} y  \ref{eq:Rotor2} que representan las relaciones geométricas de las variables previamente mencionada:
+donde:\\
+\null\qquad\qquad$\overrightarrow{v}_{\infty}$ representa la velocidad y la dirección del viento libre $[m/s]$.\\
+\null\qquad\qquad$\overrightarrow{\text{L}}$, fuerza de sustentación que actúa perpendicularmete a $\overrightarrow{v}_{\infty}$.\\
+\null\qquad\qquad$\overrightarrow{\text{D}}$, fuerza de arrastre que actúa en dirección paralela a $\overrightarrow{v}_{\infty}$.\\
+\null\qquad\qquad$\overrightarrow{\text{R}}$, fuerza resultante que actúa sobre el perfil aereodinámico $[N]$.\\
+\null\qquad\qquad$c$, línea de cuerda que conecta el borde superior e inferior del perfil.\\
+\null\qquad\qquad$\overrightarrow{\text{N}}$, fuerza normal, perpendicular a la línea de cuerda $[N]$.\\
+\null\qquad\qquad$\overrightarrow{\text{A}}$, fuerza axial, paralela a la línea de cuerda $[N]$.\\
+
+Se pueden expresar mediante los siguiente modelos matemáticos mostrados en \ref{eq:Rotor1} y \ref{eq:Rotor2} que representan las relaciones geométricas de las variables previamente mencionadas:
 
 \begin{align}
  \label{eq:Rotor1}
@@ -175,7 +202,7 @@ donde $\overrightarrow{v}_{\infty}$ representa la velocidad y la dirección del v
 
 donde $\alpha$ representa el ángulo de ataque del viento libre.\\
 
-Por otro lado, se pueden denotar las fuerzas de sustentación y de arrastre por medio de los coefcientes no dimensionales de sustentación $C_l$, y de arrastre $C_d$, según se muestra en las ecuaciones \ref{eq:Rotor3} y \ref{eq:Rotor4}.
+Por otro lado, se pueden denotar las fuerzas de sustentación y de arrastre por medio de los coefcientes no dimensionales de sustentación $C_l$ y de arrastre $C_d$, según se muestra en las ecuaciones \ref{eq:Rotor3} y \ref{eq:Rotor4}.
 
 \begin{align}
  \label{eq:Rotor3}
@@ -187,9 +214,9 @@ C_l = \frac{L}{\frac{1}{2} \rho v_{\infty}^{2} c}
 C_d = \frac{D}{\frac{1}{2} \rho v_{\infty}^{2} c}
 \end{align}
 
-El perfil aereodinámico debe poseer buen rendimiento a velocidades subsónicas ($M < 1$) y una geometría adecuada para generar el mayor arrastre posible cuando el flujo del viento actúe de manera perpendicular a la superficie de la cuchilla.\\
+El perfil aereodinámico debe poseer un buen rendimiento a velocidades subsónicas ($M < 1$) y una geometría adecuada para generar el mayor arrastre posible cuando el flujo del viento actúe de manera perpendicular a la superficie de la hélice.\\
 
-Las características propias del descenso del vehículo científico ayudan al momento de seleccionar el  perfil aereodinámico. Primeramente, se tiene que tener en cuenta que, debido a las dimensiones del contenedor en donde será alojado el vehículo científico, no hay espacio para ubicar mecanismos de control activo del ángulo de ataque de la hélice. En segunda instancia, el perfil aereodinámico tiene que poseeer la mayor curvatura posible en la línea de la cuerda de modo que esta geometría ayude a generar el mayor arrastre durante la caída [??], [??], [??]. En la Tabla \ref{Perfiles} \footnote{Es importante aclarar que los valores mostrados corresponden a un ángulo de ataque $\alpha = 1^{\text{o}}$} se presentan los perfiles aereodinámicos considerados para la selección.
+Las características propias del descenso del vehículo científico ayudan al momento de seleccionar el  perfil aereodinámico. Primeramente, se debe tener en cuenta que, debido a las dimensiones del contenedor en donde será alojado el vehículo científico, no hay espacio para ubicar mecanismos de control activo del ángulo de ataque de la hélice. En segunda instancia, el perfil aereodinámico tiene que poseeer la mayor curvatura posible en la línea de la cuerda de modo que esta geometría ayude a generar el mayor arrastre durante la caída (\cite{williamson}, \cite{doenhoff}). En la Tabla \ref{Perfiles} \footnote{Los valores mostrados corresponden a un ángulo de ataque $\alpha = 1^{\text{o}}$} se presentan los perfiles aereodinámicos considerados para la selección.
 
 \begin{table}[H]
 	\begin{center}
@@ -212,9 +239,9 @@ Las características propias del descenso del vehículo científico ayudan al momen
 	\end{center}
 \end{table}
 
-Ahora bien, como se puede observar en la Tabla \ref{Perfiles}, el perfil aereodinámico que presenta las mejores características para la aplicación es el WORTMANN FX 63 - 137. No obstante, la información que se encuentra en la Tabla \ref{Perfiles} sólo permite conocer el coeficiente de sustentación $C_l$. Para poder obtener el coeficiente de arrastre $C_d$ del mismo perfil aereodiánmico, se recurre a la base de datos de la Universidad de Illinois [??], la cual otorga un valor adimensional $C_d = 0.0470$.\\
+Ahora bien, como se puede observar en la Tabla \ref{Perfiles}, el perfil aereodinámico que presenta las mejores características para la aplicación es el perfil WORTMANN FX 63 - 137. No obstante, la información que se encuentra en la Tabla \ref{Perfiles} sólo permite conocer el coeficiente de sustentación $C_l$. Para poder obtener el coeficiente de arrastre $C_d$ del mismo perfil aereodiánmico se recurre a la base de datos de la Universidad de Illinois \cite{database_illinois}, la cual otorga un valor adimensional $C_d = 0.0470$.\\
 
-La base de datos anteriormente mencionada además ofrece coordenadas del perfil aereodinámico que pueden ser importadas en algún software de diseño por compuadora para crear un modelo 3D del perfil aerodinámico. En la figura \ref{fig:Plot} se muestra una previsualización del perfil aereodinámico a utilizar proporcionada por la base de datos de la Universidad de Illinois.
+La base de datos anteriormente mencionada también ofrece coordenadas del perfil aereodinámico que pueden ser importadas en algún software de diseño por compuadora para crear un modelo 3D del perfil aerodinámico. En la figura \ref{fig:Plot} se muestra una previsualización del perfil aereodinámico a utilizar.\\
 
 \begin{figure}[H]
 	\begin{center}
@@ -223,7 +250,6 @@ La base de datos anteriormente mencionada además ofrece coordenadas del perfil a
 	\end{center}
 \end{figure}
 
-Antes de continuar con el análisis del perfil aereodinámico es importante recordar las características del descenso del vehículo científico una vez que es liberado del contenedor. En la figura \ref{Vehiculo} se puden observar las fuerzas que actúan en el vehículo científico (considerando que el descenso es solamente vertical y que existe un sólo grado de libertad) donde $\overrightarrow{\text{F}}_{\text{DV}}$ representa la fuerza de arrastre generada por la geometría del vehículo científico, $\overrightarrow{\text{F}}_{\text{T}}$ es el empuje generado por el movimiento de las hélices, $\omega$ representa la velocidad angular del rotor, y $\overrightarrow{\text{W}}_{\text{v}}$ representa el peso del vehículo científico.
 
 \begin{figure}[H]
 	\begin{center}
@@ -232,14 +258,21 @@ Antes de continuar con el análisis del perfil aereodinámico es importante record
 	\end{center}
 \end{figure}
 
-Una vez seleccionado el perfil aereodinámico se deben de obtener las dimensiones del mismo. Para ello en [??] se da un modelo matemático que relaciona la longitud de la cuerda del perfil aereodinámico $c$, la magnitud de la velocidad generada por el movimiento del rotor $v_p$, la densidad $\rho$ y la viscocidad del fluido $\mu$, tal como se muestra en la ecuación \ref{eq:Rotor10}.
+Antes de continuar con el análisis del perfil aereodinámico es importante recordar las características del descenso del vehículo científico una vez que es liberado del contenedor. En la figura \ref{Vehiculo} se pueden observar las fuerzas que actúan en el vehículo científico (considerando que el descenso es solamente vertical) donde:\\
+
+\null\qquad$\overrightarrow{\text{F}}_{\text{DV}}$, fuerza de arrastre generada por la geometría del vehículo científico $[N]$.\\
+\null\qquad$\overrightarrow{\text{F}}_{\text{T}}$, empuje generado por el movimiento de las hélices $[N]$.\\
+\null\qquad$\omega$, velocidad angular del rotor  $[rad/s]$.\\
+\null\qquad$\overrightarrow{\text{W}}_{\text{v}}$, peso del vehículo científico $[N]$.\\
+
+Una vez seleccionado el perfil aereodinámico se deben de obtener las dimensiones del mismo. Para ello, en \cite{reynolds} se da un modelo matemático que relaciona la longitud de la cuerda del perfil aereodinámico $c$, la magnitud de la velocidad generada por el movimiento del rotor $v_p$, la densidad $\rho$ y viscocidad $\mu$ del fluido, tal como se muestra en la ecuación \ref{eq:Rotor10}.
 
 \begin{eqnarray}
 \label{eq:Rotor10}
 \text{Re} = \frac{\rho v_p c}{ \mu }
 \end{eqnarray}
 
-Por lo regular, los datos proporcionados por algunas bases de datos relacionadas con los perfiles aereodinámicos presentan valores del coeficiente de sustentación y arrastre a valores de Reynolds mayores a 50,000, de modo que para los cálculos realizados se harán con ese valor, dejando así un factor de seguridad considerando que es preferible que el flujo se encuentre los más cercano a un flujo laminar. Se resuelve la ecuación \ref{eq:Rotor10} considerando que $\text{Re} = 50\text{x}10^{3}$ , $\rho = 1.225 [kg/m^3]$,
+Por lo regular, las bases de datos de perfiles aereodinámicos otorgan valores del coeficiente de sustentación y arrastre para números de Reynolds mayores a 50 000, de modo que los cálculos realizados se harán con ese valor. Es preferible que el flujo se encuentre lo más cercano a un flujo laminar. Se resuelve la ecuación \ref{eq:Rotor10} considerando que $\text{Re} = 50\text{x}10^{3}$ , $\rho = 1.225 [kg/m^3]$,
 $ \mu = 1{.}8 \text{x} 10^{-5} [\text{N} \cdot \text{s} \cdot \text{m}^{\text{-2}}]$, y que la velociad $\overrightarrow{v}_{\text{p}} [\text{m} \cdot \text{s}^{\text{-1}}]$ debida al giro del rotor es la misma que la velocidad de descenso  del vehículo científico, la cual oscilará entre los $10 [m/s]$ y $15 [m/s]$. Los valores de $c$ para diferentes velocidades se muestran en la Tabla \ref{valoresc}.
 
 \begin{table}[H]
@@ -266,11 +299,11 @@ $ \mu = 1{.}8 \text{x} 10^{-5} [\text{N} \cdot \text{s} \cdot \text{m}^{\text{-2
 
 En vista de que uno de los factores más críticos a considerar para el desarrollo del CanSat es la masa del mismo, se eligió la longitud de la cuerda que corresponde a una velocidad de descenso de $13 [m/s]$.\\
 
-Una vez que se han determiando los valores del coeficente de arrastre y sustentación, así como las dimensiones  de la cuerda del perfil aereodinámico, se procede a demostrar que el movimiento de las hélices podrá generar una fuerza de empuje $\overrightarrow{\text{F}}_{\text{T}}$ que, junto con la fuerza de arrastre producida por la propía geometría de las hélices, serán capaces de mantener la velocidad de descenso constante.\\
+Una vez que se han determinado los valores del coeficente de arrastre y sustentación, así como las dimensiones  de la cuerda del perfil aereodinámico, es posible demostrar que el movimiento de las hélices generará una fuerza de empuje $\overrightarrow{\text{F}}_{\text{T}}$ que, junto con la fuerza de arrastre producida por la geometría de las hélices, serán capaces de mantener una velocidad de descenso constante.\\
 
-Existen dos teorías que permiten relacionar las variables previamente mencionadas con el empuje que se genera: la Teoría del Elemento de la Cuchilla presentada por primera vez por W. Froude \cite{Froude} es un modelo relativamente simple que permite predecir el comportamiento de un cierto tipo de geometría; por otro lado está la Teoría del Impulso, la cual fue desarrollada por Rankine \cite{Rankine} y se basa en la idea de que cualquier hélice produce empuje.\\
+Existen dos teorías que relacionan las variables previamente mencionadas con el empuje que se genera: la Teoría del Elemento de la Cuchilla presentada por W. Froude \cite{Froude} y que es un modelo no tan complejo que permite predecir el comportamiento de un cierto tipo de geometría; por otro lado está la Teoría del Impulso, la cual fue desarrollada por Rankine \cite{Rankine} y se basa en la idea de que cualquier hélice produce empuje.\\
 
-La Teoría del Elemento de la Cuchilla es las más apropiada para el desarrollo de los cálculos puesto que esta teoría considera el número de hélices, las características del perfil aereodinámico, la forma de la hélice, la distribución de la torsión de la hélice y los efectos de compresibilidad. Como se puede observar en la figura \ref{BET}, la distancia desde el eje de la hélice a la línea central de cada elemento esta denotada por $\text{R'}$, y el ancho del elemento esta denotado por $\text{dR}$. $\text{R}$ es la distancia desde el eje de la hélice hasta la punta de la pala, también llamado radio de punta. Esta representación gráfica es válida para otras geométrías relacionadas con un perfil aereodinámico.
+La Teoría del Elemento de la Cuchilla es las más apropiada para el desarrollo de los cálculos debido a que esta teoría considera el número de hélices, las características del perfil aereodinámico, la forma de la hélice, la distribución de la torsión de la hélice y los efectos de compresibilidad. Como se puede observar en la figura \ref{BET}, la distancia desde el eje de la hélice a la línea central de cada elemento esta denotada por $\text{R'}$, y $\text{dR}$ es el ancho del elemento. $\text{R}$ es la distancia desde el eje de la hélice hasta la punta de la pala, también llamado radio de punta. Esta representación gráfica es válida para otras geométrías relacionadas con un perfil aereodinámico.
 
 \begin{figure}[H]
 	\begin{center}
@@ -282,11 +315,11 @@ La Teoría del Elemento de la Cuchilla es las más apropiada para el desarrollo de
 
 Para hacer más comprensible la representación de esta teoría se usará la adaptación de los libros de texto de Glauert \cite{Glauert} y Weick \cite{Weick}.\\
 
-En \ref{BETFuerzas} se pueden apreciar las diferentes fuerzas a la que es sometido el perfil aereodinámico, siguiendo el método la teoría del elemento de la cuchilla, donde $\theta$ está compuesto por el ángulo de ataque del perfil aereodinámico $\alpha_{b}$ y el ángulo de giro de la cuchilla con respecto al plano de la hélice $\varphi$. El flujo al que está expuesto el perfil aereodinámico está representado por $\overrightarrow{v}_{\text{p}}$. 
+En la figura \ref{BETFuerzas} se pueden apreciar las diferentes fuerzas a las que es sometido el perfil aereodinámico, de acuerdo con el método de la teoría del elemento de la cuchilla, donde $\theta$ está compuesto por el ángulo de ataque del perfil aereodinámico $\alpha_{b}$ y el ángulo de giro de la cuchilla con respecto al plano de la hélice $\varphi$. El flujo al que está expuesto el perfil aereodinámico está representado por $\overrightarrow{v}_{\text{p}}$. 
 
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[scale=0.08]{imgmeca/BET5.png}  
+		\includegraphics[scale=0.085]{imgmeca/BET5.png}  
 		\caption{Definición de fuerzas y velocidades actuando en un elemento de la cuchilla.}
 		\label{BETFuerzas}
 	\end{center}
@@ -304,7 +337,9 @@ Finalmente, después de algunas simplificaciones, se obtienen las expresiones par
 \overrightarrow{\text{dD}} = \frac{1}{2} \rho v_{vc}^{2} C_d (\alpha_{b}) c \text{N}_{\text{b}} \text{dR}
 \end{align}
 
-donde $\text{N}_{\text{b}}$ es el número de hélices y $\alpha_{b}$ representa el ángulo de ataque de la hélice.\\
+donde:\\
+\null\qquad\qquad$\text{N}_{\text{b}}$, número de hélices $[adimensional]$.\\
+\null\qquad\qquad$\alpha_{b}$, ángulo de ataque de la hélice $[rad]$.\\
 
 El empuje $\overrightarrow{\text{F}}_{\text{T}}$ y el torque $\text{dQ}$ pueden ser obtenidos de las siguientre transformaciones geométricas de \eqref{eq:sust} y \eqref{eq:arra}.
 
@@ -318,17 +353,17 @@ El empuje $\overrightarrow{\text{F}}_{\text{T}}$ y el torque $\text{dQ}$ pueden 
 \frac{\text{dQ}}{\text{R'}} = \overrightarrow{\text{dL}}\text{sen}(\varphi) + \overrightarrow{\text{dD}}\text{cos}(\varphi)
 \end{equation}
 
-Para poder utilizar la teoría del elemento de la cuchilla en la autorrotación se tomaron en cuenta los siguientes puntos [??]:
+Para poder utilizar la teoría del elemento de la cuchilla en la autorrotación se tomaron en cuenta los siguientes puntos \cite{puntos}:
 
 \begin{itemize}
 	\item Se considera un comportamiento bidimensional en cada elemento de la cuchilla.
-	\item La velocidad inducida, que es perpendicular al plano del rotor, se considerará como una modificación del ángulo de ataque del rotor.
+	\item La velocidad inducida, que es perpendicular al plano del rotor, se considera como una modificación del ángulo de ataque del rotor.
 	\item La componente radial de la velocidad del viento es despeciable.
 	\item cos ($\varphi$)  = 1, sen($\varphi$) = $\varphi$.
 	\item $\overrightarrow{\text{dL}} >> \overrightarrow{\text{dD}}$  
 \end{itemize}
 
-Por medio de estas consideraciones, las ecuaciones \ref{eq:hipotesissustentacion} y \ref{eq:hipotesistangencial} quedan de la siguiente manera:
+Tomando en cuenta estas consideraciones, las ecuaciones \ref{eq:hipotesissustentacion} y \ref{eq:hipotesistangencial} quedan de la siguiente manera:
 
 \begin{align}
 \label{eq:sustentacion}
@@ -339,11 +374,11 @@ Por medio de estas consideraciones, las ecuaciones \ref{eq:hipotesissustentacion
 \frac{\text{dQ}}{\text{R'}} \approx \overrightarrow{\text{dL}}\cdot \varphi  + \overrightarrow{\text{dD}}
 \end{align}
 
-En vista de que el empuje $\overrightarrow{\text{F}}_{\text{T}}$ depende sólo de la fuerza de sustentación $\overrightarrow{\text{dL}}$, se aplica el modelo de disco discreto, el cual menciona que debido a que durante en el descenso por autorrotación el rotor se encuentra en el régimen de estela turbulenta \footnote{Para velocidades de descenso medias, la estela se vuelve más turbulenta, y el flujo es similar al de un cuerpo no aereodinámico.} se suele realizar la analogía de considerar el rotor como un disco resistente impermeable.\\
+En vista de que el empuje $\overrightarrow{\text{F}}_{\text{T}}$ depende sólo de la fuerza de sustentación $\overrightarrow{\text{dL}}$, se puede aplicar el modelo de disco discreto el cual menciona que, debido a que durante el descenso por autorrotación el rotor se encuentra en el régimen de estela turbulenta \footnote{Para velocidades de descenso medias, la estela se vuelve más turbulenta y el flujo es similar al de un cuerpo no aereodinámico.}, se suele realizar la analogía de considerar el rotor como un disco resistente impermeable.\\
 
-El coeficiente de arrastre del disco impermeable $C_Dd$ suele tomar valores que van de 1.25 a 1.30, siendo 1.28 un valor muy empleado en las estimaciones de autorrotación \ref{}.\\
+El coeficiente de arrastre del disco impermeable $C_d$ suele tomar valores que van de 1.25 a 1.30, siendo 1.28 un valor muy empleado en las estimaciones de autorrotación.\\
 
-Utilizando la segunda ley de Newton del movimiento se puede obtener una expresión para la estimación de la velocidad del vehículo científico durante la etapa de descenso por autorrotación de modo que \eqref{Eq:EcuAuto} relaciona la velocidad del viento generada por el movimiento del vehículo científico $\overrightarrow{v}_{\text{vc}}$, donde $m_vc$ representa la masa del vehículo científico.\\
+Utilizando la segunda ley de Newton del movimiento se puede obtener una expresión para la estimación de la velocidad del vehículo científico durante la etapa de descenso por autorrotación de modo que la ecuación 3.15 relaciona la velocidad del viento generada por el movimiento del vehículo científico $\overrightarrow{v}_{\text{vc}}$, donde $m_vc$ representa la masa del vehículo científico.\\
 
 \begin{align}
 \label{eq:EcuAuto}
@@ -357,27 +392,32 @@ Desarrollando \ref{eq:EcuAuto} se obtine la siguiente expresión:
 -\frac{\rho S_d C_Dd v_vc^{2}}{2} - \frac{\rho S_v C_Dv v_vc^{2}}{2} + m_vc g =  m_vc \frac{dv_vc}{dt}
 \end{align}
 
-donde $S_v$ representa la superficie efectiva del vehículo científico, $C_Dv$ representa el coeficiente de arrastre propio de la geometría del vehículo científico y $S_d$ representa la superficie del disco impermeable. Los resultados de resolver la ecuación \ref{eq:simplificadovehiculo} se muestran en la figura \ref{fig:Grafica2}, en la cual se observa que la velocidad de descenso tiene un valor constante de $12.3437 [m/s]$ después de que transcurren $2.0469[s]$.\\
+donde:\\
 
-Una vez que se obtuvieron las dimensiones de las hélices se diseñó el mecanismo de rotor del SRV-A. Los componenete mecánicos que conforman este mecanismo se muestran en las figura \ref{img:Partesrotor}. Como elementos de sujeción se utilizaron tornillos M3 y M2 de diferentes longitudes con su respectiva tuerca de bloqueo con inserto de nylon.\\
+\null\qquad$S_v$, superficie efectiva del vehículo científico $[m^2]$.\\
+\null\qquad$C_D$, coeficiente de arrastre de la geometría del vehículo científico $[adimensional]$.\\
+\null\qquad$S_d$, superficie del disco impermeable $[m^2]$.\\
+
+Los resultados de resolver la ecuación \ref{eq:simplificadovehiculo} se muestran en la figura \ref{fig:Grafica2}, donde se observa que la velocidad de descenso tiene un valor constante de $12.3437 [m/s]$ después de que transcurren $2.0469[s]$.\\
 
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[scale=0.70]{imgmeca/Grafica2.eps}  
+		\includegraphics[scale=0.90]{imgmeca/Grafica2.eps}  
 		\caption{Estimación de la velocidad de descenso del vehículo científico durante la etapa de autorrotación. \label{fig:Grafica2}}
 	\end{center}
 \end{figure}
 
+Una vez que se obtuvieron las dimensiones de las hélices se diseñó el mecanismo de rotor del SRV-A. Los componenete mecánicos que conforman este mecanismo se muestran en las figura \ref{img:Partesrotor}. Como elementos de sujeción se utilizaron tornillos M3 y M2 de diferentes longitudes con su respectiva tuerca de bloqueo con inserto de nylon.\\
+
+Durante la etapa de diseño uno de los cambios más significativos fue la geometría del monoblock. Este elemento en un principio era un componente que estaba conformado por varias piezas, como se observa en la figura \ref{img:Monoblock}. Uno de los motivos que orillaron a realizar el monoblock en una sola pieza fue reducir la masa y la cantidad de componentes. Con la reducción de componentes se evitan problemas con la vibración durante el ascenso y descenso del vehículo cientifíco.\\
+
 \begin{figure}[H]
 	\begin{center}
-		\includegraphics[scale=0.32]{imgmeca/Partesrotor.png}  
-		\caption{Componenetes mecánicos del SRV-A. \label{img:Partesrotor}}
+		\includegraphics[scale=0.47]{imgmeca/Partesrotor.png}  
+		\caption{Componenetes del SRV-A. \label{img:Partesrotor}}
 	\end{center}
 \end{figure}
-
-Durante la etapa de diseño uno de los cambios más significativos fue la geometría del monoblock. Este elemento en un principio era un componente que estaba conformado por varias piezas, como se observa en la figura \ref{img:Monoblock}.\\
-
-Uno de los motivos que orillaron a realizar el monoblock en una sola pieza fue reducir la masa y la cantidad de componentes. Con la reducción de componentes se evitan problemas con la vibración durante el ascenso y descenso del vehículo cientifíco.\\ 
+ 
 
 \begin{figure}[H]
 	\begin{center}

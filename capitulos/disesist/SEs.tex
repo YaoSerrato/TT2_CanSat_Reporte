@@ -1,4 +1,4 @@
-De acuerdo con la definición de la arquitectura física del CanSat, el sistema estructural se encarga de proteger al sistema mecatrónico de fuerzas internas y externas a las que es sometido, además, permite la conexión física y la integración de los otros sistemas y subsistemas.\\
+De acuerdo con la definición de la arquitectura física del CanSat, el sistema estructural se encarga de proteger al sistema mecatrónico de fuerzas internas y externas a las que será sometido y permite la conexión física con los otros sistemas.\\
 
 \noindent La figura \ref{fig:SeccionesCanSat} muestra las dos secciones de las que se compone el CanSat: a la izquierda se muestra el contenedor y a la derecha el vehículo científico.
 
@@ -12,9 +12,9 @@ De acuerdo con la definición de la arquitectura física del CanSat, el sistema es
 
 \noindent En la parte superior de la estructura del contenedor se aloja el SRV-P junto con el  mecanismo de apertura del paracaídas. El SRV-P se comunica con la placa principal por medio de dos cables que energizan el motor del mecanismo de apertura del paracaídas.\\
 
-Para las columnas utilizadas en la estructura del contenedor se consideró una cuerda UNF ya que el hilo de las rocas UNF tiene un diámetro mayor que el de las roscas UNC, lo que proporciona a los sujetadores con rosca UNF una resistencia de carga ligeramente mayor y mejores capacidades de bloqueo de torque que los sujetadores con rosca UNC del mismo material (aluminio, en este caso). Además, un ángulo de avance más pequeño permite un ajuste más fino a la tensión. Las rocas UNF son las más ampliamente usadas en la industria aeroespacial.\\
+\noindent Para las columnas utilizadas en la estructura del contenedor se consideró una cuerda UNF ya que el hilo de las roscas UNF tiene un diámetro mayor que el de las roscas UNC, lo que proporciona a los sujetadores con rosca UNF una resistencia de carga ligeramente mayor y mejores capacidades de bloqueo de torque que los sujetadores con rosca UNC del mismo material (aluminio, en este caso). Además, un ángulo de avance más pequeño permite un ajuste más fino a la tensión. Las rocas UNF son las más ampliamente usadas en la industria aeroespacial \cite{fastener}.\\
 
-Para que las columnas sean lo más ligeras y resistentes posible se utilizó un tubo redondo extruido con un diámetro exterior de $3/16 [in]$ y espesor de pared de $0.049 [in]$, dejando un diámetro interno de $2.2733 [mm]$ lo que permite hacer una rosca UNF 4-48, o bien, una equivalente ligeramente superior en el sistema métrico, es decir, una cuerda para tornillo M3. En la figura \ref{img:estructuracontenedor} se presenta la aplicación de las columnas de aluminio.
+\noindent Para que las columnas sean lo más ligeras y resistentes posible se utilizó un tubo redondo con diámetro exterior de $3/16 [in]$ y espesor de pared de $0.049 [in]$, dejando un diámetro interno de $2.2733 [mm]$ lo que permite hacer una rosca UNF $4-48$, o bien, una equivalente ligeramente superior en el sistema métrico, es decir, una cuerda para tornillo M3. En la figura \ref{img:estructuracontenedor} se muestran las columnas de aluminio del contenedor.
 
 \begin{figure}[H]
 	\centering
@@ -22,14 +22,14 @@ Para que las columnas sean lo más ligeras y resistentes posible se utilizó un tu
 	\caption{Contenedor del Cansat. 	\label{img:estructuracontenedor}}
 \end{figure}
 
-Puesto que el las piezas que conforman el vehículo científico y el contenedor estarán expuestas a condiciones de humedad y calor se utilizaron tornillos de acero inoxidable 304 con la finalidad de evitar que las condiciones ambientales afecten la unión entre las piezas.\\
+\noindent Puesto que las piezas que conforman el vehículo científico y el contenedor estarán expuestas a condiciones de humedad y calor, se utilizaron tornillos de acero inoxidable $304$ con la finalidad de evitar que las condiciones ambientales afecten la unión entre las piezas.\\
 
-Se utilizaron tornillos DIN-7380 puesto que son tornillos que ofrecen un buen apriete en espacios reducidos y son resistentes a la corrosión.
+\noindent Se utilizaron tornillos DIN-7380 puesto que son tornillos que ofrecen un buen apriete en espacios reducidos y son resistentes a la corrosión.
 
 \subsection*{Tapa de paracaídas}
-Uno de los elementos críticos durante el inicio de la misión es la tapa, ya que de este elemento será sujetado el Cansat por medio de un gancho al dron con la finalidad de elevarlo a una altura de 400 [m] con respecto del nivel de lanzamiento. Para poder validar que las dimensiones y geometrías de la tapa serán capaces de soportar la carga se realizó un análisis estático de esfuerzos y deformaciones por medio del \textit{software} CAD SolidWoks\textsuperscript{\textregistered}. Para esto se hicieron algunas consideraciones. Primeramente, se definieron los puntos en donde la tapa se encontrará fija, los cuales corresponden al punto en donde se encuentra el eje, el mismo que realiza la función de una bisagra de la tapa, y el punto en donde la tapa estará sujetada por la corredera del mecanismo de apertura de paracaídas.\\
+\noindent Uno de los elementos más críticos durante el inicio de la misión es la tapa debido a que de este elemento será sujetado el Cansat al dron por medio de un gancho con la finalidad de elevarlo a una altura de $400 [m]$ con respecto del nivel de lanzamiento. Para poder validar que las dimensiones y geometría de la tapa serán capaces de soportar la carga, se realizó un análisis estático de esfuerzos y deformaciones por medio del \textit{software} CAD SolidWoks\textsuperscript{\textregistered}. Para este análisis se tomaron algunas consideraciones. Primeramente, se definieron los puntos en donde la tapa se encontrará fija: 1) el punto en donde se encuentra el eje, el mismo que realiza la función de una bisagra de la tapa y 2) el punto en donde la tapa estará sujetada por la corredera del mecanismo de apertura de paracaídas.\\
 
-Para la simulación se consideró que la única fuerza que actúa sobre la tapa es el peso del Cansat $\overrightarrow{\text{F}}_{\text{YR}}$, la cual tiene una magnitud de $4.905 [N]$ (considerando una masa de $0.500 [kg]$) y que actúa de manera normal al plano de la tapa. La fuerza $\overrightarrow{\text{F}}_{\text{YR}}$ se divide en dos componentes, $\overrightarrow{\text{F}}_{\text{Y1}}$ y $\overrightarrow{\text{F}}_{\text{Y2}}$, y cada una tendrá la misma dirección y la misma magnitud de $2.4525 [N]$, siendo estas dos últimas fuerzas las consideradas para la simulación de esfuerzos y deformaciones. Estas fuerzas se muestran en la imagen \ref{img:fuerzastapa}.\\
+\noindent Para la simulación se consideró que la única fuerza que actúa sobre la tapa es el peso del Cansat $\overrightarrow{\text{F}}_{\text{YR}}$, la cual tiene una magnitud de $4.905 [N]$ (considerando una masa de $0.500 [kg]$) y que actúa de manera normal al plano de la tapa. La fuerza $\overrightarrow{\text{F}}_{\text{YR}}$ se divide en dos componentes, $\overrightarrow{\text{F}}_{\text{Y1}}$ y $\overrightarrow{\text{F}}_{\text{Y2}}$, y cada componente tendrá la misma dirección y magnitud de $2.4525 [N]$, siendo estas dos últimas fuerzas las consideradas para la simulación de esfuerzos y deformaciones. Estas fuerzas se muestran en la imagen \ref{img:fuerzastapa}.\\
 
 \begin{figure}[H]
 	\centering
@@ -37,9 +37,9 @@ Para la simulación se consideró que la única fuerza que actúa sobre la tapa es e
 	\caption{Fuerzas que actúan en la tapa del contenedor durante el ascenso.\label{img:fuerzastapa}}
 \end{figure}
 
-Al realizar una simulación de esfuerzos y deformaciones con el valor de la fuerza previamente calculado se obtienen los siguientes resultados. En \ref{img:simulacionparacaidasuno} se observan los esfuerzos a los que estará sometida la tapa del paracaídas durente el ascenso del Cansat, siendo el esfuero máximo de $3.712 [MPa]$. Este valor de esfuerzo corresponde a un factor de seguridad de 10.50.\\
+\noindent Al realizar una simulación de esfuerzos y deformaciones con el valor de la fuerza previamente calculado se obtienen los siguientes resultados. En la figura \ref{img:simulacionparacaidasuno} se observan los esfuerzos a los que estará sometida la tapa del contenedor durente el ascenso del Cansat, siendo el esfuero máximo uno de $3.712 [MPa]$. Este valor de esfuerzo corresponde a un factor de seguridad de 10.50.\\
 
-En la figura \ref{img:simulacionparacaidasdos} se pueden observar las zonas en las que existe un desplazamiento de la estructura de la tapa del paracaídas teniendo una deformación, con respecto a su geoemetria inicial, de $0.09 [mm]$. \newpage
+\noindent En la figura \ref{img:simulacionparacaidasdos} se pueden observar las zonas de la tapa del contenedor donde existe una deformación, con respecto a la geoemetria inicial, de $0.09 [mm]$. \newpage
 
 \begin{figure}[H]
 	\centering
@@ -53,17 +53,17 @@ En la figura \ref{img:simulacionparacaidasdos} se pueden observar las zonas en l
 	\caption{Deformaciones presentes en la tapa del contenedor durante el ascenso del CanSat. 	\label{img:simulacionparacaidasdos}}
 \end{figure}
 
-\noindent Otro análisis a realizar es el que corresponde al de esfuerzos y deformaciones presentes en la base principal de la sección superior del contenedor al momento de desplegar el paracaídas. Este evento ejercerá un tirón repentino en la base principal de la sección superior del contenedor de hasta $30 [Gs]$, lo que equivale a una fuerza $\overrightarrow{\text{F}}$ de $147 [N]$ (tomando un valor de $0.500 [kg]$ para la masa total del CanSat).\\
+\noindent Otro análisis a realizar es el correspondiente al de esfuerzos y deformaciones de la base de la sección superior del contenedor al momento de desplegar el paracaídas. Este evento ejercerá un tirón repentino en la base de la sección superior del contenedor de hasta $30 [Gs]$, lo que equivale a una fuerza $\overrightarrow{\text{F}}$ de $147 [N]$ (tomando un valor de $0.500 [kg]$ para la masa total del CanSat).\\
 
 \noindent La fuerza $\overrightarrow{\text{F}}$ se distribuyó equitativamente en 3 puntos de izaje, como se muestra en la figura \ref{fig:FuerzasOrejas}.
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[scale=0.20]{imgmeca/Fuerzasapertura.png}
-	\caption{Fuerzas presentes en la base principal del contenedor debidas a la apertura del paracaídas.\label{fig:FuerzasOrejas}}
+	\caption{Fuerzas presentes en la base del contenedor producidas por la apertura del paracaídas.\label{fig:FuerzasOrejas}}
 \end{figure}
 
-\noindent El ángulo $\theta$ de las fuerzas $\overrightarrow{\text{F}}_{\text{1}}$, $\overrightarrow{\text{F}}_{\text{2}}$ y $\overrightarrow{\text{F}}_{\text{3}}$ es de 70° con respecto del plano $xy$. Es de interés calcular la magnitud de cada una de estas fuerzas para poder realizar las simulaciones correspondientes. Con respecto al sistema de referencia mostrado en la figura \ref{fig:FuerzasOrejas}, se tiene que las fuerzas están definidas como:\\
+\noindent El ángulo $\theta$ de las fuerzas $\overrightarrow{\text{F}}_{\text{1}}$, $\overrightarrow{\text{F}}_{\text{2}}$ y $\overrightarrow{\text{F}}_{\text{3}}$ es de 70° con respecto del plano $xy$. Es de interés calcular la magnitud de cada una de estas fuerzas para poder realizar las simulaciones correspondientes. Con respecto al sistema de referencia $xyz$ mostrado en la figura \ref{fig:FuerzasOrejas}, se tiene que las fuerzas están definidas como:\\
 
 $$\overrightarrow{\text{F}}_{\text{1}}=(\text{F}_1 \cos(\theta),0,-\text{F}_1 \sin(\theta))$$
 $$\overrightarrow{\text{F}}_{\text{2}}=(-\text{F}_2 \cos(\theta)\cos(\pi/3),\text{F}_2 \cos(\theta) \sin(\pi/3),-\text{F}_2 \sin(\theta))$$
@@ -104,7 +104,7 @@ $$-52.68$$\\
 \end{array} \right]
 \end{eqnarray}
 
-\noindent Por lo que $52.68 [N]$ será la fuerza que cada punto de izaje deberá soportar. La figura \ref{fig:Baseparacaidasuno} muestra los resultados del análisis de esfuerzos respectivo, y la figura \ref{fig:Baseparacaidasdos} los resultados del análisis de deformaciones. En esta simulación se establecieron como geometría fija los tres puntos de acoplamiento de la sección superior del contenedor.\\
+\noindent Por lo que $52.68 [N]$ será la fuerza que cada punto de izaje deberá soportar. La figura \ref{fig:Baseparacaidasuno} muestra los resultados del análisis de esfuerzos respectivo y la figura \ref{fig:Baseparacaidasdos} los resultados del análisis de deformaciones. En esta simulación se establecieron como geometría fija los tres puntos de acoplamiento entre la sección superior del contenedor y las columnas de aluminio.\\
 
 \begin{figure}[H]
 \begin{center}
@@ -120,11 +120,11 @@ $$-52.68$$\\
 \end{center}
 \end{figure}
 
-Para realizar las simulaciones cada una de las fuerzas se descompuso en sus componentes, lo que dió una fuerza vertical de $49.50 [N]$, y una fuerza horizontal, apuntando hacia el centro, de $18.017 [N]$.\\
+\noindent Para realizar las simulaciones cada una de las fuerzas se descompuso en sus componentes, lo que dió una fuerza vertical de $49.50 [N]$ y una fuerza horizontal, apuntando hacia el centro, de $18.017 [N]$.\\
 
-El esfuerzo máximo al que está sometida la base es de $34.17 [MPa]$ que corresponde con un factor de seguridad de 1.14 que, al estar por encima de la unidad, se considera aceptable.\\
+\noindent El esfuerzo máximo al que estará sometida la base es de $34.17 [MPa]$ que corresponde a un factor de seguridad de 1.14 que, al estar por encima de la unidad, se considera aceptable.\\
 
-\noindent La estructura del vehículo científico está compuesta por varios niveles, todos unidos entre sí por medio de las columnas de soporte de nylon \textit{stand-offs}. El primer nivel corresponde a la base principal del SRV-A. En el segundo nivel está la placa de circuito principal del SCMC y del SPD. En el tercer nivel se encuentra el SLVC. En el cuarto nivel está la batería y la antena puestos verticalmente. En este nivel también se encuentra el Xbee y el GPS. Finalmente, acoplado al nivel de la batería y la antena, se encuentra el SRD. El interruptor y el LED indicador se ubican en una zona de fácil acceso y visualización en la placa de circuito principal. Estos niveles se muestran en la figura \ref{fig:NivelesCansat}.
+\noindent La estructura del vehículo científico está compuesta por varios niveles, todos unidos entre sí por medio de columnas de soporte de nylon \textit{stand-offs}. El primer nivel corresponde a la base principal del SRV-A. En el segundo nivel está la placa de circuito principal del SCMC y del SPD. En el tercer nivel se encuentra el SLVC. En el cuarto nivel está la batería y la antena puestos verticalmente. En este nivel también se encuentra el xBee y el GPS. Finalmente, acoplado al nivel de la batería y la antena, se encuentra el SRD. El interruptor y el LED indicador se ubican en una zona de fácil acceso y visualización en la placa de circuito principal. Estos niveles se muestran en la figura \ref{fig:NivelesCansat}.
 
 \begin{figure}[H]
 	\begin{center}
@@ -133,7 +133,7 @@ El esfuerzo máximo al que está sometida la base es de $34.17 [MPa]$ que correspo
 	\end{center}
 \end{figure}
 
-En el vehículo científico el elemento que está sometido a mayor esfuerzo es el mecanismo del SLVC. Durante el ascenso las correderas son los elementos que permiten sujetar al vehículo científico al contenedor hasta el momento en el que el vehículo científico es  liberado. En \ref{img:simulacioncorredera} se pueden observar las principales fuerzas que están presentes en el mecanismo del SLVC al momento del ascenso, en donde $\overrightarrow{\text{F}}_{\text{C1}}$ y $\overrightarrow{\text{F}}_{\text{C2}}$ son las fuerzas que están presentes en cada una de las correderas, cuyo valor es de $1.962 [N]$ (considerando una masa de $0.4 [kg]$ para el vehículo científico). 
+\noindent En el vehículo científico el elemento que está sometido a mayor esfuerzo es el mecanismo del SLVC. Durante el ascenso las correderas son los elementos que mantienen sujetado el vehículo científico al contenedor hasta el momento en el que el vehículo científico es  liberado. En la figura \ref{img:simulacioncorredera} se pueden observar las principales fuerzas que están presentes en el mecanismo del SLVC al momento del ascenso, en donde $\overrightarrow{\text{F}}_{\text{C1}}$ y $\overrightarrow{\text{F}}_{\text{C2}}$ son las fuerzas que están presentes en cada una de las correderas, cuyo valor es de $1.962 [N]$ (considerando una masa de $0.4 [kg]$ para el vehículo científico). 
 
 \begin{figure}[H]
 	\centering
@@ -141,7 +141,7 @@ En el vehículo científico el elemento que está sometido a mayor esfuerzo es el m
 	\caption{Fuerzas asociadas al mecanismo de liberación durante el ascenso.	\label{img:simulacioncorredera}}
 \end{figure}
 
-Cuando el vehículo cientifíco está en ascenso la fuerza se trasnmite a la base principal del SLVC, por lo que es ésta la que recibe el esfuerzo. De acuerdo con la figura \ref{img:simulacioncorrederauno} el esfuerzo máximo en la base principal del SLVC es de $4.072 [MPa]$ y, por lo tanto, se puede determinar que el factor de seguridad es de 9.57.
+\noindent Cuando el vehículo cientifíco está en ascenso la fuerza se trasnmite a la base del SLVC, por lo que es ésta la que recibe el esfuerzo. De acuerdo con la figura \ref{img:simulacioncorrederauno} el esfuerzo máximo en la base del SLVC es de $4.072 [MPa]$ y, por lo tanto, se puede determinar que el factor de seguridad es de 9.57.
 
  \begin{figure}[H]
 	\centering
@@ -149,10 +149,10 @@ Cuando el vehículo cientifíco está en ascenso la fuerza se trasnmite a la base p
 	\caption{Esfuerzos presentes en la base principal del SLVC.	\label{img:simulacioncorrederauno}}
 \end{figure}
 
-En la figura \ref{img:simulacioncorrederados} se presentan las zonas de desplazamiento de la base principal del SLVC en donde se observa que la deformación máxima es menor a un milimetro.
+\noindent En la figura \ref{img:simulacioncorrederados} se presentan las zonas de desplazamiento de la base principal del SLVC en donde se observa que la deformación máxima es menor a un milimetro.
 
  \begin{figure}[H]
 	\centering
 		\includegraphics[scale=0.26]{imgmeca/Simulacioncorrederados.png}
-	\caption{Deformaciones presentes en la base principal del SLVC.	\label{img:simulacioncorrederados}}
+	\caption{Deformaciones presentes en la base del SLVC.	\label{img:simulacioncorrederados}}
 \end{figure}

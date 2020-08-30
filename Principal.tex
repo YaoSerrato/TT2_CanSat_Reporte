@@ -82,6 +82,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{pdfpages}
+
 % Paquetes para texto de relleno
 %\usepackage{blindtext}
 
@@ -130,6 +132,10 @@
 \makeindex
 %%%%%% Inicio de documento %%%%%%
 \begin{document}
+
+% Comando para cambiar de ¨Cuadro¨ a ¨Tabla¨ en la cabezera de las tablas.
+\renewcommand{\tablename}{Tabla}
+
 %%creación de carátulas y hoja de actas
 \portada
 \acta
@@ -141,7 +147,7 @@
 \listadetablas
 
 \include{preliminares/Resumen}               %%%modificar archivo Resumen.tex
-%\include{preliminares/Abstract}               %%%modificar archivo Abstract.tex
+\include{preliminares/Abstract}               %%%modificar archivo Abstract.tex
 \include{preliminares/Nomenclatura2}          %%%modificar archivo Nomenclatura.tex
 \include{preliminares/Simbologia2}            %%%modificar archivo Simbologia.tex
 
@@ -175,14 +181,16 @@
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%  BIBLIOGRAFIA  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliographystyle{apalike} \nocite{*}
- \bibliography{xbiblioteca}
+\bibliographystyle{ieeetran} \nocite{*}
+ \bibliography{References}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%    APENDICES  %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \backmatter
 \part{Ap\'endices}
 \appendix
 \include{apendices/apendice1}
+\includepdf[pages = {-}, angle = 90]{IDEF0.pdf}
+
 %\include{apendices/apendice2}
 %\include{apendices/apendice3}
 %\part{Anexos}

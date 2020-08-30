@@ -59,7 +59,7 @@ N15 & Almacenamiento constante de la información. & &  & \tabularnewline
 			\subsubsection*{Requerimientos}
 La transformación de las necesidades en un lenguaje técnico que permita materializar las posibles soluciones se logra por medio de la definición de los requerimientos.\\
 
-\noindent Un requerimiento es una capacidad o atributo observable y medible de un sistema cuya finalidad es cumplir los objetivos de éste. Un requerimiento debe ser necesario,  debe especificar qué debe hacerse (y no cómo hacerlo), debe abordar una sóla solicitud de manera completa y sin ambigüedades y, finalmente, debe ser realizable y verificable [?].\\
+\noindent Un requerimiento es una capacidad o atributo observable y medible de un sistema cuya finalidad es cumplir los objetivos de éste. Un requerimiento debe ser necesario,  debe especificar qué debe hacerse (y no cómo hacerlo), debe abordar una sóla solicitud de manera completa y sin ambigüedades y, finalmente, debe ser realizable y verificable \cite{requirements_2017}.\\
 
 \noindent Los requerimientos se pueden clasificar en requerimientos funcionales y no funcionales. Los requerimientos funcionales son aquellos que van enfocados a los aspectos técnicos  y que están relacionados con el funcionamiento del sistema. Por otro lado, los requerimientos no funcionales van dirigidos a aspectos estéticos, por ejemplo, el color.\\
   
@@ -91,7 +91,7 @@ R05 & El contenedor y el vehículo científico deberán separarse a una altura de $
 
 R06 & El vehículo científico, después de separarse del contenedor, deberá caer utilizando un sistema de descenso por autorrotación.\tabularnewline
 
-R07 & La velocidad de descenso del vehículo científico, después de separarse del contenedor, deberá ser de $10$ a $15$ $[m/s]$.\tabularnewline
+R07 & La velocidad de descenso del vehículo científico, después de separarse del contenedor, deberá ser de $10$ $[m/s]$ a $15$ $[m/s]$.\tabularnewline
 
 R08 & Todos los componentes de acoplamiento para el descenso del CanSat deberán soportar fuerzas de hasta $30 [Gs]$.\tabularnewline
 
@@ -111,13 +111,13 @@ R14 & El vehículo científico deberá medir la temperatura del ambiente.\tabularne
 
 R15 & El vehículo científico deberá medir la velocidad de giro de las hélices del sistema de descenso por autorrotación relativa al vehículo científico.\tabularnewline
 
-R16 & El vehículo científico deberá medir la inclinación en los ejes de \textit{pitch} y \textit{roll}.\tabularnewline
+R16 & El vehículo científico deberá medir la inclinación en los ejes \textit{pitch} y \textit{roll}.\tabularnewline
 
 R17 & El vehículo científico deberá transmitir los datos de telemetría a una estación en Tierra.\tabularnewline
 
-R18 & La estación en Tierra deberá estar compuesta de una computadora portátil con un mínimo de dos horas de batería, un módulo XBee y una antena de mano.\tabularnewline
+R18 & La estación en Tierra deberá estar compuesta de una computadora portátil con un mínimo de dos horas de batería, un módulo xBee y una antena de mano.\tabularnewline
 
-R19 & La estación en Tierra deberá enviar comandos al vehículo científico para la calibración de las referencias de altura e inclinación (ejes de \textit{pitch} y \textit{roll}).\tabularnewline
+R19 & La estación en Tierra deberá enviar comandos al vehículo científico para la calibración de las referencias de altura e inclinación (ejes \textit{pitch} y \textit{roll}).\tabularnewline
 
 R20 & Deberá desarrollarse una interfaz de usuario para la estación en Tierra.\tabularnewline
 
@@ -144,7 +144,7 @@ R21 & La interfaz de usuario deberá generar un archivo *\textit{.csv} con todos 
 \tabularnewline
 R22 & Los datos de telemetría deberán ser mostrados en la interfaz de usuario en unidades del Sistema Internacional.\tabularnewline
 
-R23 & Se deberán usar módulos XBee para la transmisión de datos de telemetría.\tabularnewline
+R23 & Se deberán usar módulos xBee para la transmisión de datos de telemetría.\tabularnewline
 
 R24 & La antena de la estación en Tierra deberá recibir los datos de telemetría provenientes del CanSat sin importar la orientación de éste.\tabularnewline
 
@@ -194,7 +194,7 @@ R39 & El vehículo científico deberá poseer un indicador auditivo con un nivel de
 \end{itemize}
 
 		\subsection{Definición de la actividad del usuario}
-Un modo de operación se define como una capacidad operativa distinta del sistema: esta capacidad operativa puede usar el conjunto completo de las funciones del sistema o sólo una parte \cite{}. Tener distintos modos de operación permite un mejor aprovechamiento de los recursos energéticos ya que los modos de operación agrupan sólo las funciones necesarias para la situación actual del sistema, o las activan sólo cuando es necesario. A continuación, se enlistan los dos modos de operación del CanSat.
+Un modo de operación se define como una capacidad operativa distinta del sistema: esta capacidad operativa puede usar el conjunto completo de las funciones del sistema o sólo una parte \cite{operationmodes_1992}. Tener distintos modos de operación permite un mejor aprovechamiento de los recursos energéticos ya que los modos de operación agrupan sólo las funciones necesarias para la situación actual del sistema, o las activan sólo cuando es necesario. A continuación, se enlistan los dos modos de operación del CanSat.
 
 \begin{itemize}
 	\item \textbf{Modo automático: } El CanSat mide parámetros del entorno, los almacena en la memoria de abordo y los transmite a la estación en Tierra. Toma decisiones con base en dichos parámetros para realizar las operaciones de la misión de vuelo. En la estación en Tierra se despliegan los parámetros recibidos y se almacenan en un archivo. El CanSat tendrá este modo de operación al momento de su lanzamiento.
@@ -203,9 +203,9 @@ Un modo de operación se define como una capacidad operativa distinta del sistema
 
 		\subsection{Desarrollo de las arquitecturas del sistema}
 			\subsubsection{Arquitectura funcional}
-De acuerdo con \cite{}, una función es un proceso que toma entradas y las transforma en salidas. Para el desarrollo del CanSat se siguió una metodología con enfoque funcional, por lo tanto, se definió la lista de funciones que realiza el sistema. Agregado a esta lista, se desarrollaron diagramas que muestran las relaciones que hay entre las funciones y cómo éstas describen el comportamiento del sistema; en concreto, se desarrolló la arquitectura funcional del sistema (\textit{System Functional Architecture}, SFA). \\
+De acuerdo con \cite{engineeringdesign_2007}, una función es un proceso que toma entradas y las transforma en salidas. Para el desarrollo del CanSat se siguió una metodología con enfoque funcional, por lo tanto, se definió la lista de funciones que realiza el sistema (FBS). Agregado a esta lista, se desarrollaron diagramas IDEF0 y eFFBD que muestran las relaciones que hay entre las funciones y cómo éstas describen el comportamiento del sistema; en concreto, se desarrolló la arquitectura funcional del sistema (\textit{System Functional Architecture}, SFA). \\
 
-\noindent Para la realización de la descomposición de funciones se tomó como referencia el conjunto de funciones genéricas propuesto por Flores Hernández [?] donde especifica que todo sistema mecatrónico debe tener las siguientes funciones:
+\noindent Para la realización de la descomposición FBS se tomó como referencia el conjunto de funciones genéricas propuesto por Flores Hernández \cite{diegoflores_2018} donde especifica que todo sistema mecatrónico debe tener las siguientes funciones:
 
 \begin{itemize}
 	\item Medición de parámetros ambientales y del sistema.
@@ -221,7 +221,7 @@ De acuerdo con \cite{}, una función es un proceso que toma entradas y las transf
 	\item Gestionar energía.
 \end{itemize}
 
-\noindent Con base en esta estructura genérica, la Tabla \ref{tab:Funciones} muestra la descomposición de funciones del CanSat. En la definición de las funciones se debe tener en cuenta que cada requerimiento debe estar asociado con al menos una función, puesto que cada función debe estar justificada.\\
+\noindent Con base en esta estructura genérica, la Tabla \ref{tab:Funciones} muestra la descomposición FBS del CanSat. En la definición de las funciones se debe tener en cuenta que cada requerimiento debe estar asociado con al menos una función, puesto que cada función debe estar justificada.\\
 
 \begin{table}[H]
 \begin{center}
@@ -306,7 +306,7 @@ De acuerdo con \cite{}, una función es un proceso que toma entradas y las transf
 \end{center}
 \end{table}
 
-\noindent Los diagramas IDEF0 se usaron como una técnica de modelado gráfica para representar las relaciones que hay entre las funciones dentro de cada nivel de la descomposición de funciones. La imagen \ref{img:nodoA0} muestra el diagrama IDEF0 del nivel de mayor jerarquía de la descomposición de funciones del CanSat. La única entrada transformada por el CanSat es el conjunto de parámetros de interés que se miden a lo largo de la misión. Estos parámetros son transformados en datos mostrados en la interfaz de usuario, datos almacenados abordo del CanSat y en la estación en Tierra, en un video grabado por la cámara, y en un contenedor y vehículo científico separados.\\
+\noindent Los diagramas IDEF0 se usaron como una técnica de modelado gráfica para representar las relaciones que hay entre las funciones dentro de cada nivel de la descomposición FBS. La imagen \ref{img:nodoA0} muestra el diagrama IDEF0 del nivel de mayor jerarquía de la descomposición de funciones del CanSat. La única entrada transformada por el CanSat es el conjunto de parámetros de interés que se miden a lo largo de la misión. Estos parámetros son transformados en datos mostrados en la interfaz de usuario, datos almacenados abordo del CanSat y en la estación en Tierra, en un video grabado por la cámara, y en un contenedor y vehículo científico separados.\\
 
 \noindent El último de los elementos que componen a la arquitectura funcional son los diagramas eFFBD. La imagen \ref{img:eFFBDCanSat} muestra el diagrama eFFBD del CanSat en su modo de operación automático. En la imagen \ref{img:eFFBDCanSat} se puede ver que el CanSat gestiona la energía y le da soporte y protección a todos los componentes durante toda la misión. Las dos funciones anteriores las realiza en paralelo con la gestión de la información y la simulación de la misión de vuelo. Para la función de gestionar información, el CanSat debe medir y procesar los datos antes de tomar decisiones con base en ellos. El CanSat debe primero calcular la altura, tomar la decisión de liberar al vehículo científico con base en el valor de altura obtenido y, finalmente, transmitir este dato, junto con los demás, a la estación en Tierra.\\
 
@@ -326,23 +326,19 @@ De acuerdo con \cite{}, una función es un proceso que toma entradas y las transf
 
 \newpage
 			\subsubsection*{Priorización de funciones}
-\noindent Priorizar funciones tiene que ver con determinar qué función es la más importante de toda la descomposición de funciones. Flores Hernández [?] menciona que realizar este proceso de priorización permite al equipo de diseño saber qué función afecta en mayor medida al comportamiento global del sistema, para después poder aplicar técnicas de optimización a esa función en particular, en lugar de optimizar todas y cada una de ellas.\\
+\noindent Priorizar funciones tiene que ver con determinar qué función es la más importante de toda la descomposición FBS. En \cite{diegoflores_2018} se menciona que realizar este proceso de priorización permite al equipo de diseño saber qué función afecta en mayor medida al comportamiento global del sistema, para después poder aplicar técnicas de optimización a esa función en particular, en lugar de optimizar todas y cada una de ellas.\\
 
-\noindent El problema de priorización de funciones puede verse como un problema de toma de decisiones multicriterio que, como su nombre lo indica, se trata de tomar una decisión con base en varios criterios, donde cada uno tiene una influencia diferente en la toma de la decisión final. Al final de este proceso de toma de decisión multicriterio se puede saber cuál de las opciones es la mejor, o viéndolo desde el punto de vista de priorización, qué función es la más importante. Para la priorización de funciones se utilizó el método AHP descrito en la sección \ref{sec:tools}.\\
-
-\noindent Para la realización de la priorización de funciones se tomaron en cuenta los criterios enlistados a continuación.
+\noindent El problema de priorización de funciones puede verse como un problema de toma de decisiones multicriterio que, como su nombre lo indica, se trata de tomar una decisión con base en varios criterios, donde cada uno tiene una influencia diferente en la toma de la decisión final. Al final de este proceso de toma de decisión multicriterio se puede saber cuál de las opciones es la mejor, o viéndolo desde el punto de vista de priorización, qué función es la más importante. Para la priorización de funciones se utilizó el método AHP descrito en la sección \ref{sec:tools}. Para la realización de la priorización de funciones se tomaron en cuenta los criterios enlistados a continuación.
 
 \begin{itemize}
-	\item \textbf{Importancia:} Hace referencia a si la función evaluada es necesaria, o si se trata de una función complementaria. Durante el proceso de comparación se puede responder a la siguiente pregunta: ¿es esta función más importante que la otra para el comportamiento general del sistema?
+	\item \textbf{Importancia:} Hace referencia a si la función evaluada es necesaria o si se trata de una función complementaria. Durante el proceso de comparación se puede responder a la siguiente pregunta: ¿es esta función más importante que la otra para el comportamiento general del sistema?
 	\item \textbf{Eficiencia:} Se refiere a qué tanto ayuda una función con respecto de la otra para el cumplimiento de los objetivos de diseño y el comportamiento deseado. Para evaluar las funciones bajo este criterio puede hacerse la siguiente pregunta: ¿esta función ayuda más que la otra para un mejor cumplimiento del comportamiento general del sistema?
-	\item \textbf{Dependencia:} Se refiere a si la una función depende de otra(s) para ejecutarse. Al comparar dos funciones puede responderse a la siguiente pregunta: ¿esta función depende de la otra para ejecutarse?
+	\item \textbf{Dependencia:} Se refiere a si la función depende de otra(s) para ejecutarse. Al comparar dos funciones puede responderse a la siguiente pregunta: ¿esta función depende de la otra para ejecutarse?
 \end{itemize}
 
-\noindent En el método AHP primero se determina un vector de priorización de criterios $w_{cr}$ el cual indica el grado de influencia que cada criterio tiene durante el proceso de priorización. Posteriormente, se debe realizar una comparación de cada función contra cada función (una tabla de comparación de 26x26 en este caso) con respecto de cada criterio, respondiendo a la pregunta respectiva. Los resultados de esta comparación por pares constituyen una matriz $MCR_{f}$ de 26x3.\\
+\noindent En el método AHP primero se determina un vector de priorización de criterios $w_{cr}$ el cual indica el grado de influencia que cada criterio tiene durante el proceso de priorización. Posteriormente, se debe realizar una comparación de cada función contra cada función (una tabla de comparación de 26x26 en este caso) con respecto de cada criterio, respondiendo a la pregunta respectiva. Los resultados de esta comparación por pares constituyen una matriz $MCR_{f}$ de 26x3. El vector de priorización de funciones $P_{f}$, tomando en cuenta todos los criterios y su respectivo grado de influencia en la decisión final, se obtiene al calcular $P_{f} = MCR_f \cdot w_{cr}$.\\
 
-\noindent El vector de priorización de funciones $P_{f}$, tomando en cuenta todos los criterios y su respectivo grado de influencia en la decisión final, se obtiene al calcular $P_{f} = MCR_f \cdot w_{cr}$.
-
-\noindent La Tabla \ref{tab:priorizacion de funciones} muestra el número de prioridad de cada función. En la Tabla \ref{tab:priorizacion de funciones} se observa que la función $sf_{4\text{.}3}-$ \textit{Reducir velocidad de descenso} es la más importante, seguido de las funciones $sf_{3\text{.}0}-$ \textit{Proteger y soportar} y $sf_{1\text{.}1}-$\textit{Acondicionar energía}.\\
+\noindent La Tabla \ref{tab:priorizacion de funciones} muestra el vector de priorización de funciones $P_{f}$ con base en la descomposición FBS de la tabla \ref{tab:Funciones}. En la Tabla \ref{tab:priorizacion de funciones} se observa que la función $sf_{4\text{.}3}-$ \textit{Reducir velocidad de descenso} es la más importante, seguido de las funciones $sf_{3\text{.}0}-$ \textit{Proteger y soportar} y $sf_{1\text{.}1}-$\textit{Acondicionar energía}.\\
 
 \begin{table}[H]
 \begin{center}
@@ -414,9 +410,9 @@ Simular misión de vuelo & $f_{4\text{.}0}$ & -- & --\tabularnewline
 \newpage
 
 			\subsubsection{Arquitectura física}
-La arquitectura física del sistema (\textit{System Physical Architecture}, SPA) se define como el conjunto de todas las transformaciones de funciones y subfunciones en sistemas, subsistemas, ensambles y componentes físicos [?]. Estos elementos deben cumplir con las funciones definidas previamente y satisfacer las necesidades planteadas al inicio del proceso de diseño con el fin de otorgar el comportamiento deseado.\\
+La arquitectura física del sistema (\textit{System Physical Architecture}, SPA) se define como el conjunto de todas las transformaciones de funciones y subfunciones en sistemas, subsistemas, ensambles y componentes físicos \cite{engineeringdesign_2007}. Estos elementos deben cumplir con las funciones definidas previamente con el fin de otorgar el comportamiento deseado.\\
 
-\noindent Al igual que con la arquitectura funcional, Flores Hernández [] propone una arquitectura física genérica para cualquier sistema mecatrónico que se compone de los siguientes sistemas:
+\noindent Al igual que con la arquitectura funcional, en \cite{diegoflores_2018} se propone una arquitectura física genérica para cualquier sistema mecatrónico que se compone de los siguientes sistemas:
 
 \begin{itemize}
 	\item Sistema Central de Manejo del Comportamiento.
@@ -450,17 +446,17 @@ La arquitectura física del sistema (\textit{System Physical Architecture}, SPA) 
 \hline
 \tabularnewline
 
-($S_{1}$) Sistema Central de Manejo del Comportamiento (SCMC) & Este sistema está encargado de determinar el comportamiento del CanSat de acuerdo con la etapa de vuelo en la que se encuentre. este sistema está compuesto por dos subsistemas: El subsistema de percepción ($sS_{1\text{.}1}$ -- SP), encargado de la adquisición de los parámetros del entorno e internos, y el subsistema de toma de decisiones ($sS_{1\text{.}2}$ -- STD), encargado de habilitar o deshabilitar ciertas funciones del CanSat con base en los datos procesados.\tabularnewline\tabularnewline
+($S_{1}$) Sistema Central de Manejo del Comportamiento (SCMC) & Este sistema está encargado de determinar el comportamiento del CanSat de acuerdo con la etapa de vuelo en la que se encuentre. este sistema está compuesto por dos subsistemas: el subsistema de percepción ($sS_{1\text{.}1}$ -- SP) encargado de la adquisición de los parámetros del entorno e internos; y el subsistema de toma de decisiones ($sS_{1\text{.}2}$ -- STD) encargado de habilitar o deshabilitar ciertas funciones del CanSat con base en los datos procesados.\tabularnewline\tabularnewline
 
-($S_{2}$) Sistema de Procesamiento de Datos (SPD) & Este sistema está encargado de procesar la información del entorno. El SPD está formado por tres subsistemas: el subsistema de acondicionamiento de datos ($sS_{2\text{.}1}$ -- SAcD), que procesa los datos de los sensores; el subsistema de almacenamiento de datos ($sS_{2\text{.}2}$ -- SAlD), que almacena la información abordo, y el subsistema de comunicación interna ($sS_{2\text{.}3}$ -- SCI), que distribuye la información a los componentes que la requieran.\tabularnewline\tabularnewline
+($S_{2}$) Sistema de Procesamiento de Datos (SPD) & Este sistema está encargado de procesar la información del entorno. El SPD está formado por tres subsistemas: el subsistema de acondicionamiento de datos ($sS_{2\text{.}1}$ -- SAcD) que procesa los datos de los sensores; el subsistema de almacenamiento de datos ($sS_{2\text{.}2}$ -- SAlD) que almacena la información abordo; y el subsistema de comunicación interna ($sS_{2\text{.}3}$ -- SCI), que distribuye la información a los componentes que la requieran.\tabularnewline\tabularnewline
 
-($S_{3}$) Sistema de Reducción de Velocidad de Descenso (SRVD) & Este sistema es encargado de mantener la velocidad de descenso del CanSat dentro de los rangos establecidos en los requerimientos. El SRVD está compuesto por dos subsistemas: el subsistema de reducción de velocidad por paracaídas ($sS_{3\text{.}1}$ -- SRV-P), cuya función es mantener la velocidad de descenso de todo el CanSat dentro del rango de $15 [m/s]$ a $25 [m/s]$ antes de los $300 [m]$, y el 	subsistema de reducción de velocidad por autorrotación ($sS_{3\text{.}2}$ -- SRV-A), cuya función es mantener la velocidad de descenso del vehículo científico dentro del rango de $10 [m/s]$ a $15 [m/s]$.\tabularnewline\tabularnewline
+($S_{3}$) Sistema de Reducción de Velocidad de Descenso (SRVD) & Este sistema se encarga de mantener la velocidad de descenso del CanSat dentro de los rangos establecidos en los requerimientos. El SRVD está compuesto por dos subsistemas: el subsistema de reducción de velocidad por paracaídas ($sS_{3\text{.}1}$ -- SRV-P) cuya función es mantener la velocidad de descenso de todo el CanSat dentro del rango de $15 [m/s]$ a $25 [m/s]$ antes de los $300 [m]$; y el subsistema de reducción de velocidad por autorrotación ($sS_{3\text{.}2}$ -- SRV-A) cuya función es mantener la velocidad de descenso del vehículo científico dentro del rango de $10 [m/s]$ a $15 [m/s]$.\tabularnewline\tabularnewline
 
 ($S_{4}$) Sistema de Liberación del Vehículo Científico (SLVC) & Este sistema está encargado de liberar al vehículo científico del contenedor a una altura de $300 [m]$.\tabularnewline\tabularnewline
 
 ($S_{5}$) Sistema de Registro de Descenso (SRD) & Este sistema se encarga de tomar evidencia en video a lo largo de toda la misión, enfocando siempre en la misma dirección con respecto del nadir.\tabularnewline\tabularnewline
 
-($S_{6}$) Sistema de Estación en Tierra (SET) & Este sistema se encarga de comunicar el CanSat con la estación en Tierra, y comunicar la estación en Tierra con el usuario. El SET está compuesto por dos subsistemas: el subsistema de comunicación CanSat -- Estación en Tierra ($sS_{6\text{.}1}$ -- SC-ET), cuya función es transmitir información del CanSat a la estación en Tierra y viceversa, y el subsistema de comunicación Usuario -- Estación en Tierra ($sS_{6\text{.}2}$ -- SU-ET), cuya función es mostrar al usuario de forma amena la información que el CanSat envíe a la estación en Tierra y crear un respaldo de esta información.\tabularnewline\tabularnewline
+($S_{6}$) Sistema de Estación en Tierra (SET) & Este sistema se encarga de comunicar el CanSat con la estación en Tierra y comunicar la estación en Tierra con el usuario. El SET está compuesto por dos subsistemas: el subsistema de comunicación CanSat -- Estación en Tierra ($sS_{6\text{.}1}$ -- SC-ET) cuya función es transmitir información del CanSat a la estación en Tierra y viceversa; y el subsistema de comunicación Usuario -- Estación en Tierra ($sS_{6\text{.}2}$ -- SU-ET) cuya función es mostrar al usuario de forma amena la información que el CanSat envíe a la estación en Tierra y crear un respaldo de esta información.\tabularnewline\tabularnewline
 
 ($S_{7}$) Sistema de Energía (SEn) & Este sistema está encargado de gestionar la energía de consumo del CanSat. Realiza las funciones de almacenamiento, acondicionamiento y distribución de la energía a todo el CanSat.\tabularnewline\tabularnewline
 
@@ -475,7 +471,7 @@ La arquitectura física del sistema (\textit{System Physical Architecture}, SPA) 
 
 
 			\subsubsection*{Priorización de sistemas}
-\noindent Al igual que con la priorización de funciones,  se llevó a cabo un proceso de priorización de sistemas. El propósito es el mismo: identificar los sistemas más importantes con base en ciertos criterios para así poder aplicar técnicas de optimización a éstos. Si se optimizan los sistemas más importantes, el efecto de mejoramiento en el comportamiento del sistema mecatrónico será global.\\
+\noindent Al igual que con la priorización de funciones, se llevó a cabo un proceso de priorización de sistemas. El propósito es el mismo: identificar los sistemas más importantes con base en ciertos criterios para así poder aplicar técnicas de optimización a éstos. Si se optimizan los sistemas más importantes, el efecto de mejoramiento en el comportamiento del sistema mecatrónico será global.\\
 
 \noindent Para la priorización de los sistemas y subsistemas se utilizaron los criterios que se enlistan a continuación.
 
@@ -484,7 +480,7 @@ La arquitectura física del sistema (\textit{System Physical Architecture}, SPA) 
 
 	\item \textbf{Funciones asociadas:} este criterio determina la importancia del sistema de acuerdo con la cantidad de funciones que debe ejecutar.
 
-	\item \textbf{Entradas/salidas:} este criterio determina la importancia de los sistemas a partir de la cantidad de entradas y salidas de los mismos.
+	\item \textbf{Entradas/salidas:} este criterio determina la importancia del sistema de acuerdo con la cantidad de entradas y salidas del mismo.
 \end{itemize}
 
 \noindent El proceso que se utilizó para la priorización de sistemas fue el método AHP. La Tabla \ref{tab:sistprio} muestra el número de prioridad de cada sistema y subsistema.
@@ -541,15 +537,15 @@ Sistema estructural & $S_{8\text{.}0}$ & 7 & 0.0445\tabularnewline
 
 
 		\subsection{Análisis morfológico}
-Para obtener el diseño preliminar se deben proponer soluciones a cada función y subfunción del sistema. El análisis morfológico (\textit{General Morphological Analysis}, GMA) es un método adecuado para este propósito. El análisis morfológico es un método general para estructurar e investigar el conjunto total de relaciones posibles en un problema multidimensional, usualmente no cuantificable.\\
+Para obtener el diseño preliminar se deben proponer soluciones a cada función y subfunción del sistema. El análisis morfológico (\textit{General Morphological Analysis}, GMA) es un método adecuado para este propósito. El análisis morfológico es un método general para estructurar e investigar el conjunto total de relaciones de soluciones posibles en un problema \cite{gma_2015}.\\
 
 \noindent Para comenzar con el análisis morfológico del CanSat se deben primero establecer los parámetros más representativos del problema. Con base en la metodología, se han escogido tres parámetros principales: forma, posición y método. El parámetro de forma hace referencia a la geometría del elemento, el de posición se refiere a la ubicación del elemento dentro del sistema completo, y el de método hace referencia a alguna manera de realizar la función correspondiente. Dependiendo de las funciones evaluadas también se utilizarán los parámetros de configuración y mecanismo (su implementación será más evidente en breve).\\
 
-\noindent Una vez establecidos los parámetros se debe proponerse mínimo una solución para cada uno sin restricción en el número máximo de soluciones.\\
+\noindent Una vez establecidos los parámetros se debe proponer mínimo una solución para cada uno, sin restricción en el número máximo de soluciones.\\
 
 \noindent La Tabla \ref{tab:GMA} muestra el análisis morfológico del CanSat para cada sistema y subsistema tomando en cuenta las funciones y subfunciones asociadas a cada uno.\\
 
-\noindent La Tabla \ref{tab:GMA} otorga un total de $46 656$ posibles combinaciones donde cada combinación está compuesta de una solución de cada parámetro de cada sistema o subsistema. Una extensión del análisis morfológico es la realización de la Matriz de Consistencia (\textit{Cross-Consistency Matrix}, CCA), en la que se evalúa cada solución contra cada solución con el fin de encontrar inconsistencias entre ellas. Con la realización de la matriz de consistencia se pueden descartar muchas combinaciones.
+\noindent La Tabla \ref{tab:GMA} otorga un total de 46 656 posibles combinaciones donde cada combinación está compuesta de una solución de cada parámetro de cada sistema o subsistema. Una extensión del análisis morfológico es la realización de la Matriz de Consistencia (\textit{Cross-Consistency Matrix}, CCA) en la que se evalúa cada solución contra cada solución con el fin de encontrar inconsistencias entre ellas. Con la realización de la matriz de consistencia se pueden descartar muchas combinaciones.
 
 \newpage
 
@@ -912,7 +908,7 @@ Forma (E)
 \newpage
 
 		\subsection{Selección del concepto final}			
-\noindent Aún cuando se han descartado las combinaciones que presentan inconsistencias entre sí, el número restante de combinaciones puede todavía ser grande. Debido a lo anterior, sólo se evaluarán $3$ combinaciones para obtener sólo una que corresponderá al diseño preliminar del CanSat. El diseño preliminar seleccionado servirá como punto de partida para el diseño detallado. La Tabla \ref{tab:Combinacion} muestra las combinaciones a ser evaluadas.
+Aún cuando se han descartado las combinaciones que presentan inconsistencias entre sí, el número restante de combinaciones puede todavía ser grande. Debido a lo anterior, sólo se evaluarán $3$ combinaciones para obtener sólo una que corresponderá al diseño preliminar del CanSat. El diseño preliminar seleccionado servirá como punto de partida para el diseño detallado. La Tabla \ref{tab:Combinacion} muestra las combinaciones a ser evaluadas.
 
 \begin{table}[H]
 \begin{center}

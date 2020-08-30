@@ -2,12 +2,12 @@
 
 {\parindent0pt
 
-El SET se encarga de realizar la comunicación entre el CanSat y la estación en Tierra ($sS_{6{.}1}-$SC-ET), así como la comunicación entre la estación en Tierra y el usuario ($sS_{6{.}2}-$SU-ET). El SET está compuesto por la antena y transmisor abordo del CanSat, la antena y el transmisor en Tierra, y la computadora en Tierra ejecutando la interfaz gráfica de usuario.
+El SET se encarga de realizar la comunicación entre el CanSat y la estación en Tierra ($sS_{6{.}1}-$SC-ET), así como la comunicación entre la estación en Tierra y el usuario ($sS_{6{.}2}-$SU-ET). El SET está compuesto por la antena y transmisor abordo del CanSat, la antena y el transmisor en Tierra, y la computadora en Tierra ejecutando la interfaz gráfica de usuario donde se muestran los datos enviados por el CanSat.
 
 			\subsubsection{Subsistema de comunicación CanSat - Estación en Tierra}
 El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en Tierra}.\\
 
-\noindent Una vez que el SCMC haya medido los parámetros externos e internos y el SPD los haya procesado, los datos se envían por medio de comunicación serial al XBee abordo del CanSat. El XBee abordo del CanSat está conectado con la antena que se encarga de transmitir la trama de telemetría a la estación en Tierra. La tabla \ref{tab:trama} muestra los datos que son transmitidos por el CanSat.
+\noindent Una vez que el SCMC haya medido los parámetros externos e internos y el SPD los haya procesado, los datos se envían por medio de comunicación serial al xBee abordo del CanSat. El XBee abordo del CanSat está conectado con la antena que se encarga de transmitir la trama de telemetría a la estación en Tierra. La tabla \ref{tab:trama} muestra los datos que son transmitidos por el CanSat.
 
 \begin{table}[H]
 \begin{center}
@@ -22,7 +22,7 @@ El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en T
 \textbf{No.} & \textbf{Parámetro} & \textbf{Ejemplo} & \textbf{Definición} \tabularnewline
 \midrule
 
-1 & Número de paquete & 22 & Indica el número de paquete que se está transmitiendo $[adim]$.\tabularnewline
+1 & Número de paquete & 22 & Indica el número de paquete que se está transmitiendo $[adimensional]$.\tabularnewline
 
 2 & Tiempo de misión & 11 & Indica el tiempo en que se envía el paquete $[s]$.\tabularnewline
 
@@ -38,7 +38,7 @@ El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en T
 
 8 & Altura & 325.14 & Estimación de altura con respecto al sitio de lanzamiento $[m]$.\tabularnewline
 
-9 & Número de satélites (GPS) & 9 & Número de satélites detectados por el GPS $[adim]$.\tabularnewline
+9 & Número de satélites (GPS) & 9 & Número de satélites detectados por el GPS $[adimensional]$.\tabularnewline
 
 10 & Latitud & 2232.73830 & Valor de latitud otorgado por el GPS $[grados]$.\tabularnewline
 
@@ -48,7 +48,7 @@ El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en T
 
 13 & Velocidad de rotación del rotor & 325.42 & Velocidad angular de las hélices $[rpm]$.\tabularnewline
 
-14 & Estado & 3 & Estado actual de la misión $[adim]$.\tabularnewline
+14 & Estado & 3 & Estado actual de la misión $[adimensional]$.\tabularnewline
 
 \bottomrule
 \end{tabular}
@@ -56,12 +56,12 @@ El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en T
 \end{center}
 \end{table}
 
-\noindent Los requerimientos especifican que se deben utilizar módulos XBee, por lo tanto, se han seleccionado los módulos XBee S2 que operan en la banda de frecuencias de 2.4 [GHz]. Habrá un módulo tanto abordo del CanSat como en la estación en Tierra.\\
+\noindent Los requerimientos especifican que se deben utilizar módulos xBee, por lo tanto, se han seleccionado los módulos xBee S2 que operan en la banda de frecuencias de $2.4 [GHz]$. Habrá un módulo xBee tanto abordo del CanSat como en la estación en Tierra.\\
 
-\noindent Los módulos XBee S2 operan en la banda de frecuencia ISM $2.4 [GHz]$, que va de $2.4 [GHz]$ a $2.5 [GHz]$, con una frecuencia central de 2.45 [GHz]. Para la selección de la antena a bordo y para el diseño de la antena en la estación en Tierra se tomó como frecuencia de operación la frecuencia central de $2.45[GHz]$.
+\noindent Los módulos xBee S2 operan en la banda de frecuencia ISM $2.4 [GHz]$, que va de $2.4 [GHz]$ a $2.5 [GHz]$, con una frecuencia central de $2.45 [GHz]$. Para la selección de la antena a bordo y para el diseño de la antena en la estación en Tierra se tomó como frecuencia de operación la frecuencia central de $2.45[GHz]$.
 
 \subsubsection*{Antena a bordo del CanSat}
-\noindent La antena que va a bordo del CanSat es una antena Taoglas\textsuperscript{\textregistered} [3261A] con $2[dBi]$ de ganancia máxima con una frecuencia de operación de $2.4[GHz]$ a $2.5[GHz]$. La antena seleccionada posee polarización circular lo que significa que es apta para aplicaciones donde la orientación del dispositivo en que va montada cambia constantemente.\\
+\noindent La antena que va a bordo del CanSat es una antena Taoglas\textsuperscript{\textregistered} \cite{taoglas} con $2[dBi]$ de ganancia máxima y con una frecuencia de operación de $2.4[GHz]$ a $2.5[GHz]$. La antena seleccionada posee polarización circular lo que significa que puede recibir y transmitir información en cualquier orientación.\\
 
 \begin{figure}[H]
 	\centering
@@ -70,7 +70,7 @@ El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en T
 	\label{img:taoglas}
 \end{figure}
 
-\noindent La ganancia de una antena hace referencia a qué tan bien la antena convierte la potencia eléctrica en ondas de radio y viceversa [?]. La imagen \ref{img:GainTaoglas} muestra el valor de ganancia de la antena a bordo del CanSat en un rango de frecuencia de $2.3 [GHz]$ a $2.6 [GHz]$. En la imagen \ref{img:GainTaoglas} se puede observar que la ganancia de la antena a una frecuencia de $2.45 [GHz]$ es aproximadamente de $1.55 [dBi]$.\\
+\noindent La ganancia de una antena hace referencia a qué tan bien la antena convierte la potencia eléctrica en ondas de radio y viceversa \cite{antenna_2015}. La imagen \ref{img:GainTaoglas} muestra el valor de ganancia de la antena a bordo del CanSat en un rango de frecuencia de $2.3 [GHz]$ a $2.6 [GHz]$. En la imagen \ref{img:GainTaoglas} se puede observar que la ganancia de la antena a una frecuencia de $2.45 [GHz]$ es aproximadamente de $1.55 [dBi]$.\\
 
 \noindent Otro parámetro importante de una antena es la Razón de Onda Estacionaria (\textit{Voltage Standing Wave Ratio}, VSWR). El parámetro VSWR es una medida de la cantidad de potencia que se entrega a la antena en comparación con la cantidad de potencia que se refleja de la antena. Cada antena tiene un valor característico de impedancia, y el cable que la conecta con el transmisor también lo tiene. El caso ideal ocurre cuando ambos elementos (antena y cable) poseen la misma impedancia; cuando esto sucede, el valor del parámetro VSWR es de 1.  En la práctica, se toma un valor del parámetro VSWR de 2 como el máximo permisible.\\
 
@@ -91,7 +91,7 @@ El SC-ET lleva a cabo la función $f_{4{.}2}-$\textit{Comunicar con estación en T
 	\label{img:VSWRTaoglas}
 \end{figure}
 
-\noindent Los patrones de radiación son otro parámetro importante de una antena. El patrón de radiación de una antena es una representación gráfica de la energía irradiada por la antena en función del espacio [?]. El patrón de radiación describe la forma en que la antena irradia energía en el espacio.\\
+\noindent Los patrones de radiación son otro parámetro importante de una antena. El patrón de radiación de una antena es una representación gráfica de la energía irradiada por la antena en función del espacio \cite{antenna_2015}. El patrón de radiación describe la forma en que la antena irradia energía en el espacio.\\
 
 \noindent La imagen \ref{img:taoglasradpat} muestra los patrones de radiación de la antena a bordo del CanSat en los planos \textit{xy} (arriba izquierda), \textit{xz} (arriba derecha) y \textit{yz} (abajo izquierda). También se muestra el patrón de radiación en un plano 3D (abajo derecha). En la imagen \ref{img:taoglasradpat} se observa que la antena se comporta como una antena omnidireccional, es decir, como una antena en que la radiación de ondas no se concentra en una sola dirección, sino que se distribuye por todo el espacio. Esto es particularmente útil para la antena de abordo puesto que permitirá que haya comunicación continua entre el CanSat y la estación en Tierra independientemente de la orientación que el CanSat adquiera durante el vuelo.
 
@@ -134,7 +134,7 @@ La antena para la estación en Tierra es una antena BiQuad. La antena BiQuad es p
 	\label{img:GainBQ}
 \end{figure}
 
-\noindent La imagen \ref{img:VSWRBQ} muestra los valores del parámetro VSWR de la antena BiQuad. Se observa que a una frecuencia de $2.45 [GHz]$ el parámetro VSWR tiene un valor de $1.7001$, que se ubica por debajo del máximo permisible.\\
+\noindent La imagen \ref{img:VSWRBQ} muestra los valores del parámetro VSWR de la antena BiQuad. Se observa que a una frecuencia de $2.45 [GHz]$ el parámetro VSWR tiene un valor de $1.7001$, que se ubica por debajo del máximo permisible (VSWR de 2).\\
 
 \begin{figure}[H]
 	\centering
@@ -160,12 +160,12 @@ La antena para la estación en Tierra es una antena BiQuad. La antena BiQuad es p
 			\subsubsection{Subsistema de comunicación Usuario - Estación en Tierra}
 El SU-ET lleva a cabo la función $f_{2{.}1{.}2}-$\textit{Almacenar datos} y $f_{2{.}1{.}4}-$\textit{Interactuar con el usuario}.\\
 
-\noindent El SU-ET toma la trama de datos recibida por la antena BiQuad y la despliega en pantalla para que el usuario pueda visualizar los datos. Para lograr dicha visualización se desarrolló una interfaz gráfica de usuario (IGU). La IGU se desarrolló utilizando el languaje de programación Python [3262A] y la paquetería PyQt5 [3262B].\\
+\noindent El SU-ET toma la trama de datos recibida por la antena BiQuad y la despliega en pantalla para que el usuario pueda visualizar los datos. Para lograr dicha visualización se desarrolló una interfaz gráfica de usuario (IGU). La IGU se desarrolló utilizando el languaje de programación Python y la paquetería PyQt5 \cite{pyqt5_doc}.\\
 
-\noindent La IGU de la estación en Tierra posee tres ventanas con las que el usuario inetractúa: ventana de configuración, ventana de monitoreo y ventana de visualización.
+\noindent La IGU de la estación en Tierra posee tres ventanas con las que el usuario puede interactuar: ventana de configuración, ventana de monitoreo y ventana de visualización.
 
 \subsubsection*{Ventana de configuración}
-La ventana de configuración se muestra en la figura \ref{img:configwin}. La ventana de configuración posee dos secciones: `Archivo .csv' y `Comunicación serial'. En la sección `Archivo .csv' el usuario puede especificar el nombre del archivo \textit{.csv} donde se almacenarán los datos enviados por el CanSat y el directorio donde se guardará este archivo. En la sección `Comunicación serial' el usuario puede seleccionar el puerto serial al que está conectado el XBee de la antena BiQuad.\\
+La ventana de configuración se muestra en la figura \ref{img:configwin}. La ventana de configuración posee dos secciones: `Archivo .csv' y `Comunicación serial'. En la sección `Archivo .csv' el usuario puede especificar el nombre del archivo \textit{.csv} donde se almacenarán los datos enviados por el CanSat y el directorio donde se guardará este archivo. En la sección `Comunicación serial' el usuario puede seleccionar el puerto serial al que está conectado el xBee de la antena BiQuad.\\
 
 \begin{figure}[H]
 	\centering
@@ -176,7 +176,7 @@ La ventana de configuración se muestra en la figura \ref{img:configwin}. La vent
 
 \noindent La ventana de configuración no permite que el usuario pase a la siguiente ventana, la ventana de monitoreo, hasta que se realice la configuración inicial del CanSat. Esta configuración inicial del CanSat se realiza al presionar el botón `Configurar CanSat' ubicado en la esquina inferior izquierda de la ventana.\\
 
-\noindent Cuando el usuario presiona el botón `Configurar CanSat' la interfaz envía al CanSat los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------} para calibrar el giroscopio, el acelerómetro y establecer la altura de referencia, respectivamente. Si la configuración resulta exitosa el botón `Aceptar' se habilita, permitiendo al usuario continuar a la ventana de monitoreo. De resultar una configuración fallida el botón `Aceptar' queda deshabilitado hasta que la configuración sea exitosa. En ambos casos se manda un mensaje informativo al usuario.\\
+\noindent Cuando el usuario presiona el botón `Configurar CanSat' la interfaz envía al CanSat los comandos \texttt{M,G,------}, \texttt{M,A,------} y \texttt{M,S,------} para calibrar el giroscopio, el acelerómetro y establecer la altura de referencia, respectivamente. Si la configuración resulta exitosa el botón `Aceptar' se habilitará, permitiendo al usuario continuar a la ventana de monitoreo. De resultar una configuración fallida el botón `Aceptar' quedará deshabilitado hasta que la configuración sea exitosa. En ambos casos se manda un mensaje informativo al usuario.\\
 
 \noindent Así mismo, la interfaz muestra mensajes de error en caso de que algún campo quede faltante (nombre de archivo, directorio o puerto COM) o el nombre de archivo o directorio tenga un caracter no permitido. El usuario puede cerrar la ventana de configuración en cualquier momento con el botón `Cancelar'.\\
 
@@ -191,7 +191,7 @@ La ventana de monitoreo se muestra en la figura \ref{img:monitorwin}. La ventana
 
 \begin{figure}[H]
 	\centering
-		\includegraphics[angle = -90, scale=0.55]{diseniosist/SET/monitorwindow}
+		\includegraphics[angle = 90, scale=0.55]{diseniosist/SET/monitorwindow}
 	\caption{Ventana de monitoreo.}
 	\label{img:monitorwin}
 \end{figure}
@@ -207,7 +207,7 @@ La ventana de visualización se muestra en la figura \ref{img:visualwin}. En la v
 \end{figure}
 
 \subsubsection*{Multiprocesos}
-El proceso de recepción y graficación de datos en la interfaz en Tierra se puede realizar de varias maneras. En un enfoque la interfaz recibiría la trama de datos enviada por el CanSat, después la segmentaría para extraer los datos individuales, y finalmente canalizaría cada uno a su destino (una gráfica, un recuadro u otro indicador gráfico). El proceso anterior se desarrollaría secuencialmente. En este enfoque surge el problema de que la interfaz no podría recibir más tramas de datos hasta que el proceso de graficación terminara. Lo anterior podría causar que varias tramas de datos se perdieran, especialmente si la frecuencia de transmisión es alta.\\
+El proceso de recepción y graficación de datos en la interfaz en Tierra se puede realizar de varias maneras. En un primer enfoque la interfaz recibiría la trama de datos enviada por el CanSat, después la segmentaría para extraer los datos individuales, y finalmente canalizaría cada uno a su destino (una gráfica, un recuadro u otro indicador gráfico). El proceso anterior se desarrollaría secuencialmente. En este enfoque surge el problema de que la interfaz no podría recibir más tramas de datos hasta que el proceso de graficación termine. Lo anterior podría causar que varias tramas de datos se pierdan, especialmente si la frecuencia de transmisión es alta.\\
 
 \noindent Para resolver este problema los procesos de recepción de datos y de graficación deberían ser independientes uno del otro, pero mantener un canal de comunicación entre ellos. Un enfoque de multiprocesos cumple con estas características. La IGU desarrollada para la estación en Tierra se desarrolló bajo este concepto.\\
 

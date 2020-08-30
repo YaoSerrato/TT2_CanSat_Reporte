@@ -8,7 +8,7 @@ El SPD se compone de tres subsistemas: subsistema de acondicionamiento de datos 
 
 \subsubsection{Subsistema de Acondicionamiento de Datos}
 
-El SAcD se encarga de adquirir las señales crudas provenientes del SP, normalmente presentes en bits menos significativos (\textit{Less Significant Bit}, LSB), y transformarlas en unidades del Sistema Internacional que son más entendibles para el usuario y más interpretables para la programación. EL SAcD también se encarga de realizar todas las operaciones matemáticas para obtener unidades derivadas como la altura calculada a partir de la presión atmosférica, o la inclinación calculada a partir de valores del acelerómetro y giroscopio. Explicado lo anterior, se procederá a describir cómo el dispositivo realiza dichas transformaciones.
+El SAcD se encarga de adquirir las señales crudas provenientes del SP, normalmente presentes en bits menos significativos (\textit{Less Significant Bit}, LSB), y transformarlas en unidades del Sistema Internacional (SI) que son más entendibles para el usuario y más interpretables para el código de aplicación. EL SAcD también se encarga de realizar todas las operaciones matemáticas para obtener unidades derivadas como la altura, calculada a partir de la presión atmosférica, o la inclinación, calculada a partir de valores del acelerómetro y giroscopio. Explicado lo anterior, se procederá a describir cómo el dispositivo realiza dichas transformaciones.
 
 \subsubsection*{Transformaciones genéricas de unidades}
 
@@ -22,12 +22,12 @@ $$M_T=(M_R)(FC)$$
 
 donde:\\
 \null\qquad\qquad$M_T$ es la medida transformada  [unidades]\\
-\null\qquad\qquad$M_R$ es la medida cruda [LSBs]\\
+\null\qquad\qquad$M_R$ es la medida cruda proveniente del sensor [LSBs]\\
 \null\qquad\qquad$FC$ es el factor de conversión [unidades/LSBs]\\
 
 
 \subsubsection*{Transformación para la altura}
-La altura es una unidad derivada que depende de la presión atmosférica y de la temperatura adquiridas al momento de la transformación. La siguiente ecuación [?] muestra el cálculo utilizado para realizar esta transformación (por simplicidad, la temperatura se supuso constante de $15^{\text{o}}\text{C}$):
+La altura es una unidad derivada que depende de la presión atmosférica y de la temperatura adquiridas al momento de la transformación. La siguiente ecuación muestra el cálculo utilizado para realizar esta transformación (por simplicidad, la temperatura se supuso constante de $15^{\text{o}}\text{C}$):
 
 \begin{equation*}
 h = 44330.76923 \left[ 1 - \left( \dfrac{P}{101325} \right)^{0.190263} \right]
@@ -41,7 +41,7 @@ donde:\\
 
 \subsubsection*{Transformación para la inclinación}
 
-Para el cálculo de la inclinación del CanSat se siguió un método que involucra a los datos del giroscopio y acelerómetro en cada eje para realizar un filtro complementario. Dicho cálculo se basa en un Filtro Extendido de Kalman [?]. En el Algoritmo \ref{MetodoInclinacion} se detalla el pseudocódigo  para la implementación de este cálculo.\\
+Para el cálculo de la inclinación del CanSat se siguió un método que involucra a los datos del giroscopio y acelerómetro en cada eje para realizar un filtro complementario. Dicho cálculo se basa en un Filtro Extendido de Kalman (\cite{sensing_2004}, \cite{complementario_2011}). En el Algoritmo \ref{MetodoInclinacion} se detalla el pseudocódigo  para la implementación de este cálculo.\\
 
 Analizando el Algoritmo \ref{MetodoInclinacion} se observa que el sistema es dependiente del tiempo, de modo que la precisión del cálculo dependerá de la velocidad a la cual se realice este algoritmo y de la sensibilidad que tengan los sensores.\\
 
@@ -99,9 +99,9 @@ La precisión de estos métodos depende de la velocidad a la cual el sistema integ
 
 \subsubsection{Subsistema de Almacenamiento de Datos}
 
-Este subsistema se encarga de almacenar las tramas de datos ya procesados, así como cualquier otra variable de interés para el correcto funcionamiento del sistema (estado actual, valores de calibración y condiciones iniciales). Es responsabilidad de este subsistema el llevar a cabo el almacenamiento y recuperación de la información antes y después de un reinicio.\\
+Este subsistema se encarga de almacenar las tramas de datos ya procesados, así como cualquier otra variable de interés para el correcto funcionamiento del sistema (estado actual, valores de calibración y condiciones iniciales). Es responsabilidad de este subsistema el llevar a cabo el almacenamiento y recuperación de la información antes y después de un reinicio, respectivamente.\\
 
-El CanSat lleva a bordo una tarjeta SD donde se guardan las tramas de datos enviadas a la estación en Tierra. También, el CanSat posee una memoria no volátil en donde se almacenan los valores de configuración y calibración (valores de calibración de los sensores, alturas de referencia, tiempo de misión, número de paquete y estado actual).
+El CanSat lleva a bordo una tarjeta SD donde se guardan las tramas de datos enviadas a la estación en Tierra. También, el CanSat posee una memoria no volátil externa en donde se almacenan los valores de configuración y calibración (valores de calibración de los sensores, alturas de referencia, tiempo de misión, número de paquete y estado actual).
 
 
 \subsubsection{Subsistema de Comunicación Interna}
@@ -114,7 +114,7 @@ El protocolo RS232 a 115200 baudios se utilizó para la comunicación entre la pla
 
 \subsubsection{Desarrollo Electrónico}
 
-En esta sección se muestran los componentes electrónicos utilizados por el SCMC y el SPD. Al final de esta sección se muestran los circuitos esquemático.\\
+En esta sección se muestran los componentes electrónicos utilizados por el SCMC y el SPD. Al final de esta sección se muestran los diagramas esquemáticos de ambos sistemas.\\
 
 El primer componente seleccionado fue la unidad de almacenamiento. Este elemento debe contar con las características de facilidad de uso y extracción, alta capacidad de almacenamiento, tamaño pequeño y poca masa. Una tarjeta microSD cumple con estas características. Ahora, la Tabla \ref{tab:sensores} enlista los sensores utilizados en el SP para medir los parámetros internos y externos del CanSat.\\
 
@@ -341,7 +341,7 @@ El primer componente seleccionado fue la unidad de almacenamiento. Este elemento
 \end{center}
 
 
-Finalmente, se hablará de las unidades lógicas de control. El SP debe gestionar todos los componente anteriores de modo que debe contar con una unidad lógica que permita realizar tales tareas, es por ello que se contempla un microcontrolador de bajo consumo y pequeñas dimensiones, pero con buena capacidad de cómputo y múltiples puertos de comunicación. Por otro lado, también se tiene la unidad lógica de la placa principal, el cual debe tener una alta capacidad de control de periféricos y por ende gran capacidad de manejo de información que se traduce en altas velocidades de cómputo. La Tabla \ref{tab:Micro} muestra los dos microcontroladores selccionados así como algunas de sus características principales.\\
+Finalmente, se hablará de las unidades lógicas de control. El SP debe gestionar todos los componente anteriores de modo que debe contar con una unidad lógica que permita realizar tales tareas, es por ello que se contempla un microcontrolador de bajo consumo y pequeñas dimensiones, pero con buena capacidad de cómputo y múltiples puertos de comunicación. Por otro lado, también se tiene la unidad lógica de la placa principal, la cual debe tener una alta capacidad de control de periféricos y gran capacidad de manejo de información, que se traduce en altas velocidades de cómputo. La Tabla \ref{tab:Micro} muestra los dos microcontroladores seleccionados así como algunas de sus características principales.\\
 
 \begin{table}[H]
 \begin{center}
@@ -415,21 +415,21 @@ STM32F446RE &
 
 
 
-De acuerdo a los criterios de selección y a las funciones deseadas, el microcontrolador seleccionado para el SP es el STM32L432KC de STMicroelectronics\textregistered, debido a su bajo consumo de corriente en relación a sus periféricos y velocidad de operación. Además, en el caso de la placa principal, el microcontrolador STM32F446RE fue seleccionado, las razones fueron su alta velocidad de cómputo, cantidad de pines para el manejo de periféricos, alta capacidad de memoria embebida, entre otros.\\
+De acuerdo a los criterios de selección y a las funciones deseadas, el microcontrolador seleccionado para el SP es el STM32L432KC de STMicroelectronics\textregistered, debido a su bajo consumo de corriente en relación a sus periféricos y velocidad de operación. En el caso de la placa principal el microcontrolador STM32F446RE fue seleccionado; las razones fueron su alta velocidad de cómputo, cantidad de pines para el manejo de periféricos y alta capacidad de memoria.\\
 
-Por último, en las figuras \ref{img:EsquematicoMS} y \ref{img:EsquematicoPP} se muestran los circuitos esquemáticos del SP y del sistema completo, respectivamente.\\
+Por último, en las figuras \ref{img:EsquematicoMS} y \ref{img:EsquematicoPP} se muestran los circuitos esquemáticos del SP y del SCMC, respectivamente.\\
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[angle=-90,scale=0.75]{diseniosist/SPD/Modulo_Sensores}
-	\caption{Circuito esquemático del subsistema de percepción (módulo de sensores)}
+	\caption{Circuito esquemático del SP (módulo de sensores)}
 	\label{img:EsquematicoMS}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
 		\includegraphics[angle=90,scale=0.5]{diseniosist/SPD/Placa_Principal}
-	\caption{Circuito esquemático de la placa principal}
+	\caption{Circuito esquemático del SCMC.}
 	\label{img:EsquematicoPP}
 \end{figure}
 
