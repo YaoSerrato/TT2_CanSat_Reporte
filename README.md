@@ -15,8 +15,13 @@ Posteriormente, se mostrarán las pruebas de integración y verificación de los
 También se abordará el análisis de los resultados generados durante las pruebas hechas al CanSat en su totalidad. Estas pruebas corresponden a los lanzamientos realizados con un dron y a una altura mucho menor de la especificada en la competencia en su edición 2019. Aquí se podrán observar las gráficas generadas de los datos obtenidos del CanSat durante los lanzamientos. Finalmente, se presentarán las conclusiones.
 
 <p align="center">
-  <img width="480" height="480" src="https://github.com/YaoSerrato/TT2_CanSat_Reporte/blob/master/imagenes/imgmeca/EstructuraCansat.png">
+  <img width="550" height="550" src="https://github.com/YaoSerrato/TT2_CanSat_Reporte/blob/master/imagenes/imgmeca/EstructuraCansat.png">
 </p>
 
 ## Sistemas y Subsistemas del CanSat
 
+El diseño del CanSat se realizó bajo un enfoque funcional, es decir, con base en las necesidades y los requerimientos identificados se definieron las funciones que el CanSat debía cumplir, sin entrar en detalles de la implementación para lograr tales funciones. Con base en la lista de funciones, también llamada Arquitectura Funcional, se definió la Arquitectura Física, que es la transición de una perspectiva abstracta (funciones) a algo concreto (sistemas y subsistemas). La siguiente imagen muestra la Arquitectura Física del CanSat donde su puede observar que éste está compuesto de 8 sistemas: 4 sistemas que todo sistema mecatrónico comúnmente tiene (sistema estructural, sistema de energía, sistema central de manejo del comportamiento y sistema de procesamiento de datos); así como 4 sistemas propios del CanSat (sistema de reducción de velocidad de descenso, sistema de liberación del vehículo científico, sistema de estación en Tierra y sistema de registro de descenso).
+
+<p align="center">
+  <img height="700" src="https://github.com/YaoSerrato/TT2_CanSat_Reporte/blob/master/imagenes/diseniosist/SistemasSubsistemas.PNG">
+</p>
