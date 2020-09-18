@@ -1,6 +1,6 @@
-# Reporte de Trabajo Terminal 2: Cansat con sistema de descenso por autorrotación.
+# Cansat con sistema de descenso por autorrotación.
 
-Este repositorio continene el código en Latex del reporte técnico realizado para obtener el título de Ingeniero en Mecatrónica.
+Este repositorio continene el código en Latex del reporte técnico realizado para obtener el título de Ingeniero en Mecatrónica. Los autores del proyecto son Aldo Bonilla Rodríguez, Saúl Becerril Ortega y Rodrigo Yaoctzin Serrato Andrade.
 
 ## Resumen
 
@@ -25,3 +25,12 @@ El diseño del CanSat se realizó bajo un enfoque funcional, es decir, con base 
 <p align="center">
   <img height="700" src="https://github.com/YaoSerrato/TT2_CanSat_Reporte/blob/master/imagenes/diseniosist/SistemasSubsistemas.PNG">
 </p>
+
+## Utilización
+
+Para ver el reporte completo hay que abrir el archivo:
+
+```bash
+Principal.pdf
+```
+
