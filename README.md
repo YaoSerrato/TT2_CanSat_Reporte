@@ -13,3 +13,10 @@ Seguido de esto, se entrará de lleno en el diseño detallado de todos los siste
 Posteriormente, se mostrarán las pruebas de integración y verificación de los sistemas y subsistemas, así como los resultados obtenidos en cada prueba. Al reportar las pruebas se menciona en cada una los requerimientos que se pretendían verificar, el procedimiento que se usó, los resultados esperados y los resultados obtenidos.
 
 También se abordará el análisis de los resultados generados durante las pruebas hechas al CanSat en su totalidad. Estas pruebas corresponden a los lanzamientos realizados con un dron y a una altura mucho menor de la especificada en la competencia en su edición 2019. Aquí se podrán observar las gráficas generadas de los datos obtenidos del CanSat durante los lanzamientos. Finalmente, se presentarán las conclusiones.
+
+<p align="center">
+  <img width="480" height="480" src="https://github.com/YaoSerrato/TT2_CanSat_Reporte/blob/master/imagenes/imgmeca/EstructuraCansat.png">
+</p>
+
+## Sistemas y Subsistemas del CanSat
+
