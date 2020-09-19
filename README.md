@@ -18,6 +18,10 @@ También se abordará el análisis de los resultados generados durante las prueb
   <img width="550" height="550" src="https://github.com/YaoSerrato/TT2_CanSat_Reporte/blob/master/imagenes/imgmeca/EstructuraCansat.png">
 </p>
 
+<p align="center">
+  <img height="350" src="https://github.com/YaoSerrato/TT2_CanSat_Reporte/blob/master/imagenes/diseniosist/SET/Drawing1.png">
+</p>
+
 ## Sistemas y Subsistemas del CanSat
 
 El diseño del CanSat se realizó bajo un enfoque funcional, es decir, con base en las necesidades y los requerimientos identificados se definieron las funciones que el CanSat debía cumplir, sin entrar en detalles de la implementación para lograr tales funciones. Con base en la lista de funciones, también llamada Arquitectura Funcional, se definió la Arquitectura Física, que es la transición de una perspectiva abstracta (funciones) a algo concreto (sistemas y subsistemas). La siguiente imagen muestra la Arquitectura Física del CanSat donde su puede observar que éste está compuesto de 8 sistemas: 4 sistemas que todo sistema mecatrónico comúnmente tiene (sistema estructural, sistema de energía, sistema central de manejo del comportamiento y sistema de procesamiento de datos); así como 4 sistemas propios del CanSat (sistema de reducción de velocidad de descenso, sistema de liberación del vehículo científico, sistema de estación en Tierra y sistema de registro de descenso).
